@@ -1,2 +1,2 @@
 # Neuronal_Cascades
-Customized networks with heterogeneous node properties
+Customized networks with heterogeneous node properties.
