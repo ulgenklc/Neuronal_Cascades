@@ -413,10 +413,18 @@ class Geometric_Brain_Network():
         """
         Helper method to refresh the `neuron.history` for each neuron as well as to set the internal network time
         back to 0. Necessary for consecutive calls of the `run_dynamic`.
+        
+        Returns
+        ========
+        tolerence:int
+            To make the algorithm more efficient, system breaks if the tolerence exceeds some number. We set it
+            equal to 0 every time a new dynamic runs.
         """
         self.time = 0
+        tolerence = 0
         for node in self.nodes:
             node.refresh_history()
+        return(tolerence)
             
     def run_dynamic(self, seed, TIME, C):
         """
@@ -445,8 +453,7 @@ class Geometric_Brain_Network():
             Array saving the length of active nodes at every time step.
         
         """
-        self.refresh()
-        
+        tolerence = self.refresh()
         activation_times = np.ones(self.N, dtype = int)*TIME
         size_of_contagion = [int(0)]
         
@@ -455,7 +462,7 @@ class Geometric_Brain_Network():
         
         self.time = 1
         
-        while self.time < TIME and 0 < len(excited_nodes):
+        while self.time < TIME and 0 < len(excited_nodes) and tolerence < 5:
             size_of_contagion.append(len(excited_nodes))
             
             activation_times[excited_nodes] = np.minimum(activation_times[excited_nodes], 
@@ -464,12 +471,21 @@ class Geometric_Brain_Network():
             for node in ready_to_fire_nodes: 
                 self.update_history(node, C)
                 
+            e_temp, r_temp, s_temp = excited_nodes, ready_to_fire_nodes, resting_nodes 
             excited_nodes, ready_to_fire_nodes, resting_nodes = self.update_states()
+            
+            if e_temp == excited_nodes and r_temp == ready_to_fire_nodes and s_temp == resting_nodes: 
+                tolerence = tolerence + 1
+                
             self.time = self.time + 1   
             
-        if len(size_of_contagion) < TIME: 
-            for j in range(len(size_of_contagion), TIME):
-                size_of_contagion.append(0)
+        if len(size_of_contagion) < TIME:
+            if tolerence == 5:
+                for j in range(len(size_of_contagion), TIME):
+                    size_of_contagion.append(size_of_contagion[-1])
+            else:
+                for j in range(len(size_of_contagion), TIME):
+                    size_of_contagion.append(0)
         
         return(activation_times, np.array(size_of_contagion))
             
