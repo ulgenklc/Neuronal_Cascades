@@ -462,7 +462,7 @@ class Geometric_Brain_Network():
         
         self.time = 1
         
-        while self.time < TIME and 0 < len(excited_nodes) and tolerence < 5:
+        while self.time < TIME and 0 < len(excited_nodes) and tolerence < 5 and np.any(activation_times==TIME):
             size_of_contagion.append(len(excited_nodes))
             
             activation_times[excited_nodes] = np.minimum(activation_times[excited_nodes], 
@@ -483,10 +483,12 @@ class Geometric_Brain_Network():
             if tolerence == 5:
                 for j in range(len(size_of_contagion), TIME):
                     size_of_contagion.append(size_of_contagion[-1])
+            elif np.any(activation_times==TIME):
+                for j in range(len(size_of_contagion), TIME):
+                    size_of_contagion.append(0) 
             else:
                 for j in range(len(size_of_contagion), TIME):
-                    size_of_contagion.append(0)
-        
+                    size_of_contagion.append(self.N)
         return(activation_times, np.array(size_of_contagion))
             
     def stack_histories(self, TIME):
@@ -706,9 +708,9 @@ class Geometric_Brain_Network():
                             np.min(Q[i], axis = 0)[:int(np.min([TIME-2,np.max(argmaxs)])+2)], 
                             alpha = 0.2, color = colors[i%11])
         
-        ax.set_title('%s, T = %d, C = %d, trials, %d,  MEMORY = %d, REST = d'%(self.text, TIME, C, 
-                                                                               trials, memory, 
-                                                                               rest), fontsize = 25)
+        ax.set_title('%s, T = %d, C = %d, trials = %d,  MEMORY = %d, REST = %d'%(self.text, TIME, C, trials, memory, rest), fontsize = 25)
+
+
         ax.set_xlabel('Time', fontsize = 20)
         ax.set_ylabel('Number of Active Nodes', fontsize = 20)
         ax.legend(fontsize = 'large')
