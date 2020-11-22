@@ -6,6 +6,7 @@
 
 import numpy as np
 from scipy import sparse
+from scipy.spatial import distance
 from sklearn.metrics.pairwise import euclidean_distances
 from math import sqrt
 import matplotlib.pyplot as plt
@@ -88,10 +89,10 @@ class neuron():
 class Geometric_Brain_Network():
     """
     This class is the main object we run our contagions on. `Geometric_Brain_Netwok` object explicitly inputs
-    the `neuron` objects. The topology of the network is one of the important features of the network, only ring 
-    topology is available for now. The importance of geometric networks is that the geometric degree is a global
-    property instead of a local property, same with non-geometric degree. So, the total degree of every node is
-    GD + nGD.
+    the `neuron` objects. The topology of the network is one of the important features of the network. We chose 2
+    and 3 dimensional compact manifolds as our fundamental network topology pool for now. The importance of 
+    geometric networks is that the geometric degree is a global property instead of a local property, same with 
+    non-geometric degree. So, the total degree of every node is GD + nGD.
     
     Attributes
     ===============
@@ -115,9 +116,13 @@ class Geometric_Brain_Network():
     Geometric_Brain_Network.manifold: string
         The network topology that the nodes are sitting on. This type determines the manifold that the WFP is 
         going to follow. Also, the persistent homology of the first activation of the nodes during an experiment
-        recovers this type of topology as well. This can only be 'Ring' for now. 
+        recovers this type of topology as well. 
         
-        TODO: extend topology to 'Sphere', 'Hyperbolic', '0-Curvature', 'Cylinder' and 'Torus'.
+        This can be 'Ring', that is the only compact 1D-manifold, 'Sphere' and 'Torus', only compact 2D-manifolds,
+        for now. In the case of 'Sphere' and 'Torus', `geometric_degree` is not possible to be distributed
+        uniformly among nodes, so some nodes may have slightly higher GD in these options but on average, 
+        geometric degree is going to be close to GD which you can see using `self.text`. Also, in the case of '
+        Torus', because of the parametrization we use, the initial number of nodes should be a square.
         
     Geometric_Brain_Network.A: sparse matrix
         The adjacency matrix of the network keeping track of the neighborhood information.
@@ -156,7 +161,7 @@ class Geometric_Brain_Network():
             A list of `neuron` objects of length `self.N`. 
         """
         if self.N != len(neurons): 
-            raise InputError('Number of neurons provided should be %d'%self.N)
+            raise InputError('Number of neurons provided should be size %d'%self.N)
         else:
             self.nodes = neurons
         
@@ -186,18 +191,56 @@ class Geometric_Brain_Network():
                         v = self.N + u - i
                     else: v = u - i
                     self.A[u,v] = True
-                    
             self.text = self.text + ' w/ GD %d'%(self.GD)
             
-        #elif self.manifold == 'Sphere':   
+        elif self.manifold == 'Sphere': 
+            ## We use the method called 'Golden Spiral' to evenly distribute n points on a sphere.
             
-        #elif self.manifold == 'Hyperbolic':
+            indices = np.arange(0, self.N, dtype=float) + 0.5
+
+            phi = np.arccos(1 - 2*indices/self.N)
+            theta = np.pi * (1 + 5**0.5) * indices
+
+            x, y, z = np.cos(theta) * np.sin(phi), np.sin(theta) * np.sin(phi), np.cos(phi)
             
-        #elif self.manifold == '0-Curvature':
-            
-        #elif self.manifold == 'Cylinder':
+            closest = np.argsort(distance.squareform(distance.pdist(np.array([list(x), 
+                                                                              list(y), 
+                                                                              list(z)]).T, 
+                                                                    'euclidean')), axis=1)
+            for i, e in enumerate(closest[:,1:self.GD+1]):
+                for j, f in enumerate(e):
+                    self.A[i,f] = True
+                    self.A[f,i] = True
+                    
+            self.text = self.text + ' w/ average GD %.2f'%(np.sum(self.A.toarray())/self.N)
+                    
+            #plt.figure().add_subplot(111, projection='3d').scatter(x, y, z);
+            #plt.show()
         
-        #elif self.manifold == 'Torus':
+        elif self.manifold == 'Torus':
+            if int(sqrt(self.N))**2 != self.N : 
+                raise InputError('Number of nodes should be a square(36, 100, 900 etc..) with Torus topology.')
+
+            angle = np.linspace(0, 2 * np.pi, int(sqrt(self.N)))
+            theta, phi = np.meshgrid(angle, angle)
+            r, R = 5, 10.
+            X = (R + r * np.cos(phi)) * np.cos(theta)
+            Y = (R + r * np.cos(phi)) * np.sin(theta)
+            Z = r * np.sin(phi)
+
+            closest = np.argsort(distance.squareform(distance.pdist(np.array([list(X.reshape(-1)), 
+                                                                              list(Y.reshape(-1)), 
+                                                                              list(Z.reshape(-1))]).T, 
+                                                                    'euclidean')), axis=1)
+            for i, e in enumerate(closest[:,1:self.GD+1]):
+                for j, f in enumerate(e):
+                    self.A[i,f] = True
+                    self.A[f,i] = True
+            
+            self.text = self.text + ' w/ average GD %.2f'%(np.sum(self.A.toarray())/self.N)
+            
+            #plt.figure().add_subplot(111, projection='3d').scatter(X, Y, Z, s = 1);
+            #plt.show()
         
     def add_noise_to_geometric(self):
         """
@@ -632,8 +675,8 @@ class Geometric_Brain_Network():
             
         dimension: int
             Maximum dimension that the simplicial complex will be built. Accordingly, maximum dimensional 
-            topological features are going to be `dimension -1`. Default is 2 since only the `Ring` topology, which
-            is a 1-D compact manifold, is currently available.
+            topological features are going to be `dimension -1`. Default is 2 suitable for the `Ring` topology, 
+            which is a 1-D compact manifold, but should set to 3 if the topology is a 2D-compact manifold.
 
         spy: bool
             If True, persistence diagram will be shown.
