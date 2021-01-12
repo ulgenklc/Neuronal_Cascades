@@ -1,2 +1,2 @@
 # Neuronal_Cascades
-Customized networks with heterogeneous node properties.
+Complex contagions on customized networks with heterogeneous node properties.
