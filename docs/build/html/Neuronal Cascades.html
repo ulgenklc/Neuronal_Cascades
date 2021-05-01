@@ -164,9 +164,450 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="documentation">
-<h1>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-Geometric_Brain_Network">
+<span id="documentation"></span><h1>Documentation<a class="headerlink" href="#module-Geometric_Brain_Network" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
+<dt id="Geometric_Brain_Network.Geometric_Brain_Network">
+<em class="property">class </em><code class="sig-prename descclassname">Geometric_Brain_Network.</code><code class="sig-name descname">Geometric_Brain_Network</code><span class="sig-paren">(</span><em class="sig-param">size</em>, <em class="sig-param">geometric_degree</em>, <em class="sig-param">nongeometric_degree</em>, <em class="sig-param">manifold</em><span class="sig-paren">)</span><a class="headerlink" href="#Geometric_Brain_Network.Geometric_Brain_Network" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Geometric Brain Network object to run simplicial contagions on.</p>
+<dl class="attribute">
+<dt id="Geometric_Brain_Network.Geometric_Brain_Network.N">
+<code class="sig-name descname">N</code><a class="headerlink" href="#Geometric_Brain_Network.Geometric_Brain_Network.N" title="Permalink to this definition">¶</a></dt>
+<dd><p>Size, number of nodes in the network.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Geometric_Brain_Network.Geometric_Brain_Network.GD">
+<code class="sig-name descname">GD</code><a class="headerlink" href="#Geometric_Brain_Network.Geometric_Brain_Network.GD" title="Permalink to this definition">¶</a></dt>
+<dd><p>Geometric degree of the network.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Geometric_Brain_Network.Geometric_Brain_Network.nGD">
+<code class="sig-name descname">nGD</code><a class="headerlink" href="#Geometric_Brain_Network.Geometric_Brain_Network.nGD" title="Permalink to this definition">¶</a></dt>
+<dd><p>non-Geometric degree of the network.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Geometric_Brain_Network.Geometric_Brain_Network.manifold">
+<code class="sig-name descname">manifold</code><a class="headerlink" href="#Geometric_Brain_Network.Geometric_Brain_Network.manifold" title="Permalink to this definition">¶</a></dt>
+<dd><p>The geometric topology of the network. Only ‘Ring’ is available currently.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Geometric_Brain_Network.Geometric_Brain_Network.text">
+<code class="sig-name descname">text</code><a class="headerlink" href="#Geometric_Brain_Network.Geometric_Brain_Network.text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Summary of the network.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Geometric_Brain_Network.Geometric_Brain_Network.A">
+<code class="sig-name descname">A</code><a class="headerlink" href="#Geometric_Brain_Network.Geometric_Brain_Network.A" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adjacency matrix of the graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>array <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">x</span> <span class="pre">n</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Geometric_Brain_Network.Geometric_Brain_Network.nodes">
+<code class="sig-name descname">nodes</code><a class="headerlink" href="#Geometric_Brain_Network.Geometric_Brain_Network.nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of <code class="docutils literal notranslate"><span class="pre">neuron</span></code> objects that corresponds to the nodes of the network in which IDs of the neurons match with the IDs of the nodes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>List</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Geometric_Brain_Network.Geometric_Brain_Network.time">
+<code class="sig-name descname">time</code><a class="headerlink" href="#Geometric_Brain_Network.Geometric_Brain_Network.time" title="Permalink to this definition">¶</a></dt>
+<dd><p>An intrinsic time property to keep track of number of iterations of the experiments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Geometric_Brain_Network.Geometric_Brain_Network.triangles">
+<code class="sig-name descname">triangles</code><a class="headerlink" href="#Geometric_Brain_Network.Geometric_Brain_Network.triangles" title="Permalink to this definition">¶</a></dt>
+<dd><p>A dictionay of the triangles of the network where keys are node ids and values are lists of pairs of node ids that makes up a triangle together with the key value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>size</strong> (<em>int</em>) – Size of the network to be initialized.</p></li>
+<li><p><strong>geometric_degree</strong> (<em>int</em>) – Uniform number of local neighbors that every node has.</p></li>
+<li><p><strong>nongeometric_degree</strong> (<em>int</em>) – Fixed number of distant neighbors that every node has.</p></li>
+<li><p><strong>manifold</strong> (<em>str</em>) – Type of the network to be created. Only ‘Ring’ is available.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="Geometric_Brain_Network.Geometric_Brain_Network.add_noise_to_geometric">
+<code class="sig-name descname">add_noise_to_geometric</code><span class="sig-paren">(</span><em class="sig-param">A</em><span class="sig-paren">)</span><a class="headerlink" href="#Geometric_Brain_Network.Geometric_Brain_Network.add_noise_to_geometric" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method adds non-geometric edges to the network that are long range. Every node will have <code class="docutils literal notranslate"><span class="pre">nGD</span></code> many
+nongeometric, long range, edges.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Geometric_Brain_Network.Geometric_Brain_Network.average_over_trials">
+<code class="sig-name descname">average_over_trials</code><span class="sig-paren">(</span><em class="sig-param">seed</em>, <em class="sig-param">TIME</em>, <em class="sig-param">C</em>, <em class="sig-param">trials</em>, <em class="sig-param">K</em>, <em class="sig-param">L</em>, <em class="sig-param">model_type</em><span class="sig-paren">)</span><a class="headerlink" href="#Geometric_Brain_Network.Geometric_Brain_Network.average_over_trials" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function for averaging the activation times and contagion sizes over different trials. Trials is usually 1 unless you are doing stochastic experiments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>seed</strong> (<em>int</em>) – Node ID of the seed node.</p></li>
+<li><p><strong>TIME</strong> (<em>int</em>) – A limit on the number of iterations.</p></li>
+<li><p><strong>C</strong> (<em>int</em>) – Constant for tuning stochasticity. Higher values yield a deterministic model whereas lower values yield a stochastic model.</p></li>
+<li><p><strong>trials</strong> (<em>int</em>) – Number of trials.</p></li>
+<li><p><strong>K</strong> (<em>float</em>) – Constant for weighing the edge and triangle activations.</p></li>
+<li><p><strong>L</strong> (<em>float</em>) – Constant for weighing the edge and triangle activations. Negative unless <code class="docutils literal notranslate"><span class="pre">model_type</span></code> is ‘linear_combination’.</p></li>
+<li><p><strong>model_type</strong> (<em>'line_segment'</em><em> or </em><em>'linear_combination'</em>) – Included only to pass along <code class="docutils literal notranslate"><span class="pre">update_states</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>activation_times</strong> (<em>array</em>) – Average activation times of all the nodes for contagions starting from seed.</p></li>
+<li><p><strong>size_of_contagion</strong> (<em>array</em>) – Average number of active nodes at every iteration.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Geometric_Brain_Network.Geometric_Brain_Network.compute_persistence">
+<code class="sig-name descname">compute_persistence</code><span class="sig-paren">(</span><em class="sig-param">distances</em>, <em class="sig-param">dimension</em>, <em class="sig-param">spy</em><span class="sig-paren">)</span><a class="headerlink" href="#Geometric_Brain_Network.Geometric_Brain_Network.compute_persistence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper to compute persistent homology using the distance matrix by building a Rips filtration up to given
+dimension(topological features to be observed are going to be one less dimensional at max).
+First normalizes the distances before the computation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>distances</strong> (<em>n x n array</em>) – distance matrix. First output of the <code class="docutils literal notranslate"><span class="pre">make_distance_matrix</span></code>.</p></li>
+<li><p><strong>dimension</strong> (<em>int</em>) – Max dimension of the topological features to be computed.</p></li>
+<li><p><strong>spy</strong> (<em>bool</em><em>, </em><em>optional</em>) – Take a peak at the persistence diagram.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>Delta_min</strong> (<em>array</em>) – Difference of the lifetimes between longest and second longest living two 1-cycles.</p></li>
+<li><p><strong>Delta_max</strong> (<em>array</em>) – Difference of the lifetimes between longest and shortest living two 1-cycles.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Geometric_Brain_Network.Geometric_Brain_Network.display_comm_sizes">
+<code class="sig-name descname">display_comm_sizes</code><span class="sig-paren">(</span><em class="sig-param">Q</em>, <em class="sig-param">labels</em>, <em class="sig-param">TIME</em>, <em class="sig-param">C</em>, <em class="sig-param">trials</em>, <em class="sig-param">threshold</em>, <em class="sig-param">K</em>, <em class="sig-param">L</em><span class="sig-paren">)</span><a class="headerlink" href="#Geometric_Brain_Network.Geometric_Brain_Network.display_comm_sizes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper to visualize the size of the active nodes during the contagion. Shades are indicating the max
+and min values of the spread starting from different nodes, seed node variations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Q</strong> (<em>list</em><em>, </em><em>[</em><em>n x T+1 array</em><em>]</em>) – Output of the make_distance_matrix appended in a list</p></li>
+<li><p><strong>labels</strong> (<em>list</em>) – Figure labels corresponding to every list element for different thresholds.</p></li>
+<li><p><strong>TIME</strong> (<em>int</em>) – A limit on the number of iterations.</p></li>
+<li><p><strong>C</strong> (<em>int</em>) – Constant for tuning stochasticity. Higher values yield a deterministic model whereas lower values yield a stochastic model.</p></li>
+<li><p><strong>trials</strong> (<em>int</em>) – Number of trials.</p></li>
+<li><p><strong>K</strong> (<em>float</em>) – Constant for weighing the edge and triangle activations.</p></li>
+<li><p><strong>L</strong> (<em>float</em>) – Constant for weighing the edge and triangle activations. Negative unless <code class="docutils literal notranslate"><span class="pre">model_type</span></code> is ‘linear_combination’.</p></li>
+<li><p><strong>model_type</strong> (<em>'line_segment'</em><em> or </em><em>'linear_combination'</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>fig</strong> (<em>matplotlib object</em>) – Figure to be drawn.</p></li>
+<li><p><strong>ax</strong> (<em>matplotlib object</em>) – Axis object for the plots.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Geometric_Brain_Network.Geometric_Brain_Network.get_neurons">
+<code class="sig-name descname">get_neurons</code><span class="sig-paren">(</span><em class="sig-param">neurons</em><span class="sig-paren">)</span><a class="headerlink" href="#Geometric_Brain_Network.Geometric_Brain_Network.get_neurons" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sometimes we want to run experiments on a fixed network without changing the network connectivity. In this case, we can initialize a new set of neurons and use this method to inherit them in the network– changing only the neuronal properties but not the connectivity.
+:param neurons: A list of <code class="docutils literal notranslate"><span class="pre">neuron</span></code> objects.
+:type neurons: list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If the number of neurons and the size of the network doesn’t match.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Geometric_Brain_Network.Geometric_Brain_Network.initial_spread">
+<code class="sig-name descname">initial_spread</code><span class="sig-paren">(</span><em class="sig-param">seed</em><span class="sig-paren">)</span><a class="headerlink" href="#Geometric_Brain_Network.Geometric_Brain_Network.initial_spread" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper method to activate the neighbors of the seed node with probablity 1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>seed</strong> (<em>int</em>) – Node ID of the seed node.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Geometric_Brain_Network.Geometric_Brain_Network.k_cliques">
+<code class="sig-name descname">k_cliques</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Geometric_Brain_Network.Geometric_Brain_Network.k_cliques" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fast helper method to identify triangles.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Geometric_Brain_Network.Geometric_Brain_Network.make_distance_matrix">
+<code class="sig-name descname">make_distance_matrix</code><span class="sig-paren">(</span><em class="sig-param">TIME</em>, <em class="sig-param">C</em>, <em class="sig-param">trials</em>, <em class="sig-param">K</em>, <em class="sig-param">L</em>, <em class="sig-param">model_type</em><span class="sig-paren">)</span><a class="headerlink" href="#Geometric_Brain_Network.Geometric_Brain_Network.make_distance_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main function if you are running experiments for a full set of seed nodes. This creates an activation matrix by running
+the contagion on starting from every node and encoding the first activation times of each node. Then,
+finding the euclidean distances between the columns of this matrix, creating a distance matrix so that
+the (i,j) entry corresponds to the average time(over the trials) that a contagion reaches node j starting
+from node i.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>TIME</strong> (<em>int</em>) – A limit on the number of iterations.</p></li>
+<li><p><strong>C</strong> (<em>int</em>) – Constant for tuning stochasticity. Higher values yield a deterministic model whereas lower values yield a stochastic model.</p></li>
+<li><p><strong>trials</strong> (<em>int</em>) – Number of trials.</p></li>
+<li><p><strong>K</strong> (<em>float</em>) – Constant for weighing the edge and triangle activations.</p></li>
+<li><p><strong>L</strong> (<em>float</em>) – Constant for weighing the edge and triangle activations. Negative unless <code class="docutils literal notranslate"><span class="pre">model_type</span></code> is ‘linear_combination’.</p></li>
+<li><p><strong>model_type</strong> (<em>'line_segment'</em><em> or </em><em>'linear_combination'</em>) – Included only to pass along <code class="docutils literal notranslate"><span class="pre">update_states</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>distance_matrix</strong> (<em>array</em>) – <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">x</span> <span class="pre">n</span></code> array with entries the activation times of contagions starting from node i reaching to node j.</p></li>
+<li><p><strong>Q</strong> (<em>array</em>) – <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">x</span> <span class="pre">t</span></code> array with entries number of active nodes at every time step for contagions starting at different seeds.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Geometric_Brain_Network.Geometric_Brain_Network.make_geometric">
+<code class="sig-name descname">make_geometric</code><span class="sig-paren">(</span><em class="sig-param">A</em><span class="sig-paren">)</span><a class="headerlink" href="#Geometric_Brain_Network.Geometric_Brain_Network.make_geometric" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method for creating a geometric ring network. This will be called upon initialization automatically.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>A</strong> (<em>array</em>) – <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">x</span> <span class="pre">n</span></code> matrix of zeros.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Geometric_Brain_Network.Geometric_Brain_Network.neighbor_input">
+<code class="sig-name descname">neighbor_input</code><span class="sig-paren">(</span><em class="sig-param">node_id</em>, <em class="sig-param">K</em>, <em class="sig-param">L</em>, <em class="sig-param">model_type='line_segment'</em><span class="sig-paren">)</span><a class="headerlink" href="#Geometric_Brain_Network.Geometric_Brain_Network.neighbor_input" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>This is a key function as it computes the current input from neighbors of a given node, R_{i}.</p>
+<dl class="simple">
+<dt>node_id: int</dt><dd><p>ID of the node whose input is going to be calculated.</p>
+</dd>
+<dt>K: float</dt><dd><p>Constant for weighing the edge and triangle activations.</p>
+</dd>
+<dt>L: float</dt><dd><p>Constant for weighing the edge and triangle activations. Negative unless <code class="docutils literal notranslate"><span class="pre">model_type</span></code> is ‘linear_combination’.</p>
+</dd>
+<dt>model_type: str (‘line_segment’ or ‘linear_combination’)</dt><dd><p>We included two ways to compute the neighboring neuronal input. Former uses R_{i} = left[(1-K)*sum_{e in E_{i}}</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>rac{e {d_{i}^{e}} + (K)*sum_{t in T_{i}}
+rac{t}{d_{i}^{t}}
+ight] -         au_{i} and the latter uses R_{i} = left[(K)*sum_{e in E_{i}}
+rac{e}{d_{i}^{e}} + (L)*sum_{t in T_{i}}
+rac{t}{d_{i}^{t}}
+ight] -         au_{i}. By varying K and L one can obtain different weight distributions.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>R: float</dt><dd><p>Neighboring neuronal input.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="Geometric_Brain_Network.Geometric_Brain_Network.neighbors">
+<code class="sig-name descname">neighbors</code><span class="sig-paren">(</span><em class="sig-param">node_id</em><span class="sig-paren">)</span><a class="headerlink" href="#Geometric_Brain_Network.Geometric_Brain_Network.neighbors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function for finding the neighbors of a given node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>node_id</strong> (<em>int</em>) – ID of the node whose neighbors are going to be found.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>nhood</strong> – Neighborhood of the given node.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Geometric_Brain_Network.Geometric_Brain_Network.refresh">
+<code class="sig-name descname">refresh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Geometric_Brain_Network.Geometric_Brain_Network.refresh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper method for setting the network time and tolerance to 0. This is necessary between different experiments for any set of parameters including <code class="docutils literal notranslate"><span class="pre">seed</span></code>. Also, calls <code class="docutils literal notranslate"><span class="pre">refresh_history</span></code> which clears <code class="docutils literal notranslate"><span class="pre">neuoron</span></code> histories.
+:returns: <strong>tolerance</strong> – Tolerance for experiments getting stuck at some point during contagion. Set to 0 at every trial.
+:rtype: int</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Geometric_Brain_Network.Geometric_Brain_Network.return_triangles">
+<code class="sig-name descname">return_triangles</code><span class="sig-paren">(</span><em class="sig-param">size_k=3</em><span class="sig-paren">)</span><a class="headerlink" href="#Geometric_Brain_Network.Geometric_Brain_Network.return_triangles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function for getting the triangles in the network. This will be automatically called upon initialization of <code class="docutils literal notranslate"><span class="pre">Geometric_Brain_Network</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>size_k</strong> (<em>int</em>) – By default, this is 3 since finding 3-cliques are the same as finding triangles and finding cliques is faster.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>triangles</strong> – A dictionay of the triangles of the network where keys are node ids and values are lists of pairs of node ids that makes up a triangle together with the key value.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Geometric_Brain_Network.Geometric_Brain_Network.run_dynamic">
+<code class="sig-name descname">run_dynamic</code><span class="sig-paren">(</span><em class="sig-param">seed</em>, <em class="sig-param">TIME</em>, <em class="sig-param">C</em>, <em class="sig-param">K</em>, <em class="sig-param">L</em>, <em class="sig-param">model_type</em><span class="sig-paren">)</span><a class="headerlink" href="#Geometric_Brain_Network.Geometric_Brain_Network.run_dynamic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Core function that runs the experiments. There are couple control flags for computational efficiency. If <code class="docutils literal notranslate"><span class="pre">self.time</span></code> exceeds <code class="docutils literal notranslate"><span class="pre">TIME</span></code>, flag. If there is no active neurons left in the network, flag. If everything gets activated once, flag. If <code class="docutils literal notranslate"><span class="pre">tolerance</span></code> exceeds 10, flag i.e. network repeats the exact state of itself 10 times.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>seed</strong> (<em>int</em>) – Node ID of the seed node.</p></li>
+<li><p><strong>TIME</strong> (<em>int</em>) – A limit on the number of iterations.</p></li>
+<li><p><strong>C</strong> (<em>int</em>) – Constant for tuning stochasticity. Higher values yield a deterministic model whereas lower values yield a stochastic model.</p></li>
+<li><p><strong>K</strong> (<em>float</em>) – Constant for weighing the edge and triangle activations.</p></li>
+<li><p><strong>L</strong> (<em>float</em>) – Constant for weighing the edge and triangle activations. Negative unless <code class="docutils literal notranslate"><span class="pre">model_type</span></code> is ‘linear_combination’.</p></li>
+<li><p><strong>model_type</strong> (<em>'line_segment'</em><em> or </em><em>'linear_combination'</em>) – Included only to pass along <code class="docutils literal notranslate"><span class="pre">update_states</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>activation_times</strong> (<em>array</em>) – Activation times of all the nodes for contagions starting from seed.</p></li>
+<li><p><strong>size_of_contagion</strong> (<em>array</em>) – Number of active nodes at every iteration.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Geometric_Brain_Network.Geometric_Brain_Network.sigmoid">
+<code class="sig-name descname">sigmoid</code><span class="sig-paren">(</span><em class="sig-param">node_id</em>, <em class="sig-param">C</em>, <em class="sig-param">K</em>, <em class="sig-param">L</em>, <em class="sig-param">model_type</em><span class="sig-paren">)</span><a class="headerlink" href="#Geometric_Brain_Network.Geometric_Brain_Network.sigmoid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sigmoid function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node_id</strong> (<em>int</em>) – ID of the node whose input is going to be calculated.</p></li>
+<li><p><strong>C</strong> (<em>int</em>) – Constant for tuning stochasticity. Higher values yield a deterministic model whereas lower values yield a stochastic model.</p></li>
+<li><p><strong>K</strong> (<em>float</em>) – Constant for weighing the edge and triangle activations.</p></li>
+<li><p><strong>L</strong> (<em>float</em>) – Constant for weighing the edge and triangle activations. Negative unless <code class="docutils literal notranslate"><span class="pre">model_type</span></code> is ‘linear_combination’.</p></li>
+<li><p><strong>model_type</strong> (<em>'line_segment'</em><em> or </em><em>'linear_combination'</em>) – Included only to pass along <code class="docutils literal notranslate"><span class="pre">neighbor_input</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>Z</strong> – Probability of firing.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Geometric_Brain_Network.Geometric_Brain_Network.stack_histories">
+<code class="sig-name descname">stack_histories</code><span class="sig-paren">(</span><em class="sig-param">TIME</em><span class="sig-paren">)</span><a class="headerlink" href="#Geometric_Brain_Network.Geometric_Brain_Network.stack_histories" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function for equalizing, stacking, the lengths of histories of <a href="#id1"><span class="problematic" id="id2">``</span></a>neuron``s. Comes handy for visualizing single experiments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>TIME</strong> (<em>int</em>) – Number of discrete time steps for neuron histories to be visualized</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>all_history</strong> – <code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">x</span> <span class="pre">TIME</span></code> matrix encoding histories of neurons.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Geometric_Brain_Network.Geometric_Brain_Network.update_history">
+<code class="sig-name descname">update_history</code><span class="sig-paren">(</span><em class="sig-param">node_id</em>, <em class="sig-param">C</em>, <em class="sig-param">K</em>, <em class="sig-param">L</em>, <em class="sig-param">model_type</em><span class="sig-paren">)</span><a class="headerlink" href="#Geometric_Brain_Network.Geometric_Brain_Network.update_history" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper method to update the history of the <code class="docutils literal notranslate"><span class="pre">neuron</span></code> objects at every iteration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node_id</strong> (<em>int</em>) – ID of the node whose history is going to be updates.</p></li>
+<li><p><strong>C</strong> (<em>int</em>) – Constant for tuning stochasticity. Higher values yield a deterministic model whereas lower values yield a stochastic model.</p></li>
+<li><p><strong>K</strong> (<em>float</em>) – Constant for weighing the edge and triangle activations.</p></li>
+<li><p><strong>L</strong> (<em>float</em>) – Constant for weighing the edge and triangle activations. Negative unless <code class="docutils literal notranslate"><span class="pre">model_type</span></code> is ‘linear_combination’.</p></li>
+<li><p><strong>model_type</strong> (<em>'line_segment'</em><em> or </em><em>'linear_combination'</em>) – Included only to pass along <code class="docutils literal notranslate"><span class="pre">sigmoid</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Geometric_Brain_Network.Geometric_Brain_Network.update_states">
+<code class="sig-name descname">update_states</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Geometric_Brain_Network.Geometric_Brain_Network.update_states" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper method to update the states of <code class="docutils literal notranslate"><span class="pre">neuron</span></code> objects at every iteration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><strong>excited</strong> (<em>list</em>) – List of active neurons at the current <code class="docutils literal notranslate"><span class="pre">time</span></code>.</p></li>
+<li><p><strong>ready_to_fire</strong> (<em>list</em>) – List of neurons that are in the inactive state and ready to fire at <code class="docutils literal notranslate"><span class="pre">time+1`</span></code>.</p></li>
+<li><p><strong>rest</strong> (<em>list</em>) – List of neurons that doesn’t belong to either of those categories. This is empty as long as there are no refractory period.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-neuron"></span><dl class="class">
 <dt id="neuron.neuron">
 <em class="property">class </em><code class="sig-prename descclassname">neuron.</code><code class="sig-name descname">neuron</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">state</em>, <em class="sig-param">memory</em>, <em class="sig-param">rest</em>, <em class="sig-param">thresold</em><span class="sig-paren">)</span><a class="headerlink" href="#neuron.neuron" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>

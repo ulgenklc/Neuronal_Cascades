@@ -1,3 +1,7 @@
 numpy
+scipy
+networkx
+gudhi
+sklearn
 sphinx_glpi_theme
 

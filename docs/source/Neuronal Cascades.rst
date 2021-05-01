@@ -1,12 +1,12 @@
 Documentation
 ***************************************
 
-.. autoclass:: Geometric_Brain_Network.Geometric_Brain_Network
+.. automodule:: Geometric_Brain_Network
     :members:
     :undoc-members:
     :show-inheritance:
     
-.. autoclass:: neuron.neuron
+.. automodule:: neuron
     :members:
     :undoc-members:
     :show-inheritance:

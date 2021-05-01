@@ -288,25 +288,28 @@ class Geometric_Brain_Network():
 
         return(nhood)
     
-    def neighbor_input(self, node_id, K, L, model_type):# int node_id, float K, float L = -100, str model_type = 'line_segment'):
+    def neighbor_input(self, node_id, K, L, model_type = 'line_segment'):
+        
         """
-        This is a key function as it computes the current input from neighbors of a given node, = $R_{i}$.\
+        
+        This is a key function as it computes the current input from neighbors of a given node, R_{i}.
         
         Parameters
-        -------------
+        ---------------
         node_id: int
             ID of the node whose input is going to be calculated.
         K: float
             Constant for weighing the edge and triangle activations.
         L: float
             Constant for weighing the edge and triangle activations. Negative unless ``model_type`` is 'linear_combination'.
-        model_type: 'line_segment' or 'linear_combination'
-            We included two ways to compute the neighboring neuronal input. Former uses $R_{i} = \left[(1-K)*\sum_{e \in E_{i}} \frac{e}{d_{i}^{e}} + (K)*\sum_{t \in T_{i}}\frac{t}{d_{i}^{t}}\right] - \tau_{i}$ and the latter uses $R_{i} = \left[(K)*\sum_{e \in E_{i}} \frac{e}{d_{i}^{e}} + (L)*\sum_{t \in T_{i}}\frac{t}{d_{i}^{t}}\right] - \tau_{i}$. By varying $K$ and $L$ one can obtain different weight distributions.
+        model_type: str ('line_segment' or 'linear_combination')
+            We included two ways to compute the neighboring neuronal input. Former uses R_{i} = \left[(1-K)*\sum_{e \in E_{i}} \frac{e {d_{i}^{e}} + (K)*\sum_{t \in T_{i}}\frac{t}{d_{i}^{t}}\right] - \tau_{i} and the latter uses R_{i} = \left[(K)*\sum_{e \in E_{i}} \frac{e}{d_{i}^{e}} + (L)*\sum_{t \in T_{i}}\frac{t}{d_{i}^{t}}\right] - \tau_{i}. By varying K and L one can obtain different weight distributions.
         
         Returns
-        ----------
-        R:Float
+        ---------------
+        R: float
             Neighboring neuronal input.
+            
         """
         #cdef numpy.ndarray nbhood
         #cdef Py_ssize_t i,j
@@ -487,7 +490,7 @@ class Geometric_Brain_Network():
             
         return(tolerance)
     
-    def run_dynamic(self, seed, TIME, C< K, L, model_type):#int seed, int TIME, int C, float K, float L = -100, str model_type = 'line_segment'):
+    def run_dynamic(self, seed, TIME, C, K, L, model_type):#int seed, int TIME, int C, float K, float L = -100, str model_type = 'line_segment'):
         """
         Core function that runs the experiments. There are couple control flags for computational efficiency. If ``self.time`` exceeds ``TIME``, flag. If there is no active neurons left in the network, flag. If everything gets activated once, flag. If ``tolerance`` exceeds 10, flag i.e. network repeats the exact state of itself 10 times.
         
