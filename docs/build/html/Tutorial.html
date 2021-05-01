@@ -95,13 +95,15 @@
 <li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#installation-usage">Installation/Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#initiate-a-geometric-network-object">Initiate a <code class="docutils literal notranslate"><span class="pre">geometric_network</span></code> object</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#add-noise-to-geometric-network">Add noise to geometric network</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#display-the-network-via-networkx">Display the network via Networkx</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#sample-excitation-simulation">Sample Excitation Simulation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#look-at-the-first-activation-times">Look at the first activation times</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#create-distance-matrix">Create Distance Matrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#contagion-size">Contagion Size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#initiate-a-geometric-brain-network-object">Initiate a <code class="docutils literal notranslate"><span class="pre">Geometric_Brain_Network</span></code> object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#inheriting-neuron-objects">Inheriting <code class="docutils literal notranslate"><span class="pre">neuron</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-a-single-example-contagion">Run a single example contagion.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-experiments-without-changing-the-network-conectivity">Running experiments without changing the network conectivity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#runnning-simplicial-contagions">Runnning Simplicial Contagions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#neurons-with-memory-and-refractory-period">Neurons with memory and refractory period</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-stochastic-models">Running stochastic Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#looking-at-the-contagion-size">Looking at the Contagion size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-a-full-scale-experiment">Run a full scale experiment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#persistence-diagrams">Persistence Diagrams</a></li>
 </ul>
 </li>
@@ -182,88 +184,57 @@
 <h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="installation-usage">
 <h2>Installation/Usage<a class="headerlink" href="#installation-usage" title="Permalink to this headline">¶</a></h2>
-<p>As the package has not been published on PyPi yet, it CANNOT be install using pip.</p>
-<p>For now, the suggested method is to put the file <cite>Complex_Contagions.py</cite> in the same directory as your source files and call <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">Complex_Contagions</span> <span class="pre">import</span> <span class="pre">geometric_network</span></code></p>
+<p>As the package has not been published on PyPi yet, it CANNOT be install using pip. <code class="docutils literal notranslate"><span class="pre">Neuronal</span> <span class="pre">Cascades</span></code> uses cython to exploit the computational efficiency. So, you have to <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> the <a href="#id1"><span class="problematic" id="id2">*</span></a>.pyx files in Neuronal_Cascades_base</p>
+<p>For now, the suggested method is having the same folder directory in Neuronal_Cascades/Simplicial_Model (setup.py has to be in the parent directory of Neuronal_Cascades_base). Then, add an empty __init__.tex file into Neuronal_Cascades_base (Github doesn’t allow adding empty files). Then go to this directory on your terminal and run <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">build_ext</span> <span class="pre">--inplace</span></code>. See <a class="reference external" href="https://cython.readthedocs.io/en/latest/src/userguide/source_files_and_compilation.html">https://cython.readthedocs.io/en/latest/src/userguide/source_files_and_compilation.html</a> for details.</p>
 </div>
-<div class="section" id="initiate-a-geometric-network-object">
-<h2>Initiate a <code class="docutils literal notranslate"><span class="pre">geometric_network</span></code> object<a class="headerlink" href="#initiate-a-geometric-network-object" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="initiate-a-geometric-brain-network-object">
+<h2>Initiate a <code class="docutils literal notranslate"><span class="pre">Geometric_Brain_Network</span></code> object<a class="headerlink" href="#initiate-a-geometric-brain-network-object" title="Permalink to this headline">¶</a></h2>
 <p>Create a geometric network on a ring. <code class="docutils literal notranslate"><span class="pre">Band_length</span></code> corresponds to the number of neighbors to connect from both right and left making the geometric degree 2*band_length</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">20</span>
-<span class="n">d2</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">ring_latt</span><span class="o">=</span>  <span class="n">geometric_network</span><span class="p">(</span><span class="s1">&#39;ring_lattice&#39;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="n">n</span><span class="p">,</span> <span class="n">banded</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">band_length</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
-</pre></div>
+<a class="reference internal image-reference" href="_images/network.jpg"><img alt="A view of the network before and after long range edges are added. For simplicity, we kept size = 20, GD = 3, nGD = 1." class="align-center" src="_images/network.jpg" style="width: 400.0px; height: 400.0px;" /></a>
 </div>
+<div class="section" id="inheriting-neuron-objects">
+<h2>Inheriting <code class="docutils literal notranslate"><span class="pre">neuron</span></code> objects<a class="headerlink" href="#inheriting-neuron-objects" title="Permalink to this headline">¶</a></h2>
+<p>Define neuronal properies and then use <code class="docutils literal notranslate"><span class="pre">get_neurons</span></code> to inherit individual neurons into the network.</p>
 </div>
-<div class="section" id="add-noise-to-geometric-network">
-<h2>Add noise to geometric network<a class="headerlink" href="#add-noise-to-geometric-network" title="Permalink to this headline">¶</a></h2>
-<p>Use <code class="docutils literal notranslate"><span class="pre">add_noise_to_geometric()</span></code> method to manipulate the network topology. The second parameter describes the non-geometric degree of every node.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ring_latt_k_regular</span><span class="o">.</span><span class="n">add_noise_to_geometric</span><span class="p">(</span><span class="s1">&#39;k_regular&#39;</span><span class="p">,</span> <span class="n">d2</span><span class="p">)</span>
-</pre></div>
+<div class="section" id="run-a-single-example-contagion">
+<h2>Run a single example contagion.<a class="headerlink" href="#run-a-single-example-contagion" title="Permalink to this headline">¶</a></h2>
+<p>Core function <code class="docutils literal notranslate"><span class="pre">run_dynamic</span></code> runs an experiment with given variables.</p>
+<a class="reference internal image-reference" href="_images/single_exp1.jpg"><img alt="A single experiment starting at the seed node 200. Initial wavefront propagation can be observed." class="align-center" src="_images/single_exp1.jpg" style="width: 400.0px; height: 400.0px;" /></a>
 </div>
+<div class="section" id="running-experiments-without-changing-the-network-conectivity">
+<h2>Running experiments without changing the network conectivity<a class="headerlink" href="#running-experiments-without-changing-the-network-conectivity" title="Permalink to this headline">¶</a></h2>
+<p>One may want to work with a different set of experiment or neuronal variables without changing the underlying topology. This is when <code class="docutils literal notranslate"><span class="pre">get_neurons</span></code> function comes handy.</p>
+<a class="reference internal image-reference" href="_images/single_exp2.jpg"><img alt="We increased the global node thresholds to 0.3 which slowed down the signal, wavefront." class="align-center" src="_images/single_exp2.jpg" style="width: 1000.0px; height: 1000.0px;" /></a>
 </div>
-<div class="section" id="display-the-network-via-networkx">
-<h2>Display the network via Networkx<a class="headerlink" href="#display-the-network-via-networkx" title="Permalink to this headline">¶</a></h2>
-<p>Spy the network.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ring_latt_k_regular</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
-</pre></div>
+<div class="section" id="runnning-simplicial-contagions">
+<h2>Runnning Simplicial Contagions<a class="headerlink" href="#runnning-simplicial-contagions" title="Permalink to this headline">¶</a></h2>
+<p>Simplicial contagions can be ran by simply varying the parameter <span class="math notranslate nohighlight">\(K\)</span> between 0 and 1.</p>
+<a class="reference internal image-reference" href="_images/single_exp3.jpg"><img alt="Even though the global node threshold is 0.2 we observe a slow signal. The reason is that we set K=1 which implies a full triangle contagion." class="align-center" src="_images/single_exp3.jpg" style="width: 1000.0px; height: 1000.0px;" /></a>
 </div>
-<a class="reference internal image-reference" href="_images/networkx.png"><img alt="A view of the network." class="align-center" src="_images/networkx.png" style="width: 400.0px; height: 400.0px;" /></a>
+<div class="section" id="neurons-with-memory-and-refractory-period">
+<h2>Neurons with memory and refractory period<a class="headerlink" href="#neurons-with-memory-and-refractory-period" title="Permalink to this headline">¶</a></h2>
+<p>Our model is as general as it can be. So, neurons can have arbitrary number of memory or refractory period given in discrete time steps. This generalization increases conmplexity of the dynamics really quick.</p>
+<a class="reference internal image-reference" href="_images/single_exp4.jpg"><img alt="Slow signal propagation where neurons are active only 1 time step. Signal spreads as the neurons blink." class="align-center" src="_images/single_exp4.jpg" style="width: 1000.0px; height: 1000.0px;" /></a>
 </div>
-<div class="section" id="sample-excitation-simulation">
-<h2>Sample Excitation Simulation<a class="headerlink" href="#sample-excitation-simulation" title="Permalink to this headline">¶</a></h2>
-<p>Run the complex contagion on the network we have created. Key parameters are threshold, C and $alpha = frac{nGD}{GD}$</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">200</span>
-<span class="n">d2</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">ring_latt_k_regular</span> <span class="o">=</span>  <span class="n">geometric_network</span><span class="p">(</span><span class="s1">&#39;ring_lattice&#39;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="n">n</span><span class="p">,</span> <span class="n">banded</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">band_length</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">ring_latt_k_regular</span><span class="o">.</span><span class="n">add_noise_to_geometric</span><span class="p">(</span><span class="s1">&#39;k_regular&#39;</span><span class="p">,</span> <span class="n">d2</span><span class="p">)</span>
-
-<span class="n">T</span> <span class="o">=</span> <span class="mi">100</span> <span class="c1"># number of iterations</span>
-<span class="n">seed</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># node that the spread starts</span>
-<span class="n">C</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># Geometrically, this describes the turning of the sigmoid function</span>
-<span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.3</span> <span class="c1"># resistence of the node to it&#39;s neighbors&#39; excitation level</span>
-<span class="n">Trials</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># number of trials</span>
-<span class="n">refractory_period</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1">## if a neuron is activated once, it stays activated throughout.</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">Trials</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
-<span class="n">first_excitation_times</span><span class="p">,</span> <span class="n">contagion_size</span> <span class="o">=</span> <span class="n">ring_latt_k_regular</span><span class="o">.</span><span class="n">run_excitation</span><span class="p">(</span><span class="n">Trials</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">seed</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">refractory_period</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">)</span>
-</pre></div>
+<div class="section" id="running-stochastic-models">
+<h2>Running stochastic Models<a class="headerlink" href="#running-stochastic-models" title="Permalink to this headline">¶</a></h2>
+<p>Stochasticity of the neuronal responses can be adjusted using the experiment variable <span class="math notranslate nohighlight">\(C\)</span>. Higher values make the system deterministic.</p>
+<a class="reference internal image-reference" href="_images/single_exp5.jpg"><img alt="As the refractory period is nonzero, complexity of the system increases exponentially." class="align-center" src="_images/single_exp5.jpg" style="width: 1000.0px; height: 1000.0px;" /></a>
 </div>
-<a class="reference internal image-reference" href="_images/contagion.png"><img alt="The way excitation spreads along time. Since we have chosen a high value of C, the model tends to be more deterministic which explains the highly similar behavoir between different Trials." class="align-center" src="_images/contagion.png" style="width: 1000.0px; height: 1000.0px;" /></a>
+<div class="section" id="looking-at-the-contagion-size">
+<h2>Looking at the Contagion size<a class="headerlink" href="#looking-at-the-contagion-size" title="Permalink to this headline">¶</a></h2>
+<p>We can plot the size of the active nodes as a function of time.</p>
+<a class="reference internal image-reference" href="comm_sizes.png"><img alt="" class="align-center" src="comm_sizes.png" style="width: 600.0px; height: 600.0px;" /></a>
 </div>
-<div class="section" id="look-at-the-first-activation-times">
-<h2>Look at the first activation times<a class="headerlink" href="#look-at-the-first-activation-times" title="Permalink to this headline">¶</a></h2>
-<p>Spy activation of the nodes.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ring_latt_k_regular</span><span class="o">.</span><span class="n">spy_first_activation</span><span class="p">(</span><span class="n">first_excitation_times</span><span class="p">)</span>
-</pre></div>
-</div>
-<a class="reference internal image-reference" href="_images/first_activation.png"><img alt="As we mentioned, the activation times are exactly the same in both trials since the model is deterministic." class="align-center" src="_images/first_activation.png" style="width: 600.0px; height: 600.0px;" /></a>
-</div>
-<div class="section" id="create-distance-matrix">
-<h2>Create Distance Matrix<a class="headerlink" href="#create-distance-matrix" title="Permalink to this headline">¶</a></h2>
-<p>If you don’t need to look at the individual contagions starting from different nodes, you can run the contagion starting from node i and calculating the first time it reaches to node j i.e. create a distance matrix who (i,j) entry is the first time the node j activated on a contagion starting from i.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">D</span><span class="p">,</span> <span class="n">Q</span> <span class="o">=</span> <span class="n">ring_latt_k_regular</span><span class="o">.</span><span class="n">make_distance_matrix</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">Trials</span><span class="p">,</span> <span class="n">refractory_period</span><span class="p">,</span> <span class="n">spy_distance</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-<a class="reference internal image-reference" href="_images/distance_matrix.png"><img alt="The distance matrix." class="align-center" src="_images/distance_matrix.png" style="width: 600.0px; height: 600.0px;" /></a>
-</div>
-<div class="section" id="contagion-size">
-<h2>Contagion Size<a class="headerlink" href="#contagion-size" title="Permalink to this headline">¶</a></h2>
-<p>It’s important to look at the bifurcations in the system. In order to do so, one might need to look at the size of the contagion for example different thresholds.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;threshold = 0.1&#39;</span><span class="p">,</span> <span class="s1">&#39;threshold = 0.2&#39;</span><span class="p">,</span> <span class="s1">&#39;threshold = 0.3&#39;</span><span class="p">]</span>
-<span class="n">Q</span> <span class="o">=</span> <span class="p">[</span><span class="n">Q1</span><span class="p">,</span><span class="n">Q2</span><span class="p">,</span><span class="n">Q3</span><span class="p">]</span>  <span class="c1">## Qi is the second output of the ``make_distance_matrix``</span>
-<span class="n">ring_latt_k_regular</span><span class="o">.</span><span class="n">display_comm_sizes</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span><span class="n">labels</span><span class="p">)</span>
-</pre></div>
-</div>
-<a class="reference internal image-reference" href="_images/contagion_sizes.png"><img alt="The sizes of the contagion for different thresholds. Shade indicates the max and min values of the contagion starting from different nodes." class="align-center" src="_images/contagion_sizes.png" style="width: 600.0px; height: 600.0px;" /></a>
+<div class="section" id="run-a-full-scale-experiment">
+<h2>Run a full scale experiment<a class="headerlink" href="#run-a-full-scale-experiment" title="Permalink to this headline">¶</a></h2>
+<p>If you don’t need to look at the individual contagions starting from different nodes, you can run the contagion starting from node i and calculating the first time it reaches to node j i.e. create a distance matrix who (i,j) entry is the first time the node j activated on a contagion starting from i. Distance matrices enable a global scale TDA analysis.</p>
+<a class="reference internal image-reference" href="_images/distanceMatrix.jpg"><img alt="The distance matrix. The input for the persistent homology." class="align-center" src="_images/distanceMatrix.jpg" style="width: 600.0px; height: 600.0px;" /></a>
 </div>
 <div class="section" id="persistence-diagrams">
 <h2>Persistence Diagrams<a class="headerlink" href="#persistence-diagrams" title="Permalink to this headline">¶</a></h2>
 <p>Once we created the distance matrices, we can look at the topological features across different contagions and different topologies.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pers</span> <span class="o">=</span> <span class="n">ring_latt_k_regular</span><span class="o">.</span><span class="n">compute_persistence</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">spy</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-<span class="n">delta</span> <span class="o">=</span> <span class="n">ring_latt_k_regular</span><span class="o">.</span><span class="n">one_d_Delta</span><span class="p">(</span><span class="n">pers</span><span class="p">)</span>
-</pre></div>
-</div>
-<a class="reference internal image-reference" href="_images/pers_diag.png"><img alt="Persistence diagram computed from the distance matrix via Rips filtration. Green is 1-D features, red is 0-D features." class="align-center" src="_images/pers_diag.png" style="width: 600.0px; height: 600.0px;" /></a>
+<a class="reference internal image-reference" href="_images/persistence.png"><img alt="Persistence diagram computed from the distance matrix via Rips filtration. Green is 1-D features, red is 0-D features." class="align-center" src="_images/persistence.png" style="width: 600.0px; height: 600.0px;" /></a>
 </div>
 </div>
 
