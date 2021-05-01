@@ -166,7 +166,7 @@ We can plot the size of the active nodes as a function of time.
 .. image:: comm_sizes.jpg
    	:width: 200px
    	:height: 200px
-   	:scale: 300 %
+   	:scale: 500 %
    	:alt: 
   	:align: center
   	
@@ -180,7 +180,7 @@ If you don't need to look at the individual contagions starting from different n
 .. image:: distanceMatrix.jpg
    	:width: 200px
    	:height: 200px
-   	:scale: 200 %
+   	:scale: 400 %
    	:alt: The distance matrix. The input for the persistent homology.
   	:align: center
   	
