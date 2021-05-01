@@ -57,7 +57,7 @@ Core function ``run_dynamic`` runs an experiment with given variables.
 .. image:: single_exp1.jpg
    :width: 200px
    :height: 200px
-   :scale: 200 %
+   :scale: 500 %
    :alt: A single experiment starting at the seed node 200. Initial wavefront propagation can be observed.
    :align: center
    
@@ -163,7 +163,7 @@ We can plot the size of the active nodes as a function of time.
     Q = [Q1,Q2,Q3,Q4,Q5]
     fig, ax = BN.display_comm_sizes_individual(Q,labels)
 
-.. image:: comm_sizes.png
+.. image:: comm_sizes.jpg
    	:width: 200px
    	:height: 200px
    	:scale: 300 %
@@ -180,7 +180,7 @@ If you don't need to look at the individual contagions starting from different n
 .. image:: distanceMatrix.jpg
    	:width: 200px
    	:height: 200px
-   	:scale: 300 %
+   	:scale: 200 %
    	:alt: The distance matrix. The input for the persistent homology.
   	:align: center
   	
