@@ -439,16 +439,8 @@ from node i.</p>
 <dt id="Geometric_Brain_Network.Geometric_Brain_Network.neighbor_input">
 <code class="sig-name descname">neighbor_input</code><span class="sig-paren">(</span><em class="sig-param">node_id</em>, <em class="sig-param">K</em>, <em class="sig-param">L</em>, <em class="sig-param">model_type='line_segment'</em><span class="sig-paren">)</span><a class="headerlink" href="#Geometric_Brain_Network.Geometric_Brain_Network.neighbor_input" title="Permalink to this definition">¶</a></dt>
 <dd><blockquote>
-<div><p>This is a key function as it computes the current input from neighbors of a given node, R_{i}. There are two ways to run simplicial contagions. Former uses :math:<a href="#id1"><span class="problematic" id="id2">`</span></a>R_{i} = left[(1-K)*sum_{e in E_{i}}</p>
-</div></blockquote>
-<p>rac{e {d_{i}^{e}} + (K)*sum_{t in T_{i}}
-rac{t}{d_{i}^{t}}
-ight] -         au_{i}` and the latter uses <span class="math notranslate nohighlight">\(R_{i} = \left[(K)*\sum_{e \in E_{i}}
-rac{e}{d_{i}^{e}} + (L)*\sum_{t \in T_{i}}
-rac{t}{d_{i}^{t}}
-ight] -         au_{i}\)</span>. By varying K (and also L if ‘linear_combination’) one can obtain different weight distributions.</p>
-<blockquote>
-<div><dl class="simple">
+<div><p>This is a key function as it computes the current input from neighbors of a given node, R_{i}.</p>
+<dl class="simple">
 <dt>node_id<span class="classifier">int</span></dt><dd><p>ID of the node whose input is going to be calculated.</p>
 </dd>
 <dt>K<span class="classifier">float</span></dt><dd><p>Constant for weighing the edge and triangle activations.</p>
@@ -462,6 +454,21 @@ ight] -         au_{i}\)</span>. By varying K (and also L if ‘linear_combinati
 <dt>R<span class="classifier">float</span></dt><dd><p>Neighboring neuronal input.</p>
 </dd>
 </dl>
+<p>There are two ways to run simplicial contagions. ‘line_segment’ uses
+:math:<a href="#id1"><span class="problematic" id="id2">`</span></a>R_{i} = left[(1-K)*sum_{e in E_{i}}</p>
+</div></blockquote>
+<p>rac{e {d_{i}^{e}}(K)*sum_{t in T_{i}}
+rac{t}{d_{i}^{t}}
+ight] -         au_{i}`</p>
+<blockquote>
+<div><p>and the ‘linear_combination’ uses
+:math:<a href="#id3"><span class="problematic" id="id4">`</span></a>R_{i} = left[(K)*sum_{e in E_{i}}</p>
+</div></blockquote>
+<p>rac{e}{d_{i}^{e}} + (L)*sum_{t in T_{i}}
+rac{t}{d_{i}^{t}}
+ight] -         au_{i}`.</p>
+<blockquote>
+<div><p>By varying K (and also L if ‘linear_combination’) one can obtain different weight distributions.</p>
 </div></blockquote>
 </dd></dl>
 
@@ -558,7 +565,7 @@ ight] -         au_{i}\)</span>. By varying K (and also L if ‘linear_combinati
 <dl class="method">
 <dt id="Geometric_Brain_Network.Geometric_Brain_Network.stack_histories">
 <code class="sig-name descname">stack_histories</code><span class="sig-paren">(</span><em class="sig-param">TIME</em><span class="sig-paren">)</span><a class="headerlink" href="#Geometric_Brain_Network.Geometric_Brain_Network.stack_histories" title="Permalink to this definition">¶</a></dt>
-<dd><p>Helper function for equalizing, stacking, the lengths of histories of <a href="#id3"><span class="problematic" id="id4">``</span></a>neuron``s. Comes handy for visualizing single experiments.</p>
+<dd><p>Helper function for equalizing, stacking, the lengths of histories of <a href="#id5"><span class="problematic" id="id6">``</span></a>neuron``s. Comes handy for visualizing single experiments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>TIME</strong> (<em>int</em>) – Number of discrete time steps for neuron histories to be visualized</p>

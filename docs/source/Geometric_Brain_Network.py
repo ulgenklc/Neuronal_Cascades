@@ -290,7 +290,7 @@ class Geometric_Brain_Network():
     
     def neighbor_input(self, node_id, K, L, model_type = 'line_segment'):
         """
-        This is a key function as it computes the current input from neighbors of a given node, R_{i}. There are two ways to run simplicial contagions. Former uses :math:`R_{i} = \left[(1-K)*\sum_{e \in E_{i}} \frac{e {d_{i}^{e}} + (K)*\sum_{t \in T_{i}}\frac{t}{d_{i}^{t}}\right] - \tau_{i}` and the latter uses :math:`R_{i} = \left[(K)*\sum_{e \in E_{i}} \frac{e}{d_{i}^{e}} + (L)*\sum_{t \in T_{i}}\frac{t}{d_{i}^{t}}\right] - \tau_{i}`. By varying K (and also L if 'linear_combination') one can obtain different weight distributions.
+        This is a key function as it computes the current input from neighbors of a given node, R_{i}.
         
         Parameters
         ---------------
@@ -307,6 +307,15 @@ class Geometric_Brain_Network():
         ---------------
         R : float
             Neighboring neuronal input.
+            
+        Notes
+        ----------
+        There are two ways to run simplicial contagions. 'line_segment' uses 
+        :math:`R_{i} = \left[(1-K)*\sum_{e \in E_{i}} \frac{e {d_{i}^{e}}(K)*\sum_{t \in T_{i}}\frac{t}{d_{i}^{t}}\right] - \tau_{i}` 
+        and the 'linear_combination' uses 
+        :math:`R_{i} = \left[(K)*\sum_{e \in E_{i}} \frac{e}{d_{i}^{e}} + (L)*\sum_{t \in T_{i}}\frac{t}{d_{i}^{t}}\right] - \tau_{i}`.
+        By varying K (and also L if 'linear_combination') one can obtain different weight distributions.
+        
         """
         #cdef numpy.ndarray nbhood
         #cdef Py_ssize_t i,j
