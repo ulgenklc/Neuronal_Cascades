@@ -7,7 +7,9 @@ As the package has not been published on PyPi yet, it CANNOT be install using pi
 
 For now, the suggested method is having the same folder directory in Neuronal_Cascades/Simplicial_Model (setup.py has to be in the parent directory of Neuronal_Cascades_base). Then, add an empty __init__.tex file into Neuronal_Cascades_base (Github doesn't allow adding empty files). Then go to this directory on your terminal and run ``python setup.py build_ext --inplace``. See Cython_
 
-.. _Cython: https://cython.readthedocs.io/en/latest/src/userguide/source_files_and_compilation.html for details.
+.. _Cython: https://cython.readthedocs.io/en/latest/src/userguide/source_files_and_compilation.html 
+
+for details.
 
 Initiate a ``Geometric_Brain_Network`` object
 *********************************************
@@ -27,8 +29,8 @@ Create a geometric brain network on a ring. Topology is only available on a ring
    :height: 200px
    :scale: 200 %
    :align: center
-
-    A view of the network before and after long range edges are added. For simplicity, we kept size = 20, GD = 3, nGD = 1.
+   
+   A view of the network before and after long range edges are added. For simplicity, we kept size = 20, GD = 3, nGD = 1.
  
 Inheriting ``neuron`` objects
 **************************************
@@ -201,8 +203,8 @@ If you don't need to look at the individual contagions starting from different n
     :height: 200px
     :scale: 300 %
     :align: center
-  
-     The distance matrix. The input for the persistent homology.
+    
+    The distance matrix. The input for the persistent homology.
 
 Persistence Diagrams
 **************************
@@ -214,7 +216,7 @@ Once we created the distance matrices, we can look at the topological features a
 
 
 
-.. image:: persistence.png
+.. figure:: persistence.png
     :width: 200px
     :height: 200px
     :scale: 300 %

@@ -11,7 +11,7 @@ In this project, we develop theoretical framework for the interplay between the 
 Geometric and Noisy Geometric Networks
 ******************************************************
 
-A substantial fraction of the synaptic input to a cortical neuron comes from nearby neurons within local circuits, while the remaining synapses carry signals from more distant locations. In the light of this observation, we use geometric networks as a proxy to mimic network topology of cortical brain regions.
+A substantial fraction of the synaptic input to a cortical neuron comes from nearby neurons within local circuits, while the remaining synapses carry signals from more distant locations. Therefore, we use geometric networks as a proxy to mimic network topology of cortical brain regions.
 
 A geometric network is a set of nodes and edges where the nodes connected to their 'close' neighbors in a euclidean distance manner.
 
@@ -43,7 +43,7 @@ We are inspired by a neuoronal contagion model to asses this phenomena. The core
 .. figure:: response.jpg
    :width: 200px
    :height: 200px
-   :scale: 200 %
+   :scale: 300 %
    :align: center
    
    Set of neuronal activation functions as a function of :math:`C`.
@@ -51,7 +51,7 @@ We are inspired by a neuoronal contagion model to asses this phenomena. The core
 
 The main class we use ``geometric_network`` comes with several methods that we can manipulate the nature of the contagion very easily. For example, one can run either a stochastic or deterministic model by varying the parameter :math:`C`. Moreover, :math:`K=0` recovers an edge contagion whereas :math:`K=1` recovers a pure triangle contagion.
 
-.. image:: simplicial_things.jpg
+.. figure:: simplicial_things.jpg
    :width: 200px
    :height: 200px
    :scale: 300 %
