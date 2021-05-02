@@ -49,7 +49,7 @@ We are inspired by a neuoronal contagion model to asses this phenomena. The core
    Set of neuronal activation functions as a function of :math:`C`.
 
 
-The main class we use ``geometric_network`` comes with several methods that we can manipulate the nature of the contagion very easily. For example, one can run either a stochastic or deterministic model by varying the parameter :math:`C`. Moreover, :math:`K=0` recovers an edge contagion whereas :math:`K=1` recovers a pure triangle contagion.
+The main class we use ``Geometric_Brain_Network`` comes with several methods that we can manipulate the nature of the contagion very easily. For example, one can run either a stochastic or deterministic model by varying the parameter :math:`C`. Moreover, :math:`K=0` recovers an edge contagion whereas :math:`K=1` recovers a pure triangle contagion.
 
 .. figure:: simplicial_things.jpg
    :width: 200px
@@ -57,4 +57,4 @@ The main class we use ``geometric_network`` comes with several methods that we c
    :scale: 300 %
    :align: center
    
-   A) Higher-order Structures. B) Possible configurations of edge and triangle flows and what we mean by an active triangle.
+   Higher-order structures and possible configurations of edge and triangle flows and what we mean by an active triangle.
