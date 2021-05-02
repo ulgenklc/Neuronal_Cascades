@@ -9,4 +9,6 @@ As the package has not been published on PyPi yet, it CANNOT be install using pi
 For now, the suggested method is having the same folder directory in Neuronal_Cascades/Simplicial_Model (setup.py has to be in the parent directory of Neuronal_Cascades_base). Then, add an empty __init__.tex file into Neuronal_Cascades_base (Github doesn't allow adding empty files). Then go to this directory on your terminal and run ``python setup.py build_ext --inplace``. See [Cython](https://cython.readthedocs.io/en/latest/src/userguide/source_files_and_compilation.html)
 for details.
 
-[Documentation](https://neuronal-cascades.readthedocs.io/en/latest/index.html) available!!!
+## Documentation
+
+[Documentation](https://neuronal-cascades.readthedocs.io/en/latest/index.html) available for this python package.
