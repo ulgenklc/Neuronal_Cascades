@@ -311,9 +311,9 @@ class Geometric_Brain_Network():
         Notes
         ----------
         There are two ways to run simplicial contagions. 'line_segment' uses 
-        :math:`R_{i} = \left[(1-K)*\sum_{e \in E_{i}} \frac{e {d_{i}^{e}}(K)*\sum_{t \in T_{i}}\frac{t}{d_{i}^{t}}\right] - \tau_{i}` 
+        :math: R_{i} = \left[(1-K)*\sum_{e \in E_{i}} \frac{e {d_{i}^{e}}(K)*\sum_{t \in T_{i}}\frac{t}{d_{i}^{t}}\right] - \tau_{i}
         and the 'linear_combination' uses 
-        :math:`R_{i} = \left[(K)*\sum_{e \in E_{i}} \frac{e}{d_{i}^{e}} + (L)*\sum_{t \in T_{i}}\frac{t}{d_{i}^{t}}\right] - \tau_{i}`.
+        :math: R_{i} = \left[(K)*\sum_{e \in E_{i}} \frac{e}{d_{i}^{e}} + (L)*\sum_{t \in T_{i}}\frac{t}{d_{i}^{t}}\right] - \tau_{i}.
         By varying K (and also L if 'linear_combination') one can obtain different weight distributions.
         
         """
@@ -480,6 +480,7 @@ class Geometric_Brain_Network():
     def refresh(self):
         """
         Helper method for setting the network time and tolerance to 0. This is necessary between different experiments for any set of parameters including ``seed``. Also, calls ``refresh_history`` which clears ``neuoron`` histories.
+        
         Returns
         ---------
         tolerance : int

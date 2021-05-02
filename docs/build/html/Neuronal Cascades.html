@@ -455,18 +455,18 @@ from node i.</p>
 </dd>
 </dl>
 <p>There are two ways to run simplicial contagions. ‘line_segment’ uses
-:math:<a href="#id1"><span class="problematic" id="id2">`</span></a>R_{i} = left[(1-K)*sum_{e in E_{i}}</p>
+:math: R_{i} = left[(1-K)*sum_{e in E_{i}}</p>
 </div></blockquote>
 <p>rac{e {d_{i}^{e}}(K)*sum_{t in T_{i}}
 rac{t}{d_{i}^{t}}
-ight] -         au_{i}`</p>
+ight] -         au_{i}</p>
 <blockquote>
 <div><p>and the ‘linear_combination’ uses
-:math:<a href="#id3"><span class="problematic" id="id4">`</span></a>R_{i} = left[(K)*sum_{e in E_{i}}</p>
+:math: R_{i} = left[(K)*sum_{e in E_{i}}</p>
 </div></blockquote>
 <p>rac{e}{d_{i}^{e}} + (L)*sum_{t in T_{i}}
 rac{t}{d_{i}^{t}}
-ight] -         au_{i}`.</p>
+ight] -         au_{i}.</p>
 <blockquote>
 <div><p>By varying K (and also L if ‘linear_combination’) one can obtain different weight distributions.</p>
 </div></blockquote>
@@ -492,9 +492,15 @@ ight] -         au_{i}`.</p>
 <dl class="method">
 <dt id="Geometric_Brain_Network.Geometric_Brain_Network.refresh">
 <code class="sig-name descname">refresh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Geometric_Brain_Network.Geometric_Brain_Network.refresh" title="Permalink to this definition">¶</a></dt>
-<dd><p>Helper method for setting the network time and tolerance to 0. This is necessary between different experiments for any set of parameters including <code class="docutils literal notranslate"><span class="pre">seed</span></code>. Also, calls <code class="docutils literal notranslate"><span class="pre">refresh_history</span></code> which clears <code class="docutils literal notranslate"><span class="pre">neuoron</span></code> histories.
-:returns: <strong>tolerance</strong> – Tolerance for experiments getting stuck at some point during contagion. Set to 0 at every trial.
-:rtype: int</p>
+<dd><p>Helper method for setting the network time and tolerance to 0. This is necessary between different experiments for any set of parameters including <code class="docutils literal notranslate"><span class="pre">seed</span></code>. Also, calls <code class="docutils literal notranslate"><span class="pre">refresh_history</span></code> which clears <code class="docutils literal notranslate"><span class="pre">neuoron</span></code> histories.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>tolerance</strong> – Tolerance for experiments getting stuck at some point during contagion. Set to 0 at every trial.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -565,7 +571,7 @@ ight] -         au_{i}`.</p>
 <dl class="method">
 <dt id="Geometric_Brain_Network.Geometric_Brain_Network.stack_histories">
 <code class="sig-name descname">stack_histories</code><span class="sig-paren">(</span><em class="sig-param">TIME</em><span class="sig-paren">)</span><a class="headerlink" href="#Geometric_Brain_Network.Geometric_Brain_Network.stack_histories" title="Permalink to this definition">¶</a></dt>
-<dd><p>Helper function for equalizing, stacking, the lengths of histories of <a href="#id5"><span class="problematic" id="id6">``</span></a>neuron``s. Comes handy for visualizing single experiments.</p>
+<dd><p>Helper function for equalizing, stacking, the lengths of histories of <a href="#id1"><span class="problematic" id="id2">``</span></a>neuron``s. Comes handy for visualizing single experiments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>TIME</strong> (<em>int</em>) – Number of discrete time steps for neuron histories to be visualized</p>
