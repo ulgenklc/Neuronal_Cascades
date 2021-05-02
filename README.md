@@ -4,7 +4,7 @@
 
 ## Installation/Usage
 
-As the package has not been published on PyPi yet, it CANNOT be installed using pip. ``Neuronal Cascades`` uses cython to exploit the faster computation compared to python. So, you have to ``setup.py`` the *.pyx files in Neuronal_Cascades_base.
+As the package has not been published on PyPi yet, it CANNOT be installed using ``pip``. ``Neuronal Cascades`` uses cython to exploit the faster computation compared to python. So, you have to ``setup.py`` the *.pyx files in Neuronal_Cascades_base.
 
 For now, the suggested method is having the same folder directory in Neuronal_Cascades/Simplicial_Model (setup.py has to be in the parent directory of Neuronal_Cascades_base). Then, add an empty __init__.tex file into Neuronal_Cascades_base (Github doesn't allow adding empty files). Then go to this directory on your terminal and run ``python setup.py build_ext --inplace``. See [Cython](https://cython.readthedocs.io/en/latest/src/userguide/source_files_and_compilation.html)
 for details.
