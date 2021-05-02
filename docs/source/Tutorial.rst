@@ -5,11 +5,13 @@ Installation/Usage
 *********************
 As the package has not been published on PyPi yet, it CANNOT be install using pip. ``Neuronal Cascades`` uses cython to exploit the computational efficiency. So, you have to ``setup.py`` the *.pyx files in Neuronal_Cascades_base
 
-For now, the suggested method is having the same folder directory in Neuronal_Cascades/Simplicial_Model (setup.py has to be in the parent directory of Neuronal_Cascades_base). Then, add an empty __init__.tex file into Neuronal_Cascades_base (Github doesn't allow adding empty files). Then go to this directory on your terminal and run ``python setup.py build_ext --inplace``. See https://cython.readthedocs.io/en/latest/src/userguide/source_files_and_compilation.html for details.
+For now, the suggested method is having the same folder directory in Neuronal_Cascades/Simplicial_Model (setup.py has to be in the parent directory of Neuronal_Cascades_base). Then, add an empty __init__.tex file into Neuronal_Cascades_base (Github doesn't allow adding empty files). Then go to this directory on your terminal and run ``python setup.py build_ext --inplace``. See Cython_
+
+.. _Cython: https://cython.readthedocs.io/en/latest/src/userguide/source_files_and_compilation.html for details.
 
 Initiate a ``Geometric_Brain_Network`` object
 *********************************************
-Create a geometric network on a ring. ``Band_length`` corresponds to the number of neighbors to connect from both right and left making the geometric degree 2*band_length
+Create a geometric brain network on a ring. Topology is only available on a ring for now. GD, geometric degree, is the local neighbors of a neurons whereas nGD, nongeometric degree, is the distant neighbors of a neuron.
 
 .. code-block:: python
 
@@ -20,13 +22,14 @@ Create a geometric network on a ring. ``Band_length`` corresponds to the number 
     topology = 'Ring' ## only ring available so far
     BN = Geometric_Brain_Network(size, geometric_degree = GD, nongeometric_degree = nGD, manifold = topology)
 
-.. image:: network.jpg
+.. figure:: network.jpg
    :width: 200px
    :height: 200px
    :scale: 200 %
-   :alt: A view of the network before and after long range edges are added. For simplicity, we kept size = 20, GD = 3, nGD = 1.
    :align: center
 
+    A view of the network before and after long range edges are added. For simplicity, we kept size = 20, GD = 3, nGD = 1.
+ 
 Inheriting ``neuron`` objects
 **************************************
 Define neuronal properies and then use ``get_neurons`` to inherit individual neurons into the network.
@@ -57,12 +60,14 @@ Core function ``run_dynamic`` runs an experiment with given variables.
 
     activation1, Q1 = BN.run_dynamic(seed, TIME, C, K)
 
-.. image:: single_exp1.jpg
+.. figure:: single_exp1.jpg
    :width: 200px
    :height: 200px
    :scale: 500 %
-   :alt: A single experiment starting at the seed node 200. Initial wavefront propagation can be observed.
    :align: center
+   
+   A single experiment starting at the seed node 200. Initial wavefront propagation can be observed.
+   
    
 Running experiments without changing the network conectivity
 ****************************************************************
@@ -81,12 +86,13 @@ One may want to work with a different set of experiment or neuronal variables wi
     
     activation2, Q2 = BN.run_dynamic(seed, TIME, C, K)
     
-.. image:: single_exp2.jpg
+.. figure:: single_exp2.jpg
     :width: 200px
     :height: 200px
     :scale: 500 %
-    :alt: We increased the global node thresholds to 0.3 which slowed down the signal, wavefront.
     :align: center
+    
+    We increased the global node thresholds to 0.3 which slowed down the signal, wavefront.
     
 Runnning Simplicial Contagions
 ****************************************************************
@@ -105,12 +111,13 @@ Simplicial contagions can be ran by simply varying the parameter :math:`K` betwe
     
     activation3, Q3 = BN.run_dynamic(seed, TIME, C, K)
     
-.. image:: single_exp3.jpg
+.. figure:: single_exp3.jpg
     :width: 200px
     :height: 200px
     :scale: 500 %
-    :alt: Even though the global node threshold is 0.2 we observe a slow signal. The reason is that we set K=1 which implies a full triangle contagion.
     :align: center
+    
+    Even though the global node threshold is 0.2 we observe a slow signal. The reason is that we set K=1 which implies a full triangle contagion.
 
 Neurons with memory and refractory period
 ****************************************************************
@@ -129,12 +136,13 @@ Our model is as general as it can be. So, neurons can have arbitrary number of m
     
     activation4, Q4 = BN.run_dynamic(seed, TIME, C, K)
     
-.. image:: single_exp4.jpg
+.. figure:: single_exp4.jpg
     :width: 200px
     :height: 200px
     :scale: 500 %
-    :alt: Slow signal propagation where neurons are active only 1 time step. Signal spreads as the neurons blink.
     :align: center
+    
+    Slow signal propagation where neurons are active only 1 time step. Signal spreads as the neurons blink.
     
 Running stochastic Models
 ****************************************************************
@@ -154,12 +162,13 @@ Stochasticity of the neuronal responses can be adjusted using the experiment var
     
     activation5, Q5 = BN.run_dynamic(seed, TIME, C, K)
     
-.. image:: single_exp5.jpg
+.. figure:: single_exp5.jpg
     :width: 200px
     :height: 200px
     :scale: 500 %
-    :alt: As the refractory period is nonzero, complexity of the system increases exponentially.
     :align: center    
+    
+    As the refractory period is nonzero, complexity of the system increases exponentially.
 
     
 Looking at the Contagion size
@@ -171,12 +180,13 @@ We can plot the size of the active nodes as a function of time.
     Q = [Q1,Q2,Q3,Q4,Q5]
     fig, ax = BN.display_comm_sizes_individual(Q,labels)
 
-.. image:: comm_sizes.jpg
+.. figure:: comm_sizes.jpg
     :width: 200px
     :height: 200px
     :scale: 500 %
-    :alt: 
     :align: center
+    
+    Spread of the signal as a function of active neurons.
     
 Run a full scale experiment
 *******************************
@@ -186,13 +196,13 @@ If you don't need to look at the individual contagions starting from different n
 
     FAT, CS = BN.make_distance_matrix(TIME, C, trials, K)
     
-.. image:: distanceMatrix.jpg
+.. figure:: distanceMatrix.jpg
     :width: 200px
     :height: 200px
-    :scale: 400 %
-    :alt: The distance matrix. The input for the persistent homology.
+    :scale: 300 %
     :align: center
   
+     The distance matrix. The input for the persistent homology.
 
 Persistence Diagrams
 **************************
@@ -208,5 +218,6 @@ Once we created the distance matrices, we can look at the topological features a
     :width: 200px
     :height: 200px
     :scale: 300 %
-    :alt: Persistence diagram computed from the distance matrix via Rips filtration. Green is 1-D features, red is 0-D features.
     :align: center
+    
+    Persistence diagram computed from the distance matrix via Rips filtration. Green is 1-D features, red is 0-D features.

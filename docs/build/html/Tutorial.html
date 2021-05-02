@@ -41,7 +41,7 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Neuronal Cascades 0.0.1 documentation" href="index.html"/>
-        <link rel="next" title="Documentation" href="Neuronal Cascades.html"/>
+        <link rel="next" title="Semantics of Neuronal Cascades" href="Neuronal Cascades.html"/>
         <link rel="prev" title="Introduction" href="Introduction.html"/> 
 
   
@@ -107,7 +107,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#persistence-diagrams">Persistence Diagrams</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Neuronal Cascades.html">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Neuronal Cascades.html">Semantics of Neuronal Cascades</a></li>
 </ul>
 
             
@@ -168,7 +168,7 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="Neuronal Cascades.html" class="btn btn-neutral float-right" title="Documentation" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Neuronal Cascades.html" class="btn btn-neutral float-right" title="Semantics of Neuronal Cascades" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="Introduction.html" class="btn btn-neutral" title="Introduction" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -185,11 +185,11 @@
 <div class="section" id="installation-usage">
 <h2>Installation/Usage<a class="headerlink" href="#installation-usage" title="Permalink to this headline">¶</a></h2>
 <p>As the package has not been published on PyPi yet, it CANNOT be install using pip. <code class="docutils literal notranslate"><span class="pre">Neuronal</span> <span class="pre">Cascades</span></code> uses cython to exploit the computational efficiency. So, you have to <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> the <a href="#id1"><span class="problematic" id="id2">*</span></a>.pyx files in Neuronal_Cascades_base</p>
-<p>For now, the suggested method is having the same folder directory in Neuronal_Cascades/Simplicial_Model (setup.py has to be in the parent directory of Neuronal_Cascades_base). Then, add an empty __init__.tex file into Neuronal_Cascades_base (Github doesn’t allow adding empty files). Then go to this directory on your terminal and run <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">build_ext</span> <span class="pre">--inplace</span></code>. See <a class="reference external" href="https://cython.readthedocs.io/en/latest/src/userguide/source_files_and_compilation.html">https://cython.readthedocs.io/en/latest/src/userguide/source_files_and_compilation.html</a> for details.</p>
+<p>For now, the suggested method is having the same folder directory in Neuronal_Cascades/Simplicial_Model (setup.py has to be in the parent directory of Neuronal_Cascades_base). Then, add an empty __init__.tex file into Neuronal_Cascades_base (Github doesn’t allow adding empty files). Then go to this directory on your terminal and run <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">build_ext</span> <span class="pre">--inplace</span></code>. See <a class="reference external" href="https://cython.readthedocs.io/en/latest/src/userguide/source_files_and_compilation.htmlfordetails.">Cython</a></p>
 </div>
 <div class="section" id="initiate-a-geometric-brain-network-object">
 <h2>Initiate a <code class="docutils literal notranslate"><span class="pre">Geometric_Brain_Network</span></code> object<a class="headerlink" href="#initiate-a-geometric-brain-network-object" title="Permalink to this headline">¶</a></h2>
-<p>Create a geometric network on a ring. <code class="docutils literal notranslate"><span class="pre">Band_length</span></code> corresponds to the number of neighbors to connect from both right and left making the geometric degree 2*band_length</p>
+<p>Create a geometric brain network on a ring. Topology is only available on a ring for now. GD, geometric degree, is the local neighbors of a neurons whereas nGD, nongeometric degree, is the distant neighbors of a neuron.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#### NETWORK VARIABLES</span>
 <span class="n">size</span> <span class="o">=</span> <span class="mi">400</span> <span class="c1">## number of neurons</span>
 <span class="n">GD</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># geometric degree</span>
@@ -198,7 +198,9 @@
 <span class="n">BN</span> <span class="o">=</span> <span class="n">Geometric_Brain_Network</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">geometric_degree</span> <span class="o">=</span> <span class="n">GD</span><span class="p">,</span> <span class="n">nongeometric_degree</span> <span class="o">=</span> <span class="n">nGD</span><span class="p">,</span> <span class="n">manifold</span> <span class="o">=</span> <span class="n">topology</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/network.jpg"><img alt="A view of the network before and after long range edges are added. For simplicity, we kept size = 20, GD = 3, nGD = 1." class="align-center" src="_images/network.jpg" style="width: 400.0px; height: 400.0px;" /></a>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/network.jpg"><img alt="_images/network.jpg" src="_images/network.jpg" style="width: 400.0px; height: 400.0px;" /></a>
+</div>
 </div>
 <div class="section" id="inheriting-neuron-objects">
 <h2>Inheriting <code class="docutils literal notranslate"><span class="pre">neuron</span></code> objects<a class="headerlink" href="#inheriting-neuron-objects" title="Permalink to this headline">¶</a></h2>
@@ -227,7 +229,10 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">activation1</span><span class="p">,</span> <span class="n">Q1</span> <span class="o">=</span> <span class="n">BN</span><span class="o">.</span><span class="n">run_dynamic</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">TIME</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/single_exp1.jpg"><img alt="A single experiment starting at the seed node 200. Initial wavefront propagation can be observed." class="align-center" src="_images/single_exp1.jpg" style="width: 1000.0px; height: 1000.0px;" /></a>
+<div class="figure align-center" id="id3">
+<a class="reference internal image-reference" href="_images/single_exp1.jpg"><img alt="_images/single_exp1.jpg" src="_images/single_exp1.jpg" style="width: 1000.0px; height: 1000.0px;" /></a>
+<p class="caption"><span class="caption-text">A single experiment starting at the seed node 200. Initial wavefront propagation can be observed.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
 </div>
 <div class="section" id="running-experiments-without-changing-the-network-conectivity">
 <h2>Running experiments without changing the network conectivity<a class="headerlink" href="#running-experiments-without-changing-the-network-conectivity" title="Permalink to this headline">¶</a></h2>
@@ -244,7 +249,10 @@
 <span class="n">activation2</span><span class="p">,</span> <span class="n">Q2</span> <span class="o">=</span> <span class="n">BN</span><span class="o">.</span><span class="n">run_dynamic</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">TIME</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/single_exp2.jpg"><img alt="We increased the global node thresholds to 0.3 which slowed down the signal, wavefront." class="align-center" src="_images/single_exp2.jpg" style="width: 1000.0px; height: 1000.0px;" /></a>
+<div class="figure align-center" id="id4">
+<a class="reference internal image-reference" href="_images/single_exp2.jpg"><img alt="_images/single_exp2.jpg" src="_images/single_exp2.jpg" style="width: 1000.0px; height: 1000.0px;" /></a>
+<p class="caption"><span class="caption-text">We increased the global node thresholds to 0.3 which slowed down the signal, wavefront.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
 </div>
 <div class="section" id="runnning-simplicial-contagions">
 <h2>Runnning Simplicial Contagions<a class="headerlink" href="#runnning-simplicial-contagions" title="Permalink to this headline">¶</a></h2>
@@ -261,7 +269,10 @@
 <span class="n">activation3</span><span class="p">,</span> <span class="n">Q3</span> <span class="o">=</span> <span class="n">BN</span><span class="o">.</span><span class="n">run_dynamic</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">TIME</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/single_exp3.jpg"><img alt="Even though the global node threshold is 0.2 we observe a slow signal. The reason is that we set K=1 which implies a full triangle contagion." class="align-center" src="_images/single_exp3.jpg" style="width: 1000.0px; height: 1000.0px;" /></a>
+<div class="figure align-center" id="id5">
+<a class="reference internal image-reference" href="_images/single_exp3.jpg"><img alt="_images/single_exp3.jpg" src="_images/single_exp3.jpg" style="width: 1000.0px; height: 1000.0px;" /></a>
+<p class="caption"><span class="caption-text">Even though the global node threshold is 0.2 we observe a slow signal. The reason is that we set K=1 which implies a full triangle contagion.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
 </div>
 <div class="section" id="neurons-with-memory-and-refractory-period">
 <h2>Neurons with memory and refractory period<a class="headerlink" href="#neurons-with-memory-and-refractory-period" title="Permalink to this headline">¶</a></h2>
@@ -278,7 +289,10 @@
 <span class="n">activation4</span><span class="p">,</span> <span class="n">Q4</span> <span class="o">=</span> <span class="n">BN</span><span class="o">.</span><span class="n">run_dynamic</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">TIME</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/single_exp4.jpg"><img alt="Slow signal propagation where neurons are active only 1 time step. Signal spreads as the neurons blink." class="align-center" src="_images/single_exp4.jpg" style="width: 1000.0px; height: 1000.0px;" /></a>
+<div class="figure align-center" id="id6">
+<a class="reference internal image-reference" href="_images/single_exp4.jpg"><img alt="_images/single_exp4.jpg" src="_images/single_exp4.jpg" style="width: 1000.0px; height: 1000.0px;" /></a>
+<p class="caption"><span class="caption-text">Slow signal propagation where neurons are active only 1 time step. Signal spreads as the neurons blink.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</div>
 </div>
 <div class="section" id="running-stochastic-models">
 <h2>Running stochastic Models<a class="headerlink" href="#running-stochastic-models" title="Permalink to this headline">¶</a></h2>
@@ -296,7 +310,10 @@
 <span class="n">activation5</span><span class="p">,</span> <span class="n">Q5</span> <span class="o">=</span> <span class="n">BN</span><span class="o">.</span><span class="n">run_dynamic</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">TIME</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/single_exp5.jpg"><img alt="As the refractory period is nonzero, complexity of the system increases exponentially." class="align-center" src="_images/single_exp5.jpg" style="width: 1000.0px; height: 1000.0px;" /></a>
+<div class="figure align-center" id="id7">
+<a class="reference internal image-reference" href="_images/single_exp5.jpg"><img alt="_images/single_exp5.jpg" src="_images/single_exp5.jpg" style="width: 1000.0px; height: 1000.0px;" /></a>
+<p class="caption"><span class="caption-text">As the refractory period is nonzero, complexity of the system increases exponentially.</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</div>
 </div>
 <div class="section" id="looking-at-the-contagion-size">
 <h2>Looking at the Contagion size<a class="headerlink" href="#looking-at-the-contagion-size" title="Permalink to this headline">¶</a></h2>
@@ -305,7 +322,10 @@
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">BN</span><span class="o">.</span><span class="n">display_comm_sizes_individual</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span><span class="n">labels</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/comm_sizes.jpg"><img alt="" class="align-center" src="_images/comm_sizes.jpg" style="width: 1000.0px; height: 1000.0px;" /></a>
+<div class="figure align-center" id="id8">
+<a class="reference internal image-reference" href="_images/comm_sizes.jpg"><img alt="_images/comm_sizes.jpg" src="_images/comm_sizes.jpg" style="width: 1000.0px; height: 1000.0px;" /></a>
+<p class="caption"><span class="caption-text">Spread of the signal as a function of active neurons.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</div>
 </div>
 <div class="section" id="run-a-full-scale-experiment">
 <h2>Run a full scale experiment<a class="headerlink" href="#run-a-full-scale-experiment" title="Permalink to this headline">¶</a></h2>
@@ -313,7 +333,9 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">FAT</span><span class="p">,</span> <span class="n">CS</span> <span class="o">=</span> <span class="n">BN</span><span class="o">.</span><span class="n">make_distance_matrix</span><span class="p">(</span><span class="n">TIME</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">trials</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/distanceMatrix.jpg"><img alt="The distance matrix. The input for the persistent homology." class="align-center" src="_images/distanceMatrix.jpg" style="width: 800.0px; height: 800.0px;" /></a>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/distanceMatrix.jpg"><img alt="_images/distanceMatrix.jpg" src="_images/distanceMatrix.jpg" style="width: 600.0px; height: 600.0px;" /></a>
+</div>
 </div>
 <div class="section" id="persistence-diagrams">
 <h2>Persistence Diagrams<a class="headerlink" href="#persistence-diagrams" title="Permalink to this headline">¶</a></h2>
@@ -321,7 +343,6 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">delta_min</span><span class="p">,</span> <span class="n">delta_max</span> <span class="o">=</span> <span class="n">BN</span><span class="o">.</span><span class="n">compute_persistence</span><span class="p">(</span><span class="n">FAT</span><span class="p">,</span> <span class="n">spy</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span><span class="c1">##returns the lifetime difference of the longest living one cycles(delta_min) and lifetime difference of the longest and shorthest living one cycles(delta_max)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/persistence.png"><img alt="Persistence diagram computed from the distance matrix via Rips filtration. Green is 1-D features, red is 0-D features." class="align-center" src="_images/persistence.png" style="width: 600.0px; height: 600.0px;" /></a>
 </div>
 </div>
 
@@ -335,7 +356,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Neuronal Cascades.html" class="btn btn-neutral float-right" title="Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Neuronal Cascades.html" class="btn btn-neutral float-right" title="Semantics of Neuronal Cascades" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="Introduction.html" class="btn btn-neutral" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
