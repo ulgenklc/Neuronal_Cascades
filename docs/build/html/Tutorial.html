@@ -190,50 +190,137 @@
 <div class="section" id="initiate-a-geometric-brain-network-object">
 <h2>Initiate a <code class="docutils literal notranslate"><span class="pre">Geometric_Brain_Network</span></code> object<a class="headerlink" href="#initiate-a-geometric-brain-network-object" title="Permalink to this headline">¶</a></h2>
 <p>Create a geometric network on a ring. <code class="docutils literal notranslate"><span class="pre">Band_length</span></code> corresponds to the number of neighbors to connect from both right and left making the geometric degree 2*band_length</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#### NETWORK VARIABLES</span>
+<span class="n">size</span> <span class="o">=</span> <span class="mi">400</span> <span class="c1">## number of neurons</span>
+<span class="n">GD</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># geometric degree</span>
+<span class="n">nGD</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1"># non-geometric degree</span>
+<span class="n">topology</span> <span class="o">=</span> <span class="s1">&#39;Ring&#39;</span> <span class="c1">## only ring available so far</span>
+<span class="n">BN</span> <span class="o">=</span> <span class="n">Geometric_Brain_Network</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">geometric_degree</span> <span class="o">=</span> <span class="n">GD</span><span class="p">,</span> <span class="n">nongeometric_degree</span> <span class="o">=</span> <span class="n">nGD</span><span class="p">,</span> <span class="n">manifold</span> <span class="o">=</span> <span class="n">topology</span><span class="p">)</span>
+</pre></div>
+</div>
 <a class="reference internal image-reference" href="_images/network.jpg"><img alt="A view of the network before and after long range edges are added. For simplicity, we kept size = 20, GD = 3, nGD = 1." class="align-center" src="_images/network.jpg" style="width: 400.0px; height: 400.0px;" /></a>
 </div>
 <div class="section" id="inheriting-neuron-objects">
 <h2>Inheriting <code class="docutils literal notranslate"><span class="pre">neuron</span></code> objects<a class="headerlink" href="#inheriting-neuron-objects" title="Permalink to this headline">¶</a></h2>
 <p>Define neuronal properies and then use <code class="docutils literal notranslate"><span class="pre">get_neurons</span></code> to inherit individual neurons into the network.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="c1">#### EXPERIMENT VARIABLES</span>
+<span class="n">TIME</span> <span class="o">=</span> <span class="mi">100</span> <span class="c1">## number of iterations</span>
+<span class="n">seed</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">size</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="c1">## seed node</span>
+<span class="n">C</span> <span class="o">=</span> <span class="mi">10000</span> <span class="c1">## constant for tuning stochasticity(high C yields deterministic experiments)</span>
+<span class="n">K</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">## constant weighing the edges vs triangles K=0 pure edge contagions, K=1 pure triangle contagion</span>
+<span class="n">trials</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># number of trials per set of variables</span>
+
+<span class="c1">#NEURON VARIABLES</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.2</span> <span class="c1"># node threshold</span>
+<span class="n">memory</span> <span class="o">=</span> <span class="n">TIME</span> <span class="c1">##When a node is activated, it stays active forever(SI model) when memory = TIME.</span>
+<span class="n">rest</span> <span class="o">=</span> <span class="mi">0</span><span class="c1"># neurons don&#39;t rest</span>
+
+<span class="c1">##INITIATE NEURONS and Inherit them</span>
+<span class="n">neurons_1</span> <span class="o">=</span> <span class="p">[</span><span class="n">neuron</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">memory</span> <span class="o">=</span> <span class="n">memory</span><span class="p">,</span> <span class="n">rest</span> <span class="o">=</span> <span class="n">rest</span><span class="p">,</span> <span class="n">threshold</span> <span class="o">=</span> <span class="n">threshold</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">)]</span>
+<span class="n">BN</span><span class="o">.</span><span class="n">get_neurons</span><span class="p">(</span><span class="n">neurons_1</span><span class="p">)</span><span class="c1">## this is for runnning experiments with new set of neurons without changing the network</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="run-a-single-example-contagion">
 <h2>Run a single example contagion.<a class="headerlink" href="#run-a-single-example-contagion" title="Permalink to this headline">¶</a></h2>
 <p>Core function <code class="docutils literal notranslate"><span class="pre">run_dynamic</span></code> runs an experiment with given variables.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">activation1</span><span class="p">,</span> <span class="n">Q1</span> <span class="o">=</span> <span class="n">BN</span><span class="o">.</span><span class="n">run_dynamic</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">TIME</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
+</pre></div>
+</div>
 <a class="reference internal image-reference" href="_images/single_exp1.jpg"><img alt="A single experiment starting at the seed node 200. Initial wavefront propagation can be observed." class="align-center" src="_images/single_exp1.jpg" style="width: 1000.0px; height: 1000.0px;" /></a>
 </div>
 <div class="section" id="running-experiments-without-changing-the-network-conectivity">
 <h2>Running experiments without changing the network conectivity<a class="headerlink" href="#running-experiments-without-changing-the-network-conectivity" title="Permalink to this headline">¶</a></h2>
 <p>One may want to work with a different set of experiment or neuronal variables without changing the underlying topology. This is when <code class="docutils literal notranslate"><span class="pre">get_neurons</span></code> function comes handy.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## with a new set of variables you can run a new experiment without changing the network</span>
+<span class="n">K</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="n">memory</span> <span class="o">=</span> <span class="n">TIME</span>
+<span class="n">rest</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">neurons_2</span> <span class="o">=</span> <span class="p">[</span><span class="n">neuron</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">memory</span> <span class="o">=</span> <span class="n">memory</span><span class="p">,</span> <span class="n">rest</span> <span class="o">=</span> <span class="n">rest</span><span class="p">,</span> <span class="n">threshold</span> <span class="o">=</span> <span class="n">threshold</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">)]</span>
+<span class="n">BN</span><span class="o">.</span><span class="n">get_neurons</span><span class="p">(</span><span class="n">neurons_2</span><span class="p">)</span>
+
+<span class="n">activation2</span><span class="p">,</span> <span class="n">Q2</span> <span class="o">=</span> <span class="n">BN</span><span class="o">.</span><span class="n">run_dynamic</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">TIME</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
+</pre></div>
+</div>
 <a class="reference internal image-reference" href="_images/single_exp2.jpg"><img alt="We increased the global node thresholds to 0.3 which slowed down the signal, wavefront." class="align-center" src="_images/single_exp2.jpg" style="width: 1000.0px; height: 1000.0px;" /></a>
 </div>
 <div class="section" id="runnning-simplicial-contagions">
 <h2>Runnning Simplicial Contagions<a class="headerlink" href="#runnning-simplicial-contagions" title="Permalink to this headline">¶</a></h2>
 <p>Simplicial contagions can be ran by simply varying the parameter <span class="math notranslate nohighlight">\(K\)</span> between 0 and 1.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## with a new set of variables you can run a new experiment without changing the network</span>
+<span class="n">K</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">memory</span> <span class="o">=</span> <span class="n">TIME</span>
+<span class="n">rest</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">neurons_3</span> <span class="o">=</span> <span class="p">[</span><span class="n">neuron</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">memory</span> <span class="o">=</span> <span class="n">memory</span><span class="p">,</span> <span class="n">rest</span> <span class="o">=</span> <span class="n">rest</span><span class="p">,</span> <span class="n">threshold</span> <span class="o">=</span> <span class="n">threshold</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">)]</span>
+<span class="n">BN</span><span class="o">.</span><span class="n">get_neurons</span><span class="p">(</span><span class="n">neurons_3</span><span class="p">)</span>
+
+<span class="n">activation3</span><span class="p">,</span> <span class="n">Q3</span> <span class="o">=</span> <span class="n">BN</span><span class="o">.</span><span class="n">run_dynamic</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">TIME</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
+</pre></div>
+</div>
 <a class="reference internal image-reference" href="_images/single_exp3.jpg"><img alt="Even though the global node threshold is 0.2 we observe a slow signal. The reason is that we set K=1 which implies a full triangle contagion." class="align-center" src="_images/single_exp3.jpg" style="width: 1000.0px; height: 1000.0px;" /></a>
 </div>
 <div class="section" id="neurons-with-memory-and-refractory-period">
 <h2>Neurons with memory and refractory period<a class="headerlink" href="#neurons-with-memory-and-refractory-period" title="Permalink to this headline">¶</a></h2>
 <p>Our model is as general as it can be. So, neurons can have arbitrary number of memory or refractory period given in discrete time steps. This generalization increases conmplexity of the dynamics really quick.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="c1"># average of edge and triangle contagions</span>
+<span class="n">memory</span> <span class="o">=</span> <span class="mi">1</span><span class="c1">## memory of a neuron is how many time steps neurons are going to stay active after they activated once</span>
+<span class="n">rest</span> <span class="o">=</span> <span class="mi">0</span><span class="c1">#rest of a neuron is how many time steps neurons are going to be silent after they run out of memory, refractory period.</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.2</span>
+
+<span class="n">neurons_4</span> <span class="o">=</span> <span class="p">[</span><span class="n">neuron</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">memory</span> <span class="o">=</span> <span class="n">memory</span><span class="p">,</span> <span class="n">rest</span> <span class="o">=</span> <span class="n">rest</span><span class="p">,</span> <span class="n">threshold</span> <span class="o">=</span> <span class="n">threshold</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">)]</span>
+
+<span class="n">BN</span><span class="o">.</span><span class="n">get_neurons</span><span class="p">(</span><span class="n">neurons_4</span><span class="p">)</span>
+
+<span class="n">activation4</span><span class="p">,</span> <span class="n">Q4</span> <span class="o">=</span> <span class="n">BN</span><span class="o">.</span><span class="n">run_dynamic</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">TIME</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
+</pre></div>
+</div>
 <a class="reference internal image-reference" href="_images/single_exp4.jpg"><img alt="Slow signal propagation where neurons are active only 1 time step. Signal spreads as the neurons blink." class="align-center" src="_images/single_exp4.jpg" style="width: 1000.0px; height: 1000.0px;" /></a>
 </div>
 <div class="section" id="running-stochastic-models">
 <h2>Running stochastic Models<a class="headerlink" href="#running-stochastic-models" title="Permalink to this headline">¶</a></h2>
 <p>Stochasticity of the neuronal responses can be adjusted using the experiment variable <span class="math notranslate nohighlight">\(C\)</span>. Higher values make the system deterministic.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">## triangle contagion</span>
+<span class="n">memory</span> <span class="o">=</span> <span class="mi">2</span><span class="c1">## memory of a neuron is how many time steps neurons are going to stay active after they activated once</span>
+<span class="n">rest</span> <span class="o">=</span> <span class="mi">1</span><span class="c1">#rest of a neuron is how many time steps neurons are going to be silent after they run out of memory, refractory period.</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">C</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1">## make the system stochastic, higher values(C&gt;500) is going to make the system deterministic</span>
+
+<span class="n">neurons_5</span> <span class="o">=</span> <span class="p">[</span><span class="n">neuron</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">memory</span> <span class="o">=</span> <span class="n">memory</span><span class="p">,</span> <span class="n">rest</span> <span class="o">=</span> <span class="n">rest</span><span class="p">,</span> <span class="n">threshold</span> <span class="o">=</span> <span class="n">threshold</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">)]</span>
+
+<span class="n">BN</span><span class="o">.</span><span class="n">get_neurons</span><span class="p">(</span><span class="n">neurons_5</span><span class="p">)</span>
+
+<span class="n">activation5</span><span class="p">,</span> <span class="n">Q5</span> <span class="o">=</span> <span class="n">BN</span><span class="o">.</span><span class="n">run_dynamic</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">TIME</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
+</pre></div>
+</div>
 <a class="reference internal image-reference" href="_images/single_exp5.jpg"><img alt="As the refractory period is nonzero, complexity of the system increases exponentially." class="align-center" src="_images/single_exp5.jpg" style="width: 1000.0px; height: 1000.0px;" /></a>
 </div>
 <div class="section" id="looking-at-the-contagion-size">
 <h2>Looking at the Contagion size<a class="headerlink" href="#looking-at-the-contagion-size" title="Permalink to this headline">¶</a></h2>
 <p>We can plot the size of the active nodes as a function of time.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Q</span> <span class="o">=</span> <span class="p">[</span><span class="n">Q1</span><span class="p">,</span><span class="n">Q2</span><span class="p">,</span><span class="n">Q3</span><span class="p">,</span><span class="n">Q4</span><span class="p">,</span><span class="n">Q5</span><span class="p">]</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">BN</span><span class="o">.</span><span class="n">display_comm_sizes_individual</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span><span class="n">labels</span><span class="p">)</span>
+</pre></div>
+</div>
 <a class="reference internal image-reference" href="_images/comm_sizes.jpg"><img alt="" class="align-center" src="_images/comm_sizes.jpg" style="width: 1000.0px; height: 1000.0px;" /></a>
 </div>
 <div class="section" id="run-a-full-scale-experiment">
 <h2>Run a full scale experiment<a class="headerlink" href="#run-a-full-scale-experiment" title="Permalink to this headline">¶</a></h2>
 <p>If you don’t need to look at the individual contagions starting from different nodes, you can run the contagion starting from node i and calculating the first time it reaches to node j i.e. create a distance matrix who (i,j) entry is the first time the node j activated on a contagion starting from i. Distance matrices enable a global scale TDA analysis.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">FAT</span><span class="p">,</span> <span class="n">CS</span> <span class="o">=</span> <span class="n">BN</span><span class="o">.</span><span class="n">make_distance_matrix</span><span class="p">(</span><span class="n">TIME</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">trials</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
+</pre></div>
+</div>
 <a class="reference internal image-reference" href="_images/distanceMatrix.jpg"><img alt="The distance matrix. The input for the persistent homology." class="align-center" src="_images/distanceMatrix.jpg" style="width: 800.0px; height: 800.0px;" /></a>
 </div>
 <div class="section" id="persistence-diagrams">
 <h2>Persistence Diagrams<a class="headerlink" href="#persistence-diagrams" title="Permalink to this headline">¶</a></h2>
 <p>Once we created the distance matrices, we can look at the topological features across different contagions and different topologies.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">delta_min</span><span class="p">,</span> <span class="n">delta_max</span> <span class="o">=</span> <span class="n">BN</span><span class="o">.</span><span class="n">compute_persistence</span><span class="p">(</span><span class="n">FAT</span><span class="p">,</span> <span class="n">spy</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span><span class="c1">##returns the lifetime difference of the longest living one cycles(delta_min) and lifetime difference of the longest and shorthest living one cycles(delta_max)</span>
+</pre></div>
+</div>
 <a class="reference internal image-reference" href="_images/persistence.png"><img alt="Persistence diagram computed from the distance matrix via Rips filtration. Green is 1-D features, red is 0-D features." class="align-center" src="_images/persistence.png" style="width: 600.0px; height: 600.0px;" /></a>
 </div>
 </div>
