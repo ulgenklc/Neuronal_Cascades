@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Documentation &mdash; Neuronal Cascades 0.0.1 documentation</title>
+  <title>Semantics of Neuronal Cascades &mdash; Neuronal Cascades 0.0.1 documentation</title>
   
 
   
@@ -93,7 +93,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tutorial.html">Tutorial</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Documentation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Semantics of Neuronal Cascades</a></li>
 </ul>
 
             
@@ -138,7 +138,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Documentation</li>
+      <li>Semantics of Neuronal Cascades</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -165,7 +165,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="module-Geometric_Brain_Network">
-<span id="documentation"></span><h1>Documentation<a class="headerlink" href="#module-Geometric_Brain_Network" title="Permalink to this headline">¶</a></h1>
+<span id="semantics-of-neuronal-cascades"></span><h1>Semantics of Neuronal Cascades<a class="headerlink" href="#module-Geometric_Brain_Network" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="Geometric_Brain_Network.Geometric_Brain_Network">
 <em class="property">class </em><code class="sig-prename descclassname">Geometric_Brain_Network.</code><code class="sig-name descname">Geometric_Brain_Network</code><span class="sig-paren">(</span><em class="sig-param">size</em>, <em class="sig-param">geometric_degree</em>, <em class="sig-param">nongeometric_degree</em>, <em class="sig-param">manifold</em><span class="sig-paren">)</span><a class="headerlink" href="#Geometric_Brain_Network.Geometric_Brain_Network" title="Permalink to this definition">¶</a></dt>
@@ -439,27 +439,27 @@ from node i.</p>
 <dt id="Geometric_Brain_Network.Geometric_Brain_Network.neighbor_input">
 <code class="sig-name descname">neighbor_input</code><span class="sig-paren">(</span><em class="sig-param">node_id</em>, <em class="sig-param">K</em>, <em class="sig-param">L</em>, <em class="sig-param">model_type='line_segment'</em><span class="sig-paren">)</span><a class="headerlink" href="#Geometric_Brain_Network.Geometric_Brain_Network.neighbor_input" title="Permalink to this definition">¶</a></dt>
 <dd><blockquote>
-<div><p>This is a key function as it computes the current input from neighbors of a given node, R_{i}.</p>
-<dl class="simple">
-<dt>node_id: int</dt><dd><p>ID of the node whose input is going to be calculated.</p>
-</dd>
-<dt>K: float</dt><dd><p>Constant for weighing the edge and triangle activations.</p>
-</dd>
-<dt>L: float</dt><dd><p>Constant for weighing the edge and triangle activations. Negative unless <code class="docutils literal notranslate"><span class="pre">model_type</span></code> is ‘linear_combination’.</p>
-</dd>
-<dt>model_type: str (‘line_segment’ or ‘linear_combination’)</dt><dd><p>We included two ways to compute the neighboring neuronal input. Former uses R_{i} = left[(1-K)*sum_{e in E_{i}}</p>
-</dd>
-</dl>
+<div><p>This is a key function as it computes the current input from neighbors of a given node, R_{i}. There are two ways to run simplicial contagions. Former uses :math:<a href="#id1"><span class="problematic" id="id2">`</span></a>R_{i} = left[(1-K)*sum_{e in E_{i}}</p>
 </div></blockquote>
 <p>rac{e {d_{i}^{e}} + (K)*sum_{t in T_{i}}
 rac{t}{d_{i}^{t}}
-ight] -         au_{i} and the latter uses R_{i} = left[(K)*sum_{e in E_{i}}
-rac{e}{d_{i}^{e}} + (L)*sum_{t in T_{i}}
+ight] -         au_{i}` and the latter uses <span class="math notranslate nohighlight">\(R_{i} = \left[(K)*\sum_{e \in E_{i}}
+rac{e}{d_{i}^{e}} + (L)*\sum_{t \in T_{i}}
 rac{t}{d_{i}^{t}}
-ight] -         au_{i}. By varying K and L one can obtain different weight distributions.</p>
+ight] -         au_{i}\)</span>. By varying K (and also L if ‘linear_combination’) one can obtain different weight distributions.</p>
 <blockquote>
 <div><dl class="simple">
-<dt>R: float</dt><dd><p>Neighboring neuronal input.</p>
+<dt>node_id<span class="classifier">int</span></dt><dd><p>ID of the node whose input is going to be calculated.</p>
+</dd>
+<dt>K<span class="classifier">float</span></dt><dd><p>Constant for weighing the edge and triangle activations.</p>
+</dd>
+<dt>L<span class="classifier">float</span></dt><dd><p>Constant for weighing the edge and triangle activations. Negative unless <code class="docutils literal notranslate"><span class="pre">model_type</span></code> is ‘linear_combination’.</p>
+</dd>
+<dt>model_type<span class="classifier">str {‘line_segment’ or ‘linear_combination’}</span></dt><dd><p>We included two ways to compute the neighboring neuronal input.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>R<span class="classifier">float</span></dt><dd><p>Neighboring neuronal input.</p>
 </dd>
 </dl>
 </div></blockquote>
@@ -558,7 +558,7 @@ ight] -         au_{i}. By varying K and L one can obtain different weight distr
 <dl class="method">
 <dt id="Geometric_Brain_Network.Geometric_Brain_Network.stack_histories">
 <code class="sig-name descname">stack_histories</code><span class="sig-paren">(</span><em class="sig-param">TIME</em><span class="sig-paren">)</span><a class="headerlink" href="#Geometric_Brain_Network.Geometric_Brain_Network.stack_histories" title="Permalink to this definition">¶</a></dt>
-<dd><p>Helper function for equalizing, stacking, the lengths of histories of <a href="#id1"><span class="problematic" id="id2">``</span></a>neuron``s. Comes handy for visualizing single experiments.</p>
+<dd><p>Helper function for equalizing, stacking, the lengths of histories of <a href="#id3"><span class="problematic" id="id4">``</span></a>neuron``s. Comes handy for visualizing single experiments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>TIME</strong> (<em>int</em>) – Number of discrete time steps for neuron histories to be visualized</p>
@@ -583,7 +583,7 @@ ight] -         au_{i}. By varying K and L one can obtain different weight distr
 <li><p><strong>C</strong> (<em>int</em>) – Constant for tuning stochasticity. Higher values yield a deterministic model whereas lower values yield a stochastic model.</p></li>
 <li><p><strong>K</strong> (<em>float</em>) – Constant for weighing the edge and triangle activations.</p></li>
 <li><p><strong>L</strong> (<em>float</em>) – Constant for weighing the edge and triangle activations. Negative unless <code class="docutils literal notranslate"><span class="pre">model_type</span></code> is ‘linear_combination’.</p></li>
-<li><p><strong>model_type</strong> (<em>'line_segment'</em><em> or </em><em>'linear_combination'</em>) – Included only to pass along <code class="docutils literal notranslate"><span class="pre">sigmoid</span></code>.</p></li>
+<li><p><strong>model_type</strong> (<em>'line_segment'</em><em> or </em><em>'linear_combination'.</em>) – Included only to pass along <code class="docutils literal notranslate"><span class="pre">sigmoid</span></code>.</p></li>
 </ul>
 </dd>
 </dl>

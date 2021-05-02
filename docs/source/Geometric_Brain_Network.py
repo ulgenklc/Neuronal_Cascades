@@ -30,34 +30,34 @@ class Geometric_Brain_Network():
         
     Attributes
     ----------
-    Geometric_Brain_Network.N: int
+    Geometric_Brain_Network.N : int
         Size, number of nodes in the network.
-    Geometric_Brain_Network.GD: int
+    Geometric_Brain_Network.GD : int
         Geometric degree of the network.
-    Geometric_Brain_Network.nGD: int
+    Geometric_Brain_Network.nGD : int
         non-Geometric degree of the network.
-    Geometric_Brain_Network.manifold: str
+    Geometric_Brain_Network.manifold : str
         The geometric topology of the network. Only 'Ring' is available currently.
-    Geometric_Brain_Network.text: str
+    Geometric_Brain_Network.text : str
         Summary of the network.
-    Geometric_Brain_Network.A: array ``n x n``
+    Geometric_Brain_Network.A : array ``n x n``
         Adjacency matrix of the graph.
-    Geometric_Brain_Network.nodes: List
+    Geometric_Brain_Network.nodes : List
         A list of ``neuron`` objects that corresponds to the nodes of the network in which IDs of the neurons match with the IDs of the nodes.
-    Geometric_Brain_Network.time: int
+    Geometric_Brain_Network.time : int
         An intrinsic time property to keep track of number of iterations of the experiments.
-    Geometric_Brain_Network.triangles: dict
+    Geometric_Brain_Network.triangles : dict
         A dictionay of the triangles of the network where keys are node ids and values are lists of pairs of node ids that makes up a triangle together with the key value.
     
     Parameters
     -----------
-    size: int
+    size : int
         Size of the network to be initialized.
-    geometric_degree: int
+    geometric_degree : int
         Uniform number of local neighbors that every node has.
-    nongeometric_degree: int
+    nongeometric_degree : int
         Fixed number of distant neighbors that every node has. 
-    manifold: str
+    manifold : str
         Type of the network to be created. Only 'Ring' is available.
     """
     
@@ -89,7 +89,7 @@ class Geometric_Brain_Network():
         Sometimes we want to run experiments on a fixed network without changing the network connectivity. In this case, we can initialize a new set of neurons and use this method to inherit them in the network-- changing only the neuronal properties but not the connectivity.
         Parameters
         --------------
-        neurons:list
+        neurons : list
             A list of ``neuron`` objects.
         
         Raises
@@ -110,7 +110,7 @@ class Geometric_Brain_Network():
         
         Parameters
         -----------
-        A: array
+        A : array
             ``n x n`` matrix of zeros.
         """
         
@@ -244,11 +244,11 @@ class Geometric_Brain_Network():
         
         Parameters
         ------------
-        size_k: int
+        size_k : int
             By default, this is 3 since finding 3-cliques are the same as finding triangles and finding cliques is faster.
         Returns
-        ---------
-        triangles:dict
+        --------- 
+        triangles : dict
             A dictionay of the triangles of the network where keys are node ids and values are lists of pairs of node ids that makes up a triangle together with the key value.
             
         """
@@ -274,11 +274,11 @@ class Geometric_Brain_Network():
         
         Parameters
         --------------
-        node_id: int
+        node_id : int
             ID of the node whose neighbors are going to be found.
         Returns
         ----------
-        nhood:array
+        nhood : array
             Neighborhood of the given node.
         """
         
@@ -289,27 +289,24 @@ class Geometric_Brain_Network():
         return(nhood)
     
     def neighbor_input(self, node_id, K, L, model_type = 'line_segment'):
-        
         """
-        
-        This is a key function as it computes the current input from neighbors of a given node, R_{i}.
+        This is a key function as it computes the current input from neighbors of a given node, R_{i}. There are two ways to run simplicial contagions. Former uses :math:`R_{i} = \left[(1-K)*\sum_{e \in E_{i}} \frac{e {d_{i}^{e}} + (K)*\sum_{t \in T_{i}}\frac{t}{d_{i}^{t}}\right] - \tau_{i}` and the latter uses :math:`R_{i} = \left[(K)*\sum_{e \in E_{i}} \frac{e}{d_{i}^{e}} + (L)*\sum_{t \in T_{i}}\frac{t}{d_{i}^{t}}\right] - \tau_{i}`. By varying K (and also L if 'linear_combination') one can obtain different weight distributions.
         
         Parameters
         ---------------
-        node_id: int
+        node_id : int
             ID of the node whose input is going to be calculated.
-        K: float
+        K : float
             Constant for weighing the edge and triangle activations.
-        L: float
+        L : float
             Constant for weighing the edge and triangle activations. Negative unless ``model_type`` is 'linear_combination'.
-        model_type: str ('line_segment' or 'linear_combination')
-            We included two ways to compute the neighboring neuronal input. Former uses R_{i} = \left[(1-K)*\sum_{e \in E_{i}} \frac{e {d_{i}^{e}} + (K)*\sum_{t \in T_{i}}\frac{t}{d_{i}^{t}}\right] - \tau_{i} and the latter uses R_{i} = \left[(K)*\sum_{e \in E_{i}} \frac{e}{d_{i}^{e}} + (L)*\sum_{t \in T_{i}}\frac{t}{d_{i}^{t}}\right] - \tau_{i}. By varying K and L one can obtain different weight distributions.
+        model_type : str {'line_segment' or 'linear_combination'}
+            We included two ways to compute the neighboring neuronal input. 
         
         Returns
         ---------------
-        R: float
+        R : float
             Neighboring neuronal input.
-            
         """
         #cdef numpy.ndarray nbhood
         #cdef Py_ssize_t i,j
@@ -351,20 +348,20 @@ class Geometric_Brain_Network():
         
         Parameters
         ------------
-        node_id: int
+        node_id : int
             ID of the node whose input is going to be calculated.
-        C: int
+        C : int
             Constant for tuning stochasticity. Higher values yield a deterministic model whereas lower values yield a stochastic model.
-        K: float
+        K : float
             Constant for weighing the edge and triangle activations.
-        L: float
+        L : float
             Constant for weighing the edge and triangle activations. Negative unless ``model_type`` is 'linear_combination'.
         model_type: 'line_segment' or 'linear_combination'
             Included only to pass along ``neighbor_input``.
         
         Returns
         ------------
-        Z: float
+        Z : float
             Probability of firing.
         """
         
@@ -381,15 +378,15 @@ class Geometric_Brain_Network():
         
         Parameters
         ------------
-        node_id: int
+        node_id : int
             ID of the node whose history is going to be updates.
-        C: int
+        C : int
             Constant for tuning stochasticity. Higher values yield a deterministic model whereas lower values yield a stochastic model.
-        K: float
+        K : float
             Constant for weighing the edge and triangle activations.
-        L: float
+        L : float
             Constant for weighing the edge and triangle activations. Negative unless ``model_type`` is 'linear_combination'.
-        model_type: 'line_segment' or 'linear_combination'
+        model_type : 'line_segment' or 'linear_combination'. 
             Included only to pass along ``sigmoid``.
         """
         #cdef float rand
@@ -416,11 +413,11 @@ class Geometric_Brain_Network():
         
         Returns
         ----------
-        excited:list
+        excited : list
             List of active neurons at the current ``time``.
-        ready_to_fire:list
+        ready_to_fire : list
             List of neurons that are in the inactive state and ready to fire at ``time+1```.
-        rest:list
+        rest : list
             List of neurons that doesn't belong to either of those categories. This is empty as long as there are no refractory period.
         """
         #cdef list excited, ready_to_fire, rest
@@ -448,7 +445,7 @@ class Geometric_Brain_Network():
         
         Parameters
         -----------
-        seed:int
+        seed : int
             Node ID of the seed node.
         """
         #cdef Py_ssize_t i, j, k
@@ -476,7 +473,7 @@ class Geometric_Brain_Network():
         Helper method for setting the network time and tolerance to 0. This is necessary between different experiments for any set of parameters including ``seed``. Also, calls ``refresh_history`` which clears ``neuoron`` histories.
         Returns
         ---------
-        tolerance:int
+        tolerance : int
             Tolerance for experiments getting stuck at some point during contagion. Set to 0 at every trial.
         """
         #cdef int tolerance
@@ -496,23 +493,23 @@ class Geometric_Brain_Network():
         
         Parameters
         -----------
-        seed:int
+        seed : int
             Node ID of the seed node.
-        TIME:int
+        TIME : int
             A limit on the number of iterations.
-        C: int
+        C : int
             Constant for tuning stochasticity. Higher values yield a deterministic model whereas lower values yield a stochastic model.
-        K: float
+        K : float
             Constant for weighing the edge and triangle activations.
-        L: float
+        L : float
             Constant for weighing the edge and triangle activations. Negative unless ``model_type`` is 'linear_combination'.
         model_type: 'line_segment' or 'linear_combination'
             Included only to pass along ``update_states``.
         Returns
         -------------
-        activation_times: array
+        activation_times : array
             Activation times of all the nodes for contagions starting from seed.
-        size_of_contagion: array
+        size_of_contagion : array
             Number of active nodes at every iteration.
         
         """
@@ -560,11 +557,11 @@ class Geometric_Brain_Network():
         
         Parameters
         ------------
-        TIME: int
+        TIME : int
             Number of discrete time steps for neuron histories to be visualized
         Returns
         --------
-        all_history: array
+        all_history : array
             ``N x TIME`` matrix encoding histories of neurons.
         """
         #cdef object node
@@ -586,26 +583,26 @@ class Geometric_Brain_Network():
         
         Parameters
         -------------
-        seed:int
+        seed : int
             Node ID of the seed node.
-        TIME:int
+        TIME : int
             A limit on the number of iterations.
-        C: int
+        C : int
             Constant for tuning stochasticity. Higher values yield a deterministic model whereas lower values yield a stochastic model.
         trials:int
             Number of trials.
-        K: float
+        K : float
             Constant for weighing the edge and triangle activations.
-        L: float
+        L : float
             Constant for weighing the edge and triangle activations. Negative unless ``model_type`` is 'linear_combination'.
-        model_type: 'line_segment' or 'linear_combination'
+        model_type : 'line_segment' or 'linear_combination'
             Included only to pass along ``update_states``.
         
         Returns
         ------------
-        activation_times: array
+        activation_times : array
             Average activation times of all the nodes for contagions starting from seed.
-        size_of_contagion: array
+        size_of_contagion : array
             Average number of active nodes at every iteration.
         """
         #cdef numpy.ndarray first_excitation_times, size_of_contagion, first_exct, contagion_size
@@ -636,24 +633,24 @@ class Geometric_Brain_Network():
         
         Parameters
         ------------
-        TIME:int
+        TIME : int
             A limit on the number of iterations.
-        C: int
+        C : int
             Constant for tuning stochasticity. Higher values yield a deterministic model whereas lower values yield a stochastic model.
         trials:int
             Number of trials.
-        K: float
+        K : float
             Constant for weighing the edge and triangle activations.
-        L: float
+        L : float
             Constant for weighing the edge and triangle activations. Negative unless ``model_type`` is 'linear_combination'.
-        model_type: 'line_segment' or 'linear_combination'
+        model_type : 'line_segment' or 'linear_combination'
             Included only to pass along ``update_states``.
         
         Returns
         ---------
-        distance_matrix: array
+        distance_matrix : array
             ``n x n`` array with entries the activation times of contagions starting from node i reaching to node j.
-        Q: array
+        Q : array
             ``n x t`` array with entries number of active nodes at every time step for contagions starting at different seeds.
         
         """
@@ -679,17 +676,17 @@ class Geometric_Brain_Network():
         
         Parameters
         ----------
-        distances: n x n array
+        distances : n x n array
             distance matrix. First output of the ``make_distance_matrix``.
         dimension: int
             Max dimension of the topological features to be computed.
-        spy: bool, optional
+        spy : bool, optional
             Take a peak at the persistence diagram.
         Returns
         -------
-        Delta_min: array
+        Delta_min : array
             Difference of the lifetimes between longest and second longest living two 1-cycles.
-        Delta_max: array
+        Delta_max : array
             Difference of the lifetimes between longest and shortest living two 1-cycles.
         """
         
@@ -723,27 +720,27 @@ class Geometric_Brain_Network():
     
         Parameters
         ----------
-        Q: list, [n x T+1 array]
+        Q : list, [n x T+1 array]
             Output of the make_distance_matrix appended in a list
         labels: list
             Figure labels corresponding to every list element for different thresholds.
         TIME:int
             A limit on the number of iterations.
-        C: int
+        C : int
             Constant for tuning stochasticity. Higher values yield a deterministic model whereas lower values yield a stochastic model.
         trials:int
             Number of trials.
-        K: float
+        K : float
             Constant for weighing the edge and triangle activations.
-        L: float
+        L : float
             Constant for weighing the edge and triangle activations. Negative unless ``model_type`` is 'linear_combination'.
         model_type: 'line_segment' or 'linear_combination'
         
         Returns
         --------
-        fig: matplotlib object
+        fig : matplotlib object
             Figure to be drawn.
-        ax: matplotlib object
+        ax : matplotlib object
            Axis object for the plots.
             
         

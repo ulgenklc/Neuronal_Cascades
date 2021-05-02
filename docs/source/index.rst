@@ -6,9 +6,9 @@
 Welcome to Neuronal Cascades's documentation!
 =============================================
 
-``Neuronal Cascades`` is a python package for running stochastic contagions on custom built geometric networks where one can adjust edge-noise ratio and several neuronal properties to collect the activation times of neurons for every choice of seed nodes. Then, one can use topological data analysis(TDA) to investigate the properties of signal propagation.
+``Neuronal Cascades`` is a python package for running stochastic contagions on custom built geometric networks where one can adjust edge-noise ratio and several neuronal properties to collect the activation times of neurons for every choice of seed nodes. Then, using topological data analysis(TDA), a characterization of the signal propagation patterns can be made.
 
-One can also run simplicial contagions with this package which reveals higher-order flow channels of neuronal avalanches.
+Additionally, one can also run simplicial contagions that exploits beyond-pairwise interactions with this package which reveals higher-order flow channels of neuronal avalanches.
 
 .. toctree::
    :maxdepth: 2
