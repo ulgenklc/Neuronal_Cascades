@@ -26,7 +26,7 @@ Noisy geometric networks are obtained by adding 'noise' or edges that connects '
    Local vs. global signalling and cascading activity of a signal on ring manifold.
 
 
-Neuronal subtypes
+Neuronal Subtypes
 ****************************
 
 Intracellular recordings show that cortical neurons display beyond pairwise dynamics and are subjected to an intense synaptic bombardment working in a high-conductance state.

@@ -45,7 +45,7 @@ Define neuronal properies and then use ``get_neurons`` to inherit individual neu
     neurons_1 = [neuron(i, memory = memory, rest = rest, threshold = threshold) for i in range(size)]
     BN.get_neurons(neurons_1)## this is for runnning experiments with new set of neurons without changing the network
     
-Run a single example contagion.
+Run a single example contagion
 ****************************************
 Core function ``run_dynamic`` runs an experiment with given variables.
 
@@ -62,7 +62,7 @@ Core function ``run_dynamic`` runs an experiment with given variables.
    A single experiment starting at the seed node 200. Initial wavefront propagation can be observed.
    
    
-Running experiments without changing the network conectivity
+Running experiments without changing the network connectivity
 ****************************************************************
 One may want to work with a different set of experiment or neuronal variables without changing the underlying topology. This is when ``get_neurons`` function comes handy.
 
@@ -87,7 +87,7 @@ One may want to work with a different set of experiment or neuronal variables wi
     
     We increased the global node thresholds to 0.3 which slowed down the signal, wavefront.
     
-Runnning Simplicial Contagions
+Runnning simplicial contagions
 ****************************************************************
 Simplicial contagions can be ran by simply varying the parameter :math:`K` between 0 and 1.
 
@@ -114,7 +114,7 @@ Simplicial contagions can be ran by simply varying the parameter :math:`K` betwe
 
 Neurons with memory and refractory period
 ****************************************************************
-Our model is as general as it can be. So, neurons can have arbitrary number of memory or refractory period given in discrete time steps. This generalization increases conmplexity of the dynamics really quick.
+Our model is as general as it can be. So, neurons can have arbitrary number of memory or refractory period given in discrete time steps. This generalization increases complexity of the dynamics really quick.
 
 .. code-block:: python
 
@@ -137,7 +137,7 @@ Our model is as general as it can be. So, neurons can have arbitrary number of m
     
     Slow signal propagation where neurons are active only 1 time step. Signal spreads as the neurons blink.
     
-Running stochastic Models
+Running stochastic models
 ****************************************************************
 Stochasticity of the neuronal responses can be adjusted using the experiment variable :math:`C`. Higher values make the system deterministic.
 
@@ -164,7 +164,7 @@ Stochasticity of the neuronal responses can be adjusted using the experiment var
     As the refractory period is nonzero, complexity of the system increases exponentially.
 
     
-Looking at the Contagion size
+Looking at the contagion size
 *************************************
 We can plot the size of the active nodes as a function of time.
 
@@ -183,7 +183,7 @@ We can plot the size of the active nodes as a function of time.
     
 Run a full scale experiment
 *******************************
-If you don't need to look at the individual contagions starting from different nodes, you can run the contagion starting from node i and calculating the first time it reaches to node j i.e. create a distance matrix who (i,j) entry is the first time the node j activated on a contagion starting from i. Distance matrices enable a global scale TDA analysis.
+In order to asses global features, we run experiments for every seed node i and obtain the activation times for every neuron j i.e. create a distance matrix whose (i,j) entry is the first time the node j is activated on a contagion starting from i. Distance matrices enable a global scale TDA analysis.
 
 .. code-block:: python
 
@@ -197,7 +197,7 @@ If you don't need to look at the individual contagions starting from different n
     
     The distance matrix. The input for the persistent homology.
 
-Persistence Diagrams
+Persistence diagrams
 **************************
 Once we created the distance matrices, we can look at the topological features across different contagions and different topologies.
 

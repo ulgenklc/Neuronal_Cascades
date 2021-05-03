@@ -96,14 +96,14 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#initiate-a-geometric-brain-network-object">Initiate a <code class="docutils literal notranslate"><span class="pre">Geometric_Brain_Network</span></code> object</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#inheriting-neuron-objects">Inheriting <code class="docutils literal notranslate"><span class="pre">neuron</span></code> objects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#run-a-single-example-contagion">Run a single example contagion.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#running-experiments-without-changing-the-network-conectivity">Running experiments without changing the network conectivity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#runnning-simplicial-contagions">Runnning Simplicial Contagions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-a-single-example-contagion">Run a single example contagion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-experiments-without-changing-the-network-connectivity">Running experiments without changing the network connectivity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#runnning-simplicial-contagions">Runnning simplicial contagions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#neurons-with-memory-and-refractory-period">Neurons with memory and refractory period</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#running-stochastic-models">Running stochastic Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#looking-at-the-contagion-size">Looking at the Contagion size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-stochastic-models">Running stochastic models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#looking-at-the-contagion-size">Looking at the contagion size</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#run-a-full-scale-experiment">Run a full scale experiment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#persistence-diagrams">Persistence Diagrams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#persistence-diagrams">Persistence diagrams</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Neuronal Cascades.html">Semantics of Neuronal Cascades</a></li>
@@ -219,7 +219,7 @@
 </div>
 </div>
 <div class="section" id="run-a-single-example-contagion">
-<h2>Run a single example contagion.<a class="headerlink" href="#run-a-single-example-contagion" title="Permalink to this headline">¶</a></h2>
+<h2>Run a single example contagion<a class="headerlink" href="#run-a-single-example-contagion" title="Permalink to this headline">¶</a></h2>
 <p>Core function <code class="docutils literal notranslate"><span class="pre">run_dynamic</span></code> runs an experiment with given variables.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">activation1</span><span class="p">,</span> <span class="n">Q1</span> <span class="o">=</span> <span class="n">BN</span><span class="o">.</span><span class="n">run_dynamic</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">TIME</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
 </pre></div>
@@ -229,8 +229,8 @@
 <p class="caption"><span class="caption-text">A single experiment starting at the seed node 200. Initial wavefront propagation can be observed.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
 </div>
-<div class="section" id="running-experiments-without-changing-the-network-conectivity">
-<h2>Running experiments without changing the network conectivity<a class="headerlink" href="#running-experiments-without-changing-the-network-conectivity" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="running-experiments-without-changing-the-network-connectivity">
+<h2>Running experiments without changing the network connectivity<a class="headerlink" href="#running-experiments-without-changing-the-network-connectivity" title="Permalink to this headline">¶</a></h2>
 <p>One may want to work with a different set of experiment or neuronal variables without changing the underlying topology. This is when <code class="docutils literal notranslate"><span class="pre">get_neurons</span></code> function comes handy.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## with a new set of variables you can run a new experiment without changing the network</span>
 <span class="n">K</span> <span class="o">=</span> <span class="mi">0</span>
@@ -250,7 +250,7 @@
 </div>
 </div>
 <div class="section" id="runnning-simplicial-contagions">
-<h2>Runnning Simplicial Contagions<a class="headerlink" href="#runnning-simplicial-contagions" title="Permalink to this headline">¶</a></h2>
+<h2>Runnning simplicial contagions<a class="headerlink" href="#runnning-simplicial-contagions" title="Permalink to this headline">¶</a></h2>
 <p>Simplicial contagions can be ran by simply varying the parameter <span class="math notranslate nohighlight">\(K\)</span> between 0 and 1.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## with a new set of variables you can run a new experiment without changing the network</span>
 <span class="n">K</span> <span class="o">=</span> <span class="mi">1</span>
@@ -271,7 +271,7 @@
 </div>
 <div class="section" id="neurons-with-memory-and-refractory-period">
 <h2>Neurons with memory and refractory period<a class="headerlink" href="#neurons-with-memory-and-refractory-period" title="Permalink to this headline">¶</a></h2>
-<p>Our model is as general as it can be. So, neurons can have arbitrary number of memory or refractory period given in discrete time steps. This generalization increases conmplexity of the dynamics really quick.</p>
+<p>Our model is as general as it can be. So, neurons can have arbitrary number of memory or refractory period given in discrete time steps. This generalization increases complexity of the dynamics really quick.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="c1"># average of edge and triangle contagions</span>
 <span class="n">memory</span> <span class="o">=</span> <span class="mi">1</span><span class="c1">## memory of a neuron is how many time steps neurons are going to stay active after they activated once</span>
 <span class="n">rest</span> <span class="o">=</span> <span class="mi">0</span><span class="c1">#rest of a neuron is how many time steps neurons are going to be silent after they run out of memory, refractory period.</span>
@@ -290,7 +290,7 @@
 </div>
 </div>
 <div class="section" id="running-stochastic-models">
-<h2>Running stochastic Models<a class="headerlink" href="#running-stochastic-models" title="Permalink to this headline">¶</a></h2>
+<h2>Running stochastic models<a class="headerlink" href="#running-stochastic-models" title="Permalink to this headline">¶</a></h2>
 <p>Stochasticity of the neuronal responses can be adjusted using the experiment variable <span class="math notranslate nohighlight">\(C\)</span>. Higher values make the system deterministic.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">## triangle contagion</span>
 <span class="n">memory</span> <span class="o">=</span> <span class="mi">2</span><span class="c1">## memory of a neuron is how many time steps neurons are going to stay active after they activated once</span>
@@ -311,7 +311,7 @@
 </div>
 </div>
 <div class="section" id="looking-at-the-contagion-size">
-<h2>Looking at the Contagion size<a class="headerlink" href="#looking-at-the-contagion-size" title="Permalink to this headline">¶</a></h2>
+<h2>Looking at the contagion size<a class="headerlink" href="#looking-at-the-contagion-size" title="Permalink to this headline">¶</a></h2>
 <p>We can plot the size of the active nodes as a function of time.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Q</span> <span class="o">=</span> <span class="p">[</span><span class="n">Q1</span><span class="p">,</span><span class="n">Q2</span><span class="p">,</span><span class="n">Q3</span><span class="p">,</span><span class="n">Q4</span><span class="p">,</span><span class="n">Q5</span><span class="p">]</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">BN</span><span class="o">.</span><span class="n">display_comm_sizes_individual</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span><span class="n">labels</span><span class="p">)</span>
@@ -324,7 +324,7 @@
 </div>
 <div class="section" id="run-a-full-scale-experiment">
 <h2>Run a full scale experiment<a class="headerlink" href="#run-a-full-scale-experiment" title="Permalink to this headline">¶</a></h2>
-<p>If you don’t need to look at the individual contagions starting from different nodes, you can run the contagion starting from node i and calculating the first time it reaches to node j i.e. create a distance matrix who (i,j) entry is the first time the node j activated on a contagion starting from i. Distance matrices enable a global scale TDA analysis.</p>
+<p>In order to asses global features, we run experiments for every seed node i and obtain the activation times for every neuron j i.e. create a distance matrix whose (i,j) entry is the first time the node j is activated on a contagion starting from i. Distance matrices enable a global scale TDA analysis.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">FAT</span><span class="p">,</span> <span class="n">CS</span> <span class="o">=</span> <span class="n">BN</span><span class="o">.</span><span class="n">make_distance_matrix</span><span class="p">(</span><span class="n">TIME</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">trials</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -334,7 +334,7 @@
 </div>
 </div>
 <div class="section" id="persistence-diagrams">
-<h2>Persistence Diagrams<a class="headerlink" href="#persistence-diagrams" title="Permalink to this headline">¶</a></h2>
+<h2>Persistence diagrams<a class="headerlink" href="#persistence-diagrams" title="Permalink to this headline">¶</a></h2>
 <p>Once we created the distance matrices, we can look at the topological features across different contagions and different topologies.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">delta_min</span><span class="p">,</span> <span class="n">delta_max</span> <span class="o">=</span> <span class="n">BN</span><span class="o">.</span><span class="n">compute_persistence</span><span class="p">(</span><span class="n">FAT</span><span class="p">,</span> <span class="n">spy</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span><span class="c1">##returns the lifetime difference of the longest living one cycles(delta_min) and lifetime difference of the longest and shorthest living one cycles(delta_max)</span>
 </pre></div>
