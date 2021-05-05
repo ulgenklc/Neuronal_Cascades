@@ -25,7 +25,7 @@ Create a geometric brain network on a ring. Topology is only available on a ring
  
 Inheriting ``neuron`` objects
 **************************************
-Define neuronal properies and then use ``get_neurons`` to inherit individual neurons into the network.
+Define neuronal properties and then use ``get_neurons`` to inherit individual neurons into the network.
 
 .. code-block:: python
 
@@ -87,7 +87,7 @@ One may want to work with a different set of experiment or neuronal variables wi
     
     We increased the global node thresholds to 0.3 which slowed down the signal, wavefront.
     
-Runnning simplicial contagions
+Running simplicial contagions
 ****************************************************************
 Simplicial contagions can be ran by simply varying the parameter :math:`K` between 0 and 1.
 

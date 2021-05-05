@@ -1,8 +1,8 @@
 Introduction
 ==============
-Communication property of the brain often comes into surface as in the form of synchronization, self-organization and stochastic collective dynamics. Indeed, in the most homogeneosly distributed inch of the brain, networks of cortical neurons receive, process and transfer large number of synaptic responses with great temporal precision to maintain functional cognitive activity. 
+Communication property of the brain often comes into surface as in the form of synchronization, self-organization and stochastic collective dynamics. Indeed, in the most homogeneosly distributed inch of the brain, networks of cortical neurons receive, process and transfer large number of synaptic responses with great temporal precision to maintain cognitive activity. 
 
-Integration and propagation of such information occurs via cascading activity of groups of neurons arising from the interactions between recent activity history, non-linear neuronal properties and network topology.
+Integration and propagation of such information occur via cascading activity of groups of neurons arising from the interactions between recent activity history, non-linear neuronal properties and network topology.
 
 In this project, we develop theoretical framework for the interplay between the dynamics and network topology manifesting through higher-order connections embedded in a manifold structure for neuronal activity.
 

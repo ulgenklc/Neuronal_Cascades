@@ -98,7 +98,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#inheriting-neuron-objects">Inheriting <code class="docutils literal notranslate"><span class="pre">neuron</span></code> objects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#run-a-single-example-contagion">Run a single example contagion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#running-experiments-without-changing-the-network-connectivity">Running experiments without changing the network connectivity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#runnning-simplicial-contagions">Runnning simplicial contagions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-simplicial-contagions">Running simplicial contagions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#neurons-with-memory-and-refractory-period">Neurons with memory and refractory period</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#running-stochastic-models">Running stochastic models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#looking-at-the-contagion-size">Looking at the contagion size</a></li>
@@ -199,7 +199,7 @@
 </div>
 <div class="section" id="inheriting-neuron-objects">
 <h2>Inheriting <code class="docutils literal notranslate"><span class="pre">neuron</span></code> objects<a class="headerlink" href="#inheriting-neuron-objects" title="Permalink to this headline">¶</a></h2>
-<p>Define neuronal properies and then use <code class="docutils literal notranslate"><span class="pre">get_neurons</span></code> to inherit individual neurons into the network.</p>
+<p>Define neuronal properties and then use <code class="docutils literal notranslate"><span class="pre">get_neurons</span></code> to inherit individual neurons into the network.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="c1">#### EXPERIMENT VARIABLES</span>
 <span class="n">TIME</span> <span class="o">=</span> <span class="mi">100</span> <span class="c1">## number of iterations</span>
 <span class="n">seed</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">size</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="c1">## seed node</span>
@@ -249,8 +249,8 @@
 <p class="caption"><span class="caption-text">We increased the global node thresholds to 0.3 which slowed down the signal, wavefront.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
 </div>
-<div class="section" id="runnning-simplicial-contagions">
-<h2>Runnning simplicial contagions<a class="headerlink" href="#runnning-simplicial-contagions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="running-simplicial-contagions">
+<h2>Running simplicial contagions<a class="headerlink" href="#running-simplicial-contagions" title="Permalink to this headline">¶</a></h2>
 <p>Simplicial contagions can be ran by simply varying the parameter <span class="math notranslate nohighlight">\(K\)</span> between 0 and 1.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## with a new set of variables you can run a new experiment without changing the network</span>
 <span class="n">K</span> <span class="o">=</span> <span class="mi">1</span>
