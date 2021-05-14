@@ -1,3 +1,5 @@
+# distutils: define_macros=NPY_NO_DEPRECATED_API=NPY_1_7_API_VERSION
+
 cimport numpy
 cimport cython
 import numpy as np
@@ -147,48 +149,50 @@ cdef class Geometric_Brain_Network:
             self.A[link_list[k,1],link_list[k,0]] = True
         self.text = self.text + ' and nGD %d'%self.nGD
     
-    def k_cliques(self):
-        cdef numpy.ndarray f
-        cdef int k
-        cdef list cliques
-        cdef set u,v,w, cliques_1
+    def get_nonunique_triangle_list(self, numpy.ndarray[DTYPE_t, ndim=2] A):
         
-        # 2-cliques
-        cliques = [set(f) for f in np.array(np.nonzero(self.A)).T]
-        k = 2
+        cdef numpy.ndarray AAA, i_list, j_list, triangles_list, local_triangles_list
+        cdef int total_number_triangles, counter, i, j, num_local_triangles
+        cdef Py_ssize_t t, k
+        
+    
+        AAA = np.dot(A,A)*A
+        i_list, j_list = np.where(AAA) # list of edges that are involved in triangles
+        total_number_triangles = int(np.sum(AAA))
+    
+        #now find list of non-unique triangles (i.e., [0,1,2] and [0,2,1] are both included)
+        triangles_list = np.zeros((total_number_triangles,3),dtype=int)
+        counter = 0
+        for t in range(len(i_list)):
+            i = i_list[t]
+            j = j_list[t]
+            num_local_triangles = AAA[i,j]
+            local_triangles_list = np.where((A[i,:]+A[j,:])==2 )[0] # list of common neighbors, {k}
+            #local_triangles_list = local_triangles_list[(local_triangles_list>i)* (local_triangles_list>j)]
+            for k in local_triangles_list:
+                triangles_list[counter] = [i,j,k]
+                counter += 1 
 
-        while cliques:
-            # result
-            yield k, cliques
+        return triangles_list
 
-            # merge k-cliques into (k+1)-cliques
-            cliques_1 = set()
-            for u, v in combinations(cliques, 2):
-                w = u ^ v
-                if len(w) == 2 and set(w) in cliques:
-                    cliques_1.add(tuple(u | w))
+    def get_nodes_unique_triangles(self, numpy.ndarray[DTYPE_t, ndim=2] nonunique_triangle_list, int i):
+        cdef numpy.ndarray tri_flag
+         
+        tri_flag = nonunique_triangle_list[:,0]==i # make a flag for triangles using node i
+        tri_flag = tri_flag * (nonunique_triangle_list[:,1]<nonunique_triangle_list[:,2])# keep only indices in ascending order
 
-            # remove duplicates
-            cliques = list(map(set, cliques_1))
-            k += 1
+        return nonunique_triangle_list[tri_flag,1:], tri_flag
 
-
-    def return_triangles(self, int size_k = 3):
-        cdef int k,j,i
-        cdef set e, 
-        cdef list temp, clique, tris
+    def return_triangles(self):
+        cdef numpy.ndarray nonunique_triangle_list, p
         cdef dict triangles
+        cdef Py_ssize_t i
         
-        for k, clique in self.k_cliques():
-            if k == size_k: 
-                tris = clique
-        triangles = {}    
+        nonunique_triangle_list = self.get_nonunique_triangle_list(self.A)
+        triangles = {}
         for i in range(self.N):
-            temp = []
-            for j,e in enumerate(tris):
-                if i in e: temp.append(list(e.difference({i})))
-            triangles['%d'%i] = temp       
-        return(triangles)
+            triangles[str(i)] = [list(p) for p in self.get_nodes_unique_triangles(nonunique_triangle_list,i)[0]]
+        return triangles 
     
     def neighbors(self, int node_id):
         

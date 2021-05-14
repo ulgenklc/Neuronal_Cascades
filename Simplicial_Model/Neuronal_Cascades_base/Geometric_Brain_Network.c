@@ -3,6 +3,12 @@
 /* BEGIN: Cython Metadata
 {
     "distutils": {
+        "define_macros": [
+            [
+                "NPY_NO_DEPRECATED_API",
+                "NPY_1_7_API_VERSION"
+            ]
+        ],
         "depends": [],
         "name": "Neuronal_Cascades_base.Geometric_Brain_Network",
         "sources": [
@@ -1074,7 +1080,7 @@ typedef npy_double __pyx_t_5numpy_double_t;
  */
 typedef npy_longdouble __pyx_t_5numpy_longdouble_t;
 
-/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":24
+/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":26
  *     long
  * 
  * ctypedef numpy.int_t DTYPE_t             # <<<<<<<<<<<<<<
@@ -1109,7 +1115,6 @@ static CYTHON_INLINE __pyx_t_double_complex __pyx_t_double_complex_from_parts(do
 
 /*--- Type declarations ---*/
 struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network;
-struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques;
 
 /* "../../../../opt/anaconda3/lib/python3.7/site-packages/numpy/__init__.pxd":728
  * ctypedef npy_longdouble longdouble_t
@@ -1147,7 +1152,7 @@ typedef npy_clongdouble __pyx_t_5numpy_clongdouble_t;
  */
 typedef npy_cdouble __pyx_t_5numpy_complex_t;
 
-/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":27
+/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":29
  * 
  * 
  * cdef class Geometric_Brain_Network:             # <<<<<<<<<<<<<<
@@ -1165,27 +1170,6 @@ struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Br
   PyArrayObject *A;
   int time;
   PyObject *triangles;
-};
-
-
-/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":150
- *         self.text = self.text + ' and nGD %d'%self.nGD
- * 
- *     def k_cliques(self):             # <<<<<<<<<<<<<<
- *         cdef numpy.ndarray f
- *         cdef int k
- */
-struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques {
-  PyObject_HEAD
-  PyObject *__pyx_v_cliques;
-  PyObject *__pyx_v_cliques_1;
-  PyArrayObject *__pyx_7genexpr__pyx_v_f;
-  PyArrayObject *__pyx_v_f;
-  int __pyx_v_k;
-  struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self;
-  PyObject *__pyx_v_u;
-  PyObject *__pyx_v_v;
-  PyObject *__pyx_v_w;
 };
 
 
@@ -1527,6 +1511,28 @@ static CYTHON_INLINE PyObject* __Pyx_PyInt_EqObjC(PyObject *op1, PyObject *op2, 
 /* None.proto */
 static CYTHON_INLINE void __Pyx_RaiseUnboundLocalError(const char *varname);
 
+/* RaiseTooManyValuesToUnpack.proto */
+static CYTHON_INLINE void __Pyx_RaiseTooManyValuesError(Py_ssize_t expected);
+
+/* RaiseNeedMoreValuesToUnpack.proto */
+static CYTHON_INLINE void __Pyx_RaiseNeedMoreValuesError(Py_ssize_t index);
+
+/* IterFinish.proto */
+static CYTHON_INLINE int __Pyx_IterFinish(void);
+
+/* UnpackItemEndCheck.proto */
+static int __Pyx_IternextUnpackEndCheck(PyObject *retval, Py_ssize_t expected);
+
+/* SetItemInt.proto */
+#define __Pyx_SetItemInt(o, i, v, type, is_signed, to_py_func, is_list, wraparound, boundscheck)\
+    (__Pyx_fits_Py_ssize_t(i, type, is_signed) ?\
+    __Pyx_SetItemInt_Fast(o, (Py_ssize_t)i, v, is_list, wraparound, boundscheck) :\
+    (is_list ? (PyErr_SetString(PyExc_IndexError, "list assignment index out of range"), -1) :\
+               __Pyx_SetItemInt_Generic(o, to_py_func(i), v)))
+static int __Pyx_SetItemInt_Generic(PyObject *o, PyObject *j, PyObject *v);
+static CYTHON_INLINE int __Pyx_SetItemInt_Fast(PyObject *o, Py_ssize_t i, PyObject *v,
+                                               int is_list, int wraparound, int boundscheck);
+
 /* ListCompAppend.proto */
 #if CYTHON_USE_PYLIST_INTERNALS && CYTHON_ASSUME_SAFE_MACROS
 static CYTHON_INLINE int __Pyx_ListComp_Append(PyObject* list, PyObject* x) {
@@ -1544,30 +1550,6 @@ static CYTHON_INLINE int __Pyx_ListComp_Append(PyObject* list, PyObject* x) {
 #define __Pyx_ListComp_Append(L,x) PyList_Append(L,x)
 #endif
 
-/* RaiseTooManyValuesToUnpack.proto */
-static CYTHON_INLINE void __Pyx_RaiseTooManyValuesError(Py_ssize_t expected);
-
-/* RaiseNeedMoreValuesToUnpack.proto */
-static CYTHON_INLINE void __Pyx_RaiseNeedMoreValuesError(Py_ssize_t index);
-
-/* IterFinish.proto */
-static CYTHON_INLINE int __Pyx_IterFinish(void);
-
-/* UnpackItemEndCheck.proto */
-static int __Pyx_IternextUnpackEndCheck(PyObject *retval, Py_ssize_t expected);
-
-/* PySequenceContains.proto */
-static CYTHON_INLINE int __Pyx_PySequence_ContainsTF(PyObject* item, PyObject* seq, int eq) {
-    int result = PySequence_Contains(seq, item);
-    return unlikely(result < 0) ? result : (result == (eq == Py_EQ));
-}
-
-/* pyfrozenset_new.proto */
-static CYTHON_INLINE PyObject* __Pyx_PyFrozenSet_New(PyObject* it);
-
-/* PySetContains.proto */
-static CYTHON_INLINE int __Pyx_PySet_ContainsTF(PyObject* key, PyObject* set, int eq);
-
 /* ListAppend.proto */
 #if CYTHON_USE_PYLIST_INTERNALS && CYTHON_ASSUME_SAFE_MACROS
 static CYTHON_INLINE int __Pyx_PyList_Append(PyObject* list, PyObject* x) {
@@ -1583,23 +1565,6 @@ static CYTHON_INLINE int __Pyx_PyList_Append(PyObject* list, PyObject* x) {
 }
 #else
 #define __Pyx_PyList_Append(L,x) PyList_Append(L,x)
-#endif
-
-/* UnpackUnboundCMethod.proto */
-typedef struct {
-    PyObject *type;
-    PyObject **method_name;
-    PyCFunction func;
-    PyObject *method;
-    int flag;
-} __Pyx_CachedCFunction;
-
-/* CallUnboundCMethod1.proto */
-static PyObject* __Pyx__CallUnboundCMethod1(__Pyx_CachedCFunction* cfunc, PyObject* self, PyObject* arg);
-#if CYTHON_COMPILING_IN_CPYTHON
-static CYTHON_INLINE PyObject* __Pyx_CallUnboundCMethod1(__Pyx_CachedCFunction* cfunc, PyObject* self, PyObject* arg);
-#else
-#define __Pyx_CallUnboundCMethod1(cfunc, self, arg)  __Pyx__CallUnboundCMethod1(cfunc, self, arg)
 #endif
 
 /* DictGetItem.proto */
@@ -1639,21 +1604,28 @@ static CYTHON_INLINE int __Pyx_PyObject_SetAttrStr(PyObject* obj, PyObject* attr
 #define __Pyx_PyObject_SetAttrStr(o,n,v) PyObject_SetAttr(o,n,v)
 #endif
 
+/* UnpackUnboundCMethod.proto */
+typedef struct {
+    PyObject *type;
+    PyObject **method_name;
+    PyCFunction func;
+    PyObject *method;
+    int flag;
+} __Pyx_CachedCFunction;
+
+/* CallUnboundCMethod1.proto */
+static PyObject* __Pyx__CallUnboundCMethod1(__Pyx_CachedCFunction* cfunc, PyObject* self, PyObject* arg);
+#if CYTHON_COMPILING_IN_CPYTHON
+static CYTHON_INLINE PyObject* __Pyx_CallUnboundCMethod1(__Pyx_CachedCFunction* cfunc, PyObject* self, PyObject* arg);
+#else
+#define __Pyx_CallUnboundCMethod1(cfunc, self, arg)  __Pyx__CallUnboundCMethod1(cfunc, self, arg)
+#endif
+
 /* SliceObject.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyObject_GetSlice(
         PyObject* obj, Py_ssize_t cstart, Py_ssize_t cstop,
         PyObject** py_start, PyObject** py_stop, PyObject** py_slice,
         int has_cstart, int has_cstop, int wraparound);
-
-/* SetItemInt.proto */
-#define __Pyx_SetItemInt(o, i, v, type, is_signed, to_py_func, is_list, wraparound, boundscheck)\
-    (__Pyx_fits_Py_ssize_t(i, type, is_signed) ?\
-    __Pyx_SetItemInt_Fast(o, (Py_ssize_t)i, v, is_list, wraparound, boundscheck) :\
-    (is_list ? (PyErr_SetString(PyExc_IndexError, "list assignment index out of range"), -1) :\
-               __Pyx_SetItemInt_Generic(o, to_py_func(i), v)))
-static int __Pyx_SetItemInt_Generic(PyObject *o, PyObject *j, PyObject *v);
-static CYTHON_INLINE int __Pyx_SetItemInt_Fast(PyObject *o, Py_ssize_t i, PyObject *v,
-                                               int is_list, int wraparound, int boundscheck);
 
 /* None.proto */
 static CYTHON_INLINE Py_ssize_t __Pyx_mod_Py_ssize_t(Py_ssize_t, Py_ssize_t);
@@ -1912,92 +1884,6 @@ static CYTHON_INLINE int __Pyx_PyErr_GivenExceptionMatches2(PyObject *err, PyObj
 #endif
 #define __Pyx_PyException_Check(obj) __Pyx_TypeCheck(obj, PyExc_Exception)
 
-/* FetchCommonType.proto */
-static PyTypeObject* __Pyx_FetchCommonType(PyTypeObject* type);
-
-/* SwapException.proto */
-#if CYTHON_FAST_THREAD_STATE
-#define __Pyx_ExceptionSwap(type, value, tb)  __Pyx__ExceptionSwap(__pyx_tstate, type, value, tb)
-static CYTHON_INLINE void __Pyx__ExceptionSwap(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb);
-#else
-static CYTHON_INLINE void __Pyx_ExceptionSwap(PyObject **type, PyObject **value, PyObject **tb);
-#endif
-
-/* CoroutineBase.proto */
-typedef PyObject *(*__pyx_coroutine_body_t)(PyObject *, PyThreadState *, PyObject *);
-#if CYTHON_USE_EXC_INFO_STACK
-#define __Pyx_ExcInfoStruct  _PyErr_StackItem
-#else
-typedef struct {
-    PyObject *exc_type;
-    PyObject *exc_value;
-    PyObject *exc_traceback;
-} __Pyx_ExcInfoStruct;
-#endif
-typedef struct {
-    PyObject_HEAD
-    __pyx_coroutine_body_t body;
-    PyObject *closure;
-    __Pyx_ExcInfoStruct gi_exc_state;
-    PyObject *gi_weakreflist;
-    PyObject *classobj;
-    PyObject *yieldfrom;
-    PyObject *gi_name;
-    PyObject *gi_qualname;
-    PyObject *gi_modulename;
-    PyObject *gi_code;
-    int resume_label;
-    char is_running;
-} __pyx_CoroutineObject;
-static __pyx_CoroutineObject *__Pyx__Coroutine_New(
-    PyTypeObject *type, __pyx_coroutine_body_t body, PyObject *code, PyObject *closure,
-    PyObject *name, PyObject *qualname, PyObject *module_name);
-static __pyx_CoroutineObject *__Pyx__Coroutine_NewInit(
-            __pyx_CoroutineObject *gen, __pyx_coroutine_body_t body, PyObject *code, PyObject *closure,
-            PyObject *name, PyObject *qualname, PyObject *module_name);
-static CYTHON_INLINE void __Pyx_Coroutine_ExceptionClear(__Pyx_ExcInfoStruct *self);
-static int __Pyx_Coroutine_clear(PyObject *self);
-static PyObject *__Pyx_Coroutine_Send(PyObject *self, PyObject *value);
-static PyObject *__Pyx_Coroutine_Close(PyObject *self);
-static PyObject *__Pyx_Coroutine_Throw(PyObject *gen, PyObject *args);
-#if CYTHON_USE_EXC_INFO_STACK
-#define __Pyx_Coroutine_SwapException(self)
-#define __Pyx_Coroutine_ResetAndClearException(self)  __Pyx_Coroutine_ExceptionClear(&(self)->gi_exc_state)
-#else
-#define __Pyx_Coroutine_SwapException(self) {\
-    __Pyx_ExceptionSwap(&(self)->gi_exc_state.exc_type, &(self)->gi_exc_state.exc_value, &(self)->gi_exc_state.exc_traceback);\
-    __Pyx_Coroutine_ResetFrameBackpointer(&(self)->gi_exc_state);\
-    }
-#define __Pyx_Coroutine_ResetAndClearException(self) {\
-    __Pyx_ExceptionReset((self)->gi_exc_state.exc_type, (self)->gi_exc_state.exc_value, (self)->gi_exc_state.exc_traceback);\
-    (self)->gi_exc_state.exc_type = (self)->gi_exc_state.exc_value = (self)->gi_exc_state.exc_traceback = NULL;\
-    }
-#endif
-#if CYTHON_FAST_THREAD_STATE
-#define __Pyx_PyGen_FetchStopIterationValue(pvalue)\
-    __Pyx_PyGen__FetchStopIterationValue(__pyx_tstate, pvalue)
-#else
-#define __Pyx_PyGen_FetchStopIterationValue(pvalue)\
-    __Pyx_PyGen__FetchStopIterationValue(__Pyx_PyThreadState_Current, pvalue)
-#endif
-static int __Pyx_PyGen__FetchStopIterationValue(PyThreadState *tstate, PyObject **pvalue);
-static CYTHON_INLINE void __Pyx_Coroutine_ResetFrameBackpointer(__Pyx_ExcInfoStruct *exc_state);
-
-/* PatchModuleWithCoroutine.proto */
-static PyObject* __Pyx_Coroutine_patch_module(PyObject* module, const char* py_code);
-
-/* PatchGeneratorABC.proto */
-static int __Pyx_patch_abc(void);
-
-/* Generator.proto */
-#define __Pyx_Generator_USED
-static PyTypeObject *__pyx_GeneratorType = 0;
-#define __Pyx_Generator_CheckExact(obj) (Py_TYPE(obj) == __pyx_GeneratorType)
-#define __Pyx_Generator_New(body, code, closure, name, qualname, module_name)\
-    __Pyx__Coroutine_New(__pyx_GeneratorType, body, code, closure, name, qualname, module_name)
-static PyObject *__Pyx_Generator_Next(PyObject *self);
-static int __pyx_Generator_init(void);
-
 /* CheckBinaryVersion.proto */
 static int __Pyx_check_binary_version(void);
 
@@ -2037,7 +1923,6 @@ static PyTypeObject *__pyx_ptype_5numpy_ufunc = 0;
 
 /* Module declarations from 'Neuronal_Cascades_base.Geometric_Brain_Network' */
 static PyTypeObject *__pyx_ptype_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network = 0;
-static PyTypeObject *__pyx_ptype_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques = 0;
 static PyObject *__pyx_f_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_unpickle_Geometric_Brain_Network__set_state(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *, PyObject *); /*proto*/
 static __Pyx_TypeInfo __Pyx_TypeInfo_nn___pyx_t_22Neuronal_Cascades_base_23Geometric_Brain_Network_DTYPE_t = { "DTYPE_t", NULL, sizeof(__pyx_t_22Neuronal_Cascades_base_23Geometric_Brain_Network_DTYPE_t), { 0 }, 0, IS_UNSIGNED(__pyx_t_22Neuronal_Cascades_base_23Geometric_Brain_Network_DTYPE_t) ? 'U' : 'I', IS_UNSIGNED(__pyx_t_22Neuronal_Cascades_base_23Geometric_Brain_Network_DTYPE_t), 0 };
 static __Pyx_TypeInfo __Pyx_TypeInfo_double = { "double", NULL, sizeof(double), { 0 }, 0, 'R', 0, 0 };
@@ -2048,7 +1933,6 @@ int __pyx_module_is_main_Neuronal_Cascades_base__Geometric_Brain_Network = 0;
 /* Implementation of 'Neuronal_Cascades_base.Geometric_Brain_Network' */
 static PyObject *__pyx_builtin_ValueError;
 static PyObject *__pyx_builtin_range;
-static PyObject *__pyx_builtin_map;
 static PyObject *__pyx_builtin_enumerate;
 static PyObject *__pyx_builtin_ImportError;
 static const char __pyx_k_C[] = "C";
@@ -2057,6 +1941,7 @@ static const char __pyx_k_L[] = "L";
 static const char __pyx_k_Q[] = "Q";
 static const char __pyx_k_T[] = "T";
 static const char __pyx_k_d[] = "d";
+static const char __pyx_k_i[] = "i";
 static const char __pyx_k_v[] = "v";
 static const char __pyx_k_1f[] = ".1f";
 static const char __pyx_k_2f[] = ".2f";
@@ -2065,22 +1950,22 @@ static const char __pyx_k_C_2[] = ", C = ";
 static const char __pyx_k_K_2[] = ",  K = ";
 static const char __pyx_k_L_2[] = ", L = ";
 static const char __pyx_k_T_2[] = ", T = ";
-static const char __pyx_k__13[] = "*";
+static const char __pyx_k__15[] = "*";
 static const char __pyx_k_any[] = "any";
 static const char __pyx_k_d_2[] = "%d";
+static const char __pyx_k_dot[] = "dot";
 static const char __pyx_k_exp[] = "exp";
-static const char __pyx_k_map[] = "map";
 static const char __pyx_k_max[] = "max";
 static const char __pyx_k_min[] = "min";
 static const char __pyx_k_new[] = "__new__";
 static const char __pyx_k_plt[] = "plt";
 static const char __pyx_k_red[] = "red";
 static const char __pyx_k_spy[] = "spy";
+static const char __pyx_k_sum[] = "sum";
 static const char __pyx_k_None[] = "None";
 static const char __pyx_k_Ring[] = "Ring";
 static const char __pyx_k_TIME[] = "TIME";
 static const char __pyx_k_Time[] = "Time";
-static const char __pyx_k_args[] = "args";
 static const char __pyx_k_axis[] = "axis";
 static const char __pyx_k_blue[] = "blue";
 static const char __pyx_k_dict[] = "__dict__";
@@ -2093,7 +1978,6 @@ static const char __pyx_k_ones[] = "ones";
 static const char __pyx_k_plot[] = "plot";
 static const char __pyx_k_rest[] = "rest";
 static const char __pyx_k_seed[] = "seed";
-static const char __pyx_k_send[] = "send";
 static const char __pyx_k_size[] = "size";
 static const char __pyx_k_sort[] = "sort";
 static const char __pyx_k_sqrt[] = "sqrt";
@@ -2103,7 +1987,6 @@ static const char __pyx_k_alpha[] = "alpha";
 static const char __pyx_k_array[] = "array";
 static const char __pyx_k_black[] = "black";
 static const char __pyx_k_brown[] = "brown";
-static const char __pyx_k_close[] = "close";
 static const char __pyx_k_color[] = "color";
 static const char __pyx_k_dtype[] = "dtype";
 static const char __pyx_k_green[] = "green";
@@ -2114,7 +1997,7 @@ static const char __pyx_k_nodes[] = " nodes";
 static const char __pyx_k_numpy[] = "numpy";
 static const char __pyx_k_range[] = "range";
 static const char __pyx_k_state[] = "state";
-static const char __pyx_k_throw[] = "throw";
+static const char __pyx_k_where[] = "where";
 static const char __pyx_k_zeros[] = "zeros";
 static const char __pyx_k_append[] = "append";
 static const char __pyx_k_arange[] = "arange";
@@ -2132,7 +2015,6 @@ static const char __pyx_k_pickle[] = "pickle";
 static const char __pyx_k_purple[] = "purple";
 static const char __pyx_k_random[] = "random";
 static const char __pyx_k_reduce[] = "__reduce__";
-static const char __pyx_k_size_k[] = "size_k";
 static const char __pyx_k_trials[] = "trials";
 static const char __pyx_k_update[] = "update";
 static const char __pyx_k_violet[] = "violet";
@@ -2164,7 +2046,6 @@ static const char __pyx_k_dimension[] = "dimension";
 static const char __pyx_k_distances[] = "distances";
 static const char __pyx_k_enumerate[] = "enumerate";
 static const char __pyx_k_itertools[] = "itertools";
-static const char __pyx_k_k_cliques[] = "k_cliques";
 static const char __pyx_k_linestyle[] = "linestyle";
 static const char __pyx_k_neighbors[] = "neighbors";
 static const char __pyx_k_pyx_state[] = "__pyx_state";
@@ -2216,11 +2097,13 @@ static const char __pyx_k_nongeometric_degree[] = "nongeometric_degree";
 static const char __pyx_k_Number_of_Active_Nodes[] = "Number of Active Nodes";
 static const char __pyx_k_add_noise_to_geometric[] = "add_noise_to_geometric";
 static const char __pyx_k_Geometric_Brain_Network[] = "Geometric_Brain_Network";
+static const char __pyx_k_nonunique_triangle_list[] = "nonunique_triangle_list";
 static const char __pyx_k_plot_persistence_diagram[] = "plot_persistence_diagram";
 static const char __pyx_k_sklearn_metrics_pairwise[] = "sklearn.metrics.pairwise";
+static const char __pyx_k_get_nodes_unique_triangles[] = "get_nodes_unique_triangles";
+static const char __pyx_k_get_nonunique_triangle_list[] = "get_nonunique_triangle_list";
 static const char __pyx_k_pyx_unpickle_Geometric_Brain_N[] = "__pyx_unpickle_Geometric_Brain_Network";
 static const char __pyx_k_numpy_core_multiarray_failed_to[] = "numpy.core.multiarray failed to import";
-static const char __pyx_k_Geometric_Brain_Network_k_clique[] = "Geometric_Brain_Network.k_cliques";
 static const char __pyx_k_Incompatible_checksums_s_vs_0x21[] = "Incompatible checksums (%s vs 0x215bfe3 = (A, GD, N, manifold, nGD, nodes, text, time, triangles))";
 static const char __pyx_k_Neuronal_Cascades_base_Geometric[] = "Neuronal_Cascades_base.Geometric_Brain_Network";
 static const char __pyx_k_Size_of_the_network_and_the_numb[] = "Size of the network and the number of neurons should match";
@@ -2231,7 +2114,6 @@ static PyObject *__pyx_n_s_C;
 static PyObject *__pyx_kp_u_C_2;
 static PyObject *__pyx_n_s_DTYPE;
 static PyObject *__pyx_n_s_Geometric_Brain_Network;
-static PyObject *__pyx_n_s_Geometric_Brain_Network_k_clique;
 static PyObject *__pyx_n_s_ImportError;
 static PyObject *__pyx_kp_s_Incompatible_checksums_s_vs_0x21;
 static PyObject *__pyx_n_s_K;
@@ -2254,7 +2136,7 @@ static PyObject *__pyx_kp_u_Threshold;
 static PyObject *__pyx_kp_u_Threshold_2f;
 static PyObject *__pyx_n_u_Time;
 static PyObject *__pyx_n_s_ValueError;
-static PyObject *__pyx_n_s__13;
+static PyObject *__pyx_n_s__15;
 static PyObject *__pyx_n_s_add_noise_to_geometric;
 static PyObject *__pyx_n_s_alpha;
 static PyObject *__pyx_kp_u_and_nGD_d;
@@ -2262,7 +2144,6 @@ static PyObject *__pyx_n_s_any;
 static PyObject *__pyx_n_s_append;
 static PyObject *__pyx_n_s_arange;
 static PyObject *__pyx_n_s_argmax;
-static PyObject *__pyx_n_s_args;
 static PyObject *__pyx_n_s_array;
 static PyObject *__pyx_n_s_asarray;
 static PyObject *__pyx_n_s_average_over_trials;
@@ -2271,7 +2152,6 @@ static PyObject *__pyx_n_u_black;
 static PyObject *__pyx_n_u_blue;
 static PyObject *__pyx_n_u_brown;
 static PyObject *__pyx_n_s_cline_in_traceback;
-static PyObject *__pyx_n_s_close;
 static PyObject *__pyx_n_s_color;
 static PyObject *__pyx_n_s_combinations;
 static PyObject *__pyx_n_s_create_simplex_tree;
@@ -2285,6 +2165,7 @@ static PyObject *__pyx_n_s_dimension;
 static PyObject *__pyx_n_s_distance;
 static PyObject *__pyx_n_s_distance_matrix;
 static PyObject *__pyx_n_s_distances;
+static PyObject *__pyx_n_s_dot;
 static PyObject *__pyx_n_s_dtype;
 static PyObject *__pyx_n_s_enumerate;
 static PyObject *__pyx_n_s_euclidean_distances;
@@ -2293,15 +2174,17 @@ static PyObject *__pyx_n_s_figsize;
 static PyObject *__pyx_n_s_fill_between;
 static PyObject *__pyx_n_s_fontsize;
 static PyObject *__pyx_n_s_geometric_degree;
+static PyObject *__pyx_n_s_get_nodes_unique_triangles;
+static PyObject *__pyx_n_s_get_nonunique_triangle_list;
 static PyObject *__pyx_n_s_getstate;
 static PyObject *__pyx_n_u_green;
 static PyObject *__pyx_n_s_gudhi;
 static PyObject *__pyx_n_s_history;
+static PyObject *__pyx_n_s_i;
 static PyObject *__pyx_n_s_import;
 static PyObject *__pyx_n_s_initial_spread;
 static PyObject *__pyx_n_s_int64;
 static PyObject *__pyx_n_s_itertools;
-static PyObject *__pyx_n_s_k_cliques;
 static PyObject *__pyx_n_s_label;
 static PyObject *__pyx_n_s_labels;
 static PyObject *__pyx_n_s_legend;
@@ -2313,7 +2196,6 @@ static PyObject *__pyx_n_s_linspace;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_make_geometric;
 static PyObject *__pyx_n_s_manifold;
-static PyObject *__pyx_n_s_map;
 static PyObject *__pyx_n_s_marker;
 static PyObject *__pyx_n_s_math;
 static PyObject *__pyx_n_s_matplotlib_pyplot;
@@ -2334,6 +2216,7 @@ static PyObject *__pyx_n_s_new;
 static PyObject *__pyx_n_s_node_id;
 static PyObject *__pyx_kp_u_nodes;
 static PyObject *__pyx_n_s_nongeometric_degree;
+static PyObject *__pyx_n_s_nonunique_triangle_list;
 static PyObject *__pyx_n_s_nonzero;
 static PyObject *__pyx_n_s_np;
 static PyObject *__pyx_n_s_numpy;
@@ -2367,7 +2250,6 @@ static PyObject *__pyx_n_s_return_triangles;
 static PyObject *__pyx_n_s_run_dynamic;
 static PyObject *__pyx_n_s_scipy_spatial;
 static PyObject *__pyx_n_s_seed;
-static PyObject *__pyx_n_s_send;
 static PyObject *__pyx_n_s_set_title;
 static PyObject *__pyx_n_s_set_xlabel;
 static PyObject *__pyx_n_s_set_ylabel;
@@ -2375,7 +2257,6 @@ static PyObject *__pyx_n_s_setstate;
 static PyObject *__pyx_n_s_setstate_cython;
 static PyObject *__pyx_n_s_sigmoid;
 static PyObject *__pyx_n_s_size;
-static PyObject *__pyx_n_s_size_k;
 static PyObject *__pyx_n_s_sklearn_metrics_pairwise;
 static PyObject *__pyx_n_s_sort;
 static PyObject *__pyx_n_s_spy;
@@ -2383,9 +2264,9 @@ static PyObject *__pyx_n_s_sqrt;
 static PyObject *__pyx_n_s_state;
 static PyObject *__pyx_kp_s_stringsource;
 static PyObject *__pyx_n_s_subplots;
+static PyObject *__pyx_n_s_sum;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_n_s_threshold;
-static PyObject *__pyx_n_s_throw;
 static PyObject *__pyx_n_s_trials;
 static PyObject *__pyx_kp_u_trials_2;
 static PyObject *__pyx_n_u_turquoise;
@@ -2397,27 +2278,29 @@ static PyObject *__pyx_n_u_v;
 static PyObject *__pyx_n_u_violet;
 static PyObject *__pyx_n_s_vstack;
 static PyObject *__pyx_kp_u_w_GD_d;
+static PyObject *__pyx_n_s_where;
 static PyObject *__pyx_n_u_yellow;
 static PyObject *__pyx_n_s_zeros;
 static int __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network___init__(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_size, int __pyx_v_geometric_degree, int __pyx_v_nongeometric_degree, PyObject *__pyx_v_manifold); /* proto */
 static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_2get_neurons(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, PyObject *__pyx_v_neurons); /* proto */
 static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_4make_geometric(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, PyArrayObject *__pyx_v_A); /* proto */
 static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_6add_noise_to_geometric(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_8k_cliques(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_11return_triangles(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_size_k); /* proto */
-static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_13neighbors(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_node_id); /* proto */
-static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_15neighbor_input(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_node_id, float __pyx_v_K, float __pyx_v_L, PyObject *__pyx_v_model_type); /* proto */
-static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_17sigmoid(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_node_id, int __pyx_v_C, float __pyx_v_K, float __pyx_v_L, PyObject *__pyx_v_model_type); /* proto */
-static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_19update_history(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_node_id, int __pyx_v_C, float __pyx_v_K, float __pyx_v_L, PyObject *__pyx_v_model_type); /* proto */
-static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_21update_states(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_23initial_spread(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_seed); /* proto */
-static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_25refresh(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_27run_dynamic(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_seed, int __pyx_v_TIME, int __pyx_v_C, float __pyx_v_K, float __pyx_v_L, PyObject *__pyx_v_model_type); /* proto */
-static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_29stack_histories(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_TIME); /* proto */
-static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_31average_over_trials(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_seed, int __pyx_v_TIME, int __pyx_v_C, int __pyx_v_trials, float __pyx_v_K, float __pyx_v_L, PyObject *__pyx_v_model_type); /* proto */
-static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_33make_distance_matrix(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_TIME, int __pyx_v_C, int __pyx_v_trials, float __pyx_v_K, float __pyx_v_L, PyObject *__pyx_v_model_type); /* proto */
-static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_35compute_persistence(CYTHON_UNUSED struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, PyArrayObject *__pyx_v_distances, int __pyx_v_dimension, int __pyx_v_spy); /* proto */
-static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_37display_comm_sizes(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, PyObject *__pyx_v_Q, PyObject *__pyx_v_labels, int __pyx_v_TIME, int __pyx_v_C, int __pyx_v_trials, CYTHON_UNUSED int __pyx_v_memory, CYTHON_UNUSED int __pyx_v_rest, float __pyx_v_threshold, int __pyx_v_K, PyObject *__pyx_v_L); /* proto */
+static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_8get_nonunique_triangle_list(CYTHON_UNUSED struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, PyArrayObject *__pyx_v_A); /* proto */
+static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_10get_nodes_unique_triangles(CYTHON_UNUSED struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, PyArrayObject *__pyx_v_nonunique_triangle_list, int __pyx_v_i); /* proto */
+static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_12return_triangles(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_14neighbors(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_node_id); /* proto */
+static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_16neighbor_input(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_node_id, float __pyx_v_K, float __pyx_v_L, PyObject *__pyx_v_model_type); /* proto */
+static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_18sigmoid(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_node_id, int __pyx_v_C, float __pyx_v_K, float __pyx_v_L, PyObject *__pyx_v_model_type); /* proto */
+static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_20update_history(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_node_id, int __pyx_v_C, float __pyx_v_K, float __pyx_v_L, PyObject *__pyx_v_model_type); /* proto */
+static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_22update_states(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_24initial_spread(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_seed); /* proto */
+static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_26refresh(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_28run_dynamic(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_seed, int __pyx_v_TIME, int __pyx_v_C, float __pyx_v_K, float __pyx_v_L, PyObject *__pyx_v_model_type); /* proto */
+static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_30stack_histories(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_TIME); /* proto */
+static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_32average_over_trials(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_seed, int __pyx_v_TIME, int __pyx_v_C, int __pyx_v_trials, float __pyx_v_K, float __pyx_v_L, PyObject *__pyx_v_model_type); /* proto */
+static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_34make_distance_matrix(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_TIME, int __pyx_v_C, int __pyx_v_trials, float __pyx_v_K, float __pyx_v_L, PyObject *__pyx_v_model_type); /* proto */
+static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_36compute_persistence(CYTHON_UNUSED struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, PyArrayObject *__pyx_v_distances, int __pyx_v_dimension, int __pyx_v_spy); /* proto */
+static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_38display_comm_sizes(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, PyObject *__pyx_v_Q, PyObject *__pyx_v_labels, int __pyx_v_TIME, int __pyx_v_C, int __pyx_v_trials, CYTHON_UNUSED int __pyx_v_memory, CYTHON_UNUSED int __pyx_v_rest, float __pyx_v_threshold, int __pyx_v_K, PyObject *__pyx_v_L); /* proto */
 static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_1N___get__(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self); /* proto */
 static int __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_1N_2__set__(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
 static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_2GD___get__(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self); /* proto */
@@ -2441,17 +2324,17 @@ static int __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometr
 static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_9triangles___get__(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self); /* proto */
 static int __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_9triangles_2__set__(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
 static int __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_9triangles_4__del__(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_39__reduce_cython__(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_41__setstate_cython__(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_40__reduce_cython__(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_42__setstate_cython__(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, PyObject *__pyx_v___pyx_state); /* proto */
 static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_unpickle_Geometric_Brain_Network(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state); /* proto */
 static PyObject *__pyx_tp_new_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
-static PyObject *__pyx_tp_new_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static __Pyx_CachedCFunction __pyx_umethod_PySet_Type_difference = {0, &__pyx_n_s_difference, 0, 0, 0};
 static PyObject *__pyx_float_0_0;
 static PyObject *__pyx_float_0_2;
 static PyObject *__pyx_int_0;
 static PyObject *__pyx_int_1;
 static PyObject *__pyx_int_2;
+static PyObject *__pyx_int_3;
 static PyObject *__pyx_int_8;
 static PyObject *__pyx_int_12;
 static PyObject *__pyx_int_20;
@@ -2460,22 +2343,24 @@ static PyObject *__pyx_int_34979811;
 static PyObject *__pyx_int_neg_1;
 static PyObject *__pyx_int_neg_100;
 static PyObject *__pyx_tuple_;
-static PyObject *__pyx_slice__3;
-static PyObject *__pyx_tuple__2;
+static PyObject *__pyx_slice__2;
+static PyObject *__pyx_slice__6;
+static PyObject *__pyx_tuple__3;
 static PyObject *__pyx_tuple__4;
 static PyObject *__pyx_tuple__5;
-static PyObject *__pyx_tuple__6;
 static PyObject *__pyx_tuple__7;
 static PyObject *__pyx_tuple__8;
 static PyObject *__pyx_tuple__9;
 static PyObject *__pyx_tuple__10;
 static PyObject *__pyx_tuple__11;
 static PyObject *__pyx_tuple__12;
+static PyObject *__pyx_tuple__13;
 static PyObject *__pyx_tuple__14;
-static PyObject *__pyx_codeobj__15;
+static PyObject *__pyx_tuple__16;
+static PyObject *__pyx_codeobj__17;
 /* Late includes */
 
-/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":36
+/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":38
  *     cdef public dict triangles
  * 
  *     def __init__(self, int size, int geometric_degree = 1, int nongeometric_degree = 0, str manifold = 'Ring'):             # <<<<<<<<<<<<<<
@@ -2537,7 +2422,7 @@ static int __pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometr
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 36, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 38, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -2552,14 +2437,14 @@ static int __pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometr
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_size = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_size == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 36, __pyx_L3_error)
+    __pyx_v_size = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_size == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 38, __pyx_L3_error)
     if (values[1]) {
-      __pyx_v_geometric_degree = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_geometric_degree == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 36, __pyx_L3_error)
+      __pyx_v_geometric_degree = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_geometric_degree == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 38, __pyx_L3_error)
     } else {
       __pyx_v_geometric_degree = ((int)1);
     }
     if (values[2]) {
-      __pyx_v_nongeometric_degree = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_nongeometric_degree == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 36, __pyx_L3_error)
+      __pyx_v_nongeometric_degree = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_nongeometric_degree == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 38, __pyx_L3_error)
     } else {
       __pyx_v_nongeometric_degree = ((int)0);
     }
@@ -2567,13 +2452,13 @@ static int __pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometr
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 0, 1, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 36, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 1, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 38, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("Neuronal_Cascades_base.Geometric_Brain_Network.Geometric_Brain_Network.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_manifold), (&PyUnicode_Type), 1, "manifold", 1))) __PYX_ERR(0, 36, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_manifold), (&PyUnicode_Type), 1, "manifold", 1))) __PYX_ERR(0, 38, __pyx_L1_error)
   __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network___init__(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self), __pyx_v_size, __pyx_v_geometric_degree, __pyx_v_nongeometric_degree, __pyx_v_manifold);
 
   /* function exit code */
@@ -2599,7 +2484,7 @@ static int __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometr
   int __pyx_t_8;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":38
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":40
  *     def __init__(self, int size, int geometric_degree = 1, int nongeometric_degree = 0, str manifold = 'Ring'):
  * 
  *         self.N = size             # <<<<<<<<<<<<<<
@@ -2608,7 +2493,7 @@ static int __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometr
  */
   __pyx_v_self->N = __pyx_v_size;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":39
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":41
  * 
  *         self.N = size
  *         self.GD = geometric_degree             # <<<<<<<<<<<<<<
@@ -2617,7 +2502,7 @@ static int __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometr
  */
   __pyx_v_self->GD = __pyx_v_geometric_degree;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":40
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":42
  *         self.N = size
  *         self.GD = geometric_degree
  *         self.nGD = nongeometric_degree             # <<<<<<<<<<<<<<
@@ -2626,7 +2511,7 @@ static int __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometr
  */
   __pyx_v_self->nGD = __pyx_v_nongeometric_degree;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":41
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":43
  *         self.GD = geometric_degree
  *         self.nGD = nongeometric_degree
  *         self.manifold = manifold             # <<<<<<<<<<<<<<
@@ -2639,18 +2524,18 @@ static int __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometr
   __Pyx_DECREF(__pyx_v_self->manifold);
   __pyx_v_self->manifold = __pyx_v_manifold;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":42
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":44
  *         self.nGD = nongeometric_degree
  *         self.manifold = manifold
  *         self.text = '%s Network on %d nodes'%(self.manifold, self.N)             # <<<<<<<<<<<<<<
  *         A = np.zeros((self.N,self.N), dtype = np.int64)
  * 
  */
-  __pyx_t_1 = PyTuple_New(4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 42, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_2 = 0;
   __pyx_t_3 = 127;
-  __pyx_t_4 = __Pyx_PyUnicode_Unicode(__pyx_v_self->manifold); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 42, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyUnicode_Unicode(__pyx_v_self->manifold); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_3 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_3) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_3;
   __pyx_t_2 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_4);
@@ -2661,7 +2546,7 @@ static int __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometr
   __pyx_t_2 += 12;
   __Pyx_GIVEREF(__pyx_kp_u_Network_on);
   PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_kp_u_Network_on);
-  __pyx_t_4 = __Pyx_PyUnicode_From_int(__pyx_v_self->N, 0, ' ', 'd'); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 42, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyUnicode_From_int(__pyx_v_self->N, 0, ' ', 'd'); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_2 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_4);
@@ -2671,7 +2556,7 @@ static int __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometr
   __pyx_t_2 += 6;
   __Pyx_GIVEREF(__pyx_kp_u_nodes);
   PyTuple_SET_ITEM(__pyx_t_1, 3, __pyx_kp_u_nodes);
-  __pyx_t_4 = __Pyx_PyUnicode_Join(__pyx_t_1, 4, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 42, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyUnicode_Join(__pyx_t_1, 4, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_GIVEREF(__pyx_t_4);
@@ -2680,23 +2565,23 @@ static int __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometr
   __pyx_v_self->text = ((PyObject*)__pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":43
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":45
  *         self.manifold = manifold
  *         self.text = '%s Network on %d nodes'%(self.manifold, self.N)
  *         A = np.zeros((self.N,self.N), dtype = np.int64)             # <<<<<<<<<<<<<<
  * 
  *         self.make_geometric(A)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_zeros); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_zeros); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_self->N); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_self->N); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_self->N); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_self->N); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4);
@@ -2704,21 +2589,21 @@ static int __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometr
   PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_t_5);
   __pyx_t_4 = 0;
   __pyx_t_5 = 0;
-  __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_6);
   PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_6);
   __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_int64); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_int64); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_dtype, __pyx_t_7) < 0) __PYX_ERR(0, 43, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_dtype, __pyx_t_7) < 0) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -2726,14 +2611,14 @@ static int __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometr
   __pyx_v_A = __pyx_t_7;
   __pyx_t_7 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":45
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":47
  *         A = np.zeros((self.N,self.N), dtype = np.int64)
  * 
  *         self.make_geometric(A)             # <<<<<<<<<<<<<<
  * 
  *         if self.nGD > 0: self.add_noise_to_geometric()
  */
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_make_geometric); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 45, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_make_geometric); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
@@ -2747,12 +2632,12 @@ static int __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometr
   }
   __pyx_t_7 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_5, __pyx_v_A) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_v_A);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 45, __pyx_L1_error)
+  if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":47
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":49
  *         self.make_geometric(A)
  * 
  *         if self.nGD > 0: self.add_noise_to_geometric()             # <<<<<<<<<<<<<<
@@ -2761,7 +2646,7 @@ static int __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometr
  */
   __pyx_t_8 = ((__pyx_v_self->nGD > 0) != 0);
   if (__pyx_t_8) {
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_add_noise_to_geometric); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 47, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_add_noise_to_geometric); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 49, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __pyx_t_5 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
@@ -2775,20 +2660,20 @@ static int __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometr
     }
     __pyx_t_7 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_6);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 47, __pyx_L1_error)
+    if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 49, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   }
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":49
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":51
  *         if self.nGD > 0: self.add_noise_to_geometric()
  * 
  *         self.triangles = self.return_triangles()             # <<<<<<<<<<<<<<
  * 
  *     def get_neurons(self, list neurons):
  */
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_return_triangles); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_return_triangles); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 51, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
@@ -2802,17 +2687,17 @@ static int __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometr
   }
   __pyx_t_7 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 49, __pyx_L1_error)
+  if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 51, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (!(likely(PyDict_CheckExact(__pyx_t_7))||((__pyx_t_7) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_t_7)->tp_name), 0))) __PYX_ERR(0, 49, __pyx_L1_error)
+  if (!(likely(PyDict_CheckExact(__pyx_t_7))||((__pyx_t_7) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_t_7)->tp_name), 0))) __PYX_ERR(0, 51, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_7);
   __Pyx_GOTREF(__pyx_v_self->triangles);
   __Pyx_DECREF(__pyx_v_self->triangles);
   __pyx_v_self->triangles = ((PyObject*)__pyx_t_7);
   __pyx_t_7 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":36
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":38
  *     cdef public dict triangles
  * 
  *     def __init__(self, int size, int geometric_degree = 1, int nongeometric_degree = 0, str manifold = 'Ring'):             # <<<<<<<<<<<<<<
@@ -2837,7 +2722,7 @@ static int __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometr
   return __pyx_r;
 }
 
-/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":51
+/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":53
  *         self.triangles = self.return_triangles()
  * 
  *     def get_neurons(self, list neurons):             # <<<<<<<<<<<<<<
@@ -2851,7 +2736,7 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("get_neurons (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_neurons), (&PyList_Type), 1, "neurons", 1))) __PYX_ERR(0, 51, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_neurons), (&PyList_Type), 1, "neurons", 1))) __PYX_ERR(0, 53, __pyx_L1_error)
   __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_2get_neurons(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self), ((PyObject*)__pyx_v_neurons));
 
   /* function exit code */
@@ -2871,7 +2756,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("get_neurons", 0);
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":53
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":55
  *     def get_neurons(self, list neurons):
  * 
  *         if len(neurons) != self.N:             # <<<<<<<<<<<<<<
@@ -2880,26 +2765,26 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
   if (unlikely(__pyx_v_neurons == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 53, __pyx_L1_error)
+    __PYX_ERR(0, 55, __pyx_L1_error)
   }
-  __pyx_t_1 = PyList_GET_SIZE(__pyx_v_neurons); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_t_1 = PyList_GET_SIZE(__pyx_v_neurons); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 55, __pyx_L1_error)
   __pyx_t_2 = ((__pyx_t_1 != __pyx_v_self->N) != 0);
   if (unlikely(__pyx_t_2)) {
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":54
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":56
  * 
  *         if len(neurons) != self.N:
  *             raise ValueError('Size of the network and the number of neurons should match')             # <<<<<<<<<<<<<<
  * 
  *         self.nodes = neurons
  */
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 54, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 56, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __PYX_ERR(0, 54, __pyx_L1_error)
+    __PYX_ERR(0, 56, __pyx_L1_error)
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":53
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":55
  *     def get_neurons(self, list neurons):
  * 
  *         if len(neurons) != self.N:             # <<<<<<<<<<<<<<
@@ -2908,7 +2793,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
   }
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":56
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":58
  *             raise ValueError('Size of the network and the number of neurons should match')
  * 
  *         self.nodes = neurons             # <<<<<<<<<<<<<<
@@ -2921,7 +2806,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __Pyx_DECREF(__pyx_v_self->nodes);
   __pyx_v_self->nodes = __pyx_v_neurons;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":51
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":53
  *         self.triangles = self.return_triangles()
  * 
  *     def get_neurons(self, list neurons):             # <<<<<<<<<<<<<<
@@ -2942,7 +2827,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   return __pyx_r;
 }
 
-/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":58
+/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":60
  *         self.nodes = neurons
  * 
  *     def make_geometric(self, numpy.ndarray[DTYPE_t, ndim=2] A):             # <<<<<<<<<<<<<<
@@ -2956,7 +2841,7 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("make_geometric (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_A), __pyx_ptype_5numpy_ndarray, 1, "A", 0))) __PYX_ERR(0, 58, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_A), __pyx_ptype_5numpy_ndarray, 1, "A", 0))) __PYX_ERR(0, 60, __pyx_L1_error)
   __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_4make_geometric(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self), ((PyArrayObject *)__pyx_v_A));
 
   /* function exit code */
@@ -2995,11 +2880,11 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __pyx_pybuffernd_A.rcbuffer = &__pyx_pybuffer_A;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_A.rcbuffer->pybuffer, (PyObject*)__pyx_v_A, &__Pyx_TypeInfo_nn___pyx_t_22Neuronal_Cascades_base_23Geometric_Brain_Network_DTYPE_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 58, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_A.rcbuffer->pybuffer, (PyObject*)__pyx_v_A, &__Pyx_TypeInfo_nn___pyx_t_22Neuronal_Cascades_base_23Geometric_Brain_Network_DTYPE_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 60, __pyx_L1_error)
   }
   __pyx_pybuffernd_A.diminfo[0].strides = __pyx_pybuffernd_A.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_A.diminfo[0].shape = __pyx_pybuffernd_A.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_A.diminfo[1].strides = __pyx_pybuffernd_A.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_A.diminfo[1].shape = __pyx_pybuffernd_A.rcbuffer->pybuffer.shape[1];
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":63
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":65
  *         cdef Py_ssize_t u, i
  * 
  *         self.A = A             # <<<<<<<<<<<<<<
@@ -3012,18 +2897,18 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __Pyx_DECREF(((PyObject *)__pyx_v_self->A));
   __pyx_v_self->A = ((PyArrayObject *)__pyx_v_A);
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":65
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":67
  *         self.A = A
  * 
  *         if self.manifold == 'Ring':             # <<<<<<<<<<<<<<
  * 
  *             #if self.GD >= int(self.N)-1:
  */
-  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_self->manifold, __pyx_n_u_Ring, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_self->manifold, __pyx_n_u_Ring, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 67, __pyx_L1_error)
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":72
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":74
  *                 #raise InputError('Geometric Degree should be an even positive integer.')
  * 
  *             gd = int(self.GD/2)             # <<<<<<<<<<<<<<
@@ -3032,7 +2917,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
     __pyx_v_gd = ((int)(((double)__pyx_v_self->GD) / 2.0));
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":73
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":75
  * 
  *             gd = int(self.GD/2)
  *             for u in range(self.N):             # <<<<<<<<<<<<<<
@@ -3044,7 +2929,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
       __pyx_v_u = __pyx_t_5;
 
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":74
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":76
  *             gd = int(self.GD/2)
  *             for u in range(self.N):
  *                 for i in range(1, gd + 1):             # <<<<<<<<<<<<<<
@@ -3056,7 +2941,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
       for (__pyx_t_8 = 1; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
         __pyx_v_i = __pyx_t_8;
 
-        /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":76
+        /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":78
  *                 for i in range(1, gd + 1):
  *                     #from left
  *                     if u + i >= self.N:             # <<<<<<<<<<<<<<
@@ -3066,7 +2951,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         __pyx_t_2 = (((__pyx_v_u + __pyx_v_i) >= __pyx_v_self->N) != 0);
         if (__pyx_t_2) {
 
-          /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":77
+          /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":79
  *                     #from left
  *                     if u + i >= self.N:
  *                         v = u + i - self.N             # <<<<<<<<<<<<<<
@@ -3075,7 +2960,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
           __pyx_v_v = ((__pyx_v_u + __pyx_v_i) - __pyx_v_self->N);
 
-          /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":76
+          /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":78
  *                 for i in range(1, gd + 1):
  *                     #from left
  *                     if u + i >= self.N:             # <<<<<<<<<<<<<<
@@ -3085,7 +2970,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
           goto __pyx_L8;
         }
 
-        /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":78
+        /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":80
  *                     if u + i >= self.N:
  *                         v = u + i - self.N
  *                     else: v = u + i             # <<<<<<<<<<<<<<
@@ -3097,18 +2982,18 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         }
         __pyx_L8:;
 
-        /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":79
+        /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":81
  *                         v = u + i - self.N
  *                     else: v = u + i
  *                     self.A[u,v] = True             # <<<<<<<<<<<<<<
  *                     #from right
  *                     if u - i < 0:
  */
-        __pyx_t_9 = PyInt_FromSsize_t(__pyx_v_u); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 79, __pyx_L1_error)
+        __pyx_t_9 = PyInt_FromSsize_t(__pyx_v_u); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 81, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_v); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 79, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_v); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 81, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_11 = PyTuple_New(2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 79, __pyx_L1_error)
+        __pyx_t_11 = PyTuple_New(2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 81, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_GIVEREF(__pyx_t_9);
         PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_9);
@@ -3116,10 +3001,10 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         PyTuple_SET_ITEM(__pyx_t_11, 1, __pyx_t_10);
         __pyx_t_9 = 0;
         __pyx_t_10 = 0;
-        if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_self->A), __pyx_t_11, Py_True) < 0)) __PYX_ERR(0, 79, __pyx_L1_error)
+        if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_self->A), __pyx_t_11, Py_True) < 0)) __PYX_ERR(0, 81, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-        /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":81
+        /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":83
  *                     self.A[u,v] = True
  *                     #from right
  *                     if u - i < 0:             # <<<<<<<<<<<<<<
@@ -3129,7 +3014,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         __pyx_t_2 = (((__pyx_v_u - __pyx_v_i) < 0) != 0);
         if (__pyx_t_2) {
 
-          /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":82
+          /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":84
  *                     #from right
  *                     if u - i < 0:
  *                         v = self.N + u - i             # <<<<<<<<<<<<<<
@@ -3138,7 +3023,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
           __pyx_v_v = ((__pyx_v_self->N + __pyx_v_u) - __pyx_v_i);
 
-          /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":81
+          /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":83
  *                     self.A[u,v] = True
  *                     #from right
  *                     if u - i < 0:             # <<<<<<<<<<<<<<
@@ -3148,7 +3033,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
           goto __pyx_L9;
         }
 
-        /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":83
+        /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":85
  *                     if u - i < 0:
  *                         v = self.N + u - i
  *                     else: v = u - i             # <<<<<<<<<<<<<<
@@ -3160,18 +3045,18 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         }
         __pyx_L9:;
 
-        /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":84
+        /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":86
  *                         v = self.N + u - i
  *                     else: v = u - i
  *                     self.A[u,v] = True             # <<<<<<<<<<<<<<
  *             self.text = self.text + ' w/ GD %d'%(self.GD)
  * 
  */
-        __pyx_t_11 = PyInt_FromSsize_t(__pyx_v_u); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 84, __pyx_L1_error)
+        __pyx_t_11 = PyInt_FromSsize_t(__pyx_v_u); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 86, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
-        __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_v); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 84, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_v); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 86, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 84, __pyx_L1_error)
+        __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 86, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_GIVEREF(__pyx_t_11);
         PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_11);
@@ -3179,24 +3064,24 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_t_10);
         __pyx_t_11 = 0;
         __pyx_t_10 = 0;
-        if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_self->A), __pyx_t_9, Py_True) < 0)) __PYX_ERR(0, 84, __pyx_L1_error)
+        if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_self->A), __pyx_t_9, Py_True) < 0)) __PYX_ERR(0, 86, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       }
     }
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":85
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":87
  *                     else: v = u - i
  *                     self.A[u,v] = True
  *             self.text = self.text + ' w/ GD %d'%(self.GD)             # <<<<<<<<<<<<<<
  * 
  *     def add_noise_to_geometric(self):#, numpy.ndarray[DTYPE_t, ndim=2] A):
  */
-    __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_self->GD); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 85, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_self->GD); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 87, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_10 = PyUnicode_Format(__pyx_kp_u_w_GD_d, __pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 85, __pyx_L1_error)
+    __pyx_t_10 = PyUnicode_Format(__pyx_kp_u_w_GD_d, __pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 87, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    __pyx_t_9 = __Pyx_PyUnicode_ConcatSafe(__pyx_v_self->text, __pyx_t_10); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 85, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyUnicode_ConcatSafe(__pyx_v_self->text, __pyx_t_10); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 87, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_GIVEREF(__pyx_t_9);
@@ -3205,7 +3090,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     __pyx_v_self->text = ((PyObject*)__pyx_t_9);
     __pyx_t_9 = 0;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":65
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":67
  *         self.A = A
  * 
  *         if self.manifold == 'Ring':             # <<<<<<<<<<<<<<
@@ -3214,7 +3099,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
   }
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":58
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":60
  *         self.nodes = neurons
  * 
  *     def make_geometric(self, numpy.ndarray[DTYPE_t, ndim=2] A):             # <<<<<<<<<<<<<<
@@ -3246,7 +3131,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   return __pyx_r;
 }
 
-/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":87
+/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":89
  *             self.text = self.text + ' w/ GD %d'%(self.GD)
  * 
  *     def add_noise_to_geometric(self):#, numpy.ndarray[DTYPE_t, ndim=2] A):             # <<<<<<<<<<<<<<
@@ -3304,7 +3189,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   int __pyx_t_16;
   __Pyx_RefNannySetupContext("add_noise_to_geometric", 0);
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":95
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":97
  *         cdef numpy.ndarray stubs
  * 
  *         M = int(self.N * self.nGD)             # <<<<<<<<<<<<<<
@@ -3313,7 +3198,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
   __pyx_v_M = (__pyx_v_self->N * __pyx_v_self->nGD);
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":99
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":101
  *         #if M%2 == 1: raise ValueError('Try providing an even non-geometric degree')
  * 
  *         flag_2 = True             # <<<<<<<<<<<<<<
@@ -3322,7 +3207,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
   __pyx_v_flag_2 = 1;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":101
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":103
  *         flag_2 = True
  * 
  *         while flag_2:             # <<<<<<<<<<<<<<
@@ -3333,7 +3218,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     __pyx_t_1 = (__pyx_v_flag_2 != 0);
     if (!__pyx_t_1) break;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":102
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":104
  * 
  *         while flag_2:
  *             flag_2 = False             # <<<<<<<<<<<<<<
@@ -3342,78 +3227,78 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
     __pyx_v_flag_2 = 0;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":104
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":106
  *             flag_2 = False
  *             #build stubs
  *             stubs = np.zeros((M), dtype = DTYPE)             # <<<<<<<<<<<<<<
  *             nongeo = np.ones((self.nGD), dtype = np.int64)
  *             for i in range(self.N):
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 104, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 106, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 104, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 106, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_M); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 104, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_M); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 106, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 104, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 106, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_2);
     PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
     __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 104, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 106, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_DTYPE); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 104, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_DTYPE); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 106, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 104, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 106, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 104, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 106, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 104, __pyx_L1_error)
+    if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 106, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_stubs, ((PyArrayObject *)__pyx_t_5));
     __pyx_t_5 = 0;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":105
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":107
  *             #build stubs
  *             stubs = np.zeros((M), dtype = DTYPE)
  *             nongeo = np.ones((self.nGD), dtype = np.int64)             # <<<<<<<<<<<<<<
  *             for i in range(self.N):
  *                 index = (i*self.nGD) + np.arange(self.nGD, dtype = np.int64)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 105, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 107, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_ones); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 105, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_ones); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 107, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_self->nGD); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 105, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_self->nGD); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 107, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 105, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 107, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_5);
     PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_5);
     __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 105, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 107, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 105, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 107, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_int64); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 105, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_int64); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 107, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_6) < 0) __PYX_ERR(0, 105, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_6) < 0) __PYX_ERR(0, 107, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 105, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 107, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 105, __pyx_L1_error)
+    if (!(likely(((__pyx_t_6) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_6, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 107, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_nongeo, ((PyArrayObject *)__pyx_t_6));
     __pyx_t_6 = 0;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":106
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":108
  *             stubs = np.zeros((M), dtype = DTYPE)
  *             nongeo = np.ones((self.nGD), dtype = np.int64)
  *             for i in range(self.N):             # <<<<<<<<<<<<<<
@@ -3425,61 +3310,61 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
       __pyx_v_i = __pyx_t_9;
 
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":107
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":109
  *             nongeo = np.ones((self.nGD), dtype = np.int64)
  *             for i in range(self.N):
  *                 index = (i*self.nGD) + np.arange(self.nGD, dtype = np.int64)             # <<<<<<<<<<<<<<
  *                 stubs[index[0]:index[-1]+1] = (i) * np.asarray(nongeo)
  * 
  */
-      __pyx_t_6 = PyInt_FromSsize_t((__pyx_v_i * __pyx_v_self->nGD)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 107, __pyx_L1_error)
+      __pyx_t_6 = PyInt_FromSsize_t((__pyx_v_i * __pyx_v_self->nGD)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 109, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 107, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 109, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_arange); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 107, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_arange); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 109, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_self->nGD); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 107, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_self->nGD); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 109, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 107, __pyx_L1_error)
+      __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 109, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GIVEREF(__pyx_t_5);
       PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_5);
       __pyx_t_5 = 0;
-      __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 107, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 109, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 107, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 109, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_int64); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 107, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_int64); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 109, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_10) < 0) __PYX_ERR(0, 107, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_10) < 0) __PYX_ERR(0, 109, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-      __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_2, __pyx_t_5); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 107, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_2, __pyx_t_5); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 109, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_5 = PyNumber_Add(__pyx_t_6, __pyx_t_10); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 107, __pyx_L1_error)
+      __pyx_t_5 = PyNumber_Add(__pyx_t_6, __pyx_t_10); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 109, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-      if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 107, __pyx_L1_error)
+      if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 109, __pyx_L1_error)
       __Pyx_XDECREF_SET(__pyx_v_index, ((PyArrayObject *)__pyx_t_5));
       __pyx_t_5 = 0;
 
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":108
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":110
  *             for i in range(self.N):
  *                 index = (i*self.nGD) + np.arange(self.nGD, dtype = np.int64)
  *                 stubs[index[0]:index[-1]+1] = (i) * np.asarray(nongeo)             # <<<<<<<<<<<<<<
  * 
  *             #build undirected link list
  */
-      __pyx_t_5 = PyInt_FromSsize_t(__pyx_v_i); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 108, __pyx_L1_error)
+      __pyx_t_5 = PyInt_FromSsize_t(__pyx_v_i); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 110, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 108, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 110, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_asarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 108, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_asarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 110, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __pyx_t_6 = NULL;
@@ -3494,41 +3379,41 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
       }
       __pyx_t_10 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_6, ((PyObject *)__pyx_v_nongeo)) : __Pyx_PyObject_CallOneArg(__pyx_t_2, ((PyObject *)__pyx_v_nongeo));
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 108, __pyx_L1_error)
+      if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 110, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = PyNumber_Multiply(__pyx_t_5, __pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 108, __pyx_L1_error)
+      __pyx_t_2 = PyNumber_Multiply(__pyx_t_5, __pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 110, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-      __pyx_t_10 = __Pyx_GetItemInt(((PyObject *)__pyx_v_index), 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 108, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_GetItemInt(((PyObject *)__pyx_v_index), 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 110, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
-      __pyx_t_5 = __Pyx_GetItemInt(((PyObject *)__pyx_v_index), -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 108, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_GetItemInt(((PyObject *)__pyx_v_index), -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 110, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_6 = __Pyx_PyInt_AddObjC(__pyx_t_5, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 108, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyInt_AddObjC(__pyx_t_5, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 110, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (__Pyx_PyObject_SetSlice(((PyObject *)__pyx_v_stubs), __pyx_t_2, 0, 0, &__pyx_t_10, &__pyx_t_6, NULL, 0, 0, 1) < 0) __PYX_ERR(0, 108, __pyx_L1_error)
+      if (__Pyx_PyObject_SetSlice(((PyObject *)__pyx_v_stubs), __pyx_t_2, 0, 0, &__pyx_t_10, &__pyx_t_6, NULL, 0, 0, 1) < 0) __PYX_ERR(0, 110, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":111
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":113
  * 
  *             #build undirected link list
  *             link_list = np.zeros((int(M/2),2), dtype = DTYPE)             # <<<<<<<<<<<<<<
  *             for m in range(int(M/2)):
  *                 flag_1 = True # turn on flag to enter while loop
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 111, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 111, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyInt_FromDouble((((double)__pyx_v_M) / 2.0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 111, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_FromDouble((((double)__pyx_v_M) / 2.0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 111, __pyx_L1_error)
+    __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_GIVEREF(__pyx_t_2);
     PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_2);
@@ -3536,27 +3421,27 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     __Pyx_GIVEREF(__pyx_int_2);
     PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_int_2);
     __pyx_t_2 = 0;
-    __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 111, __pyx_L1_error)
+    __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_GIVEREF(__pyx_t_10);
     PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_10);
     __pyx_t_10 = 0;
-    __pyx_t_10 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 111, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_DTYPE); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 111, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_DTYPE); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    if (PyDict_SetItem(__pyx_t_10, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 111, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_10, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_2, __pyx_t_10); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 111, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_2, __pyx_t_10); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 111, __pyx_L1_error)
+    if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_link_list, ((PyArrayObject *)__pyx_t_5));
     __pyx_t_5 = 0;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":112
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":114
  *             #build undirected link list
  *             link_list = np.zeros((int(M/2),2), dtype = DTYPE)
  *             for m in range(int(M/2)):             # <<<<<<<<<<<<<<
@@ -3568,7 +3453,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_12; __pyx_t_9+=1) {
       __pyx_v_m = __pyx_t_9;
 
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":113
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":115
  *             link_list = np.zeros((int(M/2),2), dtype = DTYPE)
  *             for m in range(int(M/2)):
  *                 flag_1 = True # turn on flag to enter while loop             # <<<<<<<<<<<<<<
@@ -3577,7 +3462,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
       __pyx_v_flag_1 = 1;
 
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":114
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":116
  *             for m in range(int(M/2)):
  *                 flag_1 = True # turn on flag to enter while loop
  *                 count = 0             # <<<<<<<<<<<<<<
@@ -3586,7 +3471,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
       __pyx_v_count = 0;
 
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":115
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":117
  *                 flag_1 = True # turn on flag to enter while loop
  *                 count = 0
  *                 while flag_1:             # <<<<<<<<<<<<<<
@@ -3597,7 +3482,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         __pyx_t_1 = (__pyx_v_flag_1 != 0);
         if (!__pyx_t_1) break;
 
-        /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":116
+        /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":118
  *                 count = 0
  *                 while flag_1:
  *                     flag_1 = False #turn off flag to exit while loop             # <<<<<<<<<<<<<<
@@ -3606,20 +3491,20 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
         __pyx_v_flag_1 = 0;
 
-        /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":117
+        /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":119
  *                 while flag_1:
  *                     flag_1 = False #turn off flag to exit while loop
  *                     rand1 = random.randint(0, len(stubs)-1)             # <<<<<<<<<<<<<<
  *                     rand2 = random.randint(0, len(stubs)-1)
  * 
  */
-        __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_random); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 117, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_random); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 119, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_randint); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 117, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_randint); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 119, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        __pyx_t_13 = PyObject_Length(((PyObject *)__pyx_v_stubs)); if (unlikely(__pyx_t_13 == ((Py_ssize_t)-1))) __PYX_ERR(0, 117, __pyx_L1_error)
-        __pyx_t_10 = PyInt_FromSsize_t((__pyx_t_13 - 1)); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 117, __pyx_L1_error)
+        __pyx_t_13 = PyObject_Length(((PyObject *)__pyx_v_stubs)); if (unlikely(__pyx_t_13 == ((Py_ssize_t)-1))) __PYX_ERR(0, 119, __pyx_L1_error)
+        __pyx_t_10 = PyInt_FromSsize_t((__pyx_t_13 - 1)); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 119, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __pyx_t_6 = NULL;
         __pyx_t_7 = 0;
@@ -3636,7 +3521,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_2)) {
           PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_int_0, __pyx_t_10};
-          __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 117, __pyx_L1_error)
+          __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 119, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
@@ -3645,14 +3530,14 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
           PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_int_0, __pyx_t_10};
-          __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 117, __pyx_L1_error)
+          __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 119, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         } else
         #endif
         {
-          __pyx_t_4 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 117, __pyx_L1_error)
+          __pyx_t_4 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 119, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           if (__pyx_t_6) {
             __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_6); __pyx_t_6 = NULL;
@@ -3663,29 +3548,29 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
           __Pyx_GIVEREF(__pyx_t_10);
           PyTuple_SET_ITEM(__pyx_t_4, 1+__pyx_t_7, __pyx_t_10);
           __pyx_t_10 = 0;
-          __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 117, __pyx_L1_error)
+          __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 119, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         }
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 117, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 119, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __pyx_v_rand1 = __pyx_t_7;
 
-        /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":118
+        /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":120
  *                     flag_1 = False #turn off flag to exit while loop
  *                     rand1 = random.randint(0, len(stubs)-1)
  *                     rand2 = random.randint(0, len(stubs)-1)             # <<<<<<<<<<<<<<
  * 
  *                     node_A = int(stubs[rand1])
  */
-        __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_random); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 118, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_random); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 120, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_randint); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 118, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_randint); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 120, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __pyx_t_13 = PyObject_Length(((PyObject *)__pyx_v_stubs)); if (unlikely(__pyx_t_13 == ((Py_ssize_t)-1))) __PYX_ERR(0, 118, __pyx_L1_error)
-        __pyx_t_2 = PyInt_FromSsize_t((__pyx_t_13 - 1)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 118, __pyx_L1_error)
+        __pyx_t_13 = PyObject_Length(((PyObject *)__pyx_v_stubs)); if (unlikely(__pyx_t_13 == ((Py_ssize_t)-1))) __PYX_ERR(0, 120, __pyx_L1_error)
+        __pyx_t_2 = PyInt_FromSsize_t((__pyx_t_13 - 1)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 120, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __pyx_t_10 = NULL;
         __pyx_t_7 = 0;
@@ -3702,7 +3587,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_4)) {
           PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_int_0, __pyx_t_2};
-          __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 118, __pyx_L1_error)
+          __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 120, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -3711,14 +3596,14 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
           PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_int_0, __pyx_t_2};
-          __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 118, __pyx_L1_error)
+          __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 120, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         } else
         #endif
         {
-          __pyx_t_6 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 118, __pyx_L1_error)
+          __pyx_t_6 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 120, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_6);
           if (__pyx_t_10) {
             __Pyx_GIVEREF(__pyx_t_10); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_10); __pyx_t_10 = NULL;
@@ -3729,48 +3614,48 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
           __Pyx_GIVEREF(__pyx_t_2);
           PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_7, __pyx_t_2);
           __pyx_t_2 = 0;
-          __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 118, __pyx_L1_error)
+          __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 120, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         }
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 118, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 120, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __pyx_v_rand2 = __pyx_t_7;
 
-        /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":120
+        /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":122
  *                     rand2 = random.randint(0, len(stubs)-1)
  * 
  *                     node_A = int(stubs[rand1])             # <<<<<<<<<<<<<<
  *                     node_B = int(stubs[rand2])
  * 
  */
-        __pyx_t_5 = __Pyx_GetItemInt(((PyObject *)__pyx_v_stubs), __pyx_v_rand1, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 120, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_GetItemInt(((PyObject *)__pyx_v_stubs), __pyx_v_rand1, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 122, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_4 = __Pyx_PyNumber_Int(__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 120, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyNumber_Int(__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 122, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 120, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 122, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __pyx_v_node_A = __pyx_t_7;
 
-        /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":121
+        /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":123
  * 
  *                     node_A = int(stubs[rand1])
  *                     node_B = int(stubs[rand2])             # <<<<<<<<<<<<<<
  * 
  *                     if node_A == node_B: flag_1 = True
  */
-        __pyx_t_4 = __Pyx_GetItemInt(((PyObject *)__pyx_v_stubs), __pyx_v_rand2, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 121, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_GetItemInt(((PyObject *)__pyx_v_stubs), __pyx_v_rand2, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 123, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_5 = __Pyx_PyNumber_Int(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 121, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyNumber_Int(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 123, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 121, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 123, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __pyx_v_node_B = __pyx_t_7;
 
-        /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":123
+        /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":125
  *                     node_B = int(stubs[rand2])
  * 
  *                     if node_A == node_B: flag_1 = True             # <<<<<<<<<<<<<<
@@ -3782,7 +3667,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
           __pyx_v_flag_1 = 1;
         }
 
-        /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":125
+        /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":127
  *                     if node_A == node_B: flag_1 = True
  * 
  *                     for n in range(m):             # <<<<<<<<<<<<<<
@@ -3794,86 +3679,12 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_14; __pyx_t_15+=1) {
           __pyx_v_n = __pyx_t_15;
 
-          /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":126
- * 
- *                     for n in range(m):
- *                         if link_list[n,0] == node_A and link_list[n,1] == node_B:             # <<<<<<<<<<<<<<
- *                             flag_1 = True
- *                         if link_list[n,0] == node_B and link_list[n,1] == node_A:
- */
-          __pyx_t_5 = PyInt_FromSsize_t(__pyx_v_n); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 126, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_5);
-          __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 126, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_4);
-          __Pyx_GIVEREF(__pyx_t_5);
-          PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_5);
-          __Pyx_INCREF(__pyx_int_0);
-          __Pyx_GIVEREF(__pyx_int_0);
-          PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_int_0);
-          __pyx_t_5 = 0;
-          __pyx_t_5 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_link_list), __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 126, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_5);
-          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_node_A); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 126, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_4);
-          __pyx_t_6 = PyObject_RichCompare(__pyx_t_5, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 126, __pyx_L1_error)
-          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          __pyx_t_16 = __Pyx_PyObject_IsTrue(__pyx_t_6); if (unlikely(__pyx_t_16 < 0)) __PYX_ERR(0, 126, __pyx_L1_error)
-          __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-          if (__pyx_t_16) {
-          } else {
-            __pyx_t_1 = __pyx_t_16;
-            goto __pyx_L15_bool_binop_done;
-          }
-          __pyx_t_6 = PyInt_FromSsize_t(__pyx_v_n); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 126, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_6);
-          __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 126, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_4);
-          __Pyx_GIVEREF(__pyx_t_6);
-          PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_6);
-          __Pyx_INCREF(__pyx_int_1);
-          __Pyx_GIVEREF(__pyx_int_1);
-          PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_int_1);
-          __pyx_t_6 = 0;
-          __pyx_t_6 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_link_list), __pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 126, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_6);
-          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_node_B); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 126, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_4);
-          __pyx_t_5 = PyObject_RichCompare(__pyx_t_6, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 126, __pyx_L1_error)
-          __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          __pyx_t_16 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_16 < 0)) __PYX_ERR(0, 126, __pyx_L1_error)
-          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-          __pyx_t_1 = __pyx_t_16;
-          __pyx_L15_bool_binop_done:;
-          if (__pyx_t_1) {
-
-            /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":127
- *                     for n in range(m):
- *                         if link_list[n,0] == node_A and link_list[n,1] == node_B:
- *                             flag_1 = True             # <<<<<<<<<<<<<<
- *                         if link_list[n,0] == node_B and link_list[n,1] == node_A:
- *                             flag_1 = True
- */
-            __pyx_v_flag_1 = 1;
-
-            /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":126
- * 
- *                     for n in range(m):
- *                         if link_list[n,0] == node_A and link_list[n,1] == node_B:             # <<<<<<<<<<<<<<
- *                             flag_1 = True
- *                         if link_list[n,0] == node_B and link_list[n,1] == node_A:
- */
-          }
-
           /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":128
- *                         if link_list[n,0] == node_A and link_list[n,1] == node_B:
+ * 
+ *                     for n in range(m):
+ *                         if link_list[n,0] == node_A and link_list[n,1] == node_B:             # <<<<<<<<<<<<<<
  *                             flag_1 = True
- *                         if link_list[n,0] == node_B and link_list[n,1] == node_A:             # <<<<<<<<<<<<<<
- *                             flag_1 = True
- *                         if self.A[node_A][node_B] == 1 or self.A[node_B][node_A] == 1:
+ *                         if link_list[n,0] == node_B and link_list[n,1] == node_A:
  */
           __pyx_t_5 = PyInt_FromSsize_t(__pyx_v_n); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 128, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
@@ -3888,7 +3699,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
           __pyx_t_5 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_link_list), __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 128, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_node_B); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 128, __pyx_L1_error)
+          __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_node_A); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 128, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           __pyx_t_6 = PyObject_RichCompare(__pyx_t_5, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 128, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -3898,7 +3709,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
           if (__pyx_t_16) {
           } else {
             __pyx_t_1 = __pyx_t_16;
-            goto __pyx_L18_bool_binop_done;
+            goto __pyx_L15_bool_binop_done;
           }
           __pyx_t_6 = PyInt_FromSsize_t(__pyx_v_n); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 128, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_6);
@@ -3913,7 +3724,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
           __pyx_t_6 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_link_list), __pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 128, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_6);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_node_A); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 128, __pyx_L1_error)
+          __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_node_B); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 128, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           __pyx_t_5 = PyObject_RichCompare(__pyx_t_6, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 128, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -3921,10 +3732,84 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
           __pyx_t_16 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_16 < 0)) __PYX_ERR(0, 128, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           __pyx_t_1 = __pyx_t_16;
-          __pyx_L18_bool_binop_done:;
+          __pyx_L15_bool_binop_done:;
           if (__pyx_t_1) {
 
             /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":129
+ *                     for n in range(m):
+ *                         if link_list[n,0] == node_A and link_list[n,1] == node_B:
+ *                             flag_1 = True             # <<<<<<<<<<<<<<
+ *                         if link_list[n,0] == node_B and link_list[n,1] == node_A:
+ *                             flag_1 = True
+ */
+            __pyx_v_flag_1 = 1;
+
+            /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":128
+ * 
+ *                     for n in range(m):
+ *                         if link_list[n,0] == node_A and link_list[n,1] == node_B:             # <<<<<<<<<<<<<<
+ *                             flag_1 = True
+ *                         if link_list[n,0] == node_B and link_list[n,1] == node_A:
+ */
+          }
+
+          /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":130
+ *                         if link_list[n,0] == node_A and link_list[n,1] == node_B:
+ *                             flag_1 = True
+ *                         if link_list[n,0] == node_B and link_list[n,1] == node_A:             # <<<<<<<<<<<<<<
+ *                             flag_1 = True
+ *                         if self.A[node_A][node_B] == 1 or self.A[node_B][node_A] == 1:
+ */
+          __pyx_t_5 = PyInt_FromSsize_t(__pyx_v_n); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 130, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_5);
+          __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 130, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_4);
+          __Pyx_GIVEREF(__pyx_t_5);
+          PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_5);
+          __Pyx_INCREF(__pyx_int_0);
+          __Pyx_GIVEREF(__pyx_int_0);
+          PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_int_0);
+          __pyx_t_5 = 0;
+          __pyx_t_5 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_link_list), __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 130, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_5);
+          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+          __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_node_B); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 130, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_4);
+          __pyx_t_6 = PyObject_RichCompare(__pyx_t_5, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 130, __pyx_L1_error)
+          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+          __pyx_t_16 = __Pyx_PyObject_IsTrue(__pyx_t_6); if (unlikely(__pyx_t_16 < 0)) __PYX_ERR(0, 130, __pyx_L1_error)
+          __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+          if (__pyx_t_16) {
+          } else {
+            __pyx_t_1 = __pyx_t_16;
+            goto __pyx_L18_bool_binop_done;
+          }
+          __pyx_t_6 = PyInt_FromSsize_t(__pyx_v_n); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 130, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_6);
+          __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 130, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_4);
+          __Pyx_GIVEREF(__pyx_t_6);
+          PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_6);
+          __Pyx_INCREF(__pyx_int_1);
+          __Pyx_GIVEREF(__pyx_int_1);
+          PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_int_1);
+          __pyx_t_6 = 0;
+          __pyx_t_6 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_link_list), __pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 130, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_6);
+          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+          __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_node_A); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 130, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_4);
+          __pyx_t_5 = PyObject_RichCompare(__pyx_t_6, __pyx_t_4, Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 130, __pyx_L1_error)
+          __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+          __pyx_t_16 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_16 < 0)) __PYX_ERR(0, 130, __pyx_L1_error)
+          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+          __pyx_t_1 = __pyx_t_16;
+          __pyx_L18_bool_binop_done:;
+          if (__pyx_t_1) {
+
+            /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":131
  *                             flag_1 = True
  *                         if link_list[n,0] == node_B and link_list[n,1] == node_A:
  *                             flag_1 = True             # <<<<<<<<<<<<<<
@@ -3933,7 +3818,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
             __pyx_v_flag_1 = 1;
 
-            /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":128
+            /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":130
  *                         if link_list[n,0] == node_A and link_list[n,1] == node_B:
  *                             flag_1 = True
  *                         if link_list[n,0] == node_B and link_list[n,1] == node_A:             # <<<<<<<<<<<<<<
@@ -3942,43 +3827,43 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
           }
 
-          /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":130
+          /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":132
  *                         if link_list[n,0] == node_B and link_list[n,1] == node_A:
  *                             flag_1 = True
  *                         if self.A[node_A][node_B] == 1 or self.A[node_B][node_A] == 1:             # <<<<<<<<<<<<<<
  *                             flag_1 = True
  * 
  */
-          __pyx_t_5 = __Pyx_GetItemInt(((PyObject *)__pyx_v_self->A), __pyx_v_node_A, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 130, __pyx_L1_error)
+          __pyx_t_5 = __Pyx_GetItemInt(((PyObject *)__pyx_v_self->A), __pyx_v_node_A, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 132, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
-          __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_5, __pyx_v_node_B, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 130, __pyx_L1_error)
+          __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_5, __pyx_v_node_B, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 132, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-          __pyx_t_5 = __Pyx_PyInt_EqObjC(__pyx_t_4, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 130, __pyx_L1_error)
+          __pyx_t_5 = __Pyx_PyInt_EqObjC(__pyx_t_4, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 132, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          __pyx_t_16 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_16 < 0)) __PYX_ERR(0, 130, __pyx_L1_error)
+          __pyx_t_16 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_16 < 0)) __PYX_ERR(0, 132, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           if (!__pyx_t_16) {
           } else {
             __pyx_t_1 = __pyx_t_16;
             goto __pyx_L21_bool_binop_done;
           }
-          __pyx_t_5 = __Pyx_GetItemInt(((PyObject *)__pyx_v_self->A), __pyx_v_node_B, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 130, __pyx_L1_error)
+          __pyx_t_5 = __Pyx_GetItemInt(((PyObject *)__pyx_v_self->A), __pyx_v_node_B, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 132, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
-          __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_5, __pyx_v_node_A, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 130, __pyx_L1_error)
+          __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_5, __pyx_v_node_A, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 132, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-          __pyx_t_5 = __Pyx_PyInt_EqObjC(__pyx_t_4, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 130, __pyx_L1_error)
+          __pyx_t_5 = __Pyx_PyInt_EqObjC(__pyx_t_4, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 132, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          __pyx_t_16 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_16 < 0)) __PYX_ERR(0, 130, __pyx_L1_error)
+          __pyx_t_16 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_16 < 0)) __PYX_ERR(0, 132, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           __pyx_t_1 = __pyx_t_16;
           __pyx_L21_bool_binop_done:;
           if (__pyx_t_1) {
 
-            /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":131
+            /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":133
  *                             flag_1 = True
  *                         if self.A[node_A][node_B] == 1 or self.A[node_B][node_A] == 1:
  *                             flag_1 = True             # <<<<<<<<<<<<<<
@@ -3987,7 +3872,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
             __pyx_v_flag_1 = 1;
 
-            /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":130
+            /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":132
  *                         if link_list[n,0] == node_B and link_list[n,1] == node_A:
  *                             flag_1 = True
  *                         if self.A[node_A][node_B] == 1 or self.A[node_B][node_A] == 1:             # <<<<<<<<<<<<<<
@@ -3997,7 +3882,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
           }
         }
 
-        /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":133
+        /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":135
  *                             flag_1 = True
  * 
  *                     count = count +1             # <<<<<<<<<<<<<<
@@ -4006,7 +3891,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
         __pyx_v_count = (__pyx_v_count + 1);
 
-        /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":135
+        /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":137
  *                     count = count +1
  * 
  *                     if count > M: flag_2 = True ; break             # <<<<<<<<<<<<<<
@@ -4021,18 +3906,18 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
       }
       __pyx_L10_break:;
 
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":138
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":140
  * 
  *                 #make link
  *                 link_list[m,0] = node_A             # <<<<<<<<<<<<<<
  *                 link_list[m,1] = node_B
  * 
  */
-      __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_node_A); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 138, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_node_A); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 140, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_4 = PyInt_FromSsize_t(__pyx_v_m); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 138, __pyx_L1_error)
+      __pyx_t_4 = PyInt_FromSsize_t(__pyx_v_m); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 140, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 138, __pyx_L1_error)
+      __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 140, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GIVEREF(__pyx_t_4);
       PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4);
@@ -4040,22 +3925,22 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
       __Pyx_GIVEREF(__pyx_int_0);
       PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_int_0);
       __pyx_t_4 = 0;
-      if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_link_list), __pyx_t_6, __pyx_t_5) < 0)) __PYX_ERR(0, 138, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_link_list), __pyx_t_6, __pyx_t_5) < 0)) __PYX_ERR(0, 140, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":139
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":141
  *                 #make link
  *                 link_list[m,0] = node_A
  *                 link_list[m,1] = node_B             # <<<<<<<<<<<<<<
  * 
  *                 #remove stubs from list
  */
-      __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_node_B); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 139, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_node_B); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 141, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_6 = PyInt_FromSsize_t(__pyx_v_m); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 139, __pyx_L1_error)
+      __pyx_t_6 = PyInt_FromSsize_t(__pyx_v_m); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 141, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 139, __pyx_L1_error)
+      __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 141, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GIVEREF(__pyx_t_6);
       PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_6);
@@ -4063,27 +3948,27 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
       __Pyx_GIVEREF(__pyx_int_1);
       PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_int_1);
       __pyx_t_6 = 0;
-      if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_link_list), __pyx_t_4, __pyx_t_5) < 0)) __PYX_ERR(0, 139, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_link_list), __pyx_t_4, __pyx_t_5) < 0)) __PYX_ERR(0, 141, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":142
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":144
  * 
  *                 #remove stubs from list
  *                 stubs = np.delete(stubs,[rand1,rand2])             # <<<<<<<<<<<<<<
  * 
  *         #build network
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 142, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 144, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_delete); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 142, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_delete); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 144, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_rand1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 142, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_rand1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 144, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_rand2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 142, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_rand2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 144, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_10 = PyList_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 142, __pyx_L1_error)
+      __pyx_t_10 = PyList_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 144, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_GIVEREF(__pyx_t_4);
       PyList_SET_ITEM(__pyx_t_10, 0, __pyx_t_4);
@@ -4106,7 +3991,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_6)) {
         PyObject *__pyx_temp[3] = {__pyx_t_2, ((PyObject *)__pyx_v_stubs), __pyx_t_10};
-        __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 142, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 144, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
@@ -4115,14 +4000,14 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_6)) {
         PyObject *__pyx_temp[3] = {__pyx_t_2, ((PyObject *)__pyx_v_stubs), __pyx_t_10};
-        __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 142, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 144, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       } else
       #endif
       {
-        __pyx_t_4 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 142, __pyx_L1_error)
+        __pyx_t_4 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 144, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         if (__pyx_t_2) {
           __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2); __pyx_t_2 = NULL;
@@ -4133,18 +4018,18 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         __Pyx_GIVEREF(__pyx_t_10);
         PyTuple_SET_ITEM(__pyx_t_4, 1+__pyx_t_7, __pyx_t_10);
         __pyx_t_10 = 0;
-        __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_4, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 142, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_4, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 144, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       }
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 142, __pyx_L1_error)
+      if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 144, __pyx_L1_error)
       __Pyx_DECREF_SET(__pyx_v_stubs, ((PyArrayObject *)__pyx_t_5));
       __pyx_t_5 = 0;
     }
   }
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":145
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":147
  * 
  *         #build network
  *         for k in range(int(M/2)):             # <<<<<<<<<<<<<<
@@ -4156,17 +4041,17 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_12; __pyx_t_9+=1) {
     __pyx_v_k = __pyx_t_9;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":146
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":148
  *         #build network
  *         for k in range(int(M/2)):
  *             self.A[link_list[k,0],link_list[k,1]] = True             # <<<<<<<<<<<<<<
  *             self.A[link_list[k,1],link_list[k,0]] = True
  *         self.text = self.text + ' and nGD %d'%self.nGD
  */
-    if (unlikely(!__pyx_v_link_list)) { __Pyx_RaiseUnboundLocalError("link_list"); __PYX_ERR(0, 146, __pyx_L1_error) }
-    __pyx_t_5 = PyInt_FromSsize_t(__pyx_v_k); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 146, __pyx_L1_error)
+    if (unlikely(!__pyx_v_link_list)) { __Pyx_RaiseUnboundLocalError("link_list"); __PYX_ERR(0, 148, __pyx_L1_error) }
+    __pyx_t_5 = PyInt_FromSsize_t(__pyx_v_k); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 146, __pyx_L1_error)
+    __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_GIVEREF(__pyx_t_5);
     PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5);
@@ -4174,13 +4059,13 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     __Pyx_GIVEREF(__pyx_int_0);
     PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_int_0);
     __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_link_list), __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 146, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_link_list), __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_v_link_list)) { __Pyx_RaiseUnboundLocalError("link_list"); __PYX_ERR(0, 146, __pyx_L1_error) }
-    __pyx_t_6 = PyInt_FromSsize_t(__pyx_v_k); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 146, __pyx_L1_error)
+    if (unlikely(!__pyx_v_link_list)) { __Pyx_RaiseUnboundLocalError("link_list"); __PYX_ERR(0, 148, __pyx_L1_error) }
+    __pyx_t_6 = PyInt_FromSsize_t(__pyx_v_k); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 146, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_6);
     PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_6);
@@ -4188,10 +4073,10 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     __Pyx_GIVEREF(__pyx_int_1);
     PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_int_1);
     __pyx_t_6 = 0;
-    __pyx_t_6 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_link_list), __pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 146, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_link_list), __pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 146, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_5);
     PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_5);
@@ -4199,20 +4084,20 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_6);
     __pyx_t_5 = 0;
     __pyx_t_6 = 0;
-    if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_self->A), __pyx_t_4, Py_True) < 0)) __PYX_ERR(0, 146, __pyx_L1_error)
+    if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_self->A), __pyx_t_4, Py_True) < 0)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":147
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":149
  *         for k in range(int(M/2)):
  *             self.A[link_list[k,0],link_list[k,1]] = True
  *             self.A[link_list[k,1],link_list[k,0]] = True             # <<<<<<<<<<<<<<
  *         self.text = self.text + ' and nGD %d'%self.nGD
  * 
  */
-    if (unlikely(!__pyx_v_link_list)) { __Pyx_RaiseUnboundLocalError("link_list"); __PYX_ERR(0, 147, __pyx_L1_error) }
-    __pyx_t_4 = PyInt_FromSsize_t(__pyx_v_k); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 147, __pyx_L1_error)
+    if (unlikely(!__pyx_v_link_list)) { __Pyx_RaiseUnboundLocalError("link_list"); __PYX_ERR(0, 149, __pyx_L1_error) }
+    __pyx_t_4 = PyInt_FromSsize_t(__pyx_v_k); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 149, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 147, __pyx_L1_error)
+    __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 149, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_GIVEREF(__pyx_t_4);
     PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4);
@@ -4220,13 +4105,13 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     __Pyx_GIVEREF(__pyx_int_1);
     PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_int_1);
     __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_link_list), __pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 147, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_link_list), __pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 149, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_v_link_list)) { __Pyx_RaiseUnboundLocalError("link_list"); __PYX_ERR(0, 147, __pyx_L1_error) }
-    __pyx_t_6 = PyInt_FromSsize_t(__pyx_v_k); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 147, __pyx_L1_error)
+    if (unlikely(!__pyx_v_link_list)) { __Pyx_RaiseUnboundLocalError("link_list"); __PYX_ERR(0, 149, __pyx_L1_error) }
+    __pyx_t_6 = PyInt_FromSsize_t(__pyx_v_k); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 149, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 147, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 149, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_GIVEREF(__pyx_t_6);
     PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_6);
@@ -4234,10 +4119,10 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     __Pyx_GIVEREF(__pyx_int_0);
     PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_int_0);
     __pyx_t_6 = 0;
-    __pyx_t_6 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_link_list), __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 147, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_link_list), __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 149, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 147, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 149, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_GIVEREF(__pyx_t_4);
     PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4);
@@ -4245,23 +4130,23 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_6);
     __pyx_t_4 = 0;
     __pyx_t_6 = 0;
-    if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_self->A), __pyx_t_5, Py_True) < 0)) __PYX_ERR(0, 147, __pyx_L1_error)
+    if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_self->A), __pyx_t_5, Py_True) < 0)) __PYX_ERR(0, 149, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":148
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":150
  *             self.A[link_list[k,0],link_list[k,1]] = True
  *             self.A[link_list[k,1],link_list[k,0]] = True
  *         self.text = self.text + ' and nGD %d'%self.nGD             # <<<<<<<<<<<<<<
  * 
- *     def k_cliques(self):
+ *     def get_nonunique_triangle_list(self, numpy.ndarray[DTYPE_t, ndim=2] A):
  */
-  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_self->nGD); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 148, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_self->nGD); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 150, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = PyUnicode_Format(__pyx_kp_u_and_nGD_d, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 148, __pyx_L1_error)
+  __pyx_t_6 = PyUnicode_Format(__pyx_kp_u_and_nGD_d, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 150, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyUnicode_ConcatSafe(__pyx_v_self->text, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 148, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyUnicode_ConcatSafe(__pyx_v_self->text, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 150, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_GIVEREF(__pyx_t_5);
@@ -4270,7 +4155,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __pyx_v_self->text = ((PyObject*)__pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":87
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":89
  *             self.text = self.text + ' w/ GD %d'%(self.GD)
  * 
  *     def add_noise_to_geometric(self):#, numpy.ndarray[DTYPE_t, ndim=2] A):             # <<<<<<<<<<<<<<
@@ -4299,576 +4184,603 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
-static PyObject *__pyx_gb_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_10generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":150
+/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":152
  *         self.text = self.text + ' and nGD %d'%self.nGD
  * 
- *     def k_cliques(self):             # <<<<<<<<<<<<<<
- *         cdef numpy.ndarray f
- *         cdef int k
+ *     def get_nonunique_triangle_list(self, numpy.ndarray[DTYPE_t, ndim=2] A):             # <<<<<<<<<<<<<<
+ * 
+ *         cdef numpy.ndarray AAA, i_list, j_list, triangles_list, local_triangles_list
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_9k_cliques(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_9k_cliques(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_9get_nonunique_triangle_list(PyObject *__pyx_v_self, PyObject *__pyx_v_A); /*proto*/
+static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_9get_nonunique_triangle_list(PyObject *__pyx_v_self, PyObject *__pyx_v_A) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("k_cliques (wrapper)", 0);
-  __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_8k_cliques(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self));
+  __Pyx_RefNannySetupContext("get_nonunique_triangle_list (wrapper)", 0);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_A), __pyx_ptype_5numpy_ndarray, 1, "A", 0))) __PYX_ERR(0, 152, __pyx_L1_error)
+  __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_8get_nonunique_triangle_list(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self), ((PyArrayObject *)__pyx_v_A));
 
   /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __pyx_r = NULL;
+  __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_8k_cliques(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self) {
-  struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques *__pyx_cur_scope;
+static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_8get_nonunique_triangle_list(CYTHON_UNUSED struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, PyArrayObject *__pyx_v_A) {
+  PyArrayObject *__pyx_v_AAA = 0;
+  PyArrayObject *__pyx_v_i_list = 0;
+  PyArrayObject *__pyx_v_j_list = 0;
+  PyArrayObject *__pyx_v_triangles_list = 0;
+  PyArrayObject *__pyx_v_local_triangles_list = 0;
+  int __pyx_v_total_number_triangles;
+  int __pyx_v_counter;
+  int __pyx_v_i;
+  int __pyx_v_j;
+  CYTHON_UNUSED int __pyx_v_num_local_triangles;
+  Py_ssize_t __pyx_v_t;
+  Py_ssize_t __pyx_v_k;
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_A;
+  __Pyx_Buffer __pyx_pybuffer_A;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("k_cliques", 0);
-  __pyx_cur_scope = (struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques *)__pyx_tp_new_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques(__pyx_ptype_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques, __pyx_empty_tuple, NULL);
-  if (unlikely(!__pyx_cur_scope)) {
-    __pyx_cur_scope = ((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques *)Py_None);
-    __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 150, __pyx_L1_error)
-  } else {
-    __Pyx_GOTREF(__pyx_cur_scope);
-  }
-  __pyx_cur_scope->__pyx_v_self = __pyx_v_self;
-  __Pyx_INCREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
-  __Pyx_GIVEREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  int __pyx_t_4;
+  PyObject *__pyx_t_5 = NULL;
+  PyObject *(*__pyx_t_6)(PyObject *);
+  Py_ssize_t __pyx_t_7;
+  Py_ssize_t __pyx_t_8;
+  Py_ssize_t __pyx_t_9;
+  PyObject *__pyx_t_10 = NULL;
+  Py_ssize_t __pyx_t_11;
+  PyObject *(*__pyx_t_12)(PyObject *);
+  Py_ssize_t __pyx_t_13;
+  __Pyx_RefNannySetupContext("get_nonunique_triangle_list", 0);
+  __pyx_pybuffer_A.pybuffer.buf = NULL;
+  __pyx_pybuffer_A.refcount = 0;
+  __pyx_pybuffernd_A.data = NULL;
+  __pyx_pybuffernd_A.rcbuffer = &__pyx_pybuffer_A;
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_10generator, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_k_cliques, __pyx_n_s_Geometric_Brain_Network_k_clique, __pyx_n_s_Neuronal_Cascades_base_Geometric); if (unlikely(!gen)) __PYX_ERR(0, 150, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_cur_scope);
-    __Pyx_RefNannyFinishContext();
-    return (PyObject *) gen;
+    __Pyx_BufFmt_StackElem __pyx_stack[1];
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_A.rcbuffer->pybuffer, (PyObject*)__pyx_v_A, &__Pyx_TypeInfo_nn___pyx_t_22Neuronal_Cascades_base_23Geometric_Brain_Network_DTYPE_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 152, __pyx_L1_error)
   }
+  __pyx_pybuffernd_A.diminfo[0].strides = __pyx_pybuffernd_A.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_A.diminfo[0].shape = __pyx_pybuffernd_A.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_A.diminfo[1].strides = __pyx_pybuffernd_A.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_A.diminfo[1].shape = __pyx_pybuffernd_A.rcbuffer->pybuffer.shape[1];
+
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":159
+ * 
+ * 
+ *         AAA = np.dot(A,A)*A             # <<<<<<<<<<<<<<
+ *         i_list, j_list = np.where(AAA) # list of edges that are involved in triangles
+ *         total_number_triangles = int(np.sum(AAA))
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_dot); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = NULL;
+  __pyx_t_4 = 0;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_2)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_2);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_3, function);
+      __pyx_t_4 = 1;
+    }
+  }
+  #if CYTHON_FAST_PYCALL
+  if (PyFunction_Check(__pyx_t_3)) {
+    PyObject *__pyx_temp[3] = {__pyx_t_2, ((PyObject *)__pyx_v_A), ((PyObject *)__pyx_v_A)};
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 159, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_GOTREF(__pyx_t_1);
+  } else
+  #endif
+  #if CYTHON_FAST_PYCCALL
+  if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
+    PyObject *__pyx_temp[3] = {__pyx_t_2, ((PyObject *)__pyx_v_A), ((PyObject *)__pyx_v_A)};
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 159, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_GOTREF(__pyx_t_1);
+  } else
+  #endif
+  {
+    __pyx_t_5 = PyTuple_New(2+__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 159, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    if (__pyx_t_2) {
+      __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_2); __pyx_t_2 = NULL;
+    }
+    __Pyx_INCREF(((PyObject *)__pyx_v_A));
+    __Pyx_GIVEREF(((PyObject *)__pyx_v_A));
+    PyTuple_SET_ITEM(__pyx_t_5, 0+__pyx_t_4, ((PyObject *)__pyx_v_A));
+    __Pyx_INCREF(((PyObject *)__pyx_v_A));
+    __Pyx_GIVEREF(((PyObject *)__pyx_v_A));
+    PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_4, ((PyObject *)__pyx_v_A));
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 159, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  }
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = PyNumber_Multiply(__pyx_t_1, ((PyObject *)__pyx_v_A)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 159, __pyx_L1_error)
+  __pyx_v_AAA = ((PyArrayObject *)__pyx_t_3);
+  __pyx_t_3 = 0;
+
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":160
+ * 
+ *         AAA = np.dot(A,A)*A
+ *         i_list, j_list = np.where(AAA) # list of edges that are involved in triangles             # <<<<<<<<<<<<<<
+ *         total_number_triangles = int(np.sum(AAA))
+ * 
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_where); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
+    __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_5);
+    if (likely(__pyx_t_1)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
+      __Pyx_INCREF(__pyx_t_1);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_5, function);
+    }
+  }
+  __pyx_t_3 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_1, ((PyObject *)__pyx_v_AAA)) : __Pyx_PyObject_CallOneArg(__pyx_t_5, ((PyObject *)__pyx_v_AAA));
+  __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  if ((likely(PyTuple_CheckExact(__pyx_t_3))) || (PyList_CheckExact(__pyx_t_3))) {
+    PyObject* sequence = __pyx_t_3;
+    Py_ssize_t size = __Pyx_PySequence_SIZE(sequence);
+    if (unlikely(size != 2)) {
+      if (size > 2) __Pyx_RaiseTooManyValuesError(2);
+      else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
+      __PYX_ERR(0, 160, __pyx_L1_error)
+    }
+    #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+    if (likely(PyTuple_CheckExact(sequence))) {
+      __pyx_t_5 = PyTuple_GET_ITEM(sequence, 0); 
+      __pyx_t_1 = PyTuple_GET_ITEM(sequence, 1); 
+    } else {
+      __pyx_t_5 = PyList_GET_ITEM(sequence, 0); 
+      __pyx_t_1 = PyList_GET_ITEM(sequence, 1); 
+    }
+    __Pyx_INCREF(__pyx_t_5);
+    __Pyx_INCREF(__pyx_t_1);
+    #else
+    __pyx_t_5 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 160, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 160, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    #endif
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  } else {
+    Py_ssize_t index = -1;
+    __pyx_t_2 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 160, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_6 = Py_TYPE(__pyx_t_2)->tp_iternext;
+    index = 0; __pyx_t_5 = __pyx_t_6(__pyx_t_2); if (unlikely(!__pyx_t_5)) goto __pyx_L3_unpacking_failed;
+    __Pyx_GOTREF(__pyx_t_5);
+    index = 1; __pyx_t_1 = __pyx_t_6(__pyx_t_2); if (unlikely(!__pyx_t_1)) goto __pyx_L3_unpacking_failed;
+    __Pyx_GOTREF(__pyx_t_1);
+    if (__Pyx_IternextUnpackEndCheck(__pyx_t_6(__pyx_t_2), 2) < 0) __PYX_ERR(0, 160, __pyx_L1_error)
+    __pyx_t_6 = NULL;
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    goto __pyx_L4_unpacking_done;
+    __pyx_L3_unpacking_failed:;
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_6 = NULL;
+    if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
+    __PYX_ERR(0, 160, __pyx_L1_error)
+    __pyx_L4_unpacking_done:;
+  }
+  if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 160, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_v_i_list = ((PyArrayObject *)__pyx_t_5);
+  __pyx_t_5 = 0;
+  __pyx_v_j_list = ((PyArrayObject *)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":161
+ *         AAA = np.dot(A,A)*A
+ *         i_list, j_list = np.where(AAA) # list of edges that are involved in triangles
+ *         total_number_triangles = int(np.sum(AAA))             # <<<<<<<<<<<<<<
+ * 
+ *         #now find list of non-unique triangles (i.e., [0,1,2] and [0,2,1] are both included)
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 161, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_sum); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 161, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
+    __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_5);
+    if (likely(__pyx_t_1)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
+      __Pyx_INCREF(__pyx_t_1);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_5, function);
+    }
+  }
+  __pyx_t_3 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_1, ((PyObject *)__pyx_v_AAA)) : __Pyx_PyObject_CallOneArg(__pyx_t_5, ((PyObject *)__pyx_v_AAA));
+  __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 161, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_5 = __Pyx_PyNumber_Int(__pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 161, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 161, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_v_total_number_triangles = __pyx_t_4;
+
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":164
+ * 
+ *         #now find list of non-unique triangles (i.e., [0,1,2] and [0,2,1] are both included)
+ *         triangles_list = np.zeros((total_number_triangles,3),dtype=int)             # <<<<<<<<<<<<<<
+ *         counter = 0
+ *         for t in range(len(i_list)):
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 164, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_zeros); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 164, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_total_number_triangles); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 164, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 164, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_GIVEREF(__pyx_t_5);
+  PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_5);
+  __Pyx_INCREF(__pyx_int_3);
+  __Pyx_GIVEREF(__pyx_int_3);
+  PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_int_3);
+  __pyx_t_5 = 0;
+  __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 164, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_GIVEREF(__pyx_t_1);
+  PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_1);
+  __pyx_t_1 = 0;
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 164, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, ((PyObject *)(&PyInt_Type))) < 0) __PYX_ERR(0, 164, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 164, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 164, __pyx_L1_error)
+  __pyx_v_triangles_list = ((PyArrayObject *)__pyx_t_2);
+  __pyx_t_2 = 0;
+
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":165
+ *         #now find list of non-unique triangles (i.e., [0,1,2] and [0,2,1] are both included)
+ *         triangles_list = np.zeros((total_number_triangles,3),dtype=int)
+ *         counter = 0             # <<<<<<<<<<<<<<
+ *         for t in range(len(i_list)):
+ *             i = i_list[t]
+ */
+  __pyx_v_counter = 0;
+
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":166
+ *         triangles_list = np.zeros((total_number_triangles,3),dtype=int)
+ *         counter = 0
+ *         for t in range(len(i_list)):             # <<<<<<<<<<<<<<
+ *             i = i_list[t]
+ *             j = j_list[t]
+ */
+  __pyx_t_7 = PyObject_Length(((PyObject *)__pyx_v_i_list)); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 166, __pyx_L1_error)
+  __pyx_t_8 = __pyx_t_7;
+  for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
+    __pyx_v_t = __pyx_t_9;
+
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":167
+ *         counter = 0
+ *         for t in range(len(i_list)):
+ *             i = i_list[t]             # <<<<<<<<<<<<<<
+ *             j = j_list[t]
+ *             num_local_triangles = AAA[i,j]
+ */
+    __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_i_list), __pyx_v_t, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 167, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 167, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_v_i = __pyx_t_4;
+
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":168
+ *         for t in range(len(i_list)):
+ *             i = i_list[t]
+ *             j = j_list[t]             # <<<<<<<<<<<<<<
+ *             num_local_triangles = AAA[i,j]
+ *             local_triangles_list = np.where((A[i,:]+A[j,:])==2 )[0] # list of common neighbors, {k}
+ */
+    __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_j_list), __pyx_v_t, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 168, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 168, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_v_j = __pyx_t_4;
+
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":169
+ *             i = i_list[t]
+ *             j = j_list[t]
+ *             num_local_triangles = AAA[i,j]             # <<<<<<<<<<<<<<
+ *             local_triangles_list = np.where((A[i,:]+A[j,:])==2 )[0] # list of common neighbors, {k}
+ *             #local_triangles_list = local_triangles_list[(local_triangles_list>i)* (local_triangles_list>j)]
+ */
+    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_i); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 169, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_j); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 169, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 169, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_GIVEREF(__pyx_t_2);
+    PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_2);
+    __Pyx_GIVEREF(__pyx_t_1);
+    PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_1);
+    __pyx_t_2 = 0;
+    __pyx_t_1 = 0;
+    __pyx_t_1 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_AAA), __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 169, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 169, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_v_num_local_triangles = __pyx_t_4;
+
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":170
+ *             j = j_list[t]
+ *             num_local_triangles = AAA[i,j]
+ *             local_triangles_list = np.where((A[i,:]+A[j,:])==2 )[0] # list of common neighbors, {k}             # <<<<<<<<<<<<<<
+ *             #local_triangles_list = local_triangles_list[(local_triangles_list>i)* (local_triangles_list>j)]
+ *             for k in local_triangles_list:
+ */
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 170, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_where); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 170, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_i); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 170, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 170, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_GIVEREF(__pyx_t_5);
+    PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_5);
+    __Pyx_INCREF(__pyx_slice__2);
+    __Pyx_GIVEREF(__pyx_slice__2);
+    PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_slice__2);
+    __pyx_t_5 = 0;
+    __pyx_t_5 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_A), __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 170, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_j); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 170, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 170, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_10);
+    __Pyx_GIVEREF(__pyx_t_3);
+    PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_3);
+    __Pyx_INCREF(__pyx_slice__2);
+    __Pyx_GIVEREF(__pyx_slice__2);
+    PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_slice__2);
+    __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_A), __pyx_t_10); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 170, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+    __pyx_t_10 = PyNumber_Add(__pyx_t_5, __pyx_t_3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 170, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_10);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyInt_EqObjC(__pyx_t_10, __pyx_int_2, 2, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 170, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+    __pyx_t_10 = NULL;
+    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+      __pyx_t_10 = PyMethod_GET_SELF(__pyx_t_2);
+      if (likely(__pyx_t_10)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+        __Pyx_INCREF(__pyx_t_10);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_2, function);
+      }
+    }
+    __pyx_t_1 = (__pyx_t_10) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_10, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3);
+    __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 170, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 170, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 170, __pyx_L1_error)
+    __Pyx_XDECREF_SET(__pyx_v_local_triangles_list, ((PyArrayObject *)__pyx_t_2));
+    __pyx_t_2 = 0;
+
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":172
+ *             local_triangles_list = np.where((A[i,:]+A[j,:])==2 )[0] # list of common neighbors, {k}
+ *             #local_triangles_list = local_triangles_list[(local_triangles_list>i)* (local_triangles_list>j)]
+ *             for k in local_triangles_list:             # <<<<<<<<<<<<<<
+ *                 triangles_list[counter] = [i,j,k]
+ *                 counter += 1
+ */
+    if (likely(PyList_CheckExact(((PyObject *)__pyx_v_local_triangles_list))) || PyTuple_CheckExact(((PyObject *)__pyx_v_local_triangles_list))) {
+      __pyx_t_2 = ((PyObject *)__pyx_v_local_triangles_list); __Pyx_INCREF(__pyx_t_2); __pyx_t_11 = 0;
+      __pyx_t_12 = NULL;
+    } else {
+      __pyx_t_11 = -1; __pyx_t_2 = PyObject_GetIter(((PyObject *)__pyx_v_local_triangles_list)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 172, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __pyx_t_12 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 172, __pyx_L1_error)
+    }
+    for (;;) {
+      if (likely(!__pyx_t_12)) {
+        if (likely(PyList_CheckExact(__pyx_t_2))) {
+          if (__pyx_t_11 >= PyList_GET_SIZE(__pyx_t_2)) break;
+          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+          __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_11); __Pyx_INCREF(__pyx_t_1); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 172, __pyx_L1_error)
+          #else
+          __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 172, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_1);
+          #endif
+        } else {
+          if (__pyx_t_11 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
+          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+          __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_11); __Pyx_INCREF(__pyx_t_1); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 172, __pyx_L1_error)
+          #else
+          __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 172, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_1);
+          #endif
+        }
+      } else {
+        __pyx_t_1 = __pyx_t_12(__pyx_t_2);
+        if (unlikely(!__pyx_t_1)) {
+          PyObject* exc_type = PyErr_Occurred();
+          if (exc_type) {
+            if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
+            else __PYX_ERR(0, 172, __pyx_L1_error)
+          }
+          break;
+        }
+        __Pyx_GOTREF(__pyx_t_1);
+      }
+      __pyx_t_13 = __Pyx_PyIndex_AsSsize_t(__pyx_t_1); if (unlikely((__pyx_t_13 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 172, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __pyx_v_k = __pyx_t_13;
+
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":173
+ *             #local_triangles_list = local_triangles_list[(local_triangles_list>i)* (local_triangles_list>j)]
+ *             for k in local_triangles_list:
+ *                 triangles_list[counter] = [i,j,k]             # <<<<<<<<<<<<<<
+ *                 counter += 1
+ * 
+ */
+      __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_i); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 173, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_j); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 173, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __pyx_t_10 = PyInt_FromSsize_t(__pyx_v_k); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 173, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_10);
+      __pyx_t_5 = PyList_New(3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 173, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __Pyx_GIVEREF(__pyx_t_1);
+      PyList_SET_ITEM(__pyx_t_5, 0, __pyx_t_1);
+      __Pyx_GIVEREF(__pyx_t_3);
+      PyList_SET_ITEM(__pyx_t_5, 1, __pyx_t_3);
+      __Pyx_GIVEREF(__pyx_t_10);
+      PyList_SET_ITEM(__pyx_t_5, 2, __pyx_t_10);
+      __pyx_t_1 = 0;
+      __pyx_t_3 = 0;
+      __pyx_t_10 = 0;
+      if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_triangles_list), __pyx_v_counter, __pyx_t_5, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 173, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":174
+ *             for k in local_triangles_list:
+ *                 triangles_list[counter] = [i,j,k]
+ *                 counter += 1             # <<<<<<<<<<<<<<
+ * 
+ *         return triangles_list
+ */
+      __pyx_v_counter = (__pyx_v_counter + 1);
+
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":172
+ *             local_triangles_list = np.where((A[i,:]+A[j,:])==2 )[0] # list of common neighbors, {k}
+ *             #local_triangles_list = local_triangles_list[(local_triangles_list>i)* (local_triangles_list>j)]
+ *             for k in local_triangles_list:             # <<<<<<<<<<<<<<
+ *                 triangles_list[counter] = [i,j,k]
+ *                 counter += 1
+ */
+    }
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  }
+
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":176
+ *                 counter += 1
+ * 
+ *         return triangles_list             # <<<<<<<<<<<<<<
+ * 
+ *     def get_nodes_unique_triangles(self, numpy.ndarray[DTYPE_t, ndim=2] nonunique_triangle_list, int i):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_INCREF(((PyObject *)__pyx_v_triangles_list));
+  __pyx_r = ((PyObject *)__pyx_v_triangles_list);
+  goto __pyx_L0;
+
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":152
+ *         self.text = self.text + ' and nGD %d'%self.nGD
+ * 
+ *     def get_nonunique_triangle_list(self, numpy.ndarray[DTYPE_t, ndim=2] A):             # <<<<<<<<<<<<<<
+ * 
+ *         cdef numpy.ndarray AAA, i_list, j_list, triangles_list, local_triangles_list
+ */
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("Neuronal_Cascades_base.Geometric_Brain_Network.Geometric_Brain_Network.k_cliques", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_10);
+  { PyObject *__pyx_type, *__pyx_value, *__pyx_tb;
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_A.rcbuffer->pybuffer);
+  __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
+  __Pyx_AddTraceback("Neuronal_Cascades_base.Geometric_Brain_Network.Geometric_Brain_Network.get_nonunique_triangle_list", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
-  __Pyx_DECREF(((PyObject *)__pyx_cur_scope));
+  goto __pyx_L2;
+  __pyx_L0:;
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_A.rcbuffer->pybuffer);
+  __pyx_L2:;
+  __Pyx_XDECREF((PyObject *)__pyx_v_AAA);
+  __Pyx_XDECREF((PyObject *)__pyx_v_i_list);
+  __Pyx_XDECREF((PyObject *)__pyx_v_j_list);
+  __Pyx_XDECREF((PyObject *)__pyx_v_triangles_list);
+  __Pyx_XDECREF((PyObject *)__pyx_v_local_triangles_list);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_gb_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_10generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
-{
-  struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques *__pyx_cur_scope = ((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques *)__pyx_generator->closure);
-  PyObject *__pyx_r = NULL;
-  PyObject *__pyx_t_1 = NULL;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  PyObject *__pyx_t_5 = NULL;
-  PyObject *__pyx_t_6 = NULL;
-  Py_ssize_t __pyx_t_7;
-  PyObject *(*__pyx_t_8)(PyObject *);
-  int __pyx_t_9;
-  int __pyx_t_10;
-  PyObject *(*__pyx_t_11)(PyObject *);
-  Py_ssize_t __pyx_t_12;
-  int __pyx_t_13;
-  int __pyx_t_14;
-  int __pyx_t_15;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("k_cliques", 0);
-  switch (__pyx_generator->resume_label) {
-    case 0: goto __pyx_L3_first_run;
-    case 1: goto __pyx_L8_resume_from_yield;
-    default: /* CPython raises the right error here */
-    __Pyx_RefNannyFinishContext();
-    return NULL;
-  }
-  __pyx_L3_first_run:;
-  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 150, __pyx_L1_error)
-
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":157
+/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":178
+ *         return triangles_list
  * 
- *         # 2-cliques
- *         cliques = [set(f) for f in np.array(np.nonzero(self.A)).T]             # <<<<<<<<<<<<<<
- *         k = 2
+ *     def get_nodes_unique_triangles(self, numpy.ndarray[DTYPE_t, ndim=2] nonunique_triangle_list, int i):             # <<<<<<<<<<<<<<
+ *         cdef numpy.ndarray tri_flag
  * 
- */
-  { /* enter inner scope */
-    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 157, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 157, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 157, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 157, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_nonzero); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 157, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = NULL;
-    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_6))) {
-      __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_6);
-      if (likely(__pyx_t_5)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_6);
-        __Pyx_INCREF(__pyx_t_5);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_6, function);
-      }
-    }
-    __pyx_t_3 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_5, ((PyObject *)__pyx_cur_scope->__pyx_v_self->A)) : __Pyx_PyObject_CallOneArg(__pyx_t_6, ((PyObject *)__pyx_cur_scope->__pyx_v_self->A));
-    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 157, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = NULL;
-    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
-      __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_4);
-      if (likely(__pyx_t_6)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-        __Pyx_INCREF(__pyx_t_6);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_4, function);
-      }
-    }
-    __pyx_t_2 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_6, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3);
-    __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 157, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_T); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 157, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (likely(PyList_CheckExact(__pyx_t_4)) || PyTuple_CheckExact(__pyx_t_4)) {
-      __pyx_t_2 = __pyx_t_4; __Pyx_INCREF(__pyx_t_2); __pyx_t_7 = 0;
-      __pyx_t_8 = NULL;
-    } else {
-      __pyx_t_7 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 157, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_8 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 157, __pyx_L1_error)
-    }
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    for (;;) {
-      if (likely(!__pyx_t_8)) {
-        if (likely(PyList_CheckExact(__pyx_t_2))) {
-          if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_2)) break;
-          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_4 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_4); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 157, __pyx_L1_error)
-          #else
-          __pyx_t_4 = PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 157, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_4);
-          #endif
-        } else {
-          if (__pyx_t_7 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
-          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_4); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 157, __pyx_L1_error)
-          #else
-          __pyx_t_4 = PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 157, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_4);
-          #endif
-        }
-      } else {
-        __pyx_t_4 = __pyx_t_8(__pyx_t_2);
-        if (unlikely(!__pyx_t_4)) {
-          PyObject* exc_type = PyErr_Occurred();
-          if (exc_type) {
-            if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 157, __pyx_L1_error)
-          }
-          break;
-        }
-        __Pyx_GOTREF(__pyx_t_4);
-      }
-      if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 157, __pyx_L1_error)
-      __Pyx_XGOTREF(((PyObject *)__pyx_cur_scope->__pyx_7genexpr__pyx_v_f));
-      __Pyx_XDECREF_SET(__pyx_cur_scope->__pyx_7genexpr__pyx_v_f, ((PyArrayObject *)__pyx_t_4));
-      __Pyx_GIVEREF(__pyx_t_4);
-      __pyx_t_4 = 0;
-      __pyx_t_4 = PySet_New(((PyObject *)__pyx_cur_scope->__pyx_7genexpr__pyx_v_f)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 157, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_4))) __PYX_ERR(0, 157, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    }
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  } /* exit inner scope */
-  __Pyx_GIVEREF(__pyx_t_1);
-  __pyx_cur_scope->__pyx_v_cliques = ((PyObject*)__pyx_t_1);
-  __pyx_t_1 = 0;
-
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":158
- *         # 2-cliques
- *         cliques = [set(f) for f in np.array(np.nonzero(self.A)).T]
- *         k = 2             # <<<<<<<<<<<<<<
- * 
- *         while cliques:
- */
-  __pyx_cur_scope->__pyx_v_k = 2;
-
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":160
- *         k = 2
- * 
- *         while cliques:             # <<<<<<<<<<<<<<
- *             # result
- *             yield k, cliques
- */
-  while (1) {
-    __pyx_t_9 = (PyList_GET_SIZE(__pyx_cur_scope->__pyx_v_cliques) != 0);
-    if (!__pyx_t_9) break;
-
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":162
- *         while cliques:
- *             # result
- *             yield k, cliques             # <<<<<<<<<<<<<<
- * 
- *             # merge k-cliques into (k+1)-cliques
- */
-    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_cur_scope->__pyx_v_k); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 162, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 162, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_GIVEREF(__pyx_t_1);
-    PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
-    __Pyx_INCREF(__pyx_cur_scope->__pyx_v_cliques);
-    __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_cliques);
-    PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_cur_scope->__pyx_v_cliques);
-    __pyx_t_1 = 0;
-    __pyx_r = __pyx_t_2;
-    __pyx_t_2 = 0;
-    __Pyx_XGIVEREF(__pyx_r);
-    __Pyx_RefNannyFinishContext();
-    __Pyx_Coroutine_ResetAndClearException(__pyx_generator);
-    /* return from generator, yielding value */
-    __pyx_generator->resume_label = 1;
-    return __pyx_r;
-    __pyx_L8_resume_from_yield:;
-    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 162, __pyx_L1_error)
-
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":165
- * 
- *             # merge k-cliques into (k+1)-cliques
- *             cliques_1 = set()             # <<<<<<<<<<<<<<
- *             for u, v in combinations(cliques, 2):
- *                 w = u ^ v
- */
-    __pyx_t_2 = PySet_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 165, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_XGOTREF(__pyx_cur_scope->__pyx_v_cliques_1);
-    __Pyx_XDECREF_SET(__pyx_cur_scope->__pyx_v_cliques_1, ((PyObject*)__pyx_t_2));
-    __Pyx_GIVEREF(__pyx_t_2);
-    __pyx_t_2 = 0;
-
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":166
- *             # merge k-cliques into (k+1)-cliques
- *             cliques_1 = set()
- *             for u, v in combinations(cliques, 2):             # <<<<<<<<<<<<<<
- *                 w = u ^ v
- *                 if len(w) == 2 and set(w) in cliques:
- */
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_combinations); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = NULL;
-    __pyx_t_10 = 0;
-    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
-      __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_1);
-      if (likely(__pyx_t_4)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
-        __Pyx_INCREF(__pyx_t_4);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_1, function);
-        __pyx_t_10 = 1;
-      }
-    }
-    #if CYTHON_FAST_PYCALL
-    if (PyFunction_Check(__pyx_t_1)) {
-      PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_cur_scope->__pyx_v_cliques, __pyx_int_2};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_GOTREF(__pyx_t_2);
-    } else
-    #endif
-    #if CYTHON_FAST_PYCCALL
-    if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
-      PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_cur_scope->__pyx_v_cliques, __pyx_int_2};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_GOTREF(__pyx_t_2);
-    } else
-    #endif
-    {
-      __pyx_t_3 = PyTuple_New(2+__pyx_t_10); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 166, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_3);
-      if (__pyx_t_4) {
-        __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4); __pyx_t_4 = NULL;
-      }
-      __Pyx_INCREF(__pyx_cur_scope->__pyx_v_cliques);
-      __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_cliques);
-      PyTuple_SET_ITEM(__pyx_t_3, 0+__pyx_t_10, __pyx_cur_scope->__pyx_v_cliques);
-      __Pyx_INCREF(__pyx_int_2);
-      __Pyx_GIVEREF(__pyx_int_2);
-      PyTuple_SET_ITEM(__pyx_t_3, 1+__pyx_t_10, __pyx_int_2);
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    }
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (likely(PyList_CheckExact(__pyx_t_2)) || PyTuple_CheckExact(__pyx_t_2)) {
-      __pyx_t_1 = __pyx_t_2; __Pyx_INCREF(__pyx_t_1); __pyx_t_7 = 0;
-      __pyx_t_8 = NULL;
-    } else {
-      __pyx_t_7 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_8 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 166, __pyx_L1_error)
-    }
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    for (;;) {
-      if (likely(!__pyx_t_8)) {
-        if (likely(PyList_CheckExact(__pyx_t_1))) {
-          if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_1)) break;
-          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_2); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 166, __pyx_L1_error)
-          #else
-          __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_2);
-          #endif
-        } else {
-          if (__pyx_t_7 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
-          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_2); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 166, __pyx_L1_error)
-          #else
-          __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_2);
-          #endif
-        }
-      } else {
-        __pyx_t_2 = __pyx_t_8(__pyx_t_1);
-        if (unlikely(!__pyx_t_2)) {
-          PyObject* exc_type = PyErr_Occurred();
-          if (exc_type) {
-            if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 166, __pyx_L1_error)
-          }
-          break;
-        }
-        __Pyx_GOTREF(__pyx_t_2);
-      }
-      if ((likely(PyTuple_CheckExact(__pyx_t_2))) || (PyList_CheckExact(__pyx_t_2))) {
-        PyObject* sequence = __pyx_t_2;
-        Py_ssize_t size = __Pyx_PySequence_SIZE(sequence);
-        if (unlikely(size != 2)) {
-          if (size > 2) __Pyx_RaiseTooManyValuesError(2);
-          else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 166, __pyx_L1_error)
-        }
-        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        if (likely(PyTuple_CheckExact(sequence))) {
-          __pyx_t_3 = PyTuple_GET_ITEM(sequence, 0); 
-          __pyx_t_4 = PyTuple_GET_ITEM(sequence, 1); 
-        } else {
-          __pyx_t_3 = PyList_GET_ITEM(sequence, 0); 
-          __pyx_t_4 = PyList_GET_ITEM(sequence, 1); 
-        }
-        __Pyx_INCREF(__pyx_t_3);
-        __Pyx_INCREF(__pyx_t_4);
-        #else
-        __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 166, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_4 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 166, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_4);
-        #endif
-        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      } else {
-        Py_ssize_t index = -1;
-        __pyx_t_6 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 166, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_6);
-        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __pyx_t_11 = Py_TYPE(__pyx_t_6)->tp_iternext;
-        index = 0; __pyx_t_3 = __pyx_t_11(__pyx_t_6); if (unlikely(!__pyx_t_3)) goto __pyx_L11_unpacking_failed;
-        __Pyx_GOTREF(__pyx_t_3);
-        index = 1; __pyx_t_4 = __pyx_t_11(__pyx_t_6); if (unlikely(!__pyx_t_4)) goto __pyx_L11_unpacking_failed;
-        __Pyx_GOTREF(__pyx_t_4);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_11(__pyx_t_6), 2) < 0) __PYX_ERR(0, 166, __pyx_L1_error)
-        __pyx_t_11 = NULL;
-        __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        goto __pyx_L12_unpacking_done;
-        __pyx_L11_unpacking_failed:;
-        __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        __pyx_t_11 = NULL;
-        if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 166, __pyx_L1_error)
-        __pyx_L12_unpacking_done:;
-      }
-      if (!(likely(PySet_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "set", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 166, __pyx_L1_error)
-      if (!(likely(PySet_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "set", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 166, __pyx_L1_error)
-      __Pyx_XGOTREF(__pyx_cur_scope->__pyx_v_u);
-      __Pyx_XDECREF_SET(__pyx_cur_scope->__pyx_v_u, ((PyObject*)__pyx_t_3));
-      __Pyx_GIVEREF(__pyx_t_3);
-      __pyx_t_3 = 0;
-      __Pyx_XGOTREF(__pyx_cur_scope->__pyx_v_v);
-      __Pyx_XDECREF_SET(__pyx_cur_scope->__pyx_v_v, ((PyObject*)__pyx_t_4));
-      __Pyx_GIVEREF(__pyx_t_4);
-      __pyx_t_4 = 0;
-
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":167
- *             cliques_1 = set()
- *             for u, v in combinations(cliques, 2):
- *                 w = u ^ v             # <<<<<<<<<<<<<<
- *                 if len(w) == 2 and set(w) in cliques:
- *                     cliques_1.add(tuple(u | w))
- */
-      __pyx_t_2 = PyNumber_Xor(__pyx_cur_scope->__pyx_v_u, __pyx_cur_scope->__pyx_v_v); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 167, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __Pyx_XGOTREF(__pyx_cur_scope->__pyx_v_w);
-      __Pyx_XDECREF_SET(__pyx_cur_scope->__pyx_v_w, ((PyObject*)__pyx_t_2));
-      __Pyx_GIVEREF(__pyx_t_2);
-      __pyx_t_2 = 0;
-
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":168
- *             for u, v in combinations(cliques, 2):
- *                 w = u ^ v
- *                 if len(w) == 2 and set(w) in cliques:             # <<<<<<<<<<<<<<
- *                     cliques_1.add(tuple(u | w))
- * 
- */
-      __pyx_t_12 = PySet_GET_SIZE(__pyx_cur_scope->__pyx_v_w); if (unlikely(__pyx_t_12 == ((Py_ssize_t)-1))) __PYX_ERR(0, 168, __pyx_L1_error)
-      __pyx_t_13 = ((__pyx_t_12 == 2) != 0);
-      if (__pyx_t_13) {
-      } else {
-        __pyx_t_9 = __pyx_t_13;
-        goto __pyx_L14_bool_binop_done;
-      }
-      __pyx_t_2 = PySet_New(__pyx_cur_scope->__pyx_v_w); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 168, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_13 = (__Pyx_PySequence_ContainsTF(__pyx_t_2, __pyx_cur_scope->__pyx_v_cliques, Py_EQ)); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 168, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_14 = (__pyx_t_13 != 0);
-      __pyx_t_9 = __pyx_t_14;
-      __pyx_L14_bool_binop_done:;
-      if (__pyx_t_9) {
-
-        /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":169
- *                 w = u ^ v
- *                 if len(w) == 2 and set(w) in cliques:
- *                     cliques_1.add(tuple(u | w))             # <<<<<<<<<<<<<<
- * 
- *             # remove duplicates
- */
-        __pyx_t_2 = PyNumber_Or(__pyx_cur_scope->__pyx_v_u, __pyx_cur_scope->__pyx_v_w); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 169, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_4 = PySequence_Tuple(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 169, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_4);
-        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __pyx_t_15 = PySet_Add(__pyx_cur_scope->__pyx_v_cliques_1, __pyx_t_4); if (unlikely(__pyx_t_15 == ((int)-1))) __PYX_ERR(0, 169, __pyx_L1_error)
-        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-
-        /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":168
- *             for u, v in combinations(cliques, 2):
- *                 w = u ^ v
- *                 if len(w) == 2 and set(w) in cliques:             # <<<<<<<<<<<<<<
- *                     cliques_1.add(tuple(u | w))
- * 
- */
-      }
-
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":166
- *             # merge k-cliques into (k+1)-cliques
- *             cliques_1 = set()
- *             for u, v in combinations(cliques, 2):             # <<<<<<<<<<<<<<
- *                 w = u ^ v
- *                 if len(w) == 2 and set(w) in cliques:
- */
-    }
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":172
- * 
- *             # remove duplicates
- *             cliques = list(map(set, cliques_1))             # <<<<<<<<<<<<<<
- *             k += 1
- * 
- */
-    __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 172, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_INCREF(((PyObject *)(&PySet_Type)));
-    __Pyx_GIVEREF(((PyObject *)(&PySet_Type)));
-    PyTuple_SET_ITEM(__pyx_t_1, 0, ((PyObject *)(&PySet_Type)));
-    __Pyx_INCREF(__pyx_cur_scope->__pyx_v_cliques_1);
-    __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_cliques_1);
-    PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_cur_scope->__pyx_v_cliques_1);
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_map, __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 172, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = PySequence_List(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 172, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_GOTREF(__pyx_cur_scope->__pyx_v_cliques);
-    __Pyx_DECREF_SET(__pyx_cur_scope->__pyx_v_cliques, ((PyObject*)__pyx_t_1));
-    __Pyx_GIVEREF(__pyx_t_1);
-    __pyx_t_1 = 0;
-
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":173
- *             # remove duplicates
- *             cliques = list(map(set, cliques_1))
- *             k += 1             # <<<<<<<<<<<<<<
- * 
- * 
- */
-    __pyx_cur_scope->__pyx_v_k = (__pyx_cur_scope->__pyx_v_k + 1);
-  }
-  CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
-
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":150
- *         self.text = self.text + ' and nGD %d'%self.nGD
- * 
- *     def k_cliques(self):             # <<<<<<<<<<<<<<
- *         cdef numpy.ndarray f
- *         cdef int k
- */
-
-  /* function exit code */
-  PyErr_SetNone(PyExc_StopIteration);
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_AddTraceback("k_cliques", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_L0:;
-  __Pyx_XDECREF(__pyx_r); __pyx_r = 0;
-  #if !CYTHON_USE_EXC_INFO_STACK
-  __Pyx_Coroutine_ResetAndClearException(__pyx_generator);
-  #endif
-  __pyx_generator->resume_label = -1;
-  __Pyx_Coroutine_clear((PyObject*)__pyx_generator);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":176
- * 
- * 
- *     def return_triangles(self, int size_k = 3):             # <<<<<<<<<<<<<<
- *         cdef int k,j,i
- *         cdef set e,
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_12return_triangles(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_12return_triangles(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  int __pyx_v_size_k;
+static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_11get_nodes_unique_triangles(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_11get_nodes_unique_triangles(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyArrayObject *__pyx_v_nonunique_triangle_list = 0;
+  int __pyx_v_i;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("return_triangles (wrapper)", 0);
+  __Pyx_RefNannySetupContext("get_nodes_unique_triangles (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_size_k,0};
-    PyObject* values[1] = {0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_nonunique_triangle_list,&__pyx_n_s_i,0};
+    PyObject* values[2] = {0,0};
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
       switch (pos_args) {
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
         case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
         CYTHON_FALLTHROUGH;
         case  0: break;
@@ -4877,79 +4789,218 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
       kw_args = PyDict_Size(__pyx_kwds);
       switch (pos_args) {
         case  0:
-        if (kw_args > 0) {
-          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_size_k);
-          if (value) { values[0] = value; kw_args--; }
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_nonunique_triangle_list)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_i)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("get_nodes_unique_triangles", 1, 2, 2, 1); __PYX_ERR(0, 178, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "return_triangles") < 0)) __PYX_ERR(0, 176, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_nodes_unique_triangles") < 0)) __PYX_ERR(0, 178, __pyx_L3_error)
       }
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
+      goto __pyx_L5_argtuple_error;
     } else {
-      switch (PyTuple_GET_SIZE(__pyx_args)) {
-        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
+      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
     }
-    if (values[0]) {
-      __pyx_v_size_k = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_size_k == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 176, __pyx_L3_error)
-    } else {
-      __pyx_v_size_k = ((int)3);
-    }
+    __pyx_v_nonunique_triangle_list = ((PyArrayObject *)values[0]);
+    __pyx_v_i = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_i == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 178, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("return_triangles", 0, 0, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 176, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_nodes_unique_triangles", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 178, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("Neuronal_Cascades_base.Geometric_Brain_Network.Geometric_Brain_Network.return_triangles", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("Neuronal_Cascades_base.Geometric_Brain_Network.Geometric_Brain_Network.get_nodes_unique_triangles", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_11return_triangles(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self), __pyx_v_size_k);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_nonunique_triangle_list), __pyx_ptype_5numpy_ndarray, 1, "nonunique_triangle_list", 0))) __PYX_ERR(0, 178, __pyx_L1_error)
+  __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_10get_nodes_unique_triangles(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self), __pyx_v_nonunique_triangle_list, __pyx_v_i);
+
+  /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_10get_nodes_unique_triangles(CYTHON_UNUSED struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, PyArrayObject *__pyx_v_nonunique_triangle_list, int __pyx_v_i) {
+  PyArrayObject *__pyx_v_tri_flag = 0;
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_nonunique_triangle_list;
+  __Pyx_Buffer __pyx_pybuffer_nonunique_triangle_list;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  __Pyx_RefNannySetupContext("get_nodes_unique_triangles", 0);
+  __pyx_pybuffer_nonunique_triangle_list.pybuffer.buf = NULL;
+  __pyx_pybuffer_nonunique_triangle_list.refcount = 0;
+  __pyx_pybuffernd_nonunique_triangle_list.data = NULL;
+  __pyx_pybuffernd_nonunique_triangle_list.rcbuffer = &__pyx_pybuffer_nonunique_triangle_list;
+  {
+    __Pyx_BufFmt_StackElem __pyx_stack[1];
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_nonunique_triangle_list.rcbuffer->pybuffer, (PyObject*)__pyx_v_nonunique_triangle_list, &__Pyx_TypeInfo_nn___pyx_t_22Neuronal_Cascades_base_23Geometric_Brain_Network_DTYPE_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 178, __pyx_L1_error)
+  }
+  __pyx_pybuffernd_nonunique_triangle_list.diminfo[0].strides = __pyx_pybuffernd_nonunique_triangle_list.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_nonunique_triangle_list.diminfo[0].shape = __pyx_pybuffernd_nonunique_triangle_list.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_nonunique_triangle_list.diminfo[1].strides = __pyx_pybuffernd_nonunique_triangle_list.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_nonunique_triangle_list.diminfo[1].shape = __pyx_pybuffernd_nonunique_triangle_list.rcbuffer->pybuffer.shape[1];
+
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":181
+ *         cdef numpy.ndarray tri_flag
+ * 
+ *         tri_flag = nonunique_triangle_list[:,0]==i # make a flag for triangles using node i             # <<<<<<<<<<<<<<
+ *         tri_flag = tri_flag * (nonunique_triangle_list[:,1]<nonunique_triangle_list[:,2])# keep only indices in ascending order
+ * 
+ */
+  __pyx_t_1 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_nonunique_triangle_list), __pyx_tuple__3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 181, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_i); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 181, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = PyObject_RichCompare(__pyx_t_1, __pyx_t_2, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 181, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 181, __pyx_L1_error)
+  __pyx_v_tri_flag = ((PyArrayObject *)__pyx_t_3);
+  __pyx_t_3 = 0;
+
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":182
+ * 
+ *         tri_flag = nonunique_triangle_list[:,0]==i # make a flag for triangles using node i
+ *         tri_flag = tri_flag * (nonunique_triangle_list[:,1]<nonunique_triangle_list[:,2])# keep only indices in ascending order             # <<<<<<<<<<<<<<
+ * 
+ *         return nonunique_triangle_list[tri_flag,1:], tri_flag
+ */
+  __pyx_t_3 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_nonunique_triangle_list), __pyx_tuple__4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 182, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_2 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_nonunique_triangle_list), __pyx_tuple__5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 182, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_1 = PyObject_RichCompare(__pyx_t_3, __pyx_t_2, Py_LT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 182, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = PyNumber_Multiply(((PyObject *)__pyx_v_tri_flag), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 182, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 182, __pyx_L1_error)
+  __Pyx_DECREF_SET(__pyx_v_tri_flag, ((PyArrayObject *)__pyx_t_2));
+  __pyx_t_2 = 0;
+
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":184
+ *         tri_flag = tri_flag * (nonunique_triangle_list[:,1]<nonunique_triangle_list[:,2])# keep only indices in ascending order
+ * 
+ *         return nonunique_triangle_list[tri_flag,1:], tri_flag             # <<<<<<<<<<<<<<
+ * 
+ *     def return_triangles(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(((PyObject *)__pyx_v_tri_flag));
+  __Pyx_GIVEREF(((PyObject *)__pyx_v_tri_flag));
+  PyTuple_SET_ITEM(__pyx_t_2, 0, ((PyObject *)__pyx_v_tri_flag));
+  __Pyx_INCREF(__pyx_slice__6);
+  __Pyx_GIVEREF(__pyx_slice__6);
+  PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_slice__6);
+  __pyx_t_1 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_nonunique_triangle_list), __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_GIVEREF(__pyx_t_1);
+  PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
+  __Pyx_INCREF(((PyObject *)__pyx_v_tri_flag));
+  __Pyx_GIVEREF(((PyObject *)__pyx_v_tri_flag));
+  PyTuple_SET_ITEM(__pyx_t_2, 1, ((PyObject *)__pyx_v_tri_flag));
+  __pyx_t_1 = 0;
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = 0;
+  goto __pyx_L0;
+
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":178
+ *         return triangles_list
+ * 
+ *     def get_nodes_unique_triangles(self, numpy.ndarray[DTYPE_t, ndim=2] nonunique_triangle_list, int i):             # <<<<<<<<<<<<<<
+ *         cdef numpy.ndarray tri_flag
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  { PyObject *__pyx_type, *__pyx_value, *__pyx_tb;
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_nonunique_triangle_list.rcbuffer->pybuffer);
+  __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
+  __Pyx_AddTraceback("Neuronal_Cascades_base.Geometric_Brain_Network.Geometric_Brain_Network.get_nodes_unique_triangles", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  goto __pyx_L2;
+  __pyx_L0:;
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_nonunique_triangle_list.rcbuffer->pybuffer);
+  __pyx_L2:;
+  __Pyx_XDECREF((PyObject *)__pyx_v_tri_flag);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":186
+ *         return nonunique_triangle_list[tri_flag,1:], tri_flag
+ * 
+ *     def return_triangles(self):             # <<<<<<<<<<<<<<
+ *         cdef numpy.ndarray nonunique_triangle_list, p
+ *         cdef dict triangles
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_13return_triangles(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_13return_triangles(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("return_triangles (wrapper)", 0);
+  __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_12return_triangles(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_11return_triangles(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_size_k) {
-  int __pyx_v_k;
-  CYTHON_UNUSED int __pyx_v_j;
-  int __pyx_v_i;
-  PyObject *__pyx_v_e = 0;
-  PyObject *__pyx_v_temp = 0;
-  PyObject *__pyx_v_clique = 0;
-  PyObject *__pyx_v_tris = 0;
+static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_12return_triangles(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self) {
+  PyArrayObject *__pyx_v_nonunique_triangle_list = 0;
   PyObject *__pyx_v_triangles = 0;
+  Py_ssize_t __pyx_v_i;
+  PyArrayObject *__pyx_7genexpr__pyx_v_p = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
   PyObject *__pyx_t_3 = NULL;
-  Py_ssize_t __pyx_t_4;
-  PyObject *(*__pyx_t_5)(PyObject *);
-  PyObject *__pyx_t_6 = NULL;
+  int __pyx_t_4;
+  int __pyx_t_5;
+  Py_ssize_t __pyx_t_6;
   PyObject *__pyx_t_7 = NULL;
-  PyObject *(*__pyx_t_8)(PyObject *);
+  PyObject *__pyx_t_8 = NULL;
   int __pyx_t_9;
-  int __pyx_t_10;
-  int __pyx_t_11;
-  int __pyx_t_12;
-  int __pyx_t_13;
-  int __pyx_t_14;
-  int __pyx_t_15;
+  PyObject *__pyx_t_10 = NULL;
+  Py_ssize_t __pyx_t_11;
+  PyObject *(*__pyx_t_12)(PyObject *);
   __Pyx_RefNannySetupContext("return_triangles", 0);
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":182
- *         cdef dict triangles
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":191
+ *         cdef Py_ssize_t i
  * 
- *         for k, clique in self.k_cliques():             # <<<<<<<<<<<<<<
- *             if k == size_k:
- *                 tris = clique
+ *         nonunique_triangle_list = self.get_nonunique_triangle_list(self.A)             # <<<<<<<<<<<<<<
+ *         triangles = {}
+ *         for i in range(self.N):
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_k_cliques); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 182, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_nonunique_triangle_list); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 191, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -4961,266 +5012,173 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
       __Pyx_DECREF_SET(__pyx_t_2, function);
     }
   }
-  __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
+  __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, ((PyObject *)__pyx_v_self->A)) : __Pyx_PyObject_CallOneArg(__pyx_t_2, ((PyObject *)__pyx_v_self->A));
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 182, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 191, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
-    __pyx_t_2 = __pyx_t_1; __Pyx_INCREF(__pyx_t_2); __pyx_t_4 = 0;
-    __pyx_t_5 = NULL;
-  } else {
-    __pyx_t_4 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 182, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_5 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 182, __pyx_L1_error)
-  }
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  for (;;) {
-    if (likely(!__pyx_t_5)) {
-      if (likely(PyList_CheckExact(__pyx_t_2))) {
-        if (__pyx_t_4 >= PyList_GET_SIZE(__pyx_t_2)) break;
-        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 182, __pyx_L1_error)
-        #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 182, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        #endif
-      } else {
-        if (__pyx_t_4 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
-        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 182, __pyx_L1_error)
-        #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 182, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        #endif
-      }
-    } else {
-      __pyx_t_1 = __pyx_t_5(__pyx_t_2);
-      if (unlikely(!__pyx_t_1)) {
-        PyObject* exc_type = PyErr_Occurred();
-        if (exc_type) {
-          if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 182, __pyx_L1_error)
-        }
-        break;
-      }
-      __Pyx_GOTREF(__pyx_t_1);
-    }
-    if ((likely(PyTuple_CheckExact(__pyx_t_1))) || (PyList_CheckExact(__pyx_t_1))) {
-      PyObject* sequence = __pyx_t_1;
-      Py_ssize_t size = __Pyx_PySequence_SIZE(sequence);
-      if (unlikely(size != 2)) {
-        if (size > 2) __Pyx_RaiseTooManyValuesError(2);
-        else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 182, __pyx_L1_error)
-      }
-      #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      if (likely(PyTuple_CheckExact(sequence))) {
-        __pyx_t_3 = PyTuple_GET_ITEM(sequence, 0); 
-        __pyx_t_6 = PyTuple_GET_ITEM(sequence, 1); 
-      } else {
-        __pyx_t_3 = PyList_GET_ITEM(sequence, 0); 
-        __pyx_t_6 = PyList_GET_ITEM(sequence, 1); 
-      }
-      __Pyx_INCREF(__pyx_t_3);
-      __Pyx_INCREF(__pyx_t_6);
-      #else
-      __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 182, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 182, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_6);
-      #endif
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    } else {
-      Py_ssize_t index = -1;
-      __pyx_t_7 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 182, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_7);
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_8 = Py_TYPE(__pyx_t_7)->tp_iternext;
-      index = 0; __pyx_t_3 = __pyx_t_8(__pyx_t_7); if (unlikely(!__pyx_t_3)) goto __pyx_L5_unpacking_failed;
-      __Pyx_GOTREF(__pyx_t_3);
-      index = 1; __pyx_t_6 = __pyx_t_8(__pyx_t_7); if (unlikely(!__pyx_t_6)) goto __pyx_L5_unpacking_failed;
-      __Pyx_GOTREF(__pyx_t_6);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_8(__pyx_t_7), 2) < 0) __PYX_ERR(0, 182, __pyx_L1_error)
-      __pyx_t_8 = NULL;
-      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      goto __pyx_L6_unpacking_done;
-      __pyx_L5_unpacking_failed:;
-      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_8 = NULL;
-      if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 182, __pyx_L1_error)
-      __pyx_L6_unpacking_done:;
-    }
-    __pyx_t_9 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 182, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (!(likely(PyList_CheckExact(__pyx_t_6))||((__pyx_t_6) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_6)->tp_name), 0))) __PYX_ERR(0, 182, __pyx_L1_error)
-    __pyx_v_k = __pyx_t_9;
-    __Pyx_XDECREF_SET(__pyx_v_clique, ((PyObject*)__pyx_t_6));
-    __pyx_t_6 = 0;
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 191, __pyx_L1_error)
+  __pyx_v_nonunique_triangle_list = ((PyArrayObject *)__pyx_t_1);
+  __pyx_t_1 = 0;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":183
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":192
  * 
- *         for k, clique in self.k_cliques():
- *             if k == size_k:             # <<<<<<<<<<<<<<
- *                 tris = clique
- *         triangles = {}
- */
-    __pyx_t_10 = ((__pyx_v_k == __pyx_v_size_k) != 0);
-    if (__pyx_t_10) {
-
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":184
- *         for k, clique in self.k_cliques():
- *             if k == size_k:
- *                 tris = clique             # <<<<<<<<<<<<<<
- *         triangles = {}
- *         for i in range(self.N):
- */
-      __Pyx_INCREF(__pyx_v_clique);
-      __Pyx_XDECREF_SET(__pyx_v_tris, __pyx_v_clique);
-
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":183
- * 
- *         for k, clique in self.k_cliques():
- *             if k == size_k:             # <<<<<<<<<<<<<<
- *                 tris = clique
- *         triangles = {}
- */
-    }
-
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":182
- *         cdef dict triangles
- * 
- *         for k, clique in self.k_cliques():             # <<<<<<<<<<<<<<
- *             if k == size_k:
- *                 tris = clique
- */
-  }
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":185
- *             if k == size_k:
- *                 tris = clique
+ *         nonunique_triangle_list = self.get_nonunique_triangle_list(self.A)
  *         triangles = {}             # <<<<<<<<<<<<<<
  *         for i in range(self.N):
- *             temp = []
+ *             triangles[str(i)] = [list(p) for p in self.get_nodes_unique_triangles(nonunique_triangle_list,i)[0]]
  */
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 185, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_v_triangles = ((PyObject*)__pyx_t_2);
-  __pyx_t_2 = 0;
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 192, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_v_triangles = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":186
- *                 tris = clique
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":193
+ *         nonunique_triangle_list = self.get_nonunique_triangle_list(self.A)
  *         triangles = {}
  *         for i in range(self.N):             # <<<<<<<<<<<<<<
- *             temp = []
- *             for j,e in enumerate(tris):
+ *             triangles[str(i)] = [list(p) for p in self.get_nodes_unique_triangles(nonunique_triangle_list,i)[0]]
+ *         return triangles
  */
-  __pyx_t_9 = __pyx_v_self->N;
-  __pyx_t_11 = __pyx_t_9;
-  for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
-    __pyx_v_i = __pyx_t_12;
+  __pyx_t_4 = __pyx_v_self->N;
+  __pyx_t_5 = __pyx_t_4;
+  for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
+    __pyx_v_i = __pyx_t_6;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":187
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":194
  *         triangles = {}
  *         for i in range(self.N):
- *             temp = []             # <<<<<<<<<<<<<<
- *             for j,e in enumerate(tris):
- *                 if i in e: temp.append(list(e.difference({i})))
- */
-    __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 187, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_XDECREF_SET(__pyx_v_temp, ((PyObject*)__pyx_t_2));
-    __pyx_t_2 = 0;
-
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":188
- *         for i in range(self.N):
- *             temp = []
- *             for j,e in enumerate(tris):             # <<<<<<<<<<<<<<
- *                 if i in e: temp.append(list(e.difference({i})))
- *             triangles['%d'%i] = temp
- */
-    __pyx_t_13 = 0;
-    if (unlikely(!__pyx_v_tris)) { __Pyx_RaiseUnboundLocalError("tris"); __PYX_ERR(0, 188, __pyx_L1_error) }
-    __pyx_t_2 = __pyx_v_tris; __Pyx_INCREF(__pyx_t_2); __pyx_t_4 = 0;
-    for (;;) {
-      if (__pyx_t_4 >= PyList_GET_SIZE(__pyx_t_2)) break;
-      #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 188, __pyx_L1_error)
-      #else
-      __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 188, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      #endif
-      if (!(likely(PySet_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "set", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 188, __pyx_L1_error)
-      __Pyx_XDECREF_SET(__pyx_v_e, ((PyObject*)__pyx_t_1));
-      __pyx_t_1 = 0;
-      __pyx_v_j = __pyx_t_13;
-      __pyx_t_13 = (__pyx_t_13 + 1);
-
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":189
- *             temp = []
- *             for j,e in enumerate(tris):
- *                 if i in e: temp.append(list(e.difference({i})))             # <<<<<<<<<<<<<<
- *             triangles['%d'%i] = temp
- *         return(triangles)
- */
-      __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_i); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 189, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      if (unlikely(__pyx_v_e == Py_None)) {
-        PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-        __PYX_ERR(0, 189, __pyx_L1_error)
-      }
-      __pyx_t_10 = (__Pyx_PySet_ContainsTF(__pyx_t_1, __pyx_v_e, Py_EQ)); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 189, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_14 = (__pyx_t_10 != 0);
-      if (__pyx_t_14) {
-        __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_i); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 189, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_6 = PySet_New(0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 189, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_6);
-        if (PySet_Add(__pyx_t_6, __pyx_t_1) < 0) __PYX_ERR(0, 189, __pyx_L1_error)
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_1 = __Pyx_CallUnboundCMethod1(&__pyx_umethod_PySet_Type_difference, __pyx_v_e, __pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 189, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        __pyx_t_6 = PySequence_List(__pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 189, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_6);
-        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_15 = __Pyx_PyList_Append(__pyx_v_temp, __pyx_t_6); if (unlikely(__pyx_t_15 == ((int)-1))) __PYX_ERR(0, 189, __pyx_L1_error)
-        __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      }
-
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":188
- *         for i in range(self.N):
- *             temp = []
- *             for j,e in enumerate(tris):             # <<<<<<<<<<<<<<
- *                 if i in e: temp.append(list(e.difference({i})))
- *             triangles['%d'%i] = temp
- */
-    }
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":190
- *             for j,e in enumerate(tris):
- *                 if i in e: temp.append(list(e.difference({i})))
- *             triangles['%d'%i] = temp             # <<<<<<<<<<<<<<
- *         return(triangles)
+ *             triangles[str(i)] = [list(p) for p in self.get_nodes_unique_triangles(nonunique_triangle_list,i)[0]]             # <<<<<<<<<<<<<<
+ *         return triangles
  * 
  */
-    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_i); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 190, __pyx_L1_error)
+    { /* enter inner scope */
+      __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 194, __pyx_L7_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_nodes_unique_triangles); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 194, __pyx_L7_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __pyx_t_7 = PyInt_FromSsize_t(__pyx_v_i); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 194, __pyx_L7_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __pyx_t_8 = NULL;
+      __pyx_t_9 = 0;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
+        __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_3);
+        if (likely(__pyx_t_8)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+          __Pyx_INCREF(__pyx_t_8);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_3, function);
+          __pyx_t_9 = 1;
+        }
+      }
+      #if CYTHON_FAST_PYCALL
+      if (PyFunction_Check(__pyx_t_3)) {
+        PyObject *__pyx_temp[3] = {__pyx_t_8, ((PyObject *)__pyx_v_nonunique_triangle_list), __pyx_t_7};
+        __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 194, __pyx_L7_error)
+        __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      } else
+      #endif
+      #if CYTHON_FAST_PYCCALL
+      if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
+        PyObject *__pyx_temp[3] = {__pyx_t_8, ((PyObject *)__pyx_v_nonunique_triangle_list), __pyx_t_7};
+        __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 194, __pyx_L7_error)
+        __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      } else
+      #endif
+      {
+        __pyx_t_10 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 194, __pyx_L7_error)
+        __Pyx_GOTREF(__pyx_t_10);
+        if (__pyx_t_8) {
+          __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_8); __pyx_t_8 = NULL;
+        }
+        __Pyx_INCREF(((PyObject *)__pyx_v_nonunique_triangle_list));
+        __Pyx_GIVEREF(((PyObject *)__pyx_v_nonunique_triangle_list));
+        PyTuple_SET_ITEM(__pyx_t_10, 0+__pyx_t_9, ((PyObject *)__pyx_v_nonunique_triangle_list));
+        __Pyx_GIVEREF(__pyx_t_7);
+        PyTuple_SET_ITEM(__pyx_t_10, 1+__pyx_t_9, __pyx_t_7);
+        __pyx_t_7 = 0;
+        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_10, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 194, __pyx_L7_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+      }
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_2, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 194, __pyx_L7_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      if (likely(PyList_CheckExact(__pyx_t_3)) || PyTuple_CheckExact(__pyx_t_3)) {
+        __pyx_t_2 = __pyx_t_3; __Pyx_INCREF(__pyx_t_2); __pyx_t_11 = 0;
+        __pyx_t_12 = NULL;
+      } else {
+        __pyx_t_11 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 194, __pyx_L7_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __pyx_t_12 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 194, __pyx_L7_error)
+      }
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      for (;;) {
+        if (likely(!__pyx_t_12)) {
+          if (likely(PyList_CheckExact(__pyx_t_2))) {
+            if (__pyx_t_11 >= PyList_GET_SIZE(__pyx_t_2)) break;
+            #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+            __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_11); __Pyx_INCREF(__pyx_t_3); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 194, __pyx_L7_error)
+            #else
+            __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 194, __pyx_L7_error)
+            __Pyx_GOTREF(__pyx_t_3);
+            #endif
+          } else {
+            if (__pyx_t_11 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
+            #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+            __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_11); __Pyx_INCREF(__pyx_t_3); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 194, __pyx_L7_error)
+            #else
+            __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 194, __pyx_L7_error)
+            __Pyx_GOTREF(__pyx_t_3);
+            #endif
+          }
+        } else {
+          __pyx_t_3 = __pyx_t_12(__pyx_t_2);
+          if (unlikely(!__pyx_t_3)) {
+            PyObject* exc_type = PyErr_Occurred();
+            if (exc_type) {
+              if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
+              else __PYX_ERR(0, 194, __pyx_L7_error)
+            }
+            break;
+          }
+          __Pyx_GOTREF(__pyx_t_3);
+        }
+        if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 194, __pyx_L7_error)
+        __Pyx_XDECREF_SET(__pyx_7genexpr__pyx_v_p, ((PyArrayObject *)__pyx_t_3));
+        __pyx_t_3 = 0;
+        __pyx_t_3 = PySequence_List(((PyObject *)__pyx_7genexpr__pyx_v_p)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 194, __pyx_L7_error)
+        __Pyx_GOTREF(__pyx_t_3);
+        if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 194, __pyx_L7_error)
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      }
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __Pyx_XDECREF((PyObject *)__pyx_7genexpr__pyx_v_p); __pyx_7genexpr__pyx_v_p = 0;
+      goto __pyx_L10_exit_scope;
+      __pyx_L7_error:;
+      __Pyx_XDECREF((PyObject *)__pyx_7genexpr__pyx_v_p); __pyx_7genexpr__pyx_v_p = 0;
+      goto __pyx_L1_error;
+      __pyx_L10_exit_scope:;
+    } /* exit inner scope */
+    __pyx_t_2 = PyInt_FromSsize_t(__pyx_v_i); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 194, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_6 = PyUnicode_Format(__pyx_kp_u_d_2, __pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 190, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
+    __pyx_t_3 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyUnicode_Type)), __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 194, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(PyDict_SetItem(__pyx_v_triangles, __pyx_t_6, __pyx_v_temp) < 0)) __PYX_ERR(0, 190, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    if (unlikely(PyDict_SetItem(__pyx_v_triangles, __pyx_t_3, __pyx_t_1) < 0)) __PYX_ERR(0, 194, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":191
- *                 if i in e: temp.append(list(e.difference({i})))
- *             triangles['%d'%i] = temp
- *         return(triangles)             # <<<<<<<<<<<<<<
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":195
+ *         for i in range(self.N):
+ *             triangles[str(i)] = [list(p) for p in self.get_nodes_unique_triangles(nonunique_triangle_list,i)[0]]
+ *         return triangles             # <<<<<<<<<<<<<<
  * 
  *     def neighbors(self, int node_id):
  */
@@ -5229,12 +5187,12 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __pyx_r = __pyx_v_triangles;
   goto __pyx_L0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":176
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":186
+ *         return nonunique_triangle_list[tri_flag,1:], tri_flag
  * 
- * 
- *     def return_triangles(self, int size_k = 3):             # <<<<<<<<<<<<<<
- *         cdef int k,j,i
- *         cdef set e,
+ *     def return_triangles(self):             # <<<<<<<<<<<<<<
+ *         cdef numpy.ndarray nonunique_triangle_list, p
+ *         cdef dict triangles
  */
 
   /* function exit code */
@@ -5242,23 +5200,22 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_XDECREF(__pyx_t_8);
+  __Pyx_XDECREF(__pyx_t_10);
   __Pyx_AddTraceback("Neuronal_Cascades_base.Geometric_Brain_Network.Geometric_Brain_Network.return_triangles", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
-  __Pyx_XDECREF(__pyx_v_e);
-  __Pyx_XDECREF(__pyx_v_temp);
-  __Pyx_XDECREF(__pyx_v_clique);
-  __Pyx_XDECREF(__pyx_v_tris);
+  __Pyx_XDECREF((PyObject *)__pyx_v_nonunique_triangle_list);
   __Pyx_XDECREF(__pyx_v_triangles);
+  __Pyx_XDECREF((PyObject *)__pyx_7genexpr__pyx_v_p);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":193
- *         return(triangles)
+/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":197
+ *         return triangles
  * 
  *     def neighbors(self, int node_id):             # <<<<<<<<<<<<<<
  * 
@@ -5266,14 +5223,14 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_14neighbors(PyObject *__pyx_v_self, PyObject *__pyx_arg_node_id); /*proto*/
-static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_14neighbors(PyObject *__pyx_v_self, PyObject *__pyx_arg_node_id) {
+static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_15neighbors(PyObject *__pyx_v_self, PyObject *__pyx_arg_node_id); /*proto*/
+static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_15neighbors(PyObject *__pyx_v_self, PyObject *__pyx_arg_node_id) {
   int __pyx_v_node_id;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("neighbors (wrapper)", 0);
   assert(__pyx_arg_node_id); {
-    __pyx_v_node_id = __Pyx_PyInt_As_int(__pyx_arg_node_id); if (unlikely((__pyx_v_node_id == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 193, __pyx_L3_error)
+    __pyx_v_node_id = __Pyx_PyInt_As_int(__pyx_arg_node_id); if (unlikely((__pyx_v_node_id == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 197, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -5281,14 +5238,14 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_13neighbors(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self), ((int)__pyx_v_node_id));
+  __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_14neighbors(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self), ((int)__pyx_v_node_id));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_13neighbors(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_node_id) {
+static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_14neighbors(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_node_id) {
   PyArrayObject *__pyx_v_nhood = 0;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -5298,19 +5255,19 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   PyObject *__pyx_t_4 = NULL;
   __Pyx_RefNannySetupContext("neighbors", 0);
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":197
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":201
  *         cdef numpy.ndarray nhood
  * 
  *         nhood = np.nonzero(self.A[node_id])[0]             # <<<<<<<<<<<<<<
  * 
  *         return(nhood)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 197, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_nonzero); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 197, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_nonzero); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_self->A), __pyx_v_node_id, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 197, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_self->A), __pyx_v_node_id, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -5325,17 +5282,17 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 197, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 197, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 197, __pyx_L1_error)
+  if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 201, __pyx_L1_error)
   __pyx_v_nhood = ((PyArrayObject *)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":199
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":203
  *         nhood = np.nonzero(self.A[node_id])[0]
  * 
  *         return(nhood)             # <<<<<<<<<<<<<<
@@ -5347,8 +5304,8 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __pyx_r = ((PyObject *)__pyx_v_nhood);
   goto __pyx_L0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":193
- *         return(triangles)
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":197
+ *         return triangles
  * 
  *     def neighbors(self, int node_id):             # <<<<<<<<<<<<<<
  * 
@@ -5370,7 +5327,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   return __pyx_r;
 }
 
-/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":201
+/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":205
  *         return(nhood)
  * 
  *     def neighbor_input(self, int node_id, float K, float L = -100, str model_type = 'line_segment'):             # <<<<<<<<<<<<<<
@@ -5379,8 +5336,8 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_16neighbor_input(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_16neighbor_input(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_17neighbor_input(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_17neighbor_input(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   int __pyx_v_node_id;
   float __pyx_v_K;
   float __pyx_v_L;
@@ -5416,7 +5373,7 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_K)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("neighbor_input", 0, 2, 4, 1); __PYX_ERR(0, 201, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("neighbor_input", 0, 2, 4, 1); __PYX_ERR(0, 205, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -5432,7 +5389,7 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "neighbor_input") < 0)) __PYX_ERR(0, 201, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "neighbor_input") < 0)) __PYX_ERR(0, 205, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -5446,10 +5403,10 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_node_id = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_node_id == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 201, __pyx_L3_error)
-    __pyx_v_K = __pyx_PyFloat_AsFloat(values[1]); if (unlikely((__pyx_v_K == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 201, __pyx_L3_error)
+    __pyx_v_node_id = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_node_id == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 205, __pyx_L3_error)
+    __pyx_v_K = __pyx_PyFloat_AsFloat(values[1]); if (unlikely((__pyx_v_K == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 205, __pyx_L3_error)
     if (values[2]) {
-      __pyx_v_L = __pyx_PyFloat_AsFloat(values[2]); if (unlikely((__pyx_v_L == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 201, __pyx_L3_error)
+      __pyx_v_L = __pyx_PyFloat_AsFloat(values[2]); if (unlikely((__pyx_v_L == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 205, __pyx_L3_error)
     } else {
       __pyx_v_L = ((float)-100.0);
     }
@@ -5457,14 +5414,14 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("neighbor_input", 0, 2, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 201, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("neighbor_input", 0, 2, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 205, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("Neuronal_Cascades_base.Geometric_Brain_Network.Geometric_Brain_Network.neighbor_input", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_model_type), (&PyUnicode_Type), 1, "model_type", 1))) __PYX_ERR(0, 201, __pyx_L1_error)
-  __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_15neighbor_input(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self), __pyx_v_node_id, __pyx_v_K, __pyx_v_L, __pyx_v_model_type);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_model_type), (&PyUnicode_Type), 1, "model_type", 1))) __PYX_ERR(0, 205, __pyx_L1_error)
+  __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_16neighbor_input(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self), __pyx_v_node_id, __pyx_v_K, __pyx_v_L, __pyx_v_model_type);
 
   /* function exit code */
   goto __pyx_L0;
@@ -5475,7 +5432,7 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_15neighbor_input(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_node_id, float __pyx_v_K, float __pyx_v_L, PyObject *__pyx_v_model_type) {
+static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_16neighbor_input(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_node_id, float __pyx_v_K, float __pyx_v_L, PyObject *__pyx_v_model_type) {
   PyArrayObject *__pyx_v_nbhood = 0;
   CYTHON_UNUSED Py_ssize_t __pyx_v_i;
   CYTHON_UNUSED Py_ssize_t __pyx_v_j;
@@ -5502,16 +5459,16 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   float __pyx_t_12;
   __Pyx_RefNannySetupContext("neighbor_input", 0);
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":208
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":212
  *         cdef float F, one_simplicies, two_simplicies
  * 
  *         nbhood = self.neighbors(node_id)             # <<<<<<<<<<<<<<
  *         active_hood = []
  *         active_triangles = []
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_neighbors); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 208, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_neighbors); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 212, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_node_id); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 208, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_node_id); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 212, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -5526,38 +5483,38 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_4, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 208, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 212, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 208, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 212, __pyx_L1_error)
   __pyx_v_nbhood = ((PyArrayObject *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":209
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":213
  * 
  *         nbhood = self.neighbors(node_id)
  *         active_hood = []             # <<<<<<<<<<<<<<
  *         active_triangles = []
  * 
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 209, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 213, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_active_hood = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":210
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":214
  *         nbhood = self.neighbors(node_id)
  *         active_hood = []
  *         active_triangles = []             # <<<<<<<<<<<<<<
  * 
  *         ## find the active hood
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 210, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 214, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_active_triangles = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":213
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":217
  * 
  *         ## find the active hood
  *         for i,e in enumerate(nbhood):             # <<<<<<<<<<<<<<
@@ -5569,26 +5526,26 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     __pyx_t_1 = ((PyObject *)__pyx_v_nbhood); __Pyx_INCREF(__pyx_t_1); __pyx_t_6 = 0;
     __pyx_t_7 = NULL;
   } else {
-    __pyx_t_6 = -1; __pyx_t_1 = PyObject_GetIter(((PyObject *)__pyx_v_nbhood)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 213, __pyx_L1_error)
+    __pyx_t_6 = -1; __pyx_t_1 = PyObject_GetIter(((PyObject *)__pyx_v_nbhood)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 217, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_7 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 213, __pyx_L1_error)
+    __pyx_t_7 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 217, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_7)) {
       if (likely(PyList_CheckExact(__pyx_t_1))) {
         if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 213, __pyx_L1_error)
+        __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 217, __pyx_L1_error)
         #else
-        __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 213, __pyx_L1_error)
+        __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 217, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         #endif
       } else {
         if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 213, __pyx_L1_error)
+        __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 217, __pyx_L1_error)
         #else
-        __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 213, __pyx_L1_error)
+        __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 217, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         #endif
       }
@@ -5598,19 +5555,19 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 213, __pyx_L1_error)
+          else __PYX_ERR(0, 217, __pyx_L1_error)
         }
         break;
       }
       __Pyx_GOTREF(__pyx_t_2);
     }
-    __pyx_t_8 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 213, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_8 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 217, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_v_e = __pyx_t_8;
     __pyx_v_i = __pyx_t_5;
     __pyx_t_5 = (__pyx_t_5 + 1);
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":214
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":218
  *         ## find the active hood
  *         for i,e in enumerate(nbhood):
  *             if self.nodes[e].state == 1:             # <<<<<<<<<<<<<<
@@ -5619,33 +5576,33 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
     if (unlikely(__pyx_v_self->nodes == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 214, __pyx_L1_error)
+      __PYX_ERR(0, 218, __pyx_L1_error)
     }
-    __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->nodes, __pyx_v_e, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 214, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->nodes, __pyx_v_e, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 218, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_state); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 214, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_state); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 218, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyInt_EqObjC(__pyx_t_3, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 214, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_EqObjC(__pyx_t_3, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 218, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 214, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 218, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (__pyx_t_9) {
 
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":215
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":219
  *         for i,e in enumerate(nbhood):
  *             if self.nodes[e].state == 1:
  *                 active_hood.append(e)             # <<<<<<<<<<<<<<
  * 
  *         ## find the active triangles
  */
-      __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_e); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 215, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_e); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 219, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_10 = __Pyx_PyList_Append(__pyx_v_active_hood, __pyx_t_2); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 215, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyList_Append(__pyx_v_active_hood, __pyx_t_2); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 219, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":214
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":218
  *         ## find the active hood
  *         for i,e in enumerate(nbhood):
  *             if self.nodes[e].state == 1:             # <<<<<<<<<<<<<<
@@ -5654,7 +5611,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
     }
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":213
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":217
  * 
  *         ## find the active hood
  *         for i,e in enumerate(nbhood):             # <<<<<<<<<<<<<<
@@ -5664,7 +5621,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":218
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":222
  * 
  *         ## find the active triangles
  *         for j,f in enumerate(self.triangles['%d'%node_id]):             # <<<<<<<<<<<<<<
@@ -5674,23 +5631,23 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __pyx_t_5 = 0;
   if (unlikely(__pyx_v_self->triangles == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 218, __pyx_L1_error)
+    __PYX_ERR(0, 222, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_node_id); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 218, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_node_id); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyUnicode_Format(__pyx_kp_u_d_2, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 218, __pyx_L1_error)
+  __pyx_t_2 = PyUnicode_Format(__pyx_kp_u_d_2, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 222, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->triangles, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 218, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->triangles, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
     __pyx_t_2 = __pyx_t_1; __Pyx_INCREF(__pyx_t_2); __pyx_t_6 = 0;
     __pyx_t_7 = NULL;
   } else {
-    __pyx_t_6 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 218, __pyx_L1_error)
+    __pyx_t_6 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 222, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_7 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 218, __pyx_L1_error)
+    __pyx_t_7 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 222, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   for (;;) {
@@ -5698,17 +5655,17 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
       if (likely(PyList_CheckExact(__pyx_t_2))) {
         if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_1); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 218, __pyx_L1_error)
+        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_1); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 222, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 218, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       } else {
         if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_1); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 218, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_1); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 222, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 218, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       }
@@ -5718,45 +5675,45 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 218, __pyx_L1_error)
+          else __PYX_ERR(0, 222, __pyx_L1_error)
         }
         break;
       }
       __Pyx_GOTREF(__pyx_t_1);
     }
-    if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 218, __pyx_L1_error)
+    if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 222, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_f, ((PyObject*)__pyx_t_1));
     __pyx_t_1 = 0;
     __pyx_v_j = __pyx_t_5;
     __pyx_t_5 = (__pyx_t_5 + 1);
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":219
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":223
  *         ## find the active triangles
  *         for j,f in enumerate(self.triangles['%d'%node_id]):
  *             if self.nodes[f[0]].state == 1 and self.nodes[f[1]].state == 1:             # <<<<<<<<<<<<<<
  *                 active_triangles.append(f)
- *         if model_type == 'line_segment':
+ * 
  */
     if (unlikely(__pyx_v_self->nodes == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 219, __pyx_L1_error)
+      __PYX_ERR(0, 223, __pyx_L1_error)
     }
     if (unlikely(__pyx_v_f == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 219, __pyx_L1_error)
+      __PYX_ERR(0, 223, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_f, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 219, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_f, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 223, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_self->nodes, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 219, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_self->nodes, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 223, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_state); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 219, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_state); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 223, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyInt_EqObjC(__pyx_t_1, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 219, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyInt_EqObjC(__pyx_t_1, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 223, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 219, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 223, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     if (__pyx_t_11) {
     } else {
@@ -5765,48 +5722,48 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     }
     if (unlikely(__pyx_v_self->nodes == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 219, __pyx_L1_error)
+      __PYX_ERR(0, 223, __pyx_L1_error)
     }
     if (unlikely(__pyx_v_f == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 219, __pyx_L1_error)
+      __PYX_ERR(0, 223, __pyx_L1_error)
     }
-    __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_f, 1, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 219, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_f, 1, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 223, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_v_self->nodes, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 219, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_v_self->nodes, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 223, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_state); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 219, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_state); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 223, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyInt_EqObjC(__pyx_t_3, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 219, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_EqObjC(__pyx_t_3, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 223, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 219, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 223, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_9 = __pyx_t_11;
     __pyx_L9_bool_binop_done:;
     if (__pyx_t_9) {
 
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":220
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":224
  *         for j,f in enumerate(self.triangles['%d'%node_id]):
  *             if self.nodes[f[0]].state == 1 and self.nodes[f[1]].state == 1:
  *                 active_triangles.append(f)             # <<<<<<<<<<<<<<
+ * 
  *         if model_type == 'line_segment':
- *             one_simplicies = (1-K)*(len(active_hood)/len(nbhood))
  */
-      __pyx_t_10 = __Pyx_PyList_Append(__pyx_v_active_triangles, __pyx_v_f); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 220, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyList_Append(__pyx_v_active_triangles, __pyx_v_f); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 224, __pyx_L1_error)
 
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":219
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":223
  *         ## find the active triangles
  *         for j,f in enumerate(self.triangles['%d'%node_id]):
  *             if self.nodes[f[0]].state == 1 and self.nodes[f[1]].state == 1:             # <<<<<<<<<<<<<<
  *                 active_triangles.append(f)
- *         if model_type == 'line_segment':
+ * 
  */
     }
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":218
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":222
  * 
  *         ## find the active triangles
  *         for j,f in enumerate(self.triangles['%d'%node_id]):             # <<<<<<<<<<<<<<
@@ -5816,89 +5773,89 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":221
- *             if self.nodes[f[0]].state == 1 and self.nodes[f[1]].state == 1:
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":226
  *                 active_triangles.append(f)
+ * 
  *         if model_type == 'line_segment':             # <<<<<<<<<<<<<<
  *             one_simplicies = (1-K)*(len(active_hood)/len(nbhood))
  *             two_simplicies = K*(len(active_triangles)/len(self.triangles['%d'%node_id]))
  */
-  __pyx_t_9 = (__Pyx_PyUnicode_Equals(__pyx_v_model_type, __pyx_n_u_line_segment, Py_EQ)); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 221, __pyx_L1_error)
+  __pyx_t_9 = (__Pyx_PyUnicode_Equals(__pyx_v_model_type, __pyx_n_u_line_segment, Py_EQ)); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 226, __pyx_L1_error)
   __pyx_t_11 = (__pyx_t_9 != 0);
   if (__pyx_t_11) {
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":222
- *                 active_triangles.append(f)
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":227
+ * 
  *         if model_type == 'line_segment':
  *             one_simplicies = (1-K)*(len(active_hood)/len(nbhood))             # <<<<<<<<<<<<<<
  *             two_simplicies = K*(len(active_triangles)/len(self.triangles['%d'%node_id]))
  * 
  */
-    __pyx_t_5 = PyList_GET_SIZE(__pyx_v_active_hood); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 222, __pyx_L1_error)
-    __pyx_t_6 = PyObject_Length(((PyObject *)__pyx_v_nbhood)); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 222, __pyx_L1_error)
+    __pyx_t_5 = PyList_GET_SIZE(__pyx_v_active_hood); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 227, __pyx_L1_error)
+    __pyx_t_6 = PyObject_Length(((PyObject *)__pyx_v_nbhood)); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 227, __pyx_L1_error)
     if (unlikely(__pyx_t_6 == 0)) {
       PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-      __PYX_ERR(0, 222, __pyx_L1_error)
+      __PYX_ERR(0, 227, __pyx_L1_error)
     }
     __pyx_v_one_simplicies = ((1.0 - __pyx_v_K) * (((double)__pyx_t_5) / ((double)__pyx_t_6)));
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":223
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":228
  *         if model_type == 'line_segment':
  *             one_simplicies = (1-K)*(len(active_hood)/len(nbhood))
  *             two_simplicies = K*(len(active_triangles)/len(self.triangles['%d'%node_id]))             # <<<<<<<<<<<<<<
  * 
  *             F = one_simplicies + two_simplicies - self.nodes[node_id].threshold
  */
-    __pyx_t_6 = PyList_GET_SIZE(__pyx_v_active_triangles); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 223, __pyx_L1_error)
+    __pyx_t_6 = PyList_GET_SIZE(__pyx_v_active_triangles); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 228, __pyx_L1_error)
     if (unlikely(__pyx_v_self->triangles == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 223, __pyx_L1_error)
+      __PYX_ERR(0, 228, __pyx_L1_error)
     }
-    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_node_id); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 223, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_node_id); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 228, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = PyUnicode_Format(__pyx_kp_u_d_2, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 223, __pyx_L1_error)
+    __pyx_t_1 = PyUnicode_Format(__pyx_kp_u_d_2, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 228, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_self->triangles, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 223, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_self->triangles, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 228, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_5 = PyObject_Length(__pyx_t_2); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 223, __pyx_L1_error)
+    __pyx_t_5 = PyObject_Length(__pyx_t_2); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 228, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (unlikely(__pyx_t_5 == 0)) {
       PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-      __PYX_ERR(0, 223, __pyx_L1_error)
+      __PYX_ERR(0, 228, __pyx_L1_error)
     }
     __pyx_v_two_simplicies = (__pyx_v_K * (((double)__pyx_t_6) / ((double)__pyx_t_5)));
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":225
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":230
  *             two_simplicies = K*(len(active_triangles)/len(self.triangles['%d'%node_id]))
  * 
  *             F = one_simplicies + two_simplicies - self.nodes[node_id].threshold             # <<<<<<<<<<<<<<
  * 
  *         elif model_type == 'linear_combination':
  */
-    __pyx_t_2 = PyFloat_FromDouble((__pyx_v_one_simplicies + __pyx_v_two_simplicies)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 225, __pyx_L1_error)
+    __pyx_t_2 = PyFloat_FromDouble((__pyx_v_one_simplicies + __pyx_v_two_simplicies)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 230, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     if (unlikely(__pyx_v_self->nodes == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 225, __pyx_L1_error)
+      __PYX_ERR(0, 230, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->nodes, __pyx_v_node_id, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 225, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->nodes, __pyx_v_node_id, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 230, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_threshold); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 225, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_threshold); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 230, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = PyNumber_Subtract(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 225, __pyx_L1_error)
+    __pyx_t_1 = PyNumber_Subtract(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 230, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_12 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_12 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 225, __pyx_L1_error)
+    __pyx_t_12 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_12 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 230, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_v_F = __pyx_t_12;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":221
- *             if self.nodes[f[0]].state == 1 and self.nodes[f[1]].state == 1:
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":226
  *                 active_triangles.append(f)
+ * 
  *         if model_type == 'line_segment':             # <<<<<<<<<<<<<<
  *             one_simplicies = (1-K)*(len(active_hood)/len(nbhood))
  *             two_simplicies = K*(len(active_triangles)/len(self.triangles['%d'%node_id]))
@@ -5906,87 +5863,87 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     goto __pyx_L11;
   }
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":227
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":232
  *             F = one_simplicies + two_simplicies - self.nodes[node_id].threshold
  * 
  *         elif model_type == 'linear_combination':             # <<<<<<<<<<<<<<
  *             one_simplicies = K*(len(active_hood)/len(nbhood))
  *             two_simplicies = L*(len(active_triangles)/len(self.triangles['%d'%node_id]))
  */
-  __pyx_t_11 = (__Pyx_PyUnicode_Equals(__pyx_v_model_type, __pyx_n_u_linear_combination, Py_EQ)); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 227, __pyx_L1_error)
+  __pyx_t_11 = (__Pyx_PyUnicode_Equals(__pyx_v_model_type, __pyx_n_u_linear_combination, Py_EQ)); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 232, __pyx_L1_error)
   __pyx_t_9 = (__pyx_t_11 != 0);
   if (__pyx_t_9) {
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":228
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":233
  * 
  *         elif model_type == 'linear_combination':
  *             one_simplicies = K*(len(active_hood)/len(nbhood))             # <<<<<<<<<<<<<<
  *             two_simplicies = L*(len(active_triangles)/len(self.triangles['%d'%node_id]))
  * 
  */
-    __pyx_t_5 = PyList_GET_SIZE(__pyx_v_active_hood); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 228, __pyx_L1_error)
-    __pyx_t_6 = PyObject_Length(((PyObject *)__pyx_v_nbhood)); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 228, __pyx_L1_error)
+    __pyx_t_5 = PyList_GET_SIZE(__pyx_v_active_hood); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 233, __pyx_L1_error)
+    __pyx_t_6 = PyObject_Length(((PyObject *)__pyx_v_nbhood)); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 233, __pyx_L1_error)
     if (unlikely(__pyx_t_6 == 0)) {
       PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-      __PYX_ERR(0, 228, __pyx_L1_error)
+      __PYX_ERR(0, 233, __pyx_L1_error)
     }
     __pyx_v_one_simplicies = (__pyx_v_K * (((double)__pyx_t_5) / ((double)__pyx_t_6)));
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":229
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":234
  *         elif model_type == 'linear_combination':
  *             one_simplicies = K*(len(active_hood)/len(nbhood))
  *             two_simplicies = L*(len(active_triangles)/len(self.triangles['%d'%node_id]))             # <<<<<<<<<<<<<<
  * 
  *             F = one_simplicies + two_simplicies - self.nodes[node_id].threshold
  */
-    __pyx_t_6 = PyList_GET_SIZE(__pyx_v_active_triangles); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 229, __pyx_L1_error)
+    __pyx_t_6 = PyList_GET_SIZE(__pyx_v_active_triangles); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 234, __pyx_L1_error)
     if (unlikely(__pyx_v_self->triangles == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 229, __pyx_L1_error)
+      __PYX_ERR(0, 234, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_node_id); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 229, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_node_id); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 234, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = PyUnicode_Format(__pyx_kp_u_d_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 229, __pyx_L1_error)
+    __pyx_t_3 = PyUnicode_Format(__pyx_kp_u_d_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 234, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->triangles, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 229, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyDict_GetItem(__pyx_v_self->triangles, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 234, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_5 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 229, __pyx_L1_error)
+    __pyx_t_5 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 234, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (unlikely(__pyx_t_5 == 0)) {
       PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-      __PYX_ERR(0, 229, __pyx_L1_error)
+      __PYX_ERR(0, 234, __pyx_L1_error)
     }
     __pyx_v_two_simplicies = (__pyx_v_L * (((double)__pyx_t_6) / ((double)__pyx_t_5)));
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":231
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":236
  *             two_simplicies = L*(len(active_triangles)/len(self.triangles['%d'%node_id]))
  * 
  *             F = one_simplicies + two_simplicies - self.nodes[node_id].threshold             # <<<<<<<<<<<<<<
  * 
  *         return(F)
  */
-    __pyx_t_1 = PyFloat_FromDouble((__pyx_v_one_simplicies + __pyx_v_two_simplicies)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 231, __pyx_L1_error)
+    __pyx_t_1 = PyFloat_FromDouble((__pyx_v_one_simplicies + __pyx_v_two_simplicies)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 236, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     if (unlikely(__pyx_v_self->nodes == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 231, __pyx_L1_error)
+      __PYX_ERR(0, 236, __pyx_L1_error)
     }
-    __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_self->nodes, __pyx_v_node_id, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 231, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_self->nodes, __pyx_v_node_id, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 236, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_threshold); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 231, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_threshold); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 236, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyNumber_Subtract(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 231, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Subtract(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 236, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_12 = __pyx_PyFloat_AsFloat(__pyx_t_3); if (unlikely((__pyx_t_12 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 231, __pyx_L1_error)
+    __pyx_t_12 = __pyx_PyFloat_AsFloat(__pyx_t_3); if (unlikely((__pyx_t_12 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 236, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_v_F = __pyx_t_12;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":227
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":232
  *             F = one_simplicies + two_simplicies - self.nodes[node_id].threshold
  * 
  *         elif model_type == 'linear_combination':             # <<<<<<<<<<<<<<
@@ -5996,7 +5953,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   }
   __pyx_L11:;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":233
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":238
  *             F = one_simplicies + two_simplicies - self.nodes[node_id].threshold
  * 
  *         return(F)             # <<<<<<<<<<<<<<
@@ -6004,13 +5961,13 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  *     def sigmoid(self, int node_id, int C, float K, float L = -100, str model_type = 'line_segment'):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_F); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 233, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_F); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 238, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_r = __pyx_t_3;
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":201
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":205
  *         return(nhood)
  * 
  *     def neighbor_input(self, int node_id, float K, float L = -100, str model_type = 'line_segment'):             # <<<<<<<<<<<<<<
@@ -6036,7 +5993,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   return __pyx_r;
 }
 
-/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":235
+/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":240
  *         return(F)
  * 
  *     def sigmoid(self, int node_id, int C, float K, float L = -100, str model_type = 'line_segment'):             # <<<<<<<<<<<<<<
@@ -6045,8 +6002,8 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_18sigmoid(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_18sigmoid(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_19sigmoid(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_19sigmoid(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   int __pyx_v_node_id;
   int __pyx_v_C;
   float __pyx_v_K;
@@ -6085,13 +6042,13 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_C)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("sigmoid", 0, 3, 5, 1); __PYX_ERR(0, 235, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("sigmoid", 0, 3, 5, 1); __PYX_ERR(0, 240, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_K)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("sigmoid", 0, 3, 5, 2); __PYX_ERR(0, 235, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("sigmoid", 0, 3, 5, 2); __PYX_ERR(0, 240, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -6107,7 +6064,7 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "sigmoid") < 0)) __PYX_ERR(0, 235, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "sigmoid") < 0)) __PYX_ERR(0, 240, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -6122,11 +6079,11 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_node_id = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_node_id == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 235, __pyx_L3_error)
-    __pyx_v_C = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_C == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 235, __pyx_L3_error)
-    __pyx_v_K = __pyx_PyFloat_AsFloat(values[2]); if (unlikely((__pyx_v_K == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 235, __pyx_L3_error)
+    __pyx_v_node_id = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_node_id == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 240, __pyx_L3_error)
+    __pyx_v_C = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_C == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 240, __pyx_L3_error)
+    __pyx_v_K = __pyx_PyFloat_AsFloat(values[2]); if (unlikely((__pyx_v_K == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 240, __pyx_L3_error)
     if (values[3]) {
-      __pyx_v_L = __pyx_PyFloat_AsFloat(values[3]); if (unlikely((__pyx_v_L == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 235, __pyx_L3_error)
+      __pyx_v_L = __pyx_PyFloat_AsFloat(values[3]); if (unlikely((__pyx_v_L == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 240, __pyx_L3_error)
     } else {
       __pyx_v_L = ((float)-100.0);
     }
@@ -6134,14 +6091,14 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("sigmoid", 0, 3, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 235, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("sigmoid", 0, 3, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 240, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("Neuronal_Cascades_base.Geometric_Brain_Network.Geometric_Brain_Network.sigmoid", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_model_type), (&PyUnicode_Type), 1, "model_type", 1))) __PYX_ERR(0, 235, __pyx_L1_error)
-  __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_17sigmoid(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self), __pyx_v_node_id, __pyx_v_C, __pyx_v_K, __pyx_v_L, __pyx_v_model_type);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_model_type), (&PyUnicode_Type), 1, "model_type", 1))) __PYX_ERR(0, 240, __pyx_L1_error)
+  __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_18sigmoid(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self), __pyx_v_node_id, __pyx_v_C, __pyx_v_K, __pyx_v_L, __pyx_v_model_type);
 
   /* function exit code */
   goto __pyx_L0;
@@ -6152,7 +6109,7 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_17sigmoid(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_node_id, int __pyx_v_C, float __pyx_v_K, float __pyx_v_L, PyObject *__pyx_v_model_type) {
+static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_18sigmoid(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_node_id, int __pyx_v_C, float __pyx_v_K, float __pyx_v_L, PyObject *__pyx_v_model_type) {
   float __pyx_v_F;
   float __pyx_v_Z;
   PyObject *__pyx_r = NULL;
@@ -6168,20 +6125,20 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   float __pyx_t_9;
   __Pyx_RefNannySetupContext("sigmoid", 0);
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":239
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":244
  *         cdef float F, Z
  * 
  *         F = self.neighbor_input(node_id, K, L, model_type)             # <<<<<<<<<<<<<<
  *         Z = 1/(1+np.exp(-C*F))
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_neighbor_input); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 239, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_neighbor_input); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 244, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_node_id); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 239, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_node_id); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 244, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyFloat_FromDouble(__pyx_v_K); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 239, __pyx_L1_error)
+  __pyx_t_4 = PyFloat_FromDouble(__pyx_v_K); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 244, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_L); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 239, __pyx_L1_error)
+  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_L); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 244, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_6 = NULL;
   __pyx_t_7 = 0;
@@ -6198,7 +6155,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[5] = {__pyx_t_6, __pyx_t_3, __pyx_t_4, __pyx_t_5, __pyx_v_model_type};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_7, 4+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 239, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_7, 4+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 244, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -6209,7 +6166,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[5] = {__pyx_t_6, __pyx_t_3, __pyx_t_4, __pyx_t_5, __pyx_v_model_type};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_7, 4+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 239, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_7, 4+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 244, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -6218,7 +6175,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   } else
   #endif
   {
-    __pyx_t_8 = PyTuple_New(4+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 239, __pyx_L1_error)
+    __pyx_t_8 = PyTuple_New(4+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 244, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     if (__pyx_t_6) {
       __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_6); __pyx_t_6 = NULL;
@@ -6235,28 +6192,28 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     __pyx_t_3 = 0;
     __pyx_t_4 = 0;
     __pyx_t_5 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 239, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 244, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_9 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_9 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 239, __pyx_L1_error)
+  __pyx_t_9 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_9 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 244, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_F = __pyx_t_9;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":240
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":245
  * 
  *         F = self.neighbor_input(node_id, K, L, model_type)
  *         Z = 1/(1+np.exp(-C*F))             # <<<<<<<<<<<<<<
  * 
  *         return(Z)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 240, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 245, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_exp); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 240, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_exp); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 245, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyFloat_FromDouble(((-__pyx_v_C) * __pyx_v_F)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 240, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(((-__pyx_v_C) * __pyx_v_F)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 245, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_8))) {
@@ -6271,20 +6228,20 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __pyx_t_1 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_5, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_2);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 240, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 245, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_8 = __Pyx_PyInt_AddCObj(__pyx_int_1, __pyx_t_1, 1, 0, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 240, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyInt_AddCObj(__pyx_int_1, __pyx_t_1, 1, 0, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 245, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_int_1, __pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 240, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_int_1, __pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 245, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_9 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_9 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 240, __pyx_L1_error)
+  __pyx_t_9 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_9 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 245, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_Z = __pyx_t_9;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":242
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":247
  *         Z = 1/(1+np.exp(-C*F))
  * 
  *         return(Z)             # <<<<<<<<<<<<<<
@@ -6292,13 +6249,13 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  *     def update_history(self, int node_id, int C, float K, float L = -100, str model_type = 'line_segment'):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_Z); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 242, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_Z); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 247, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":235
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":240
  *         return(F)
  * 
  *     def sigmoid(self, int node_id, int C, float K, float L = -100, str model_type = 'line_segment'):             # <<<<<<<<<<<<<<
@@ -6323,7 +6280,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   return __pyx_r;
 }
 
-/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":244
+/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":249
  *         return(Z)
  * 
  *     def update_history(self, int node_id, int C, float K, float L = -100, str model_type = 'line_segment'):             # <<<<<<<<<<<<<<
@@ -6332,8 +6289,8 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_20update_history(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_20update_history(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_21update_history(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_21update_history(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   int __pyx_v_node_id;
   int __pyx_v_C;
   float __pyx_v_K;
@@ -6372,13 +6329,13 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_C)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("update_history", 0, 3, 5, 1); __PYX_ERR(0, 244, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("update_history", 0, 3, 5, 1); __PYX_ERR(0, 249, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_K)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("update_history", 0, 3, 5, 2); __PYX_ERR(0, 244, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("update_history", 0, 3, 5, 2); __PYX_ERR(0, 249, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -6394,7 +6351,7 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "update_history") < 0)) __PYX_ERR(0, 244, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "update_history") < 0)) __PYX_ERR(0, 249, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -6409,11 +6366,11 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_node_id = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_node_id == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 244, __pyx_L3_error)
-    __pyx_v_C = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_C == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 244, __pyx_L3_error)
-    __pyx_v_K = __pyx_PyFloat_AsFloat(values[2]); if (unlikely((__pyx_v_K == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 244, __pyx_L3_error)
+    __pyx_v_node_id = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_node_id == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 249, __pyx_L3_error)
+    __pyx_v_C = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_C == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 249, __pyx_L3_error)
+    __pyx_v_K = __pyx_PyFloat_AsFloat(values[2]); if (unlikely((__pyx_v_K == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 249, __pyx_L3_error)
     if (values[3]) {
-      __pyx_v_L = __pyx_PyFloat_AsFloat(values[3]); if (unlikely((__pyx_v_L == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 244, __pyx_L3_error)
+      __pyx_v_L = __pyx_PyFloat_AsFloat(values[3]); if (unlikely((__pyx_v_L == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 249, __pyx_L3_error)
     } else {
       __pyx_v_L = ((float)-100.0);
     }
@@ -6421,14 +6378,14 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("update_history", 0, 3, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 244, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("update_history", 0, 3, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 249, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("Neuronal_Cascades_base.Geometric_Brain_Network.Geometric_Brain_Network.update_history", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_model_type), (&PyUnicode_Type), 1, "model_type", 1))) __PYX_ERR(0, 244, __pyx_L1_error)
-  __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_19update_history(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self), __pyx_v_node_id, __pyx_v_C, __pyx_v_K, __pyx_v_L, __pyx_v_model_type);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_model_type), (&PyUnicode_Type), 1, "model_type", 1))) __PYX_ERR(0, 249, __pyx_L1_error)
+  __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_20update_history(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self), __pyx_v_node_id, __pyx_v_C, __pyx_v_K, __pyx_v_L, __pyx_v_model_type);
 
   /* function exit code */
   goto __pyx_L0;
@@ -6439,7 +6396,7 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_19update_history(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_node_id, int __pyx_v_C, float __pyx_v_K, float __pyx_v_L, PyObject *__pyx_v_model_type) {
+static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_20update_history(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_node_id, int __pyx_v_C, float __pyx_v_K, float __pyx_v_L, PyObject *__pyx_v_model_type) {
   float __pyx_v_rand;
   CYTHON_UNUSED Py_ssize_t __pyx_v_i;
   CYTHON_UNUSED Py_ssize_t __pyx_v_j;
@@ -6463,43 +6420,43 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   int __pyx_t_16;
   __Pyx_RefNannySetupContext("update_history", 0);
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":248
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":253
  *         cdef Py_ssize_t i,j
  * 
  *         rand = random.uniform(0,1)             # <<<<<<<<<<<<<<
  * 
  *         if rand <= self.sigmoid(node_id, C, K, L, model_type):
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_random); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 248, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_random); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 253, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_uniform); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 248, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_uniform); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 253, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 248, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 253, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_3 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_3 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 248, __pyx_L1_error)
+  __pyx_t_3 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_3 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 253, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_rand = __pyx_t_3;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":250
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":255
  *         rand = random.uniform(0,1)
  * 
  *         if rand <= self.sigmoid(node_id, C, K, L, model_type):             # <<<<<<<<<<<<<<
  * 
  *             for i in range(self.nodes[node_id].memory + 1):
  */
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_rand); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 250, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_rand); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 255, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_sigmoid); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 250, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_sigmoid); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 255, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_node_id); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 250, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_node_id); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 255, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_C); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 250, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_C); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 255, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = PyFloat_FromDouble(__pyx_v_K); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 250, __pyx_L1_error)
+  __pyx_t_7 = PyFloat_FromDouble(__pyx_v_K); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 255, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_8 = PyFloat_FromDouble(__pyx_v_L); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 250, __pyx_L1_error)
+  __pyx_t_8 = PyFloat_FromDouble(__pyx_v_L); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 255, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __pyx_t_9 = NULL;
   __pyx_t_10 = 0;
@@ -6516,7 +6473,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_4)) {
     PyObject *__pyx_temp[6] = {__pyx_t_9, __pyx_t_5, __pyx_t_6, __pyx_t_7, __pyx_t_8, __pyx_v_model_type};
-    __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_10, 5+__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 250, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_10, 5+__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 255, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -6528,7 +6485,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
     PyObject *__pyx_temp[6] = {__pyx_t_9, __pyx_t_5, __pyx_t_6, __pyx_t_7, __pyx_t_8, __pyx_v_model_type};
-    __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_10, 5+__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 250, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_10, 5+__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 255, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -6538,7 +6495,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   } else
   #endif
   {
-    __pyx_t_11 = PyTuple_New(5+__pyx_t_10); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 250, __pyx_L1_error)
+    __pyx_t_11 = PyTuple_New(5+__pyx_t_10); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 255, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
     if (__pyx_t_9) {
       __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_9); __pyx_t_9 = NULL;
@@ -6558,19 +6515,19 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     __pyx_t_6 = 0;
     __pyx_t_7 = 0;
     __pyx_t_8 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_11, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 250, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_11, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 255, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyObject_RichCompare(__pyx_t_1, __pyx_t_2, Py_LE); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 250, __pyx_L1_error)
+  __pyx_t_4 = PyObject_RichCompare(__pyx_t_1, __pyx_t_2, Py_LE); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 255, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 250, __pyx_L1_error)
+  __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 255, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (__pyx_t_12) {
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":252
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":257
  *         if rand <= self.sigmoid(node_id, C, K, L, model_type):
  * 
  *             for i in range(self.nodes[node_id].memory + 1):             # <<<<<<<<<<<<<<
@@ -6579,23 +6536,23 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
     if (unlikely(__pyx_v_self->nodes == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 252, __pyx_L1_error)
+      __PYX_ERR(0, 257, __pyx_L1_error)
     }
-    __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_self->nodes, __pyx_v_node_id, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 252, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_self->nodes, __pyx_v_node_id, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 257, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_memory); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 252, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_memory); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 257, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyInt_AddObjC(__pyx_t_2, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 252, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_AddObjC(__pyx_t_2, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 257, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_13 = __Pyx_PyInt_As_long(__pyx_t_4); if (unlikely((__pyx_t_13 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 252, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_PyInt_As_long(__pyx_t_4); if (unlikely((__pyx_t_13 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 257, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_14 = __pyx_t_13;
     for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_14; __pyx_t_15+=1) {
       __pyx_v_i = __pyx_t_15;
 
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":253
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":258
  * 
  *             for i in range(self.nodes[node_id].memory + 1):
  *                 self.nodes[node_id].history.append(1)             # <<<<<<<<<<<<<<
@@ -6604,18 +6561,18 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
       if (unlikely(__pyx_v_self->nodes == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 253, __pyx_L1_error)
+        __PYX_ERR(0, 258, __pyx_L1_error)
       }
-      __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_self->nodes, __pyx_v_node_id, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 253, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_self->nodes, __pyx_v_node_id, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 258, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_history); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 253, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_history); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 258, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_16 = __Pyx_PyObject_Append(__pyx_t_2, __pyx_int_1); if (unlikely(__pyx_t_16 == ((int)-1))) __PYX_ERR(0, 253, __pyx_L1_error)
+      __pyx_t_16 = __Pyx_PyObject_Append(__pyx_t_2, __pyx_int_1); if (unlikely(__pyx_t_16 == ((int)-1))) __PYX_ERR(0, 258, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":255
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":260
  *                 self.nodes[node_id].history.append(1)
  * 
  *             for j in range(self.nodes[node_id].rest):             # <<<<<<<<<<<<<<
@@ -6624,20 +6581,20 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
     if (unlikely(__pyx_v_self->nodes == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 255, __pyx_L1_error)
+      __PYX_ERR(0, 260, __pyx_L1_error)
     }
-    __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->nodes, __pyx_v_node_id, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 255, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->nodes, __pyx_v_node_id, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 260, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_rest); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 255, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_rest); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 260, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_13 = __Pyx_PyInt_As_long(__pyx_t_4); if (unlikely((__pyx_t_13 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 255, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_PyInt_As_long(__pyx_t_4); if (unlikely((__pyx_t_13 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 260, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_14 = __pyx_t_13;
     for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_14; __pyx_t_15+=1) {
       __pyx_v_j = __pyx_t_15;
 
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":256
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":261
  * 
  *             for j in range(self.nodes[node_id].rest):
  *                 self.nodes[node_id].history.append(-1)             # <<<<<<<<<<<<<<
@@ -6646,18 +6603,18 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
       if (unlikely(__pyx_v_self->nodes == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 256, __pyx_L1_error)
+        __PYX_ERR(0, 261, __pyx_L1_error)
       }
-      __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_self->nodes, __pyx_v_node_id, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 256, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_self->nodes, __pyx_v_node_id, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 261, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_history); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 256, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_history); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 261, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_16 = __Pyx_PyObject_Append(__pyx_t_2, __pyx_int_neg_1); if (unlikely(__pyx_t_16 == ((int)-1))) __PYX_ERR(0, 256, __pyx_L1_error)
+      __pyx_t_16 = __Pyx_PyObject_Append(__pyx_t_2, __pyx_int_neg_1); if (unlikely(__pyx_t_16 == ((int)-1))) __PYX_ERR(0, 261, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":258
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":263
  *                 self.nodes[node_id].history.append(-1)
  * 
  *             self.nodes[node_id].history.append(0)             # <<<<<<<<<<<<<<
@@ -6666,17 +6623,17 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
     if (unlikely(__pyx_v_self->nodes == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 258, __pyx_L1_error)
+      __PYX_ERR(0, 263, __pyx_L1_error)
     }
-    __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->nodes, __pyx_v_node_id, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 258, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_self->nodes, __pyx_v_node_id, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 263, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_history); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 258, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_history); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 263, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_16 = __Pyx_PyObject_Append(__pyx_t_4, __pyx_int_0); if (unlikely(__pyx_t_16 == ((int)-1))) __PYX_ERR(0, 258, __pyx_L1_error)
+    __pyx_t_16 = __Pyx_PyObject_Append(__pyx_t_4, __pyx_int_0); if (unlikely(__pyx_t_16 == ((int)-1))) __PYX_ERR(0, 263, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":250
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":255
  *         rand = random.uniform(0,1)
  * 
  *         if rand <= self.sigmoid(node_id, C, K, L, model_type):             # <<<<<<<<<<<<<<
@@ -6686,7 +6643,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     goto __pyx_L3;
   }
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":261
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":266
  * 
  *         else:
  *             self.nodes[node_id].history.append(0)             # <<<<<<<<<<<<<<
@@ -6696,19 +6653,19 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   /*else*/ {
     if (unlikely(__pyx_v_self->nodes == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 261, __pyx_L1_error)
+      __PYX_ERR(0, 266, __pyx_L1_error)
     }
-    __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_self->nodes, __pyx_v_node_id, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 261, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_self->nodes, __pyx_v_node_id, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 266, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_history); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 261, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_history); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 266, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_16 = __Pyx_PyObject_Append(__pyx_t_2, __pyx_int_0); if (unlikely(__pyx_t_16 == ((int)-1))) __PYX_ERR(0, 261, __pyx_L1_error)
+    __pyx_t_16 = __Pyx_PyObject_Append(__pyx_t_2, __pyx_int_0); if (unlikely(__pyx_t_16 == ((int)-1))) __PYX_ERR(0, 266, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
   __pyx_L3:;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":244
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":249
  *         return(Z)
  * 
  *     def update_history(self, int node_id, int C, float K, float L = -100, str model_type = 'line_segment'):             # <<<<<<<<<<<<<<
@@ -6737,7 +6694,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   return __pyx_r;
 }
 
-/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":263
+/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":268
  *             self.nodes[node_id].history.append(0)
  * 
  *     def update_states(self):             # <<<<<<<<<<<<<<
@@ -6746,19 +6703,19 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_22update_states(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_22update_states(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_23update_states(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_23update_states(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("update_states (wrapper)", 0);
-  __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_21update_states(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self));
+  __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_22update_states(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_21update_states(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self) {
+static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_22update_states(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self) {
   PyObject *__pyx_v_excited = 0;
   PyObject *__pyx_v_ready_to_fire = 0;
   PyObject *__pyx_v_rest = 0;
@@ -6773,43 +6730,43 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   int __pyx_t_6;
   __Pyx_RefNannySetupContext("update_states", 0);
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":268
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":273
  *         cdef object node
  * 
  *         excited = []             # <<<<<<<<<<<<<<
  *         ready_to_fire = []
  *         rest = []
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 268, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 273, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_excited = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":269
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":274
  * 
  *         excited = []
  *         ready_to_fire = []             # <<<<<<<<<<<<<<
  *         rest = []
  * 
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 269, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 274, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_ready_to_fire = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":270
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":275
  *         excited = []
  *         ready_to_fire = []
  *         rest = []             # <<<<<<<<<<<<<<
  * 
  *         for node in self.nodes:
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 270, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 275, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_rest = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":272
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":277
  *         rest = []
  * 
  *         for node in self.nodes:             # <<<<<<<<<<<<<<
@@ -6818,67 +6775,67 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
   if (unlikely(__pyx_v_self->nodes == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 272, __pyx_L1_error)
+    __PYX_ERR(0, 277, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_v_self->nodes; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
   for (;;) {
     if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 272, __pyx_L1_error)
+    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 277, __pyx_L1_error)
     #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 272, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 277, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_node, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":274
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":279
  *         for node in self.nodes:
  * 
  *             node.state = int(node.history[self.time])             # <<<<<<<<<<<<<<
  * 
  *             if node.state == 1:
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_n_s_history); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 274, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_n_s_history); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 279, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_3, __pyx_v_self->time, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 274, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_3, __pyx_v_self->time, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 279, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 274, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 279, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (__Pyx_PyObject_SetAttrStr(__pyx_v_node, __pyx_n_s_state, __pyx_t_3) < 0) __PYX_ERR(0, 274, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_node, __pyx_n_s_state, __pyx_t_3) < 0) __PYX_ERR(0, 279, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":276
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":281
  *             node.state = int(node.history[self.time])
  * 
  *             if node.state == 1:             # <<<<<<<<<<<<<<
  *                 excited.append(node.name)
  *             elif node.state == 0:
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_n_s_state); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 276, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_n_s_state); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 281, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyInt_EqObjC(__pyx_t_3, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 276, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_EqObjC(__pyx_t_3, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 281, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 276, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 281, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if (__pyx_t_5) {
 
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":277
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":282
  * 
  *             if node.state == 1:
  *                 excited.append(node.name)             # <<<<<<<<<<<<<<
  *             elif node.state == 0:
  *                 ready_to_fire.append(node.name)
  */
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_n_s_name); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 277, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_n_s_name); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 282, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_6 = __Pyx_PyList_Append(__pyx_v_excited, __pyx_t_4); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 277, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyList_Append(__pyx_v_excited, __pyx_t_4); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 282, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":276
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":281
  *             node.state = int(node.history[self.time])
  * 
  *             if node.state == 1:             # <<<<<<<<<<<<<<
@@ -6888,35 +6845,35 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
       goto __pyx_L5;
     }
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":278
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":283
  *             if node.state == 1:
  *                 excited.append(node.name)
  *             elif node.state == 0:             # <<<<<<<<<<<<<<
  *                 ready_to_fire.append(node.name)
  *             else: rest.append(node.name)
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_n_s_state); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 278, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_n_s_state); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 283, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = __Pyx_PyInt_EqObjC(__pyx_t_4, __pyx_int_0, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 278, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyInt_EqObjC(__pyx_t_4, __pyx_int_0, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 283, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 278, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 283, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     if (__pyx_t_5) {
 
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":279
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":284
  *                 excited.append(node.name)
  *             elif node.state == 0:
  *                 ready_to_fire.append(node.name)             # <<<<<<<<<<<<<<
  *             else: rest.append(node.name)
  * 
  */
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_n_s_name); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 279, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_n_s_name); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 284, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_6 = __Pyx_PyList_Append(__pyx_v_ready_to_fire, __pyx_t_3); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 279, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyList_Append(__pyx_v_ready_to_fire, __pyx_t_3); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 284, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":278
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":283
  *             if node.state == 1:
  *                 excited.append(node.name)
  *             elif node.state == 0:             # <<<<<<<<<<<<<<
@@ -6926,7 +6883,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
       goto __pyx_L5;
     }
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":280
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":285
  *             elif node.state == 0:
  *                 ready_to_fire.append(node.name)
  *             else: rest.append(node.name)             # <<<<<<<<<<<<<<
@@ -6934,14 +6891,14 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  *         return(excited, ready_to_fire, rest)
  */
     /*else*/ {
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_n_s_name); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 280, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_n_s_name); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 285, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_6 = __Pyx_PyList_Append(__pyx_v_rest, __pyx_t_3); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 280, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyList_Append(__pyx_v_rest, __pyx_t_3); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 285, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
     __pyx_L5:;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":272
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":277
  *         rest = []
  * 
  *         for node in self.nodes:             # <<<<<<<<<<<<<<
@@ -6951,7 +6908,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":282
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":287
  *             else: rest.append(node.name)
  * 
  *         return(excited, ready_to_fire, rest)             # <<<<<<<<<<<<<<
@@ -6959,7 +6916,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  *     def initial_spread(self, int seed):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 282, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 287, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_v_excited);
   __Pyx_GIVEREF(__pyx_v_excited);
@@ -6974,7 +6931,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":263
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":268
  *             self.nodes[node_id].history.append(0)
  * 
  *     def update_states(self):             # <<<<<<<<<<<<<<
@@ -6999,7 +6956,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   return __pyx_r;
 }
 
-/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":284
+/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":289
  *         return(excited, ready_to_fire, rest)
  * 
  *     def initial_spread(self, int seed):             # <<<<<<<<<<<<<<
@@ -7008,14 +6965,14 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_24initial_spread(PyObject *__pyx_v_self, PyObject *__pyx_arg_seed); /*proto*/
-static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_24initial_spread(PyObject *__pyx_v_self, PyObject *__pyx_arg_seed) {
+static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_25initial_spread(PyObject *__pyx_v_self, PyObject *__pyx_arg_seed); /*proto*/
+static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_25initial_spread(PyObject *__pyx_v_self, PyObject *__pyx_arg_seed) {
   int __pyx_v_seed;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("initial_spread (wrapper)", 0);
   assert(__pyx_arg_seed); {
-    __pyx_v_seed = __Pyx_PyInt_As_int(__pyx_arg_seed); if (unlikely((__pyx_v_seed == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 284, __pyx_L3_error)
+    __pyx_v_seed = __Pyx_PyInt_As_int(__pyx_arg_seed); if (unlikely((__pyx_v_seed == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 289, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -7023,14 +6980,14 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_23initial_spread(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self), ((int)__pyx_v_seed));
+  __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_24initial_spread(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self), ((int)__pyx_v_seed));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_23initial_spread(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_seed) {
+static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_24initial_spread(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_seed) {
   CYTHON_UNUSED Py_ssize_t __pyx_v_i;
   CYTHON_UNUSED Py_ssize_t __pyx_v_j;
   PyObject *__pyx_v_excited_nodes_set = 0;
@@ -7054,7 +7011,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   int __pyx_t_11;
   __Pyx_RefNannySetupContext("initial_spread", 0);
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":290
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":295
  *         cdef list excited_nodes_list
  * 
  *         all_nodes = set([k for k in range(self.N)])             # <<<<<<<<<<<<<<
@@ -7062,34 +7019,34 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  *         excited_nodes_set = set(excited_nodes_list)
  */
   { /* enter inner scope */
-    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 290, __pyx_L1_error)
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 295, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_2 = __pyx_v_self->N;
     __pyx_t_3 = __pyx_t_2;
     for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
       __pyx_8genexpr1__pyx_v_k = __pyx_t_4;
-      __pyx_t_5 = PyInt_FromSsize_t(__pyx_8genexpr1__pyx_v_k); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 290, __pyx_L1_error)
+      __pyx_t_5 = PyInt_FromSsize_t(__pyx_8genexpr1__pyx_v_k); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 295, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_5))) __PYX_ERR(0, 290, __pyx_L1_error)
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_5))) __PYX_ERR(0, 295, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
   } /* exit inner scope */
-  __pyx_t_5 = PySet_New(__pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 290, __pyx_L1_error)
+  __pyx_t_5 = PySet_New(__pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 295, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_all_nodes = ((PyObject*)__pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":291
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":296
  * 
  *         all_nodes = set([k for k in range(self.N)])
  *         excited_nodes_list = list(self.neighbors(seed))             # <<<<<<<<<<<<<<
  *         excited_nodes_set = set(excited_nodes_list)
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_neighbors); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 291, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_neighbors); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 296, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_seed); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 291, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_seed); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 296, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_7 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
@@ -7104,28 +7061,28 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __pyx_t_5 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_7, __pyx_t_6) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 291, __pyx_L1_error)
+  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 296, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PySequence_List(__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 291, __pyx_L1_error)
+  __pyx_t_1 = PySequence_List(__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 296, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_excited_nodes_list = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":292
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":297
  *         all_nodes = set([k for k in range(self.N)])
  *         excited_nodes_list = list(self.neighbors(seed))
  *         excited_nodes_set = set(excited_nodes_list)             # <<<<<<<<<<<<<<
  * 
  *         for node1 in excited_nodes_list:
  */
-  __pyx_t_1 = PySet_New(__pyx_v_excited_nodes_list); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 292, __pyx_L1_error)
+  __pyx_t_1 = PySet_New(__pyx_v_excited_nodes_list); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 297, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_excited_nodes_set = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":294
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":299
  *         excited_nodes_set = set(excited_nodes_list)
  * 
  *         for node1 in excited_nodes_list:             # <<<<<<<<<<<<<<
@@ -7136,16 +7093,16 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   for (;;) {
     if (__pyx_t_4 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_5 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_5); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 294, __pyx_L1_error)
+    __pyx_t_5 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_5); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 299, __pyx_L1_error)
     #else
-    __pyx_t_5 = PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 294, __pyx_L1_error)
+    __pyx_t_5 = PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 299, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     #endif
-    __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 294, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 299, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_v_node1 = __pyx_t_2;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":295
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":300
  * 
  *         for node1 in excited_nodes_list:
  *             for i in range(self.nodes[node1].memory + 1):             # <<<<<<<<<<<<<<
@@ -7154,23 +7111,23 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
     if (unlikely(__pyx_v_self->nodes == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 295, __pyx_L1_error)
+      __PYX_ERR(0, 300, __pyx_L1_error)
     }
-    __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->nodes, __pyx_v_node1, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 295, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->nodes, __pyx_v_node1, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 300, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_memory); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 295, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_memory); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 300, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyInt_AddObjC(__pyx_t_6, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 295, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_AddObjC(__pyx_t_6, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 300, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_8 = __Pyx_PyInt_As_long(__pyx_t_5); if (unlikely((__pyx_t_8 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 295, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyInt_As_long(__pyx_t_5); if (unlikely((__pyx_t_8 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 300, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_9 = __pyx_t_8;
     for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
       __pyx_v_i = __pyx_t_10;
 
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":296
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":301
  *         for node1 in excited_nodes_list:
  *             for i in range(self.nodes[node1].memory + 1):
  *                 self.nodes[node1].history.append(1)             # <<<<<<<<<<<<<<
@@ -7179,18 +7136,18 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
       if (unlikely(__pyx_v_self->nodes == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 296, __pyx_L1_error)
+        __PYX_ERR(0, 301, __pyx_L1_error)
       }
-      __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->nodes, __pyx_v_node1, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 296, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->nodes, __pyx_v_node1, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 301, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_history); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 296, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_history); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 301, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_6, __pyx_int_1); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 296, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_6, __pyx_int_1); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 301, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":297
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":302
  *             for i in range(self.nodes[node1].memory + 1):
  *                 self.nodes[node1].history.append(1)
  *             for j in range(self.nodes[node1].rest):             # <<<<<<<<<<<<<<
@@ -7199,20 +7156,20 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
     if (unlikely(__pyx_v_self->nodes == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 297, __pyx_L1_error)
+      __PYX_ERR(0, 302, __pyx_L1_error)
     }
-    __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_self->nodes, __pyx_v_node1, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 297, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_self->nodes, __pyx_v_node1, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 302, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_rest); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 297, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_rest); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 302, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_8 = __Pyx_PyInt_As_long(__pyx_t_5); if (unlikely((__pyx_t_8 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 297, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyInt_As_long(__pyx_t_5); if (unlikely((__pyx_t_8 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 302, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_9 = __pyx_t_8;
     for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
       __pyx_v_j = __pyx_t_10;
 
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":298
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":303
  *                 self.nodes[node1].history.append(1)
  *             for j in range(self.nodes[node1].rest):
  *                 self.nodes[node1].history.append(-1)             # <<<<<<<<<<<<<<
@@ -7221,18 +7178,18 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
       if (unlikely(__pyx_v_self->nodes == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 298, __pyx_L1_error)
+        __PYX_ERR(0, 303, __pyx_L1_error)
       }
-      __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->nodes, __pyx_v_node1, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 298, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->nodes, __pyx_v_node1, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 303, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_history); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 298, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_history); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 303, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_6, __pyx_int_neg_1); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 298, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_6, __pyx_int_neg_1); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 303, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":300
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":305
  *                 self.nodes[node1].history.append(-1)
  * 
  *             self.nodes[node1].history.append(0)             # <<<<<<<<<<<<<<
@@ -7241,17 +7198,17 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
     if (unlikely(__pyx_v_self->nodes == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 300, __pyx_L1_error)
+      __PYX_ERR(0, 305, __pyx_L1_error)
     }
-    __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_self->nodes, __pyx_v_node1, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 300, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_self->nodes, __pyx_v_node1, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 305, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_history); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 300, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_history); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 305, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_5, __pyx_int_0); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 300, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_5, __pyx_int_0); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 305, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":294
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":299
  *         excited_nodes_set = set(excited_nodes_list)
  * 
  *         for node1 in excited_nodes_list:             # <<<<<<<<<<<<<<
@@ -7261,16 +7218,16 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":302
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":307
  *             self.nodes[node1].history.append(0)
  * 
  *         for node2 in list(all_nodes.difference(excited_nodes_set)):             # <<<<<<<<<<<<<<
  *             self.nodes[node2].history.append(0)
  * 
  */
-  __pyx_t_1 = __Pyx_CallUnboundCMethod1(&__pyx_umethod_PySet_Type_difference, __pyx_v_all_nodes, __pyx_v_excited_nodes_set); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 302, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CallUnboundCMethod1(&__pyx_umethod_PySet_Type_difference, __pyx_v_all_nodes, __pyx_v_excited_nodes_set); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 307, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = PySequence_List(__pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 302, __pyx_L1_error)
+  __pyx_t_5 = PySequence_List(__pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 307, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_1 = __pyx_t_5; __Pyx_INCREF(__pyx_t_1); __pyx_t_4 = 0;
@@ -7278,16 +7235,16 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   for (;;) {
     if (__pyx_t_4 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_5 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_5); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 302, __pyx_L1_error)
+    __pyx_t_5 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_5); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 307, __pyx_L1_error)
     #else
-    __pyx_t_5 = PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 302, __pyx_L1_error)
+    __pyx_t_5 = PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 307, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     #endif
-    __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 302, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 307, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_v_node2 = __pyx_t_2;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":303
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":308
  * 
  *         for node2 in list(all_nodes.difference(excited_nodes_set)):
  *             self.nodes[node2].history.append(0)             # <<<<<<<<<<<<<<
@@ -7296,17 +7253,17 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
     if (unlikely(__pyx_v_self->nodes == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 303, __pyx_L1_error)
+      __PYX_ERR(0, 308, __pyx_L1_error)
     }
-    __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->nodes, __pyx_v_node2, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 303, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_self->nodes, __pyx_v_node2, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 308, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_history); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 303, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_history); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 308, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_6, __pyx_int_0); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 303, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_6, __pyx_int_0); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 308, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":302
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":307
  *             self.nodes[node1].history.append(0)
  * 
  *         for node2 in list(all_nodes.difference(excited_nodes_set)):             # <<<<<<<<<<<<<<
@@ -7316,7 +7273,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":284
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":289
  *         return(excited, ready_to_fire, rest)
  * 
  *     def initial_spread(self, int seed):             # <<<<<<<<<<<<<<
@@ -7343,7 +7300,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   return __pyx_r;
 }
 
-/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":305
+/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":310
  *             self.nodes[node2].history.append(0)
  * 
  *     def refresh(self):             # <<<<<<<<<<<<<<
@@ -7352,19 +7309,19 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_26refresh(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_26refresh(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_27refresh(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_27refresh(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("refresh (wrapper)", 0);
-  __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_25refresh(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self));
+  __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_26refresh(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_25refresh(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self) {
+static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_26refresh(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self) {
   int __pyx_v_tolerance;
   PyObject *__pyx_v_node = 0;
   PyObject *__pyx_r = NULL;
@@ -7376,7 +7333,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   PyObject *__pyx_t_5 = NULL;
   __Pyx_RefNannySetupContext("refresh", 0);
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":309
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":314
  *         cdef object node
  * 
  *         self.time = 0             # <<<<<<<<<<<<<<
@@ -7385,7 +7342,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
   __pyx_v_self->time = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":310
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":315
  * 
  *         self.time = 0
  *         tolerance = 0             # <<<<<<<<<<<<<<
@@ -7394,7 +7351,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
   __pyx_v_tolerance = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":312
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":317
  *         tolerance = 0
  * 
  *         for node in self.nodes:             # <<<<<<<<<<<<<<
@@ -7403,28 +7360,28 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
   if (unlikely(__pyx_v_self->nodes == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 312, __pyx_L1_error)
+    __PYX_ERR(0, 317, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_v_self->nodes; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
   for (;;) {
     if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 312, __pyx_L1_error)
+    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 317, __pyx_L1_error)
     #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 312, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 317, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_node, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":313
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":318
  * 
  *         for node in self.nodes:
  *             node.refresh_history()             # <<<<<<<<<<<<<<
  * 
  *         return(tolerance)
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_n_s_refresh_history); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 313, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_n_s_refresh_history); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 318, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_5 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -7438,12 +7395,12 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     }
     __pyx_t_3 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 313, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 318, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":312
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":317
  *         tolerance = 0
  * 
  *         for node in self.nodes:             # <<<<<<<<<<<<<<
@@ -7453,7 +7410,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":315
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":320
  *             node.refresh_history()
  * 
  *         return(tolerance)             # <<<<<<<<<<<<<<
@@ -7461,13 +7418,13 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  *     def run_dynamic(self, int seed, int TIME, int C, float K, float L = -100, str model_type = 'line_segment'):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_tolerance); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 315, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_tolerance); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 320, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":305
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":310
  *             self.nodes[node2].history.append(0)
  * 
  *     def refresh(self):             # <<<<<<<<<<<<<<
@@ -7490,7 +7447,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   return __pyx_r;
 }
 
-/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":317
+/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":322
  *         return(tolerance)
  * 
  *     def run_dynamic(self, int seed, int TIME, int C, float K, float L = -100, str model_type = 'line_segment'):             # <<<<<<<<<<<<<<
@@ -7499,8 +7456,8 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_28run_dynamic(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_28run_dynamic(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_29run_dynamic(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_29run_dynamic(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   int __pyx_v_seed;
   int __pyx_v_TIME;
   int __pyx_v_C;
@@ -7542,19 +7499,19 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_TIME)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("run_dynamic", 0, 4, 6, 1); __PYX_ERR(0, 317, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("run_dynamic", 0, 4, 6, 1); __PYX_ERR(0, 322, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_C)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("run_dynamic", 0, 4, 6, 2); __PYX_ERR(0, 317, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("run_dynamic", 0, 4, 6, 2); __PYX_ERR(0, 322, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_K)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("run_dynamic", 0, 4, 6, 3); __PYX_ERR(0, 317, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("run_dynamic", 0, 4, 6, 3); __PYX_ERR(0, 322, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
@@ -7570,7 +7527,7 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "run_dynamic") < 0)) __PYX_ERR(0, 317, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "run_dynamic") < 0)) __PYX_ERR(0, 322, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -7586,12 +7543,12 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_seed = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_seed == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 317, __pyx_L3_error)
-    __pyx_v_TIME = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_TIME == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 317, __pyx_L3_error)
-    __pyx_v_C = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_C == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 317, __pyx_L3_error)
-    __pyx_v_K = __pyx_PyFloat_AsFloat(values[3]); if (unlikely((__pyx_v_K == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 317, __pyx_L3_error)
+    __pyx_v_seed = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_seed == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 322, __pyx_L3_error)
+    __pyx_v_TIME = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_TIME == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 322, __pyx_L3_error)
+    __pyx_v_C = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_C == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 322, __pyx_L3_error)
+    __pyx_v_K = __pyx_PyFloat_AsFloat(values[3]); if (unlikely((__pyx_v_K == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 322, __pyx_L3_error)
     if (values[4]) {
-      __pyx_v_L = __pyx_PyFloat_AsFloat(values[4]); if (unlikely((__pyx_v_L == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 317, __pyx_L3_error)
+      __pyx_v_L = __pyx_PyFloat_AsFloat(values[4]); if (unlikely((__pyx_v_L == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 322, __pyx_L3_error)
     } else {
       __pyx_v_L = ((float)-100.0);
     }
@@ -7599,14 +7556,14 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("run_dynamic", 0, 4, 6, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 317, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("run_dynamic", 0, 4, 6, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 322, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("Neuronal_Cascades_base.Geometric_Brain_Network.Geometric_Brain_Network.run_dynamic", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_model_type), (&PyUnicode_Type), 1, "model_type", 1))) __PYX_ERR(0, 317, __pyx_L1_error)
-  __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_27run_dynamic(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self), __pyx_v_seed, __pyx_v_TIME, __pyx_v_C, __pyx_v_K, __pyx_v_L, __pyx_v_model_type);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_model_type), (&PyUnicode_Type), 1, "model_type", 1))) __PYX_ERR(0, 322, __pyx_L1_error)
+  __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_28run_dynamic(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self), __pyx_v_seed, __pyx_v_TIME, __pyx_v_C, __pyx_v_K, __pyx_v_L, __pyx_v_model_type);
 
   /* function exit code */
   goto __pyx_L0;
@@ -7617,7 +7574,7 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_27run_dynamic(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_seed, int __pyx_v_TIME, int __pyx_v_C, float __pyx_v_K, float __pyx_v_L, PyObject *__pyx_v_model_type) {
+static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_28run_dynamic(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_seed, int __pyx_v_TIME, int __pyx_v_C, float __pyx_v_K, float __pyx_v_L, PyObject *__pyx_v_model_type) {
   PyArrayObject *__pyx_v_activation_times = 0;
   PyObject *__pyx_v_size_of_contagion = 0;
   PyObject *__pyx_v_excited_nodes = 0;
@@ -7648,14 +7605,14 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   Py_ssize_t __pyx_t_17;
   __Pyx_RefNannySetupContext("run_dynamic", 0);
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":324
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":329
  *         cdef Py_ssize_t i
  * 
  *         tolerance = self.refresh()             # <<<<<<<<<<<<<<
  *         activation_times = np.ones(self.N, dtype = np.int64)*TIME
  *         size_of_contagion = [int(0)]
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_refresh); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 324, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_refresh); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 329, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -7669,66 +7626,66 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 324, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 329, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 324, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 329, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_tolerance = __pyx_t_4;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":325
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":330
  * 
  *         tolerance = self.refresh()
  *         activation_times = np.ones(self.N, dtype = np.int64)*TIME             # <<<<<<<<<<<<<<
  *         size_of_contagion = [int(0)]
  *         self.initial_spread(seed)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 325, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 330, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_ones); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 325, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_ones); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 330, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->N); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 325, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->N); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 330, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 325, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 330, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 325, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 330, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 325, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 330, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_int64); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 325, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_int64); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 330, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_6) < 0) __PYX_ERR(0, 325, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_6) < 0) __PYX_ERR(0, 330, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 325, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 330, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_TIME); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 325, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_TIME); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 330, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyNumber_Multiply(__pyx_t_6, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 325, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_t_6, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 330, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 325, __pyx_L1_error)
+  if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 330, __pyx_L1_error)
   __pyx_v_activation_times = ((PyArrayObject *)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":326
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":331
  *         tolerance = self.refresh()
  *         activation_times = np.ones(self.N, dtype = np.int64)*TIME
  *         size_of_contagion = [int(0)]             # <<<<<<<<<<<<<<
  *         self.initial_spread(seed)
  *         excited_nodes, ready_to_fire_nodes, resting_nodes = self.update_states()
  */
-  __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_int_0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 326, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyNumber_Int(__pyx_int_0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 331, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 326, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 331, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_3);
   PyList_SET_ITEM(__pyx_t_1, 0, __pyx_t_3);
@@ -7736,16 +7693,16 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __pyx_v_size_of_contagion = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":327
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":332
  *         activation_times = np.ones(self.N, dtype = np.int64)*TIME
  *         size_of_contagion = [int(0)]
  *         self.initial_spread(seed)             # <<<<<<<<<<<<<<
  *         excited_nodes, ready_to_fire_nodes, resting_nodes = self.update_states()
  * 
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_initial_spread); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 327, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_initial_spread); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 332, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_seed); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 327, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_seed); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 332, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_2 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -7760,19 +7717,19 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_2, __pyx_t_6) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_6);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 327, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 332, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":328
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":333
  *         size_of_contagion = [int(0)]
  *         self.initial_spread(seed)
  *         excited_nodes, ready_to_fire_nodes, resting_nodes = self.update_states()             # <<<<<<<<<<<<<<
  * 
  *         self.time = 1
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_update_states); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 328, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_update_states); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 333, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_6 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -7786,7 +7743,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   }
   __pyx_t_1 = (__pyx_t_6) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_6) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 328, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 333, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if ((likely(PyTuple_CheckExact(__pyx_t_1))) || (PyList_CheckExact(__pyx_t_1))) {
@@ -7795,7 +7752,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     if (unlikely(size != 3)) {
       if (size > 3) __Pyx_RaiseTooManyValuesError(3);
       else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-      __PYX_ERR(0, 328, __pyx_L1_error)
+      __PYX_ERR(0, 333, __pyx_L1_error)
     }
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
     if (likely(PyTuple_CheckExact(sequence))) {
@@ -7811,17 +7768,17 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     __Pyx_INCREF(__pyx_t_6);
     __Pyx_INCREF(__pyx_t_2);
     #else
-    __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 328, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 333, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 328, __pyx_L1_error)
+    __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 333, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_2 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 328, __pyx_L1_error)
+    __pyx_t_2 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 333, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     #endif
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   } else {
     Py_ssize_t index = -1;
-    __pyx_t_5 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 328, __pyx_L1_error)
+    __pyx_t_5 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 333, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_7 = Py_TYPE(__pyx_t_5)->tp_iternext;
@@ -7831,7 +7788,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     __Pyx_GOTREF(__pyx_t_6);
     index = 2; __pyx_t_2 = __pyx_t_7(__pyx_t_5); if (unlikely(!__pyx_t_2)) goto __pyx_L3_unpacking_failed;
     __Pyx_GOTREF(__pyx_t_2);
-    if (__Pyx_IternextUnpackEndCheck(__pyx_t_7(__pyx_t_5), 3) < 0) __PYX_ERR(0, 328, __pyx_L1_error)
+    if (__Pyx_IternextUnpackEndCheck(__pyx_t_7(__pyx_t_5), 3) < 0) __PYX_ERR(0, 333, __pyx_L1_error)
     __pyx_t_7 = NULL;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     goto __pyx_L4_unpacking_done;
@@ -7839,12 +7796,12 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_7 = NULL;
     if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-    __PYX_ERR(0, 328, __pyx_L1_error)
+    __PYX_ERR(0, 333, __pyx_L1_error)
     __pyx_L4_unpacking_done:;
   }
-  if (!(likely(PyList_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 328, __pyx_L1_error)
-  if (!(likely(PyList_CheckExact(__pyx_t_6))||((__pyx_t_6) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_6)->tp_name), 0))) __PYX_ERR(0, 328, __pyx_L1_error)
-  if (!(likely(PyList_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 328, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 333, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_6))||((__pyx_t_6) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_6)->tp_name), 0))) __PYX_ERR(0, 333, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 333, __pyx_L1_error)
   __pyx_v_excited_nodes = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
   __pyx_v_ready_to_fire_nodes = ((PyObject*)__pyx_t_6);
@@ -7852,7 +7809,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __pyx_v_resting_nodes = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":330
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":335
  *         excited_nodes, ready_to_fire_nodes, resting_nodes = self.update_states()
  * 
  *         self.time = 1             # <<<<<<<<<<<<<<
@@ -7861,7 +7818,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
   __pyx_v_self->time = 1;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":332
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":337
  *         self.time = 1
  * 
  *         while self.time < TIME and 0 < len(excited_nodes) and np.any(activation_times==TIME) and tolerance < 10:             # <<<<<<<<<<<<<<
@@ -7877,23 +7834,23 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     }
     if (unlikely(__pyx_v_excited_nodes == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-      __PYX_ERR(0, 332, __pyx_L1_error)
+      __PYX_ERR(0, 337, __pyx_L1_error)
     }
-    __pyx_t_10 = PyList_GET_SIZE(__pyx_v_excited_nodes); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 332, __pyx_L1_error)
+    __pyx_t_10 = PyList_GET_SIZE(__pyx_v_excited_nodes); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 337, __pyx_L1_error)
     __pyx_t_9 = ((0 < __pyx_t_10) != 0);
     if (__pyx_t_9) {
     } else {
       __pyx_t_8 = __pyx_t_9;
       goto __pyx_L7_bool_binop_done;
     }
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 332, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 337, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_any); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 332, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_any); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 337, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_TIME); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 332, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_TIME); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 337, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = PyObject_RichCompare(((PyObject *)__pyx_v_activation_times), __pyx_t_2, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 332, __pyx_L1_error)
+    __pyx_t_3 = PyObject_RichCompare(((PyObject *)__pyx_v_activation_times), __pyx_t_2, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 337, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_2 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_6))) {
@@ -7908,10 +7865,10 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_3);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 332, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 337, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 332, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_9 < 0)) __PYX_ERR(0, 337, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (__pyx_t_9) {
     } else {
@@ -7923,7 +7880,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     __pyx_L7_bool_binop_done:;
     if (!__pyx_t_8) break;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":333
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":338
  * 
  *         while self.time < TIME and 0 < len(excited_nodes) and np.any(activation_times==TIME) and tolerance < 10:
  *             size_of_contagion.append(len(excited_nodes))             # <<<<<<<<<<<<<<
@@ -7932,49 +7889,49 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
     if (unlikely(__pyx_v_excited_nodes == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-      __PYX_ERR(0, 333, __pyx_L1_error)
+      __PYX_ERR(0, 338, __pyx_L1_error)
     }
-    __pyx_t_10 = PyList_GET_SIZE(__pyx_v_excited_nodes); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 333, __pyx_L1_error)
-    __pyx_t_1 = PyInt_FromSsize_t(__pyx_t_10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 333, __pyx_L1_error)
+    __pyx_t_10 = PyList_GET_SIZE(__pyx_v_excited_nodes); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 338, __pyx_L1_error)
+    __pyx_t_1 = PyInt_FromSsize_t(__pyx_t_10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 338, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_11 = __Pyx_PyList_Append(__pyx_v_size_of_contagion, __pyx_t_1); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 333, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyList_Append(__pyx_v_size_of_contagion, __pyx_t_1); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 338, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":335
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":340
  *             size_of_contagion.append(len(excited_nodes))
  * 
  *             activation_times[excited_nodes] = np.minimum(activation_times[excited_nodes],             # <<<<<<<<<<<<<<
  *                                                          np.array([self.time]*len(excited_nodes)))
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 335, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 340, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_minimum); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 335, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_minimum); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 340, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_activation_times), __pyx_v_excited_nodes); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 335, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_activation_times), __pyx_v_excited_nodes); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 340, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":336
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":341
  * 
  *             activation_times[excited_nodes] = np.minimum(activation_times[excited_nodes],
  *                                                          np.array([self.time]*len(excited_nodes)))             # <<<<<<<<<<<<<<
  * 
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 336, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 341, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_array); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 336, __pyx_L1_error)
+    __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_array); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 341, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_12);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_self->time); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 336, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_self->time); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 341, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     if (unlikely(__pyx_v_excited_nodes == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-      __PYX_ERR(0, 336, __pyx_L1_error)
+      __PYX_ERR(0, 341, __pyx_L1_error)
     }
-    __pyx_t_10 = PyList_GET_SIZE(__pyx_v_excited_nodes); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 336, __pyx_L1_error)
-    __pyx_t_13 = PyList_New(1 * ((__pyx_t_10<0) ? 0:__pyx_t_10)); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 336, __pyx_L1_error)
+    __pyx_t_10 = PyList_GET_SIZE(__pyx_v_excited_nodes); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 341, __pyx_L1_error)
+    __pyx_t_13 = PyList_New(1 * ((__pyx_t_10<0) ? 0:__pyx_t_10)); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 341, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
     { Py_ssize_t __pyx_temp;
       for (__pyx_temp=0; __pyx_temp < __pyx_t_10; __pyx_temp++) {
@@ -7997,7 +7954,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     __pyx_t_2 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_12, __pyx_t_5, __pyx_t_13) : __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_t_13);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 336, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 341, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
     __pyx_t_12 = NULL;
@@ -8015,7 +7972,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[3] = {__pyx_t_12, __pyx_t_6, __pyx_t_2};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 335, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 340, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -8025,7 +7982,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[3] = {__pyx_t_12, __pyx_t_6, __pyx_t_2};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 335, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 340, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -8033,7 +7990,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     } else
     #endif
     {
-      __pyx_t_13 = PyTuple_New(2+__pyx_t_4); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 335, __pyx_L1_error)
+      __pyx_t_13 = PyTuple_New(2+__pyx_t_4); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 340, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_13);
       if (__pyx_t_12) {
         __Pyx_GIVEREF(__pyx_t_12); PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_t_12); __pyx_t_12 = NULL;
@@ -8044,23 +8001,23 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
       PyTuple_SET_ITEM(__pyx_t_13, 1+__pyx_t_4, __pyx_t_2);
       __pyx_t_6 = 0;
       __pyx_t_2 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_13, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 335, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_13, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 340, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":335
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":340
  *             size_of_contagion.append(len(excited_nodes))
  * 
  *             activation_times[excited_nodes] = np.minimum(activation_times[excited_nodes],             # <<<<<<<<<<<<<<
  *                                                          np.array([self.time]*len(excited_nodes)))
  * 
  */
-    if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_activation_times), __pyx_v_excited_nodes, __pyx_t_1) < 0)) __PYX_ERR(0, 335, __pyx_L1_error)
+    if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_activation_times), __pyx_v_excited_nodes, __pyx_t_1) < 0)) __PYX_ERR(0, 340, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":339
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":344
  * 
  * 
  *             for node in ready_to_fire_nodes:             # <<<<<<<<<<<<<<
@@ -8069,37 +8026,37 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
     if (unlikely(__pyx_v_ready_to_fire_nodes == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-      __PYX_ERR(0, 339, __pyx_L1_error)
+      __PYX_ERR(0, 344, __pyx_L1_error)
     }
     __pyx_t_1 = __pyx_v_ready_to_fire_nodes; __Pyx_INCREF(__pyx_t_1); __pyx_t_10 = 0;
     for (;;) {
       if (__pyx_t_10 >= PyList_GET_SIZE(__pyx_t_1)) break;
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_10); __Pyx_INCREF(__pyx_t_3); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 339, __pyx_L1_error)
+      __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_10); __Pyx_INCREF(__pyx_t_3); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 344, __pyx_L1_error)
       #else
-      __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 339, __pyx_L1_error)
+      __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 344, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       #endif
-      __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 339, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 344, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_v_node = __pyx_t_4;
 
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":340
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":345
  * 
  *             for node in ready_to_fire_nodes:
  *                 self.update_history(node, C, K, L, model_type)             # <<<<<<<<<<<<<<
  * 
  *             flag_1 = len(excited_nodes)
  */
-      __pyx_t_13 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_update_history); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 340, __pyx_L1_error)
+      __pyx_t_13 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_update_history); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 345, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_13);
-      __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_node); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 340, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_node); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 345, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_C); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 340, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_C); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 345, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_12 = PyFloat_FromDouble(__pyx_v_K); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 340, __pyx_L1_error)
+      __pyx_t_12 = PyFloat_FromDouble(__pyx_v_K); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 345, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
-      __pyx_t_5 = PyFloat_FromDouble(__pyx_v_L); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 340, __pyx_L1_error)
+      __pyx_t_5 = PyFloat_FromDouble(__pyx_v_L); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 345, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __pyx_t_14 = NULL;
       __pyx_t_4 = 0;
@@ -8116,7 +8073,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_13)) {
         PyObject *__pyx_temp[6] = {__pyx_t_14, __pyx_t_2, __pyx_t_6, __pyx_t_12, __pyx_t_5, __pyx_v_model_type};
-        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_13, __pyx_temp+1-__pyx_t_4, 5+__pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 340, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_13, __pyx_temp+1-__pyx_t_4, 5+__pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 345, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -8128,7 +8085,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_13)) {
         PyObject *__pyx_temp[6] = {__pyx_t_14, __pyx_t_2, __pyx_t_6, __pyx_t_12, __pyx_t_5, __pyx_v_model_type};
-        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_13, __pyx_temp+1-__pyx_t_4, 5+__pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 340, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_13, __pyx_temp+1-__pyx_t_4, 5+__pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 345, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -8138,7 +8095,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
       } else
       #endif
       {
-        __pyx_t_15 = PyTuple_New(5+__pyx_t_4); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 340, __pyx_L1_error)
+        __pyx_t_15 = PyTuple_New(5+__pyx_t_4); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 345, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_15);
         if (__pyx_t_14) {
           __Pyx_GIVEREF(__pyx_t_14); PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_14); __pyx_t_14 = NULL;
@@ -8158,14 +8115,14 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         __pyx_t_6 = 0;
         __pyx_t_12 = 0;
         __pyx_t_5 = 0;
-        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_13, __pyx_t_15, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 340, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_13, __pyx_t_15, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 345, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
       }
       __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":339
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":344
  * 
  * 
  *             for node in ready_to_fire_nodes:             # <<<<<<<<<<<<<<
@@ -8175,7 +8132,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     }
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":342
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":347
  *                 self.update_history(node, C, K, L, model_type)
  * 
  *             flag_1 = len(excited_nodes)             # <<<<<<<<<<<<<<
@@ -8184,19 +8141,19 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
     if (unlikely(__pyx_v_excited_nodes == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-      __PYX_ERR(0, 342, __pyx_L1_error)
+      __PYX_ERR(0, 347, __pyx_L1_error)
     }
-    __pyx_t_10 = PyList_GET_SIZE(__pyx_v_excited_nodes); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 342, __pyx_L1_error)
+    __pyx_t_10 = PyList_GET_SIZE(__pyx_v_excited_nodes); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 347, __pyx_L1_error)
     __pyx_v_flag_1 = __pyx_t_10;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":343
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":348
  * 
  *             flag_1 = len(excited_nodes)
  *             excited_nodes, ready_to_fire_nodes, resting_nodes = self.update_states()             # <<<<<<<<<<<<<<
  * 
  *             if flag_1 == len(excited_nodes):
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_update_states); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 343, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_update_states); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 348, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_13 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -8210,7 +8167,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     }
     __pyx_t_1 = (__pyx_t_13) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_13) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
     __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 343, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 348, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     if ((likely(PyTuple_CheckExact(__pyx_t_1))) || (PyList_CheckExact(__pyx_t_1))) {
@@ -8219,7 +8176,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
       if (unlikely(size != 3)) {
         if (size > 3) __Pyx_RaiseTooManyValuesError(3);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 343, __pyx_L1_error)
+        __PYX_ERR(0, 348, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -8235,17 +8192,17 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
       __Pyx_INCREF(__pyx_t_13);
       __Pyx_INCREF(__pyx_t_15);
       #else
-      __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 343, __pyx_L1_error)
+      __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 348, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_13 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 343, __pyx_L1_error)
+      __pyx_t_13 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 348, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_13);
-      __pyx_t_15 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 343, __pyx_L1_error)
+      __pyx_t_15 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 348, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_15);
       #endif
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_5 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 343, __pyx_L1_error)
+      __pyx_t_5 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 348, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_t_7 = Py_TYPE(__pyx_t_5)->tp_iternext;
@@ -8255,7 +8212,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
       __Pyx_GOTREF(__pyx_t_13);
       index = 2; __pyx_t_15 = __pyx_t_7(__pyx_t_5); if (unlikely(!__pyx_t_15)) goto __pyx_L13_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_15);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_7(__pyx_t_5), 3) < 0) __PYX_ERR(0, 343, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_7(__pyx_t_5), 3) < 0) __PYX_ERR(0, 348, __pyx_L1_error)
       __pyx_t_7 = NULL;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       goto __pyx_L14_unpacking_done;
@@ -8263,12 +8220,12 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __pyx_t_7 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 343, __pyx_L1_error)
+      __PYX_ERR(0, 348, __pyx_L1_error)
       __pyx_L14_unpacking_done:;
     }
-    if (!(likely(PyList_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 343, __pyx_L1_error)
-    if (!(likely(PyList_CheckExact(__pyx_t_13))||((__pyx_t_13) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_13)->tp_name), 0))) __PYX_ERR(0, 343, __pyx_L1_error)
-    if (!(likely(PyList_CheckExact(__pyx_t_15))||((__pyx_t_15) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_15)->tp_name), 0))) __PYX_ERR(0, 343, __pyx_L1_error)
+    if (!(likely(PyList_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 348, __pyx_L1_error)
+    if (!(likely(PyList_CheckExact(__pyx_t_13))||((__pyx_t_13) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_13)->tp_name), 0))) __PYX_ERR(0, 348, __pyx_L1_error)
+    if (!(likely(PyList_CheckExact(__pyx_t_15))||((__pyx_t_15) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_15)->tp_name), 0))) __PYX_ERR(0, 348, __pyx_L1_error)
     __Pyx_DECREF_SET(__pyx_v_excited_nodes, ((PyObject*)__pyx_t_3));
     __pyx_t_3 = 0;
     __Pyx_DECREF_SET(__pyx_v_ready_to_fire_nodes, ((PyObject*)__pyx_t_13));
@@ -8276,7 +8233,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     __Pyx_DECREF_SET(__pyx_v_resting_nodes, ((PyObject*)__pyx_t_15));
     __pyx_t_15 = 0;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":345
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":350
  *             excited_nodes, ready_to_fire_nodes, resting_nodes = self.update_states()
  * 
  *             if flag_1 == len(excited_nodes):             # <<<<<<<<<<<<<<
@@ -8285,13 +8242,13 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
     if (unlikely(__pyx_v_excited_nodes == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-      __PYX_ERR(0, 345, __pyx_L1_error)
+      __PYX_ERR(0, 350, __pyx_L1_error)
     }
-    __pyx_t_10 = PyList_GET_SIZE(__pyx_v_excited_nodes); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 345, __pyx_L1_error)
+    __pyx_t_10 = PyList_GET_SIZE(__pyx_v_excited_nodes); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 350, __pyx_L1_error)
     __pyx_t_8 = ((__pyx_v_flag_1 == __pyx_t_10) != 0);
     if (__pyx_t_8) {
 
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":346
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":351
  * 
  *             if flag_1 == len(excited_nodes):
  *                 tolerance = tolerance + 1             # <<<<<<<<<<<<<<
@@ -8300,7 +8257,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
       __pyx_v_tolerance = (__pyx_v_tolerance + 1);
 
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":345
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":350
  *             excited_nodes, ready_to_fire_nodes, resting_nodes = self.update_states()
  * 
  *             if flag_1 == len(excited_nodes):             # <<<<<<<<<<<<<<
@@ -8309,7 +8266,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
     }
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":348
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":353
  *                 tolerance = tolerance + 1
  * 
  *             self.time = self.time + 1             # <<<<<<<<<<<<<<
@@ -8319,18 +8276,18 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     __pyx_v_self->time = (__pyx_v_self->time + 1);
   }
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":350
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":355
  *             self.time = self.time + 1
  * 
  *         if len(size_of_contagion) < TIME:             # <<<<<<<<<<<<<<
  *             for i in range(len(size_of_contagion), TIME):
  *                 size_of_contagion.append(size_of_contagion[-1])
  */
-  __pyx_t_10 = PyList_GET_SIZE(__pyx_v_size_of_contagion); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 350, __pyx_L1_error)
+  __pyx_t_10 = PyList_GET_SIZE(__pyx_v_size_of_contagion); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 355, __pyx_L1_error)
   __pyx_t_8 = ((__pyx_t_10 < __pyx_v_TIME) != 0);
   if (__pyx_t_8) {
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":351
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":356
  * 
  *         if len(size_of_contagion) < TIME:
  *             for i in range(len(size_of_contagion), TIME):             # <<<<<<<<<<<<<<
@@ -8338,25 +8295,25 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  * 
  */
     __pyx_t_4 = __pyx_v_TIME;
-    __pyx_t_10 = PyList_GET_SIZE(__pyx_v_size_of_contagion); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 351, __pyx_L1_error)
+    __pyx_t_10 = PyList_GET_SIZE(__pyx_v_size_of_contagion); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 356, __pyx_L1_error)
     __pyx_t_16 = __pyx_t_4;
     for (__pyx_t_17 = __pyx_t_10; __pyx_t_17 < __pyx_t_16; __pyx_t_17+=1) {
       __pyx_v_i = __pyx_t_17;
 
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":352
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":357
  *         if len(size_of_contagion) < TIME:
  *             for i in range(len(size_of_contagion), TIME):
  *                 size_of_contagion.append(size_of_contagion[-1])             # <<<<<<<<<<<<<<
  * 
  *         return(activation_times, np.array(size_of_contagion))
  */
-      __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_size_of_contagion, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 352, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_size_of_contagion, -1L, long, 1, __Pyx_PyInt_From_long, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 357, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_11 = __Pyx_PyList_Append(__pyx_v_size_of_contagion, __pyx_t_1); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 352, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyList_Append(__pyx_v_size_of_contagion, __pyx_t_1); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 357, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     }
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":350
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":355
  *             self.time = self.time + 1
  * 
  *         if len(size_of_contagion) < TIME:             # <<<<<<<<<<<<<<
@@ -8365,7 +8322,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
   }
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":354
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":359
  *                 size_of_contagion.append(size_of_contagion[-1])
  * 
  *         return(activation_times, np.array(size_of_contagion))             # <<<<<<<<<<<<<<
@@ -8373,9 +8330,9 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  *     def stack_histories(self, int TIME):
  */
   __Pyx_XDECREF(__pyx_r);
-  __Pyx_GetModuleGlobalName(__pyx_t_15, __pyx_n_s_np); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 354, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_15, __pyx_n_s_np); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 359, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_15);
-  __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_15, __pyx_n_s_array); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 354, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_15, __pyx_n_s_array); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 359, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
   __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
   __pyx_t_15 = NULL;
@@ -8390,10 +8347,10 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   }
   __pyx_t_1 = (__pyx_t_15) ? __Pyx_PyObject_Call2Args(__pyx_t_13, __pyx_t_15, __pyx_v_size_of_contagion) : __Pyx_PyObject_CallOneArg(__pyx_t_13, __pyx_v_size_of_contagion);
   __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 354, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 359, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-  __pyx_t_13 = PyTuple_New(2); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 354, __pyx_L1_error)
+  __pyx_t_13 = PyTuple_New(2); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 359, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
   __Pyx_INCREF(((PyObject *)__pyx_v_activation_times));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_activation_times));
@@ -8405,7 +8362,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __pyx_t_13 = 0;
   goto __pyx_L0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":317
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":322
  *         return(tolerance)
  * 
  *     def run_dynamic(self, int seed, int TIME, int C, float K, float L = -100, str model_type = 'line_segment'):             # <<<<<<<<<<<<<<
@@ -8437,7 +8394,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   return __pyx_r;
 }
 
-/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":356
+/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":361
  *         return(activation_times, np.array(size_of_contagion))
  * 
  *     def stack_histories(self, int TIME):             # <<<<<<<<<<<<<<
@@ -8446,14 +8403,14 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_30stack_histories(PyObject *__pyx_v_self, PyObject *__pyx_arg_TIME); /*proto*/
-static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_30stack_histories(PyObject *__pyx_v_self, PyObject *__pyx_arg_TIME) {
+static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_31stack_histories(PyObject *__pyx_v_self, PyObject *__pyx_arg_TIME); /*proto*/
+static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_31stack_histories(PyObject *__pyx_v_self, PyObject *__pyx_arg_TIME) {
   int __pyx_v_TIME;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("stack_histories (wrapper)", 0);
   assert(__pyx_arg_TIME); {
-    __pyx_v_TIME = __Pyx_PyInt_As_int(__pyx_arg_TIME); if (unlikely((__pyx_v_TIME == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 356, __pyx_L3_error)
+    __pyx_v_TIME = __Pyx_PyInt_As_int(__pyx_arg_TIME); if (unlikely((__pyx_v_TIME == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 361, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -8461,14 +8418,14 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_29stack_histories(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self), ((int)__pyx_v_TIME));
+  __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_30stack_histories(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self), ((int)__pyx_v_TIME));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_29stack_histories(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_TIME) {
+static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_30stack_histories(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_TIME) {
   PyObject *__pyx_v_node = 0;
   PyObject *__pyx_v_states = 0;
   PyArrayObject *__pyx_v_all_history = 0;
@@ -8489,7 +8446,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   PyObject *__pyx_t_11 = NULL;
   __Pyx_RefNannySetupContext("stack_histories", 0);
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":362
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":367
  *         cdef Py_ssize_t i
  * 
  *         for node in self.nodes:             # <<<<<<<<<<<<<<
@@ -8498,71 +8455,71 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
   if (unlikely(__pyx_v_self->nodes == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 362, __pyx_L1_error)
+    __PYX_ERR(0, 367, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_v_self->nodes; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
   for (;;) {
     if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 362, __pyx_L1_error)
+    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 367, __pyx_L1_error)
     #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 362, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 367, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_node, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":363
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":368
  * 
  *         for node in self.nodes:
  *             if len(node.history) < TIME:             # <<<<<<<<<<<<<<
  *                 node.history = node.history + [node.history[-1] for i in range(len(node.history), TIME)]
  *             node.history = node.history[:TIME]
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_n_s_history); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 363, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_n_s_history); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 368, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = PyObject_Length(__pyx_t_3); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 363, __pyx_L1_error)
+    __pyx_t_4 = PyObject_Length(__pyx_t_3); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 368, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_5 = ((__pyx_t_4 < __pyx_v_TIME) != 0);
     if (__pyx_t_5) {
 
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":364
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":369
  *         for node in self.nodes:
  *             if len(node.history) < TIME:
  *                 node.history = node.history + [node.history[-1] for i in range(len(node.history), TIME)]             # <<<<<<<<<<<<<<
  *             node.history = node.history[:TIME]
  *         states = [node.history for node in self.nodes]
  */
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_n_s_history); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 364, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_n_s_history); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 369, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       { /* enter inner scope */
-        __pyx_t_6 = PyList_New(0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 364, __pyx_L1_error)
+        __pyx_t_6 = PyList_New(0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 369, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         __pyx_t_7 = __pyx_v_TIME;
-        __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_n_s_history); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 364, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_n_s_history); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 369, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_4 = PyObject_Length(__pyx_t_8); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 364, __pyx_L1_error)
+        __pyx_t_4 = PyObject_Length(__pyx_t_8); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 369, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         __pyx_t_9 = __pyx_t_7;
         for (__pyx_t_10 = __pyx_t_4; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
           __pyx_8genexpr2__pyx_v_i = __pyx_t_10;
-          __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_n_s_history); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 364, __pyx_L1_error)
+          __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_n_s_history); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 369, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_8);
-          __pyx_t_11 = __Pyx_GetItemInt(__pyx_t_8, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 364, __pyx_L1_error)
+          __pyx_t_11 = __Pyx_GetItemInt(__pyx_t_8, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 369, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_11);
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-          if (unlikely(__Pyx_ListComp_Append(__pyx_t_6, (PyObject*)__pyx_t_11))) __PYX_ERR(0, 364, __pyx_L1_error)
+          if (unlikely(__Pyx_ListComp_Append(__pyx_t_6, (PyObject*)__pyx_t_11))) __PYX_ERR(0, 369, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         }
       } /* exit inner scope */
-      __pyx_t_11 = PyNumber_Add(__pyx_t_3, __pyx_t_6); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 364, __pyx_L1_error)
+      __pyx_t_11 = PyNumber_Add(__pyx_t_3, __pyx_t_6); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 369, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (__Pyx_PyObject_SetAttrStr(__pyx_v_node, __pyx_n_s_history, __pyx_t_11) < 0) __PYX_ERR(0, 364, __pyx_L1_error)
+      if (__Pyx_PyObject_SetAttrStr(__pyx_v_node, __pyx_n_s_history, __pyx_t_11) < 0) __PYX_ERR(0, 369, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":363
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":368
  * 
  *         for node in self.nodes:
  *             if len(node.history) < TIME:             # <<<<<<<<<<<<<<
@@ -8571,22 +8528,22 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
     }
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":365
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":370
  *             if len(node.history) < TIME:
  *                 node.history = node.history + [node.history[-1] for i in range(len(node.history), TIME)]
  *             node.history = node.history[:TIME]             # <<<<<<<<<<<<<<
  *         states = [node.history for node in self.nodes]
  *         all_history = np.vstack(states)
  */
-    __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_n_s_history); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 365, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_node, __pyx_n_s_history); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 370, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
-    __pyx_t_6 = __Pyx_PyObject_GetSlice(__pyx_t_11, 0, __pyx_v_TIME, NULL, NULL, NULL, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 365, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetSlice(__pyx_t_11, 0, __pyx_v_TIME, NULL, NULL, NULL, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 370, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-    if (__Pyx_PyObject_SetAttrStr(__pyx_v_node, __pyx_n_s_history, __pyx_t_6) < 0) __PYX_ERR(0, 365, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_node, __pyx_n_s_history, __pyx_t_6) < 0) __PYX_ERR(0, 370, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":362
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":367
  *         cdef Py_ssize_t i
  * 
  *         for node in self.nodes:             # <<<<<<<<<<<<<<
@@ -8596,7 +8553,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":366
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":371
  *                 node.history = node.history + [node.history[-1] for i in range(len(node.history), TIME)]
  *             node.history = node.history[:TIME]
  *         states = [node.history for node in self.nodes]             # <<<<<<<<<<<<<<
@@ -8604,26 +8561,26 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  *         return(all_history)
  */
   { /* enter inner scope */
-    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 366, __pyx_L10_error)
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 371, __pyx_L10_error)
     __Pyx_GOTREF(__pyx_t_1);
     if (unlikely(__pyx_v_self->nodes == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-      __PYX_ERR(0, 366, __pyx_L10_error)
+      __PYX_ERR(0, 371, __pyx_L10_error)
     }
     __pyx_t_6 = __pyx_v_self->nodes; __Pyx_INCREF(__pyx_t_6); __pyx_t_2 = 0;
     for (;;) {
       if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_6)) break;
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_11 = PyList_GET_ITEM(__pyx_t_6, __pyx_t_2); __Pyx_INCREF(__pyx_t_11); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 366, __pyx_L10_error)
+      __pyx_t_11 = PyList_GET_ITEM(__pyx_t_6, __pyx_t_2); __Pyx_INCREF(__pyx_t_11); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 371, __pyx_L10_error)
       #else
-      __pyx_t_11 = PySequence_ITEM(__pyx_t_6, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 366, __pyx_L10_error)
+      __pyx_t_11 = PySequence_ITEM(__pyx_t_6, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 371, __pyx_L10_error)
       __Pyx_GOTREF(__pyx_t_11);
       #endif
       __Pyx_XDECREF_SET(__pyx_8genexpr3__pyx_v_node, __pyx_t_11);
       __pyx_t_11 = 0;
-      __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_8genexpr3__pyx_v_node, __pyx_n_s_history); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 366, __pyx_L10_error)
+      __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_8genexpr3__pyx_v_node, __pyx_n_s_history); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 371, __pyx_L10_error)
       __Pyx_GOTREF(__pyx_t_11);
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_11))) __PYX_ERR(0, 366, __pyx_L10_error)
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_11))) __PYX_ERR(0, 371, __pyx_L10_error)
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
     }
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -8637,16 +8594,16 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __pyx_v_states = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":367
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":372
  *             node.history = node.history[:TIME]
  *         states = [node.history for node in self.nodes]
  *         all_history = np.vstack(states)             # <<<<<<<<<<<<<<
  *         return(all_history)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 367, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 372, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_vstack); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 367, __pyx_L1_error)
+  __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_vstack); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 372, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_t_6 = NULL;
@@ -8661,14 +8618,14 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   }
   __pyx_t_1 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_11, __pyx_t_6, __pyx_v_states) : __Pyx_PyObject_CallOneArg(__pyx_t_11, __pyx_v_states);
   __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 367, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 372, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 367, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 372, __pyx_L1_error)
   __pyx_v_all_history = ((PyArrayObject *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":368
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":373
  *         states = [node.history for node in self.nodes]
  *         all_history = np.vstack(states)
  *         return(all_history)             # <<<<<<<<<<<<<<
@@ -8680,7 +8637,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __pyx_r = ((PyObject *)__pyx_v_all_history);
   goto __pyx_L0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":356
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":361
  *         return(activation_times, np.array(size_of_contagion))
  * 
  *     def stack_histories(self, int TIME):             # <<<<<<<<<<<<<<
@@ -8707,7 +8664,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   return __pyx_r;
 }
 
-/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":370
+/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":375
  *         return(all_history)
  * 
  *     def average_over_trials(self, int seed, int TIME, int C, int trials, float K, float L = -100, str model_type = 'line_segment'):             # <<<<<<<<<<<<<<
@@ -8716,8 +8673,8 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_32average_over_trials(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_32average_over_trials(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_33average_over_trials(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_33average_over_trials(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   int __pyx_v_seed;
   int __pyx_v_TIME;
   int __pyx_v_C;
@@ -8762,25 +8719,25 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_TIME)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("average_over_trials", 0, 5, 7, 1); __PYX_ERR(0, 370, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("average_over_trials", 0, 5, 7, 1); __PYX_ERR(0, 375, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_C)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("average_over_trials", 0, 5, 7, 2); __PYX_ERR(0, 370, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("average_over_trials", 0, 5, 7, 2); __PYX_ERR(0, 375, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_trials)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("average_over_trials", 0, 5, 7, 3); __PYX_ERR(0, 370, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("average_over_trials", 0, 5, 7, 3); __PYX_ERR(0, 375, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_K)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("average_over_trials", 0, 5, 7, 4); __PYX_ERR(0, 370, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("average_over_trials", 0, 5, 7, 4); __PYX_ERR(0, 375, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
@@ -8796,7 +8753,7 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "average_over_trials") < 0)) __PYX_ERR(0, 370, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "average_over_trials") < 0)) __PYX_ERR(0, 375, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -8813,13 +8770,13 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_seed = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_seed == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 370, __pyx_L3_error)
-    __pyx_v_TIME = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_TIME == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 370, __pyx_L3_error)
-    __pyx_v_C = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_C == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 370, __pyx_L3_error)
-    __pyx_v_trials = __Pyx_PyInt_As_int(values[3]); if (unlikely((__pyx_v_trials == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 370, __pyx_L3_error)
-    __pyx_v_K = __pyx_PyFloat_AsFloat(values[4]); if (unlikely((__pyx_v_K == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 370, __pyx_L3_error)
+    __pyx_v_seed = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_seed == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 375, __pyx_L3_error)
+    __pyx_v_TIME = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_TIME == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 375, __pyx_L3_error)
+    __pyx_v_C = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_C == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 375, __pyx_L3_error)
+    __pyx_v_trials = __Pyx_PyInt_As_int(values[3]); if (unlikely((__pyx_v_trials == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 375, __pyx_L3_error)
+    __pyx_v_K = __pyx_PyFloat_AsFloat(values[4]); if (unlikely((__pyx_v_K == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 375, __pyx_L3_error)
     if (values[5]) {
-      __pyx_v_L = __pyx_PyFloat_AsFloat(values[5]); if (unlikely((__pyx_v_L == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 370, __pyx_L3_error)
+      __pyx_v_L = __pyx_PyFloat_AsFloat(values[5]); if (unlikely((__pyx_v_L == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 375, __pyx_L3_error)
     } else {
       __pyx_v_L = ((float)-100.0);
     }
@@ -8827,14 +8784,14 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("average_over_trials", 0, 5, 7, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 370, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("average_over_trials", 0, 5, 7, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 375, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("Neuronal_Cascades_base.Geometric_Brain_Network.Geometric_Brain_Network.average_over_trials", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_model_type), (&PyUnicode_Type), 1, "model_type", 1))) __PYX_ERR(0, 370, __pyx_L1_error)
-  __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_31average_over_trials(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self), __pyx_v_seed, __pyx_v_TIME, __pyx_v_C, __pyx_v_trials, __pyx_v_K, __pyx_v_L, __pyx_v_model_type);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_model_type), (&PyUnicode_Type), 1, "model_type", 1))) __PYX_ERR(0, 375, __pyx_L1_error)
+  __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_32average_over_trials(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self), __pyx_v_seed, __pyx_v_TIME, __pyx_v_C, __pyx_v_trials, __pyx_v_K, __pyx_v_L, __pyx_v_model_type);
 
   /* function exit code */
   goto __pyx_L0;
@@ -8845,7 +8802,7 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_31average_over_trials(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_seed, int __pyx_v_TIME, int __pyx_v_C, int __pyx_v_trials, float __pyx_v_K, float __pyx_v_L, PyObject *__pyx_v_model_type) {
+static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_32average_over_trials(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_seed, int __pyx_v_TIME, int __pyx_v_C, int __pyx_v_trials, float __pyx_v_K, float __pyx_v_L, PyObject *__pyx_v_model_type) {
   PyArrayObject *__pyx_v_first_excitation_times = 0;
   PyArrayObject *__pyx_v_size_of_contagion = 0;
   PyArrayObject *__pyx_v_first_exct = 0;
@@ -8871,23 +8828,23 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   PyObject *(*__pyx_t_14)(PyObject *);
   __Pyx_RefNannySetupContext("average_over_trials", 0);
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":376
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":381
  *         cdef Py_ssize_t i
  * 
  *         first_excitation_times = np.zeros((self.N, trials), dtype = np.int64)             # <<<<<<<<<<<<<<
  *         size_of_contagion = np.zeros((TIME, trials), dtype = np.int64)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 376, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 381, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 376, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 381, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->N); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 376, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->N); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 381, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_trials); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 376, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_trials); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 381, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 376, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 381, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
@@ -8895,46 +8852,46 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_3);
   __pyx_t_1 = 0;
   __pyx_t_3 = 0;
-  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 376, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 381, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
   __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 376, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 381, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 376, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 381, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_int64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 376, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_int64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 381, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 376, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 381, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 376, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 381, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 376, __pyx_L1_error)
+  if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 381, __pyx_L1_error)
   __pyx_v_first_excitation_times = ((PyArrayObject *)__pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":377
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":382
  * 
  *         first_excitation_times = np.zeros((self.N, trials), dtype = np.int64)
  *         size_of_contagion = np.zeros((TIME, trials), dtype = np.int64)             # <<<<<<<<<<<<<<
  * 
  *         for i in range(trials):
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 377, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 382, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 377, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 382, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_TIME); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 377, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_TIME); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 382, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_trials); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 377, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_trials); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 382, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 377, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 382, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_5);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_5);
@@ -8942,30 +8899,30 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_3);
   __pyx_t_5 = 0;
   __pyx_t_3 = 0;
-  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 377, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 382, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_2);
   __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 377, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 382, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 377, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 382, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_int64); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 377, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_int64); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 382, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_dtype, __pyx_t_1) < 0) __PYX_ERR(0, 377, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_dtype, __pyx_t_1) < 0) __PYX_ERR(0, 382, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 377, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 382, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 377, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 382, __pyx_L1_error)
   __pyx_v_size_of_contagion = ((PyArrayObject *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":379
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":384
  *         size_of_contagion = np.zeros((TIME, trials), dtype = np.int64)
  * 
  *         for i in range(trials):             # <<<<<<<<<<<<<<
@@ -8977,24 +8934,24 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
     __pyx_v_i = __pyx_t_8;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":380
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":385
  * 
  *         for i in range(trials):
  *             first_exct, contagion_size = self.run_dynamic(seed, TIME, C, K, L, model_type)             # <<<<<<<<<<<<<<
  * 
  *             first_excitation_times[:,i] = first_exct
  */
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_run_dynamic); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 380, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_run_dynamic); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 385, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_seed); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 380, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_seed); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 385, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_TIME); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 380, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_TIME); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 385, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_C); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 380, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_C); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 385, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_9 = PyFloat_FromDouble(__pyx_v_K); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 380, __pyx_L1_error)
+    __pyx_t_9 = PyFloat_FromDouble(__pyx_v_K); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 385, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_10 = PyFloat_FromDouble(__pyx_v_L); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 380, __pyx_L1_error)
+    __pyx_t_10 = PyFloat_FromDouble(__pyx_v_L); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 385, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __pyx_t_11 = NULL;
     __pyx_t_12 = 0;
@@ -9011,7 +8968,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_2)) {
       PyObject *__pyx_temp[7] = {__pyx_t_11, __pyx_t_3, __pyx_t_4, __pyx_t_5, __pyx_t_9, __pyx_t_10, __pyx_v_model_type};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_12, 6+__pyx_t_12); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 380, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_12, 6+__pyx_t_12); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 385, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -9024,7 +8981,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
       PyObject *__pyx_temp[7] = {__pyx_t_11, __pyx_t_3, __pyx_t_4, __pyx_t_5, __pyx_t_9, __pyx_t_10, __pyx_v_model_type};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_12, 6+__pyx_t_12); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 380, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_12, 6+__pyx_t_12); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 385, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -9035,7 +8992,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     } else
     #endif
     {
-      __pyx_t_13 = PyTuple_New(6+__pyx_t_12); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 380, __pyx_L1_error)
+      __pyx_t_13 = PyTuple_New(6+__pyx_t_12); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 385, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_13);
       if (__pyx_t_11) {
         __Pyx_GIVEREF(__pyx_t_11); PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_t_11); __pyx_t_11 = NULL;
@@ -9058,7 +9015,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
       __pyx_t_5 = 0;
       __pyx_t_9 = 0;
       __pyx_t_10 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_13, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 380, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_13, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 385, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
     }
@@ -9069,7 +9026,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
       if (unlikely(size != 2)) {
         if (size > 2) __Pyx_RaiseTooManyValuesError(2);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 380, __pyx_L1_error)
+        __PYX_ERR(0, 385, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -9082,15 +9039,15 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
       __Pyx_INCREF(__pyx_t_2);
       __Pyx_INCREF(__pyx_t_13);
       #else
-      __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 380, __pyx_L1_error)
+      __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 385, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_13 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 380, __pyx_L1_error)
+      __pyx_t_13 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 385, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_13);
       #endif
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_10 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 380, __pyx_L1_error)
+      __pyx_t_10 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 385, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_t_14 = Py_TYPE(__pyx_t_10)->tp_iternext;
@@ -9098,7 +9055,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
       __Pyx_GOTREF(__pyx_t_2);
       index = 1; __pyx_t_13 = __pyx_t_14(__pyx_t_10); if (unlikely(!__pyx_t_13)) goto __pyx_L5_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_13);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_14(__pyx_t_10), 2) < 0) __PYX_ERR(0, 380, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_14(__pyx_t_10), 2) < 0) __PYX_ERR(0, 385, __pyx_L1_error)
       __pyx_t_14 = NULL;
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       goto __pyx_L6_unpacking_done;
@@ -9106,116 +9063,116 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       __pyx_t_14 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 380, __pyx_L1_error)
+      __PYX_ERR(0, 385, __pyx_L1_error)
       __pyx_L6_unpacking_done:;
     }
-    if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 380, __pyx_L1_error)
-    if (!(likely(((__pyx_t_13) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_13, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 380, __pyx_L1_error)
+    if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 385, __pyx_L1_error)
+    if (!(likely(((__pyx_t_13) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_13, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 385, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_first_exct, ((PyArrayObject *)__pyx_t_2));
     __pyx_t_2 = 0;
     __Pyx_XDECREF_SET(__pyx_v_contagion_size, ((PyArrayObject *)__pyx_t_13));
     __pyx_t_13 = 0;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":382
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":387
  *             first_exct, contagion_size = self.run_dynamic(seed, TIME, C, K, L, model_type)
  * 
  *             first_excitation_times[:,i] = first_exct             # <<<<<<<<<<<<<<
  *             size_of_contagion[:,i] = contagion_size
  * 
  */
-    __pyx_t_1 = PyInt_FromSsize_t(__pyx_v_i); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 382, __pyx_L1_error)
+    __pyx_t_1 = PyInt_FromSsize_t(__pyx_v_i); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 387, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_13 = PyTuple_New(2); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 382, __pyx_L1_error)
+    __pyx_t_13 = PyTuple_New(2); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 387, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
-    __Pyx_INCREF(__pyx_slice__3);
-    __Pyx_GIVEREF(__pyx_slice__3);
-    PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_slice__3);
+    __Pyx_INCREF(__pyx_slice__2);
+    __Pyx_GIVEREF(__pyx_slice__2);
+    PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_slice__2);
     __Pyx_GIVEREF(__pyx_t_1);
     PyTuple_SET_ITEM(__pyx_t_13, 1, __pyx_t_1);
     __pyx_t_1 = 0;
-    if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_first_excitation_times), __pyx_t_13, ((PyObject *)__pyx_v_first_exct)) < 0)) __PYX_ERR(0, 382, __pyx_L1_error)
+    if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_first_excitation_times), __pyx_t_13, ((PyObject *)__pyx_v_first_exct)) < 0)) __PYX_ERR(0, 387, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":383
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":388
  * 
  *             first_excitation_times[:,i] = first_exct
  *             size_of_contagion[:,i] = contagion_size             # <<<<<<<<<<<<<<
  * 
  *         average_excitation_times = np.mean(first_excitation_times, axis = 1)
  */
-    __pyx_t_13 = PyInt_FromSsize_t(__pyx_v_i); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 383, __pyx_L1_error)
+    __pyx_t_13 = PyInt_FromSsize_t(__pyx_v_i); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 388, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
-    __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 383, __pyx_L1_error)
+    __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 388, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_INCREF(__pyx_slice__3);
-    __Pyx_GIVEREF(__pyx_slice__3);
-    PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_slice__3);
+    __Pyx_INCREF(__pyx_slice__2);
+    __Pyx_GIVEREF(__pyx_slice__2);
+    PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_slice__2);
     __Pyx_GIVEREF(__pyx_t_13);
     PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_13);
     __pyx_t_13 = 0;
-    if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_size_of_contagion), __pyx_t_1, ((PyObject *)__pyx_v_contagion_size)) < 0)) __PYX_ERR(0, 383, __pyx_L1_error)
+    if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_size_of_contagion), __pyx_t_1, ((PyObject *)__pyx_v_contagion_size)) < 0)) __PYX_ERR(0, 388, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":385
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":390
  *             size_of_contagion[:,i] = contagion_size
  * 
  *         average_excitation_times = np.mean(first_excitation_times, axis = 1)             # <<<<<<<<<<<<<<
  *         average_contagion_size = np.mean(size_of_contagion, axis = 1)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 385, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 390, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_mean); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 385, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_mean); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 390, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 385, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 390, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(((PyObject *)__pyx_v_first_excitation_times));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_first_excitation_times));
   PyTuple_SET_ITEM(__pyx_t_1, 0, ((PyObject *)__pyx_v_first_excitation_times));
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 385, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 390, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_axis, __pyx_int_1) < 0) __PYX_ERR(0, 385, __pyx_L1_error)
-  __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_13, __pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 385, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_axis, __pyx_int_1) < 0) __PYX_ERR(0, 390, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_13, __pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 390, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(((__pyx_t_10) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_10, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 385, __pyx_L1_error)
+  if (!(likely(((__pyx_t_10) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_10, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 390, __pyx_L1_error)
   __pyx_v_average_excitation_times = ((PyArrayObject *)__pyx_t_10);
   __pyx_t_10 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":386
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":391
  * 
  *         average_excitation_times = np.mean(first_excitation_times, axis = 1)
  *         average_contagion_size = np.mean(size_of_contagion, axis = 1)             # <<<<<<<<<<<<<<
  * 
  *         return(average_excitation_times, average_contagion_size)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 386, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 391, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_mean); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 386, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_mean); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 391, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-  __pyx_t_10 = PyTuple_New(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 386, __pyx_L1_error)
+  __pyx_t_10 = PyTuple_New(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 391, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_INCREF(((PyObject *)__pyx_v_size_of_contagion));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_size_of_contagion));
   PyTuple_SET_ITEM(__pyx_t_10, 0, ((PyObject *)__pyx_v_size_of_contagion));
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 386, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 391, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_axis, __pyx_int_1) < 0) __PYX_ERR(0, 386, __pyx_L1_error)
-  __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_10, __pyx_t_1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 386, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_axis, __pyx_int_1) < 0) __PYX_ERR(0, 391, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_10, __pyx_t_1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 391, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(((__pyx_t_13) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_13, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 386, __pyx_L1_error)
+  if (!(likely(((__pyx_t_13) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_13, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 391, __pyx_L1_error)
   __pyx_v_average_contagion_size = ((PyArrayObject *)__pyx_t_13);
   __pyx_t_13 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":388
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":393
  *         average_contagion_size = np.mean(size_of_contagion, axis = 1)
  * 
  *         return(average_excitation_times, average_contagion_size)             # <<<<<<<<<<<<<<
@@ -9223,7 +9180,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  *     def make_distance_matrix(self, int TIME, int C, int trials, float K, float L = -100, str model_type = 'line_segment'):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_13 = PyTuple_New(2); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 388, __pyx_L1_error)
+  __pyx_t_13 = PyTuple_New(2); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 393, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
   __Pyx_INCREF(((PyObject *)__pyx_v_average_excitation_times));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_average_excitation_times));
@@ -9235,7 +9192,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __pyx_t_13 = 0;
   goto __pyx_L0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":370
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":375
  *         return(all_history)
  * 
  *     def average_over_trials(self, int seed, int TIME, int C, int trials, float K, float L = -100, str model_type = 'line_segment'):             # <<<<<<<<<<<<<<
@@ -9268,7 +9225,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   return __pyx_r;
 }
 
-/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":390
+/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":395
  *         return(average_excitation_times, average_contagion_size)
  * 
  *     def make_distance_matrix(self, int TIME, int C, int trials, float K, float L = -100, str model_type = 'line_segment'):             # <<<<<<<<<<<<<<
@@ -9277,8 +9234,8 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_34make_distance_matrix(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_34make_distance_matrix(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_35make_distance_matrix(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_35make_distance_matrix(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   int __pyx_v_TIME;
   int __pyx_v_C;
   int __pyx_v_trials;
@@ -9320,19 +9277,19 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_C)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("make_distance_matrix", 0, 4, 6, 1); __PYX_ERR(0, 390, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("make_distance_matrix", 0, 4, 6, 1); __PYX_ERR(0, 395, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_trials)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("make_distance_matrix", 0, 4, 6, 2); __PYX_ERR(0, 390, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("make_distance_matrix", 0, 4, 6, 2); __PYX_ERR(0, 395, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_K)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("make_distance_matrix", 0, 4, 6, 3); __PYX_ERR(0, 390, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("make_distance_matrix", 0, 4, 6, 3); __PYX_ERR(0, 395, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
@@ -9348,7 +9305,7 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "make_distance_matrix") < 0)) __PYX_ERR(0, 390, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "make_distance_matrix") < 0)) __PYX_ERR(0, 395, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -9364,12 +9321,12 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_TIME = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_TIME == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 390, __pyx_L3_error)
-    __pyx_v_C = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_C == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 390, __pyx_L3_error)
-    __pyx_v_trials = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_trials == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 390, __pyx_L3_error)
-    __pyx_v_K = __pyx_PyFloat_AsFloat(values[3]); if (unlikely((__pyx_v_K == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 390, __pyx_L3_error)
+    __pyx_v_TIME = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_TIME == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 395, __pyx_L3_error)
+    __pyx_v_C = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_C == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 395, __pyx_L3_error)
+    __pyx_v_trials = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_trials == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 395, __pyx_L3_error)
+    __pyx_v_K = __pyx_PyFloat_AsFloat(values[3]); if (unlikely((__pyx_v_K == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 395, __pyx_L3_error)
     if (values[4]) {
-      __pyx_v_L = __pyx_PyFloat_AsFloat(values[4]); if (unlikely((__pyx_v_L == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 390, __pyx_L3_error)
+      __pyx_v_L = __pyx_PyFloat_AsFloat(values[4]); if (unlikely((__pyx_v_L == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 395, __pyx_L3_error)
     } else {
       __pyx_v_L = ((float)-100.0);
     }
@@ -9377,14 +9334,14 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("make_distance_matrix", 0, 4, 6, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 390, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("make_distance_matrix", 0, 4, 6, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 395, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("Neuronal_Cascades_base.Geometric_Brain_Network.Geometric_Brain_Network.make_distance_matrix", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_model_type), (&PyUnicode_Type), 1, "model_type", 1))) __PYX_ERR(0, 390, __pyx_L1_error)
-  __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_33make_distance_matrix(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self), __pyx_v_TIME, __pyx_v_C, __pyx_v_trials, __pyx_v_K, __pyx_v_L, __pyx_v_model_type);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_model_type), (&PyUnicode_Type), 1, "model_type", 1))) __PYX_ERR(0, 395, __pyx_L1_error)
+  __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_34make_distance_matrix(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self), __pyx_v_TIME, __pyx_v_C, __pyx_v_trials, __pyx_v_K, __pyx_v_L, __pyx_v_model_type);
 
   /* function exit code */
   goto __pyx_L0;
@@ -9395,7 +9352,7 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_33make_distance_matrix(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_TIME, int __pyx_v_C, int __pyx_v_trials, float __pyx_v_K, float __pyx_v_L, PyObject *__pyx_v_model_type) {
+static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_34make_distance_matrix(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, int __pyx_v_TIME, int __pyx_v_C, int __pyx_v_trials, float __pyx_v_K, float __pyx_v_L, PyObject *__pyx_v_model_type) {
   PyArrayObject *__pyx_v_D = 0;
   PyArrayObject *__pyx_v_Q = 0;
   PyArrayObject *__pyx_v_distance_matrix = 0;
@@ -9419,23 +9376,23 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   PyObject *(*__pyx_t_15)(PyObject *);
   __Pyx_RefNannySetupContext("make_distance_matrix", 0);
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":394
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":399
  *         cdef Py_ssize_t seed
  * 
  *         D = np.zeros((self.N, self.N), dtype = np.int64)             # <<<<<<<<<<<<<<
  *         Q = np.zeros((self.N, TIME), dtype = np.int64)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 394, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 399, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 394, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 399, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->N); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 394, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->N); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 399, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->N); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 394, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->N); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 399, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 394, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 399, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
@@ -9443,46 +9400,46 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_3);
   __pyx_t_1 = 0;
   __pyx_t_3 = 0;
-  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 394, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 399, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
   __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 394, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 399, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 394, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 399, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_int64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 394, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_int64); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 399, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 394, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 399, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 394, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 399, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 394, __pyx_L1_error)
+  if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 399, __pyx_L1_error)
   __pyx_v_D = ((PyArrayObject *)__pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":395
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":400
  * 
  *         D = np.zeros((self.N, self.N), dtype = np.int64)
  *         Q = np.zeros((self.N, TIME), dtype = np.int64)             # <<<<<<<<<<<<<<
  * 
  *         for seed in range(self.N):
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 395, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 400, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 395, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 400, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_self->N); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 395, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_self->N); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 400, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_TIME); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 395, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_TIME); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 400, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 395, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 400, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_5);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_5);
@@ -9490,30 +9447,30 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_3);
   __pyx_t_5 = 0;
   __pyx_t_3 = 0;
-  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 395, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 400, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_2);
   __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 395, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 400, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 395, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 400, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_int64); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 395, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_int64); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 400, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_dtype, __pyx_t_1) < 0) __PYX_ERR(0, 395, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_dtype, __pyx_t_1) < 0) __PYX_ERR(0, 400, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 395, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 400, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 395, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 400, __pyx_L1_error)
   __pyx_v_Q = ((PyArrayObject *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":397
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":402
  *         Q = np.zeros((self.N, TIME), dtype = np.int64)
  * 
  *         for seed in range(self.N):             # <<<<<<<<<<<<<<
@@ -9525,26 +9482,26 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
     __pyx_v_seed = __pyx_t_8;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":398
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":403
  * 
  *         for seed in range(self.N):
  *             D[seed], Q[seed,:] = self.average_over_trials(seed, TIME, C, trials, K, L, model_type)             # <<<<<<<<<<<<<<
  * 
  *         distance_matrix = euclidean_distances(D.T)
  */
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_average_over_trials); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 398, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_average_over_trials); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 403, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = PyInt_FromSsize_t(__pyx_v_seed); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 398, __pyx_L1_error)
+    __pyx_t_3 = PyInt_FromSsize_t(__pyx_v_seed); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 403, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_TIME); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 398, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_TIME); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 403, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_C); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 398, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_C); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 403, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_trials); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 398, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_trials); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 403, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_10 = PyFloat_FromDouble(__pyx_v_K); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 398, __pyx_L1_error)
+    __pyx_t_10 = PyFloat_FromDouble(__pyx_v_K); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 403, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    __pyx_t_11 = PyFloat_FromDouble(__pyx_v_L); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 398, __pyx_L1_error)
+    __pyx_t_11 = PyFloat_FromDouble(__pyx_v_L); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 403, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
     __pyx_t_12 = NULL;
     __pyx_t_13 = 0;
@@ -9561,7 +9518,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_2)) {
       PyObject *__pyx_temp[8] = {__pyx_t_12, __pyx_t_3, __pyx_t_4, __pyx_t_5, __pyx_t_9, __pyx_t_10, __pyx_t_11, __pyx_v_model_type};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_13, 7+__pyx_t_13); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 398, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_13, 7+__pyx_t_13); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 403, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -9575,7 +9532,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
       PyObject *__pyx_temp[8] = {__pyx_t_12, __pyx_t_3, __pyx_t_4, __pyx_t_5, __pyx_t_9, __pyx_t_10, __pyx_t_11, __pyx_v_model_type};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_13, 7+__pyx_t_13); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 398, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_13, 7+__pyx_t_13); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 403, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -9587,7 +9544,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     } else
     #endif
     {
-      __pyx_t_14 = PyTuple_New(7+__pyx_t_13); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 398, __pyx_L1_error)
+      __pyx_t_14 = PyTuple_New(7+__pyx_t_13); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 403, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       if (__pyx_t_12) {
         __Pyx_GIVEREF(__pyx_t_12); PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_12); __pyx_t_12 = NULL;
@@ -9613,7 +9570,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
       __pyx_t_9 = 0;
       __pyx_t_10 = 0;
       __pyx_t_11 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_14, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 398, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_14, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 403, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     }
@@ -9624,7 +9581,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
       if (unlikely(size != 2)) {
         if (size > 2) __Pyx_RaiseTooManyValuesError(2);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 398, __pyx_L1_error)
+        __PYX_ERR(0, 403, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -9637,15 +9594,15 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
       __Pyx_INCREF(__pyx_t_2);
       __Pyx_INCREF(__pyx_t_14);
       #else
-      __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 398, __pyx_L1_error)
+      __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 403, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_14 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 398, __pyx_L1_error)
+      __pyx_t_14 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 403, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       #endif
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_11 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 398, __pyx_L1_error)
+      __pyx_t_11 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 403, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_t_15 = Py_TYPE(__pyx_t_11)->tp_iternext;
@@ -9653,7 +9610,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
       __Pyx_GOTREF(__pyx_t_2);
       index = 1; __pyx_t_14 = __pyx_t_15(__pyx_t_11); if (unlikely(!__pyx_t_14)) goto __pyx_L5_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_14);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_11), 2) < 0) __PYX_ERR(0, 398, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_11), 2) < 0) __PYX_ERR(0, 403, __pyx_L1_error)
       __pyx_t_15 = NULL;
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       goto __pyx_L6_unpacking_done;
@@ -9661,36 +9618,36 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       __pyx_t_15 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 398, __pyx_L1_error)
+      __PYX_ERR(0, 403, __pyx_L1_error)
       __pyx_L6_unpacking_done:;
     }
-    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_D), __pyx_v_seed, __pyx_t_2, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1) < 0)) __PYX_ERR(0, 398, __pyx_L1_error)
+    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_D), __pyx_v_seed, __pyx_t_2, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1) < 0)) __PYX_ERR(0, 403, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_11 = PyInt_FromSsize_t(__pyx_v_seed); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 398, __pyx_L1_error)
+    __pyx_t_11 = PyInt_FromSsize_t(__pyx_v_seed); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 403, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
-    __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 398, __pyx_L1_error)
+    __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 403, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_GIVEREF(__pyx_t_11);
     PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_11);
-    __Pyx_INCREF(__pyx_slice__3);
-    __Pyx_GIVEREF(__pyx_slice__3);
-    PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_slice__3);
+    __Pyx_INCREF(__pyx_slice__2);
+    __Pyx_GIVEREF(__pyx_slice__2);
+    PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_slice__2);
     __pyx_t_11 = 0;
-    if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_Q), __pyx_t_10, __pyx_t_14) < 0)) __PYX_ERR(0, 398, __pyx_L1_error)
+    if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_Q), __pyx_t_10, __pyx_t_14) < 0)) __PYX_ERR(0, 403, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
   }
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":400
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":405
  *             D[seed], Q[seed,:] = self.average_over_trials(seed, TIME, C, trials, K, L, model_type)
  * 
  *         distance_matrix = euclidean_distances(D.T)             # <<<<<<<<<<<<<<
  * 
  *         return(distance_matrix, Q)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_euclidean_distances); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 400, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_euclidean_distances); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 405, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_D), __pyx_n_s_T); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 400, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_D), __pyx_n_s_T); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 405, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_10 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_14))) {
@@ -9705,14 +9662,14 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __pyx_t_1 = (__pyx_t_10) ? __Pyx_PyObject_Call2Args(__pyx_t_14, __pyx_t_10, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_14, __pyx_t_2);
   __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 400, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 405, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 400, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 405, __pyx_L1_error)
   __pyx_v_distance_matrix = ((PyArrayObject *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":402
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":407
  *         distance_matrix = euclidean_distances(D.T)
  * 
  *         return(distance_matrix, Q)             # <<<<<<<<<<<<<<
@@ -9720,7 +9677,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  *     def compute_persistence(self, numpy.ndarray[double, ndim = 2] distances, int dimension = 2, int spy = False):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 402, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 407, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(((PyObject *)__pyx_v_distance_matrix));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_distance_matrix));
@@ -9732,7 +9689,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":390
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":395
  *         return(average_excitation_times, average_contagion_size)
  * 
  *     def make_distance_matrix(self, int TIME, int C, int trials, float K, float L = -100, str model_type = 'line_segment'):             # <<<<<<<<<<<<<<
@@ -9763,7 +9720,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   return __pyx_r;
 }
 
-/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":404
+/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":409
  *         return(distance_matrix, Q)
  * 
  *     def compute_persistence(self, numpy.ndarray[double, ndim = 2] distances, int dimension = 2, int spy = False):             # <<<<<<<<<<<<<<
@@ -9772,8 +9729,8 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_36compute_persistence(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_36compute_persistence(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_37compute_persistence(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_37compute_persistence(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyArrayObject *__pyx_v_distances = 0;
   int __pyx_v_dimension;
   int __pyx_v_spy;
@@ -9815,7 +9772,7 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "compute_persistence") < 0)) __PYX_ERR(0, 404, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "compute_persistence") < 0)) __PYX_ERR(0, 409, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -9830,26 +9787,26 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     }
     __pyx_v_distances = ((PyArrayObject *)values[0]);
     if (values[1]) {
-      __pyx_v_dimension = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_dimension == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 404, __pyx_L3_error)
+      __pyx_v_dimension = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_dimension == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 409, __pyx_L3_error)
     } else {
       __pyx_v_dimension = ((int)2);
     }
     if (values[2]) {
-      __pyx_v_spy = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_spy == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 404, __pyx_L3_error)
+      __pyx_v_spy = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_spy == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 409, __pyx_L3_error)
     } else {
       __pyx_v_spy = ((int)0);
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("compute_persistence", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 404, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("compute_persistence", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 409, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("Neuronal_Cascades_base.Geometric_Brain_Network.Geometric_Brain_Network.compute_persistence", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_distances), __pyx_ptype_5numpy_ndarray, 1, "distances", 0))) __PYX_ERR(0, 404, __pyx_L1_error)
-  __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_35compute_persistence(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self), __pyx_v_distances, __pyx_v_dimension, __pyx_v_spy);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_distances), __pyx_ptype_5numpy_ndarray, 1, "distances", 0))) __PYX_ERR(0, 409, __pyx_L1_error)
+  __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_36compute_persistence(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self), __pyx_v_distances, __pyx_v_dimension, __pyx_v_spy);
 
   /* function exit code */
   goto __pyx_L0;
@@ -9860,7 +9817,7 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_35compute_persistence(CYTHON_UNUSED struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, PyArrayObject *__pyx_v_distances, int __pyx_v_dimension, int __pyx_v_spy) {
+static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_36compute_persistence(CYTHON_UNUSED struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, PyArrayObject *__pyx_v_distances, int __pyx_v_dimension, int __pyx_v_spy) {
   PyObject *__pyx_v_rips_complex = 0;
   PyObject *__pyx_v_persistence = 0;
   PyObject *__pyx_v_oned_holes = 0;
@@ -9892,27 +9849,27 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __pyx_pybuffernd_distances.rcbuffer = &__pyx_pybuffer_distances;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_distances.rcbuffer->pybuffer, (PyObject*)__pyx_v_distances, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 404, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_distances.rcbuffer->pybuffer, (PyObject*)__pyx_v_distances, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 409, __pyx_L1_error)
   }
   __pyx_pybuffernd_distances.diminfo[0].strides = __pyx_pybuffernd_distances.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_distances.diminfo[0].shape = __pyx_pybuffernd_distances.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_distances.diminfo[1].strides = __pyx_pybuffernd_distances.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_distances.diminfo[1].shape = __pyx_pybuffernd_distances.rcbuffer->pybuffer.shape[1];
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":412
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":417
  *         cdef float Delta_min, Delta_max
  * 
  *         rips_complex = gudhi.RipsComplex(distance_matrix = distances/np.max(distances), max_edge_length = 1)             # <<<<<<<<<<<<<<
  *         simplex_tree = rips_complex.create_simplex_tree(max_dimension = dimension)
  *         persistence = simplex_tree.persistence(min_persistence = 0.0)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_gudhi); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 412, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_gudhi); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 417, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_RipsComplex); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 412, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_RipsComplex); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 417, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 412, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 417, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 412, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 417, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_max); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 412, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_max); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 417, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
@@ -9927,65 +9884,65 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   }
   __pyx_t_3 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_4, ((PyObject *)__pyx_v_distances)) : __Pyx_PyObject_CallOneArg(__pyx_t_5, ((PyObject *)__pyx_v_distances));
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 412, __pyx_L1_error)
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 417, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyNumber_Divide(((PyObject *)__pyx_v_distances), __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 412, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyNumber_Divide(((PyObject *)__pyx_v_distances), __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 417, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_distance_matrix, __pyx_t_5) < 0) __PYX_ERR(0, 412, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_distance_matrix, __pyx_t_5) < 0) __PYX_ERR(0, 417, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_max_edge_length, __pyx_int_1) < 0) __PYX_ERR(0, 412, __pyx_L1_error)
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 412, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_max_edge_length, __pyx_int_1) < 0) __PYX_ERR(0, 417, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 417, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_rips_complex = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":413
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":418
  * 
  *         rips_complex = gudhi.RipsComplex(distance_matrix = distances/np.max(distances), max_edge_length = 1)
  *         simplex_tree = rips_complex.create_simplex_tree(max_dimension = dimension)             # <<<<<<<<<<<<<<
  *         persistence = simplex_tree.persistence(min_persistence = 0.0)
  * 
  */
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_rips_complex, __pyx_n_s_create_simplex_tree); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 413, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_rips_complex, __pyx_n_s_create_simplex_tree); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 418, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 413, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 418, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_dimension); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 413, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_dimension); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 418, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_max_dimension, __pyx_t_2) < 0) __PYX_ERR(0, 413, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_max_dimension, __pyx_t_2) < 0) __PYX_ERR(0, 418, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 413, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 418, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_simplex_tree = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":414
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":419
  *         rips_complex = gudhi.RipsComplex(distance_matrix = distances/np.max(distances), max_edge_length = 1)
  *         simplex_tree = rips_complex.create_simplex_tree(max_dimension = dimension)
  *         persistence = simplex_tree.persistence(min_persistence = 0.0)             # <<<<<<<<<<<<<<
  * 
  *         if spy:
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_simplex_tree, __pyx_n_s_persistence); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 414, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_simplex_tree, __pyx_n_s_persistence); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 419, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 414, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 419, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_min_persistence, __pyx_float_0_0) < 0) __PYX_ERR(0, 414, __pyx_L1_error)
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 414, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_min_persistence, __pyx_float_0_0) < 0) __PYX_ERR(0, 419, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 419, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(PyList_CheckExact(__pyx_t_5))||((__pyx_t_5) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_5)->tp_name), 0))) __PYX_ERR(0, 414, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_t_5))||((__pyx_t_5) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_5)->tp_name), 0))) __PYX_ERR(0, 419, __pyx_L1_error)
   __pyx_v_persistence = ((PyObject*)__pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":416
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":421
  *         persistence = simplex_tree.persistence(min_persistence = 0.0)
  * 
  *         if spy:             # <<<<<<<<<<<<<<
@@ -9995,16 +9952,16 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __pyx_t_6 = (__pyx_v_spy != 0);
   if (__pyx_t_6) {
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":417
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":422
  * 
  *         if spy:
  *             gudhi.plot_persistence_diagram(persistence)             # <<<<<<<<<<<<<<
  * 
  *         oned_holes = [(0,0)]
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_gudhi); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 417, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_gudhi); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 422, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_plot_persistence_diagram); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 417, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_plot_persistence_diagram); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 422, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_1 = NULL;
@@ -10019,12 +9976,12 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     }
     __pyx_t_5 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_1, __pyx_v_persistence) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_persistence);
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 417, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 422, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":416
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":421
  *         persistence = simplex_tree.persistence(min_persistence = 0.0)
  * 
  *         if spy:             # <<<<<<<<<<<<<<
@@ -10033,22 +9990,22 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
   }
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":419
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":424
  *             gudhi.plot_persistence_diagram(persistence)
  * 
  *         oned_holes = [(0,0)]             # <<<<<<<<<<<<<<
  *         for i in range(len(persistence)):
  *             if persistence[i][0] == int(dimension-1):
  */
-  __pyx_t_5 = PyList_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 419, __pyx_L1_error)
+  __pyx_t_5 = PyList_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 424, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_INCREF(__pyx_tuple__4);
-  __Pyx_GIVEREF(__pyx_tuple__4);
-  PyList_SET_ITEM(__pyx_t_5, 0, __pyx_tuple__4);
+  __Pyx_INCREF(__pyx_tuple__8);
+  __Pyx_GIVEREF(__pyx_tuple__8);
+  PyList_SET_ITEM(__pyx_t_5, 0, __pyx_tuple__8);
   __pyx_v_oned_holes = ((PyObject*)__pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":420
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":425
  * 
  *         oned_holes = [(0,0)]
  *         for i in range(len(persistence)):             # <<<<<<<<<<<<<<
@@ -10057,14 +10014,14 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
   if (unlikely(__pyx_v_persistence == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 420, __pyx_L1_error)
+    __PYX_ERR(0, 425, __pyx_L1_error)
   }
-  __pyx_t_7 = PyList_GET_SIZE(__pyx_v_persistence); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 420, __pyx_L1_error)
+  __pyx_t_7 = PyList_GET_SIZE(__pyx_v_persistence); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 425, __pyx_L1_error)
   __pyx_t_8 = __pyx_t_7;
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_i = __pyx_t_9;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":421
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":426
  *         oned_holes = [(0,0)]
  *         for i in range(len(persistence)):
  *             if persistence[i][0] == int(dimension-1):             # <<<<<<<<<<<<<<
@@ -10073,26 +10030,26 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
     if (unlikely(__pyx_v_persistence == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 421, __pyx_L1_error)
+      __PYX_ERR(0, 426, __pyx_L1_error)
     }
-    __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_persistence, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 421, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_persistence, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 426, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_5, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 421, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_5, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 426, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyInt_From_long((__pyx_v_dimension - 1)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 421, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_From_long((__pyx_v_dimension - 1)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 426, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyInt_Type)), __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 421, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyInt_Type)), __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 426, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = PyObject_RichCompare(__pyx_t_2, __pyx_t_1, Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 421, __pyx_L1_error)
+    __pyx_t_5 = PyObject_RichCompare(__pyx_t_2, __pyx_t_1, Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 426, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 421, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 426, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     if (__pyx_t_6) {
 
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":422
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":427
  *         for i in range(len(persistence)):
  *             if persistence[i][0] == int(dimension-1):
  *                 oned_holes.append(persistence[i][1])             # <<<<<<<<<<<<<<
@@ -10101,17 +10058,17 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
       if (unlikely(__pyx_v_persistence == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 422, __pyx_L1_error)
+        __PYX_ERR(0, 427, __pyx_L1_error)
       }
-      __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_persistence, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 422, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_persistence, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 427, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_5, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 422, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_5, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 427, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_10 = __Pyx_PyList_Append(__pyx_v_oned_holes, __pyx_t_1); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 422, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyList_Append(__pyx_v_oned_holes, __pyx_t_1); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 427, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":421
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":426
  *         oned_holes = [(0,0)]
  *         for i in range(len(persistence)):
  *             if persistence[i][0] == int(dimension-1):             # <<<<<<<<<<<<<<
@@ -10121,16 +10078,16 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     }
   }
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":423
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":428
  *             if persistence[i][0] == int(dimension-1):
  *                 oned_holes.append(persistence[i][1])
  *         one_d_holes = np.array(oned_holes)             # <<<<<<<<<<<<<<
  *         persistence_life_times = one_d_holes[:,1]-one_d_holes[:,0]
  *         Delta_min = np.sort(persistence_life_times)[-1]-np.sort(persistence_life_times)[-2]
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 423, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 428, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_array); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 423, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_array); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 428, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_5 = NULL;
@@ -10145,42 +10102,42 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   }
   __pyx_t_1 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_5, __pyx_v_oned_holes) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_oned_holes);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 423, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 428, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 423, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 428, __pyx_L1_error)
   __pyx_v_one_d_holes = ((PyArrayObject *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":424
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":429
  *                 oned_holes.append(persistence[i][1])
  *         one_d_holes = np.array(oned_holes)
  *         persistence_life_times = one_d_holes[:,1]-one_d_holes[:,0]             # <<<<<<<<<<<<<<
  *         Delta_min = np.sort(persistence_life_times)[-1]-np.sort(persistence_life_times)[-2]
  *         Delta_max = np.sort(persistence_life_times)[-1]-np.sort(persistence_life_times)[1]
  */
-  __pyx_t_1 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_one_d_holes), __pyx_tuple__5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 424, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_one_d_holes), __pyx_tuple__4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 429, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_one_d_holes), __pyx_tuple__6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 424, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetItem(((PyObject *)__pyx_v_one_d_holes), __pyx_tuple__3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 429, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_5 = PyNumber_Subtract(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 424, __pyx_L1_error)
+  __pyx_t_5 = PyNumber_Subtract(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 429, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 424, __pyx_L1_error)
+  if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 429, __pyx_L1_error)
   __pyx_v_persistence_life_times = ((PyArrayObject *)__pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":425
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":430
  *         one_d_holes = np.array(oned_holes)
  *         persistence_life_times = one_d_holes[:,1]-one_d_holes[:,0]
  *         Delta_min = np.sort(persistence_life_times)[-1]-np.sort(persistence_life_times)[-2]             # <<<<<<<<<<<<<<
  *         Delta_max = np.sort(persistence_life_times)[-1]-np.sort(persistence_life_times)[1]
  *         return(Delta_min, Delta_max)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 425, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 430, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_sort); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 425, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_sort); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 430, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -10195,15 +10152,15 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   }
   __pyx_t_5 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_2, ((PyObject *)__pyx_v_persistence_life_times)) : __Pyx_PyObject_CallOneArg(__pyx_t_1, ((PyObject *)__pyx_v_persistence_life_times));
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 425, __pyx_L1_error)
+  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 430, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_5, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 425, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_5, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 430, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 425, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 430, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_sort); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 425, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_sort); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 430, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -10218,30 +10175,30 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   }
   __pyx_t_5 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_2, ((PyObject *)__pyx_v_persistence_life_times)) : __Pyx_PyObject_CallOneArg(__pyx_t_3, ((PyObject *)__pyx_v_persistence_life_times));
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 425, __pyx_L1_error)
+  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 430, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_5, -2L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 425, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_5, -2L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 430, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = PyNumber_Subtract(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 425, __pyx_L1_error)
+  __pyx_t_5 = PyNumber_Subtract(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 430, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_11 = __pyx_PyFloat_AsFloat(__pyx_t_5); if (unlikely((__pyx_t_11 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 425, __pyx_L1_error)
+  __pyx_t_11 = __pyx_PyFloat_AsFloat(__pyx_t_5); if (unlikely((__pyx_t_11 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 430, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_Delta_min = __pyx_t_11;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":426
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":431
  *         persistence_life_times = one_d_holes[:,1]-one_d_holes[:,0]
  *         Delta_min = np.sort(persistence_life_times)[-1]-np.sort(persistence_life_times)[-2]
  *         Delta_max = np.sort(persistence_life_times)[-1]-np.sort(persistence_life_times)[1]             # <<<<<<<<<<<<<<
  *         return(Delta_min, Delta_max)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 426, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 431, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_sort); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 426, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_sort); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 431, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -10256,15 +10213,15 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   }
   __pyx_t_5 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_3, ((PyObject *)__pyx_v_persistence_life_times)) : __Pyx_PyObject_CallOneArg(__pyx_t_1, ((PyObject *)__pyx_v_persistence_life_times));
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 426, __pyx_L1_error)
+  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 431, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_5, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 426, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_5, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 431, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 426, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 431, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_sort); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 426, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_sort); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 431, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -10279,21 +10236,21 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   }
   __pyx_t_5 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, ((PyObject *)__pyx_v_persistence_life_times)) : __Pyx_PyObject_CallOneArg(__pyx_t_2, ((PyObject *)__pyx_v_persistence_life_times));
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 426, __pyx_L1_error)
+  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 431, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_5, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 426, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_5, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 431, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = PyNumber_Subtract(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 426, __pyx_L1_error)
+  __pyx_t_5 = PyNumber_Subtract(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 431, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_11 = __pyx_PyFloat_AsFloat(__pyx_t_5); if (unlikely((__pyx_t_11 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 426, __pyx_L1_error)
+  __pyx_t_11 = __pyx_PyFloat_AsFloat(__pyx_t_5); if (unlikely((__pyx_t_11 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 431, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_Delta_max = __pyx_t_11;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":427
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":432
  *         Delta_min = np.sort(persistence_life_times)[-1]-np.sort(persistence_life_times)[-2]
  *         Delta_max = np.sort(persistence_life_times)[-1]-np.sort(persistence_life_times)[1]
  *         return(Delta_min, Delta_max)             # <<<<<<<<<<<<<<
@@ -10301,11 +10258,11 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  *     def display_comm_sizes(self, list Q, list labels, int TIME, int C, int trials, int memory, int rest, float threshold, int K = -100, L = -100):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_Delta_min); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 427, __pyx_L1_error)
+  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_Delta_min); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 432, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_Delta_max); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 427, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_Delta_max); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 432, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 427, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 432, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_5);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_5);
@@ -10317,7 +10274,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":404
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":409
  *         return(distance_matrix, Q)
  * 
  *     def compute_persistence(self, numpy.ndarray[double, ndim = 2] distances, int dimension = 2, int spy = False):             # <<<<<<<<<<<<<<
@@ -10355,7 +10312,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   return __pyx_r;
 }
 
-/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":429
+/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":434
  *         return(Delta_min, Delta_max)
  * 
  *     def display_comm_sizes(self, list Q, list labels, int TIME, int C, int trials, int memory, int rest, float threshold, int K = -100, L = -100):             # <<<<<<<<<<<<<<
@@ -10364,8 +10321,8 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_38display_comm_sizes(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_38display_comm_sizes(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_39display_comm_sizes(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_39display_comm_sizes(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_Q = 0;
   PyObject *__pyx_v_labels = 0;
   int __pyx_v_TIME;
@@ -10419,43 +10376,43 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_labels)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("display_comm_sizes", 0, 8, 10, 1); __PYX_ERR(0, 429, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("display_comm_sizes", 0, 8, 10, 1); __PYX_ERR(0, 434, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_TIME)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("display_comm_sizes", 0, 8, 10, 2); __PYX_ERR(0, 429, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("display_comm_sizes", 0, 8, 10, 2); __PYX_ERR(0, 434, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_C)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("display_comm_sizes", 0, 8, 10, 3); __PYX_ERR(0, 429, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("display_comm_sizes", 0, 8, 10, 3); __PYX_ERR(0, 434, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_trials)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("display_comm_sizes", 0, 8, 10, 4); __PYX_ERR(0, 429, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("display_comm_sizes", 0, 8, 10, 4); __PYX_ERR(0, 434, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
         if (likely((values[5] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_memory)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("display_comm_sizes", 0, 8, 10, 5); __PYX_ERR(0, 429, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("display_comm_sizes", 0, 8, 10, 5); __PYX_ERR(0, 434, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
         if (likely((values[6] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_rest)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("display_comm_sizes", 0, 8, 10, 6); __PYX_ERR(0, 429, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("display_comm_sizes", 0, 8, 10, 6); __PYX_ERR(0, 434, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  7:
         if (likely((values[7] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_threshold)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("display_comm_sizes", 0, 8, 10, 7); __PYX_ERR(0, 429, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("display_comm_sizes", 0, 8, 10, 7); __PYX_ERR(0, 434, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  8:
@@ -10471,7 +10428,7 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "display_comm_sizes") < 0)) __PYX_ERR(0, 429, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "display_comm_sizes") < 0)) __PYX_ERR(0, 434, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -10493,14 +10450,14 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     }
     __pyx_v_Q = ((PyObject*)values[0]);
     __pyx_v_labels = ((PyObject*)values[1]);
-    __pyx_v_TIME = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_TIME == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 429, __pyx_L3_error)
-    __pyx_v_C = __Pyx_PyInt_As_int(values[3]); if (unlikely((__pyx_v_C == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 429, __pyx_L3_error)
-    __pyx_v_trials = __Pyx_PyInt_As_int(values[4]); if (unlikely((__pyx_v_trials == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 429, __pyx_L3_error)
-    __pyx_v_memory = __Pyx_PyInt_As_int(values[5]); if (unlikely((__pyx_v_memory == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 429, __pyx_L3_error)
-    __pyx_v_rest = __Pyx_PyInt_As_int(values[6]); if (unlikely((__pyx_v_rest == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 429, __pyx_L3_error)
-    __pyx_v_threshold = __pyx_PyFloat_AsFloat(values[7]); if (unlikely((__pyx_v_threshold == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 429, __pyx_L3_error)
+    __pyx_v_TIME = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_TIME == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 434, __pyx_L3_error)
+    __pyx_v_C = __Pyx_PyInt_As_int(values[3]); if (unlikely((__pyx_v_C == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 434, __pyx_L3_error)
+    __pyx_v_trials = __Pyx_PyInt_As_int(values[4]); if (unlikely((__pyx_v_trials == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 434, __pyx_L3_error)
+    __pyx_v_memory = __Pyx_PyInt_As_int(values[5]); if (unlikely((__pyx_v_memory == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 434, __pyx_L3_error)
+    __pyx_v_rest = __Pyx_PyInt_As_int(values[6]); if (unlikely((__pyx_v_rest == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 434, __pyx_L3_error)
+    __pyx_v_threshold = __pyx_PyFloat_AsFloat(values[7]); if (unlikely((__pyx_v_threshold == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 434, __pyx_L3_error)
     if (values[8]) {
-      __pyx_v_K = __Pyx_PyInt_As_int(values[8]); if (unlikely((__pyx_v_K == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 429, __pyx_L3_error)
+      __pyx_v_K = __Pyx_PyInt_As_int(values[8]); if (unlikely((__pyx_v_K == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 434, __pyx_L3_error)
     } else {
       __pyx_v_K = ((int)-100);
     }
@@ -10508,15 +10465,15 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("display_comm_sizes", 0, 8, 10, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 429, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("display_comm_sizes", 0, 8, 10, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 434, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("Neuronal_Cascades_base.Geometric_Brain_Network.Geometric_Brain_Network.display_comm_sizes", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_Q), (&PyList_Type), 1, "Q", 1))) __PYX_ERR(0, 429, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_labels), (&PyList_Type), 1, "labels", 1))) __PYX_ERR(0, 429, __pyx_L1_error)
-  __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_37display_comm_sizes(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self), __pyx_v_Q, __pyx_v_labels, __pyx_v_TIME, __pyx_v_C, __pyx_v_trials, __pyx_v_memory, __pyx_v_rest, __pyx_v_threshold, __pyx_v_K, __pyx_v_L);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_Q), (&PyList_Type), 1, "Q", 1))) __PYX_ERR(0, 434, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_labels), (&PyList_Type), 1, "labels", 1))) __PYX_ERR(0, 434, __pyx_L1_error)
+  __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_38display_comm_sizes(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self), __pyx_v_Q, __pyx_v_labels, __pyx_v_TIME, __pyx_v_C, __pyx_v_trials, __pyx_v_memory, __pyx_v_rest, __pyx_v_threshold, __pyx_v_K, __pyx_v_L);
 
   /* function exit code */
   goto __pyx_L0;
@@ -10527,7 +10484,7 @@ static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_37display_comm_sizes(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, PyObject *__pyx_v_Q, PyObject *__pyx_v_labels, int __pyx_v_TIME, int __pyx_v_C, int __pyx_v_trials, CYTHON_UNUSED int __pyx_v_memory, CYTHON_UNUSED int __pyx_v_rest, float __pyx_v_threshold, int __pyx_v_K, PyObject *__pyx_v_L) {
+static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_38display_comm_sizes(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, PyObject *__pyx_v_Q, PyObject *__pyx_v_labels, int __pyx_v_TIME, int __pyx_v_C, int __pyx_v_trials, CYTHON_UNUSED int __pyx_v_memory, CYTHON_UNUSED int __pyx_v_rest, float __pyx_v_threshold, int __pyx_v_K, PyObject *__pyx_v_L) {
   PyObject *__pyx_v_argmaxs = 0;
   PyObject *__pyx_v_colors = 0;
   PyArrayObject *__pyx_v_Q_mean = 0;
@@ -10558,26 +10515,26 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   Py_UCS4 __pyx_t_18;
   __Pyx_RefNannySetupContext("display_comm_sizes", 0);
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":436
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":441
  *         cdef object fig, ax
  * 
  *         argmaxs = []             # <<<<<<<<<<<<<<
  *         colors = ['violet', 'green', 'black', 'lime', 'blue', 'orange', 'brown', 'yellow', 'red', 'turquoise',
  *                   'purple']
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 436, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 441, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_argmaxs = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":437
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":442
  * 
  *         argmaxs = []
  *         colors = ['violet', 'green', 'black', 'lime', 'blue', 'orange', 'brown', 'yellow', 'red', 'turquoise',             # <<<<<<<<<<<<<<
  *                   'purple']
  * 
  */
-  __pyx_t_1 = PyList_New(11); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 437, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(11); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 442, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_n_u_violet);
   __Pyx_GIVEREF(__pyx_n_u_violet);
@@ -10615,7 +10572,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __pyx_v_colors = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":440
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":445
  *                   'purple']
  * 
  *         for j in range(len(Q)):             # <<<<<<<<<<<<<<
@@ -10624,58 +10581,58 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
   if (unlikely(__pyx_v_Q == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 440, __pyx_L1_error)
+    __PYX_ERR(0, 445, __pyx_L1_error)
   }
-  __pyx_t_2 = PyList_GET_SIZE(__pyx_v_Q); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 440, __pyx_L1_error)
+  __pyx_t_2 = PyList_GET_SIZE(__pyx_v_Q); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 445, __pyx_L1_error)
   __pyx_t_3 = __pyx_t_2;
   for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
     __pyx_v_j = __pyx_t_4;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":441
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":446
  * 
  *         for j in range(len(Q)):
  *             Q_mean = np.mean(Q[j], axis = 0)             # <<<<<<<<<<<<<<
  *             argmaxs.append(np.argmax(Q_mean))
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 441, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 446, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_mean); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 441, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_mean); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 446, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (unlikely(__pyx_v_Q == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 441, __pyx_L1_error)
+      __PYX_ERR(0, 446, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_Q, __pyx_v_j, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 441, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_Q, __pyx_v_j, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 446, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 441, __pyx_L1_error)
+    __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 446, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_GIVEREF(__pyx_t_1);
     PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_1);
     __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 441, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 446, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 441, __pyx_L1_error)
-    __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_6, __pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 441, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 446, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_6, __pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 446, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (!(likely(((__pyx_t_7) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_7, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 441, __pyx_L1_error)
+    if (!(likely(((__pyx_t_7) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_7, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 446, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_Q_mean, ((PyArrayObject *)__pyx_t_7));
     __pyx_t_7 = 0;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":442
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":447
  *         for j in range(len(Q)):
  *             Q_mean = np.mean(Q[j], axis = 0)
  *             argmaxs.append(np.argmax(Q_mean))             # <<<<<<<<<<<<<<
  * 
  *         X = np.linspace(0, int(np.min([TIME-2,np.max(argmaxs)])+1), int(np.min([TIME-2,np.max(argmaxs)])+2))
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 442, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 447, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_argmax); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 442, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_argmax); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 447, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_1 = NULL;
@@ -10690,35 +10647,35 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     }
     __pyx_t_7 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_1, ((PyObject *)__pyx_v_Q_mean)) : __Pyx_PyObject_CallOneArg(__pyx_t_6, ((PyObject *)__pyx_v_Q_mean));
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 442, __pyx_L1_error)
+    if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 447, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_8 = __Pyx_PyList_Append(__pyx_v_argmaxs, __pyx_t_7); if (unlikely(__pyx_t_8 == ((int)-1))) __PYX_ERR(0, 442, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyList_Append(__pyx_v_argmaxs, __pyx_t_7); if (unlikely(__pyx_t_8 == ((int)-1))) __PYX_ERR(0, 447, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   }
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":444
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":449
  *             argmaxs.append(np.argmax(Q_mean))
  * 
  *         X = np.linspace(0, int(np.min([TIME-2,np.max(argmaxs)])+1), int(np.min([TIME-2,np.max(argmaxs)])+2))             # <<<<<<<<<<<<<<
  * 
  *         fig,ax = plt.subplots(1,1, figsize = (12,8))
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 444, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 449, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_linspace); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 444, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_linspace); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 449, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 444, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 449, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_min); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 444, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_min); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 449, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyInt_From_long((__pyx_v_TIME - 2)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 444, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_From_long((__pyx_v_TIME - 2)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 449, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_np); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 444, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_np); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 449, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
-  __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_max); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 444, __pyx_L1_error)
+  __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_max); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 449, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
   __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
   __pyx_t_11 = NULL;
@@ -10733,10 +10690,10 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   }
   __pyx_t_10 = (__pyx_t_11) ? __Pyx_PyObject_Call2Args(__pyx_t_12, __pyx_t_11, __pyx_v_argmaxs) : __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_v_argmaxs);
   __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
-  if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 444, __pyx_L1_error)
+  if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 449, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-  __pyx_t_12 = PyList_New(2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 444, __pyx_L1_error)
+  __pyx_t_12 = PyList_New(2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 449, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
   __Pyx_GIVEREF(__pyx_t_5);
   PyList_SET_ITEM(__pyx_t_12, 0, __pyx_t_5);
@@ -10757,25 +10714,25 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __pyx_t_6 = (__pyx_t_10) ? __Pyx_PyObject_Call2Args(__pyx_t_9, __pyx_t_10, __pyx_t_12) : __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_12);
   __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
   __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-  if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 444, __pyx_L1_error)
+  if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 449, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  __pyx_t_9 = __Pyx_PyInt_AddObjC(__pyx_t_6, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 444, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyInt_AddObjC(__pyx_t_6, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 449, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyNumber_Int(__pyx_t_9); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 444, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyNumber_Int(__pyx_t_9); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 449, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_np); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 444, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_np); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 449, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
-  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_min); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 444, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_min); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 449, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-  __pyx_t_12 = __Pyx_PyInt_From_long((__pyx_v_TIME - 2)); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 444, __pyx_L1_error)
+  __pyx_t_12 = __Pyx_PyInt_From_long((__pyx_v_TIME - 2)); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 449, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
-  __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_np); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 444, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_np); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 449, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
-  __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_max); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 444, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_max); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 449, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
   __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
   __pyx_t_11 = NULL;
@@ -10790,10 +10747,10 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   }
   __pyx_t_5 = (__pyx_t_11) ? __Pyx_PyObject_Call2Args(__pyx_t_13, __pyx_t_11, __pyx_v_argmaxs) : __Pyx_PyObject_CallOneArg(__pyx_t_13, __pyx_v_argmaxs);
   __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
-  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 444, __pyx_L1_error)
+  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 449, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-  __pyx_t_13 = PyList_New(2); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 444, __pyx_L1_error)
+  __pyx_t_13 = PyList_New(2); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 449, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
   __Pyx_GIVEREF(__pyx_t_12);
   PyList_SET_ITEM(__pyx_t_13, 0, __pyx_t_12);
@@ -10814,13 +10771,13 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __pyx_t_9 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_10, __pyx_t_5, __pyx_t_13) : __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_13);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-  if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 444, __pyx_L1_error)
+  if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 449, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-  __pyx_t_10 = __Pyx_PyInt_AddObjC(__pyx_t_9, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 444, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyInt_AddObjC(__pyx_t_9, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 449, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  __pyx_t_9 = __Pyx_PyNumber_Int(__pyx_t_10); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 444, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyNumber_Int(__pyx_t_10); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 449, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
   __pyx_t_10 = NULL;
@@ -10838,7 +10795,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_1)) {
     PyObject *__pyx_temp[4] = {__pyx_t_10, __pyx_int_0, __pyx_t_6, __pyx_t_9};
-    __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_14, 3+__pyx_t_14); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 444, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_14, 3+__pyx_t_14); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 449, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -10848,7 +10805,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
     PyObject *__pyx_temp[4] = {__pyx_t_10, __pyx_int_0, __pyx_t_6, __pyx_t_9};
-    __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_14, 3+__pyx_t_14); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 444, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_14, 3+__pyx_t_14); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 449, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -10856,7 +10813,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   } else
   #endif
   {
-    __pyx_t_13 = PyTuple_New(3+__pyx_t_14); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 444, __pyx_L1_error)
+    __pyx_t_13 = PyTuple_New(3+__pyx_t_14); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 449, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
     if (__pyx_t_10) {
       __Pyx_GIVEREF(__pyx_t_10); PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_t_10); __pyx_t_10 = NULL;
@@ -10870,31 +10827,31 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     PyTuple_SET_ITEM(__pyx_t_13, 2+__pyx_t_14, __pyx_t_9);
     __pyx_t_6 = 0;
     __pyx_t_9 = 0;
-    __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_13, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 444, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_13, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 449, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(((__pyx_t_7) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_7, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 444, __pyx_L1_error)
+  if (!(likely(((__pyx_t_7) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_7, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 449, __pyx_L1_error)
   __pyx_v_X = ((PyArrayObject *)__pyx_t_7);
   __pyx_t_7 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":446
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":451
  *         X = np.linspace(0, int(np.min([TIME-2,np.max(argmaxs)])+1), int(np.min([TIME-2,np.max(argmaxs)])+2))
  * 
  *         fig,ax = plt.subplots(1,1, figsize = (12,8))             # <<<<<<<<<<<<<<
  * 
  *         for i in range(len(Q)):
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_plt); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 446, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_plt); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 451, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_subplots); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 446, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_subplots); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 451, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 446, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 451, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_figsize, __pyx_tuple__8) < 0) __PYX_ERR(0, 446, __pyx_L1_error)
-  __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__7, __pyx_t_7); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 446, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_figsize, __pyx_tuple__10) < 0) __PYX_ERR(0, 451, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__9, __pyx_t_7); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 451, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -10904,7 +10861,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     if (unlikely(size != 2)) {
       if (size > 2) __Pyx_RaiseTooManyValuesError(2);
       else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-      __PYX_ERR(0, 446, __pyx_L1_error)
+      __PYX_ERR(0, 451, __pyx_L1_error)
     }
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
     if (likely(PyTuple_CheckExact(sequence))) {
@@ -10917,15 +10874,15 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     __Pyx_INCREF(__pyx_t_7);
     __Pyx_INCREF(__pyx_t_1);
     #else
-    __pyx_t_7 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 446, __pyx_L1_error)
+    __pyx_t_7 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 451, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 446, __pyx_L1_error)
+    __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 451, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     #endif
     __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
   } else {
     Py_ssize_t index = -1;
-    __pyx_t_9 = PyObject_GetIter(__pyx_t_13); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 446, __pyx_L1_error)
+    __pyx_t_9 = PyObject_GetIter(__pyx_t_13); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 451, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
     __pyx_t_15 = Py_TYPE(__pyx_t_9)->tp_iternext;
@@ -10933,7 +10890,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     __Pyx_GOTREF(__pyx_t_7);
     index = 1; __pyx_t_1 = __pyx_t_15(__pyx_t_9); if (unlikely(!__pyx_t_1)) goto __pyx_L5_unpacking_failed;
     __Pyx_GOTREF(__pyx_t_1);
-    if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_9), 2) < 0) __PYX_ERR(0, 446, __pyx_L1_error)
+    if (__Pyx_IternextUnpackEndCheck(__pyx_t_15(__pyx_t_9), 2) < 0) __PYX_ERR(0, 451, __pyx_L1_error)
     __pyx_t_15 = NULL;
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     goto __pyx_L6_unpacking_done;
@@ -10941,7 +10898,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     __pyx_t_15 = NULL;
     if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-    __PYX_ERR(0, 446, __pyx_L1_error)
+    __PYX_ERR(0, 451, __pyx_L1_error)
     __pyx_L6_unpacking_done:;
   }
   __pyx_v_fig = __pyx_t_7;
@@ -10949,7 +10906,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __pyx_v_ax = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":448
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":453
  *         fig,ax = plt.subplots(1,1, figsize = (12,8))
  * 
  *         for i in range(len(Q)):             # <<<<<<<<<<<<<<
@@ -10958,49 +10915,49 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
   if (unlikely(__pyx_v_Q == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 448, __pyx_L1_error)
+    __PYX_ERR(0, 453, __pyx_L1_error)
   }
-  __pyx_t_2 = PyList_GET_SIZE(__pyx_v_Q); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 448, __pyx_L1_error)
+  __pyx_t_2 = PyList_GET_SIZE(__pyx_v_Q); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 453, __pyx_L1_error)
   __pyx_t_3 = __pyx_t_2;
   for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
     __pyx_v_i = __pyx_t_4;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":449
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":454
  * 
  *         for i in range(len(Q)):
  *             Q_mean = np.mean(Q[i], axis = 0)             # <<<<<<<<<<<<<<
  * 
  *             if i == 0: ax.plot(Q_mean[:int(np.min([TIME-2,np.max(argmaxs)])+2)],
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_13, __pyx_n_s_np); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 449, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_13, __pyx_n_s_np); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 454, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_mean); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 449, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_mean); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 454, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
     if (unlikely(__pyx_v_Q == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 449, __pyx_L1_error)
+      __PYX_ERR(0, 454, __pyx_L1_error)
     }
-    __pyx_t_13 = __Pyx_GetItemInt_List(__pyx_v_Q, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 449, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_GetItemInt_List(__pyx_v_Q, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 454, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
-    __pyx_t_7 = PyTuple_New(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 449, __pyx_L1_error)
+    __pyx_t_7 = PyTuple_New(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 454, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_GIVEREF(__pyx_t_13);
     PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_13);
     __pyx_t_13 = 0;
-    __pyx_t_13 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 449, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 454, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
-    if (PyDict_SetItem(__pyx_t_13, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 449, __pyx_L1_error)
-    __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_7, __pyx_t_13); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 449, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_13, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 454, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_7, __pyx_t_13); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 454, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-    if (!(likely(((__pyx_t_9) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_9, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 449, __pyx_L1_error)
+    if (!(likely(((__pyx_t_9) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_9, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 454, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_Q_mean, ((PyArrayObject *)__pyx_t_9));
     __pyx_t_9 = 0;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":451
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":456
  *             Q_mean = np.mean(Q[i], axis = 0)
  * 
  *             if i == 0: ax.plot(Q_mean[:int(np.min([TIME-2,np.max(argmaxs)])+2)],             # <<<<<<<<<<<<<<
@@ -11009,18 +10966,18 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
     __pyx_t_16 = ((__pyx_v_i == 0) != 0);
     if (__pyx_t_16) {
-      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_ax, __pyx_n_s_plot); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 451, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_ax, __pyx_n_s_plot); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 456, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 451, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 456, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_min); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 451, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_min); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 456, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_7 = __Pyx_PyInt_From_long((__pyx_v_TIME - 2)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 451, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyInt_From_long((__pyx_v_TIME - 2)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 456, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 451, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 456, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_max); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 451, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_max); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 456, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       __pyx_t_10 = NULL;
@@ -11035,10 +10992,10 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
       }
       __pyx_t_6 = (__pyx_t_10) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_10, __pyx_v_argmaxs) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_argmaxs);
       __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-      if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 451, __pyx_L1_error)
+      if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 456, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_5 = PyList_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 451, __pyx_L1_error)
+      __pyx_t_5 = PyList_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 456, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GIVEREF(__pyx_t_7);
       PyList_SET_ITEM(__pyx_t_5, 0, __pyx_t_7);
@@ -11059,48 +11016,48 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
       __pyx_t_13 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_6, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_5);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 451, __pyx_L1_error)
+      if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 456, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_13);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyInt_AddObjC(__pyx_t_13, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 451, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyInt_AddObjC(__pyx_t_13, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 456, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-      __pyx_t_13 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 451, __pyx_L1_error)
+      __pyx_t_13 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 456, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_13);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_Q_mean), 0, 0, NULL, &__pyx_t_13, NULL, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 451, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_Q_mean), 0, 0, NULL, &__pyx_t_13, NULL, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 456, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-      __pyx_t_13 = PyTuple_New(1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 451, __pyx_L1_error)
+      __pyx_t_13 = PyTuple_New(1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 456, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_13);
       __Pyx_GIVEREF(__pyx_t_1);
       PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_t_1);
       __pyx_t_1 = 0;
 
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":452
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":457
  * 
  *             if i == 0: ax.plot(Q_mean[:int(np.min([TIME-2,np.max(argmaxs)])+2)],
  *                                label = 'Threshold = %.2f'%labels[i],             # <<<<<<<<<<<<<<
  *                                linestyle = 'dashed',
  *                                marker = 'v',
  */
-      __pyx_t_1 = __Pyx_PyDict_NewPresized(4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 452, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyDict_NewPresized(4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 457, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (unlikely(__pyx_v_labels == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 452, __pyx_L1_error)
+        __PYX_ERR(0, 457, __pyx_L1_error)
       }
-      __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_labels, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 452, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_labels, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 457, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_6 = __Pyx_PyUnicode_FormatSafe(__pyx_kp_u_Threshold_2f, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 452, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyUnicode_FormatSafe(__pyx_kp_u_Threshold_2f, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 457, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_label, __pyx_t_6) < 0) __PYX_ERR(0, 452, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_label, __pyx_t_6) < 0) __PYX_ERR(0, 457, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_linestyle, __pyx_n_u_dashed) < 0) __PYX_ERR(0, 452, __pyx_L1_error)
-      if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_marker, __pyx_n_u_v) < 0) __PYX_ERR(0, 452, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_linestyle, __pyx_n_u_dashed) < 0) __PYX_ERR(0, 457, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_marker, __pyx_n_u_v) < 0) __PYX_ERR(0, 457, __pyx_L1_error)
 
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":455
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":460
  *                                linestyle = 'dashed',
  *                                marker = 'v',
  *                                color = colors[i%11])             # <<<<<<<<<<<<<<
@@ -11108,19 +11065,19 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  *             else: ax.plot(Q_mean[:int(np.min([TIME-2,np.max(argmaxs)])+2)],
  */
       __pyx_t_17 = __Pyx_mod_Py_ssize_t(__pyx_v_i, 11);
-      __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_colors, __pyx_t_17, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 455, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_GetItemInt_List(__pyx_v_colors, __pyx_t_17, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 460, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_t_6) < 0) __PYX_ERR(0, 452, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_color, __pyx_t_6) < 0) __PYX_ERR(0, 457, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":451
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":456
  *             Q_mean = np.mean(Q[i], axis = 0)
  * 
  *             if i == 0: ax.plot(Q_mean[:int(np.min([TIME-2,np.max(argmaxs)])+2)],             # <<<<<<<<<<<<<<
  *                                label = 'Threshold = %.2f'%labels[i],
  *                                linestyle = 'dashed',
  */
-      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_13, __pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 451, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_13, __pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 456, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
@@ -11129,7 +11086,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
       goto __pyx_L9;
     }
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":457
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":462
  *                                color = colors[i%11])
  * 
  *             else: ax.plot(Q_mean[:int(np.min([TIME-2,np.max(argmaxs)])+2)],             # <<<<<<<<<<<<<<
@@ -11137,18 +11094,18 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  *                           marker = 'v',
  */
     /*else*/ {
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_ax, __pyx_n_s_plot); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 457, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_ax, __pyx_n_s_plot); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 462, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __Pyx_GetModuleGlobalName(__pyx_t_13, __pyx_n_s_np); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 457, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_13, __pyx_n_s_np); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 462, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_13);
-      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_min); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 457, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_min); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 462, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-      __pyx_t_13 = __Pyx_PyInt_From_long((__pyx_v_TIME - 2)); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 457, __pyx_L1_error)
+      __pyx_t_13 = __Pyx_PyInt_From_long((__pyx_v_TIME - 2)); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 462, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_13);
-      __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 457, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 462, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_max); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 457, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_max); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 462, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __pyx_t_7 = NULL;
@@ -11163,10 +11120,10 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
       }
       __pyx_t_5 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_10, __pyx_t_7, __pyx_v_argmaxs) : __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_v_argmaxs);
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 457, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 462, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-      __pyx_t_10 = PyList_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 457, __pyx_L1_error)
+      __pyx_t_10 = PyList_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 462, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_GIVEREF(__pyx_t_13);
       PyList_SET_ITEM(__pyx_t_10, 0, __pyx_t_13);
@@ -11187,47 +11144,47 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
       __pyx_t_1 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_9, __pyx_t_5, __pyx_t_10) : __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_10);
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 457, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 462, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __pyx_t_9 = __Pyx_PyInt_AddObjC(__pyx_t_1, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 457, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyInt_AddObjC(__pyx_t_1, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 462, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyNumber_Int(__pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 457, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyNumber_Int(__pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 462, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __pyx_t_9 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_Q_mean), 0, 0, NULL, &__pyx_t_1, NULL, 0, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 457, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_Q_mean), 0, 0, NULL, &__pyx_t_1, NULL, 0, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 462, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 457, __pyx_L1_error)
+      __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 462, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_GIVEREF(__pyx_t_9);
       PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_9);
       __pyx_t_9 = 0;
 
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":458
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":463
  * 
  *             else: ax.plot(Q_mean[:int(np.min([TIME-2,np.max(argmaxs)])+2)],
  *                           label = 'Threshold = %.2f'%labels[i],             # <<<<<<<<<<<<<<
  *                           marker = 'v',
  *                           color = colors[i%11])
  */
-      __pyx_t_9 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 458, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 463, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       if (unlikely(__pyx_v_labels == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 458, __pyx_L1_error)
+        __PYX_ERR(0, 463, __pyx_L1_error)
       }
-      __pyx_t_10 = __Pyx_GetItemInt_List(__pyx_v_labels, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 458, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_GetItemInt_List(__pyx_v_labels, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 463, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
-      __pyx_t_5 = __Pyx_PyUnicode_FormatSafe(__pyx_kp_u_Threshold_2f, __pyx_t_10); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 458, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyUnicode_FormatSafe(__pyx_kp_u_Threshold_2f, __pyx_t_10); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 463, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-      if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_label, __pyx_t_5) < 0) __PYX_ERR(0, 458, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_label, __pyx_t_5) < 0) __PYX_ERR(0, 463, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_marker, __pyx_n_u_v) < 0) __PYX_ERR(0, 458, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_marker, __pyx_n_u_v) < 0) __PYX_ERR(0, 463, __pyx_L1_error)
 
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":460
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":465
  *                           label = 'Threshold = %.2f'%labels[i],
  *                           marker = 'v',
  *                           color = colors[i%11])             # <<<<<<<<<<<<<<
@@ -11235,19 +11192,19 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  *             ax.fill_between(X,
  */
       __pyx_t_17 = __Pyx_mod_Py_ssize_t(__pyx_v_i, 11);
-      __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_colors, __pyx_t_17, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 460, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_GetItemInt_List(__pyx_v_colors, __pyx_t_17, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 465, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_color, __pyx_t_5) < 0) __PYX_ERR(0, 458, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_color, __pyx_t_5) < 0) __PYX_ERR(0, 463, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":457
+      /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":462
  *                                color = colors[i%11])
  * 
  *             else: ax.plot(Q_mean[:int(np.min([TIME-2,np.max(argmaxs)])+2)],             # <<<<<<<<<<<<<<
  *                           label = 'Threshold = %.2f'%labels[i],
  *                           marker = 'v',
  */
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_1, __pyx_t_9); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 457, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_1, __pyx_t_9); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 462, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -11256,57 +11213,57 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     }
     __pyx_L9:;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":462
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":467
  *                           color = colors[i%11])
  * 
  *             ax.fill_between(X,             # <<<<<<<<<<<<<<
  *                             np.max(Q[i], axis = 0)[:int(np.min([TIME-2,np.max(argmaxs)])+2)],
  *                             np.min(Q[i], axis = 0)[:int(np.min([TIME-2,np.max(argmaxs)])+2)],
  */
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_ax, __pyx_n_s_fill_between); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 462, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_ax, __pyx_n_s_fill_between); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 467, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":463
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":468
  * 
  *             ax.fill_between(X,
  *                             np.max(Q[i], axis = 0)[:int(np.min([TIME-2,np.max(argmaxs)])+2)],             # <<<<<<<<<<<<<<
  *                             np.min(Q[i], axis = 0)[:int(np.min([TIME-2,np.max(argmaxs)])+2)],
  *                             alpha = 0.2, color = colors[i%11])
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_np); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 463, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_np); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 468, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_max); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 463, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_max); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 468, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     if (unlikely(__pyx_v_Q == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 463, __pyx_L1_error)
+      __PYX_ERR(0, 468, __pyx_L1_error)
     }
-    __pyx_t_9 = __Pyx_GetItemInt_List(__pyx_v_Q, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 463, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_GetItemInt_List(__pyx_v_Q, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 468, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 463, __pyx_L1_error)
+    __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 468, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_GIVEREF(__pyx_t_9);
     PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_9);
     __pyx_t_9 = 0;
-    __pyx_t_9 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 463, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 468, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 463, __pyx_L1_error)
-    __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_6, __pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 463, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 468, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_6, __pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 468, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 463, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 468, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_min); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 463, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_min); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 468, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = __Pyx_PyInt_From_long((__pyx_v_TIME - 2)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 463, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyInt_From_long((__pyx_v_TIME - 2)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 468, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 463, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 468, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_max); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 463, __pyx_L1_error)
+    __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_max); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 468, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_12);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_7 = NULL;
@@ -11321,10 +11278,10 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     }
     __pyx_t_13 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_12, __pyx_t_7, __pyx_v_argmaxs) : __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_v_argmaxs);
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 463, __pyx_L1_error)
+    if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 468, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
     __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-    __pyx_t_12 = PyList_New(2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 463, __pyx_L1_error)
+    __pyx_t_12 = PyList_New(2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 468, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_12);
     __Pyx_GIVEREF(__pyx_t_6);
     PyList_SET_ITEM(__pyx_t_12, 0, __pyx_t_6);
@@ -11345,61 +11302,61 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     __pyx_t_9 = (__pyx_t_13) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_13, __pyx_t_12) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_12);
     __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
     __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-    if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 463, __pyx_L1_error)
+    if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 468, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyInt_AddObjC(__pyx_t_9, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 463, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_AddObjC(__pyx_t_9, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 468, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    __pyx_t_9 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 463, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 468, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_t_10, 0, 0, NULL, &__pyx_t_9, NULL, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 463, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_t_10, 0, 0, NULL, &__pyx_t_9, NULL, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 468, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":464
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":469
  *             ax.fill_between(X,
  *                             np.max(Q[i], axis = 0)[:int(np.min([TIME-2,np.max(argmaxs)])+2)],
  *                             np.min(Q[i], axis = 0)[:int(np.min([TIME-2,np.max(argmaxs)])+2)],             # <<<<<<<<<<<<<<
  *                             alpha = 0.2, color = colors[i%11])
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_np); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 464, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_np); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 469, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_min); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 464, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_min); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 469, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     if (unlikely(__pyx_v_Q == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 464, __pyx_L1_error)
+      __PYX_ERR(0, 469, __pyx_L1_error)
     }
-    __pyx_t_9 = __Pyx_GetItemInt_List(__pyx_v_Q, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 464, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_GetItemInt_List(__pyx_v_Q, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 469, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_12 = PyTuple_New(1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 464, __pyx_L1_error)
+    __pyx_t_12 = PyTuple_New(1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 469, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_12);
     __Pyx_GIVEREF(__pyx_t_9);
     PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_t_9);
     __pyx_t_9 = 0;
-    __pyx_t_9 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 464, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 469, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 464, __pyx_L1_error)
-    __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_12, __pyx_t_9); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 464, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_axis, __pyx_int_0) < 0) __PYX_ERR(0, 469, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_12, __pyx_t_9); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 469, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_np); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 464, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_np); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 469, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_12);
-    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_min); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 464, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_min); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 469, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-    __pyx_t_12 = __Pyx_PyInt_From_long((__pyx_v_TIME - 2)); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 464, __pyx_L1_error)
+    __pyx_t_12 = __Pyx_PyInt_From_long((__pyx_v_TIME - 2)); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 469, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_12);
-    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 464, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 469, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_max); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 464, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_max); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 469, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_7 = NULL;
@@ -11414,10 +11371,10 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     }
     __pyx_t_6 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_11, __pyx_t_7, __pyx_v_argmaxs) : __Pyx_PyObject_CallOneArg(__pyx_t_11, __pyx_v_argmaxs);
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 464, __pyx_L1_error)
+    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 469, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-    __pyx_t_11 = PyList_New(2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 464, __pyx_L1_error)
+    __pyx_t_11 = PyList_New(2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 469, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
     __Pyx_GIVEREF(__pyx_t_12);
     PyList_SET_ITEM(__pyx_t_11, 0, __pyx_t_12);
@@ -11438,28 +11395,28 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     __pyx_t_9 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_10, __pyx_t_6, __pyx_t_11) : __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_11);
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-    if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 464, __pyx_L1_error)
+    if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 469, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __pyx_t_10 = __Pyx_PyInt_AddObjC(__pyx_t_9, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 464, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyInt_AddObjC(__pyx_t_9, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 469, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    __pyx_t_9 = __Pyx_PyNumber_Int(__pyx_t_10); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 464, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyNumber_Int(__pyx_t_10); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 469, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __pyx_t_10 = __Pyx_PyObject_GetSlice(__pyx_t_13, 0, 0, NULL, &__pyx_t_9, NULL, 0, 0, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 464, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_GetSlice(__pyx_t_13, 0, 0, NULL, &__pyx_t_9, NULL, 0, 0, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 469, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":462
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":467
  *                           color = colors[i%11])
  * 
  *             ax.fill_between(X,             # <<<<<<<<<<<<<<
  *                             np.max(Q[i], axis = 0)[:int(np.min([TIME-2,np.max(argmaxs)])+2)],
  *                             np.min(Q[i], axis = 0)[:int(np.min([TIME-2,np.max(argmaxs)])+2)],
  */
-    __pyx_t_9 = PyTuple_New(3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 462, __pyx_L1_error)
+    __pyx_t_9 = PyTuple_New(3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 467, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_INCREF(((PyObject *)__pyx_v_X));
     __Pyx_GIVEREF(((PyObject *)__pyx_v_X));
@@ -11471,30 +11428,30 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     __pyx_t_1 = 0;
     __pyx_t_10 = 0;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":465
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":470
  *                             np.max(Q[i], axis = 0)[:int(np.min([TIME-2,np.max(argmaxs)])+2)],
  *                             np.min(Q[i], axis = 0)[:int(np.min([TIME-2,np.max(argmaxs)])+2)],
  *                             alpha = 0.2, color = colors[i%11])             # <<<<<<<<<<<<<<
  * 
  *         ax.set_title('%s, T = %d, C = %d, trials = %d,  K = %.1f, L = %.1f, Threshold = %.2f'%(self.text, TIME, C, trials, K, L, threshold), fontsize = 25)
  */
-    __pyx_t_10 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 465, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 470, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    if (PyDict_SetItem(__pyx_t_10, __pyx_n_s_alpha, __pyx_float_0_2) < 0) __PYX_ERR(0, 465, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_10, __pyx_n_s_alpha, __pyx_float_0_2) < 0) __PYX_ERR(0, 470, __pyx_L1_error)
     __pyx_t_17 = __Pyx_mod_Py_ssize_t(__pyx_v_i, 11);
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_colors, __pyx_t_17, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 465, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_colors, __pyx_t_17, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 470, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    if (PyDict_SetItem(__pyx_t_10, __pyx_n_s_color, __pyx_t_1) < 0) __PYX_ERR(0, 465, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_10, __pyx_n_s_color, __pyx_t_1) < 0) __PYX_ERR(0, 470, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":462
+    /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":467
  *                           color = colors[i%11])
  * 
  *             ax.fill_between(X,             # <<<<<<<<<<<<<<
  *                             np.max(Q[i], axis = 0)[:int(np.min([TIME-2,np.max(argmaxs)])+2)],
  *                             np.min(Q[i], axis = 0)[:int(np.min([TIME-2,np.max(argmaxs)])+2)],
  */
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_9, __pyx_t_10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 462, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_9, __pyx_t_10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 467, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
@@ -11502,20 +11459,20 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":467
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":472
  *                             alpha = 0.2, color = colors[i%11])
  * 
  *         ax.set_title('%s, T = %d, C = %d, trials = %d,  K = %.1f, L = %.1f, Threshold = %.2f'%(self.text, TIME, C, trials, K, L, threshold), fontsize = 25)             # <<<<<<<<<<<<<<
  *         ax.set_xlabel('Time', fontsize = 20)
  *         ax.set_ylabel('Number of Active Nodes', fontsize = 20)
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_ax, __pyx_n_s_set_title); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 467, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_ax, __pyx_n_s_set_title); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 472, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_10 = PyTuple_New(13); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 467, __pyx_L1_error)
+  __pyx_t_10 = PyTuple_New(13); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 472, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __pyx_t_2 = 0;
   __pyx_t_18 = 127;
-  __pyx_t_9 = __Pyx_PyUnicode_Unicode(__pyx_v_self->text); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 467, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyUnicode_Unicode(__pyx_v_self->text); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 472, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __pyx_t_18 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_9) > __pyx_t_18) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_9) : __pyx_t_18;
   __pyx_t_2 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_9);
@@ -11526,7 +11483,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __pyx_t_2 += 6;
   __Pyx_GIVEREF(__pyx_kp_u_T_2);
   PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_kp_u_T_2);
-  __pyx_t_9 = __Pyx_PyUnicode_From_int(__pyx_v_TIME, 0, ' ', 'd'); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 467, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyUnicode_From_int(__pyx_v_TIME, 0, ' ', 'd'); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 472, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __pyx_t_2 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_9);
   __Pyx_GIVEREF(__pyx_t_9);
@@ -11536,7 +11493,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __pyx_t_2 += 6;
   __Pyx_GIVEREF(__pyx_kp_u_C_2);
   PyTuple_SET_ITEM(__pyx_t_10, 3, __pyx_kp_u_C_2);
-  __pyx_t_9 = __Pyx_PyUnicode_From_int(__pyx_v_C, 0, ' ', 'd'); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 467, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyUnicode_From_int(__pyx_v_C, 0, ' ', 'd'); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 472, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __pyx_t_2 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_9);
   __Pyx_GIVEREF(__pyx_t_9);
@@ -11546,7 +11503,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __pyx_t_2 += 11;
   __Pyx_GIVEREF(__pyx_kp_u_trials_2);
   PyTuple_SET_ITEM(__pyx_t_10, 5, __pyx_kp_u_trials_2);
-  __pyx_t_9 = __Pyx_PyUnicode_From_int(__pyx_v_trials, 0, ' ', 'd'); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 467, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyUnicode_From_int(__pyx_v_trials, 0, ' ', 'd'); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 472, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __pyx_t_2 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_9);
   __Pyx_GIVEREF(__pyx_t_9);
@@ -11556,9 +11513,9 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __pyx_t_2 += 7;
   __Pyx_GIVEREF(__pyx_kp_u_K_2);
   PyTuple_SET_ITEM(__pyx_t_10, 7, __pyx_kp_u_K_2);
-  __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_K); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 467, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_K); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 472, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_5 = __Pyx_PyObject_Format(__pyx_t_9, __pyx_kp_u_1f); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 467, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Format(__pyx_t_9, __pyx_kp_u_1f); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 472, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __pyx_t_18 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_5) > __pyx_t_18) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_5) : __pyx_t_18;
@@ -11570,7 +11527,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __pyx_t_2 += 6;
   __Pyx_GIVEREF(__pyx_kp_u_L_2);
   PyTuple_SET_ITEM(__pyx_t_10, 9, __pyx_kp_u_L_2);
-  __pyx_t_5 = __Pyx_PyObject_Format(__pyx_v_L, __pyx_kp_u_1f); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 467, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Format(__pyx_v_L, __pyx_kp_u_1f); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 472, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_18 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_5) > __pyx_t_18) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_5) : __pyx_t_18;
   __pyx_t_2 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_5);
@@ -11581,9 +11538,9 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __pyx_t_2 += 14;
   __Pyx_GIVEREF(__pyx_kp_u_Threshold);
   PyTuple_SET_ITEM(__pyx_t_10, 11, __pyx_kp_u_Threshold);
-  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_threshold); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 467, __pyx_L1_error)
+  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_threshold); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 472, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_9 = __Pyx_PyObject_Format(__pyx_t_5, __pyx_kp_u_2f); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 467, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_Format(__pyx_t_5, __pyx_kp_u_2f); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 472, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_18 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_9) > __pyx_t_18) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_9) : __pyx_t_18;
@@ -11591,67 +11548,67 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __Pyx_GIVEREF(__pyx_t_9);
   PyTuple_SET_ITEM(__pyx_t_10, 12, __pyx_t_9);
   __pyx_t_9 = 0;
-  __pyx_t_9 = __Pyx_PyUnicode_Join(__pyx_t_10, 13, __pyx_t_2, __pyx_t_18); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 467, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyUnicode_Join(__pyx_t_10, 13, __pyx_t_2, __pyx_t_18); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 472, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-  __pyx_t_10 = PyTuple_New(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 467, __pyx_L1_error)
+  __pyx_t_10 = PyTuple_New(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 472, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_GIVEREF(__pyx_t_9);
   PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_9);
   __pyx_t_9 = 0;
-  __pyx_t_9 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 467, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 472, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_fontsize, __pyx_int_25) < 0) __PYX_ERR(0, 467, __pyx_L1_error)
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_10, __pyx_t_9); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 467, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_fontsize, __pyx_int_25) < 0) __PYX_ERR(0, 472, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_10, __pyx_t_9); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 472, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":468
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":473
  * 
  *         ax.set_title('%s, T = %d, C = %d, trials = %d,  K = %.1f, L = %.1f, Threshold = %.2f'%(self.text, TIME, C, trials, K, L, threshold), fontsize = 25)
  *         ax.set_xlabel('Time', fontsize = 20)             # <<<<<<<<<<<<<<
  *         ax.set_ylabel('Number of Active Nodes', fontsize = 20)
  *         ax.legend()
  */
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_ax, __pyx_n_s_set_xlabel); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 468, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_ax, __pyx_n_s_set_xlabel); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 473, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_9 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 468, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 473, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_fontsize, __pyx_int_20) < 0) __PYX_ERR(0, 468, __pyx_L1_error)
-  __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_tuple__9, __pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 468, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_fontsize, __pyx_int_20) < 0) __PYX_ERR(0, 473, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_tuple__11, __pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 473, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":469
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":474
  *         ax.set_title('%s, T = %d, C = %d, trials = %d,  K = %.1f, L = %.1f, Threshold = %.2f'%(self.text, TIME, C, trials, K, L, threshold), fontsize = 25)
  *         ax.set_xlabel('Time', fontsize = 20)
  *         ax.set_ylabel('Number of Active Nodes', fontsize = 20)             # <<<<<<<<<<<<<<
  *         ax.legend()
  *         return(fig,ax)
  */
-  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_ax, __pyx_n_s_set_ylabel); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 469, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_ax, __pyx_n_s_set_ylabel); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 474, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
-  __pyx_t_9 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 469, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 474, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_fontsize, __pyx_int_20) < 0) __PYX_ERR(0, 469, __pyx_L1_error)
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_tuple__10, __pyx_t_9); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 469, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_fontsize, __pyx_int_20) < 0) __PYX_ERR(0, 474, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_tuple__12, __pyx_t_9); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 474, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":470
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":475
  *         ax.set_xlabel('Time', fontsize = 20)
  *         ax.set_ylabel('Number of Active Nodes', fontsize = 20)
  *         ax.legend()             # <<<<<<<<<<<<<<
  *         return(fig,ax)
  */
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_ax, __pyx_n_s_legend); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 470, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_ax, __pyx_n_s_legend); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 475, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __pyx_t_10 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_9))) {
@@ -11665,18 +11622,18 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   }
   __pyx_t_5 = (__pyx_t_10) ? __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_10) : __Pyx_PyObject_CallNoArg(__pyx_t_9);
   __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 470, __pyx_L1_error)
+  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 475, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":471
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":476
  *         ax.set_ylabel('Number of Active Nodes', fontsize = 20)
  *         ax.legend()
  *         return(fig,ax)             # <<<<<<<<<<<<<<
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 471, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 476, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_INCREF(__pyx_v_fig);
   __Pyx_GIVEREF(__pyx_v_fig);
@@ -11688,7 +11645,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":429
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":434
  *         return(Delta_min, Delta_max)
  * 
  *     def display_comm_sizes(self, list Q, list labels, int TIME, int C, int trials, int memory, int rest, float threshold, int K = -100, L = -100):             # <<<<<<<<<<<<<<
@@ -11721,7 +11678,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   return __pyx_r;
 }
 
-/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":29
+/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":31
  * cdef class Geometric_Brain_Network:
  * 
  *     cdef public int N, GD, nGD             # <<<<<<<<<<<<<<
@@ -11748,7 +11705,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->N); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->N); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -11783,7 +11740,7 @@ static int __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometr
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("__set__", 0);
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 29, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 31, __pyx_L1_error)
   __pyx_v_self->N = __pyx_t_1;
 
   /* function exit code */
@@ -11816,7 +11773,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->GD); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->GD); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -11851,7 +11808,7 @@ static int __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometr
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("__set__", 0);
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 29, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 31, __pyx_L1_error)
   __pyx_v_self->GD = __pyx_t_1;
 
   /* function exit code */
@@ -11884,7 +11841,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->nGD); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->nGD); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -11919,7 +11876,7 @@ static int __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometr
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("__set__", 0);
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 29, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 31, __pyx_L1_error)
   __pyx_v_self->nGD = __pyx_t_1;
 
   /* function exit code */
@@ -11933,7 +11890,7 @@ static int __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometr
   return __pyx_r;
 }
 
-/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":30
+/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":32
  * 
  *     cdef public int N, GD, nGD
  *     cdef public str manifold, text             # <<<<<<<<<<<<<<
@@ -11988,7 +11945,7 @@ static int __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometr
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyUnicode_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "unicode", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 30, __pyx_L1_error)
+  if (!(likely(PyUnicode_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "unicode", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 32, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -12085,7 +12042,7 @@ static int __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometr
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyUnicode_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "unicode", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 30, __pyx_L1_error)
+  if (!(likely(PyUnicode_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "unicode", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 32, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -12135,7 +12092,7 @@ static int __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometr
   return __pyx_r;
 }
 
-/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":31
+/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":33
  *     cdef public int N, GD, nGD
  *     cdef public str manifold, text
  *     cdef public list nodes             # <<<<<<<<<<<<<<
@@ -12190,7 +12147,7 @@ static int __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometr
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyList_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 31, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 33, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -12240,7 +12197,7 @@ static int __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometr
   return __pyx_r;
 }
 
-/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":32
+/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":34
  *     cdef public str manifold, text
  *     cdef public list nodes
  *     cdef public numpy.ndarray A             # <<<<<<<<<<<<<<
@@ -12295,7 +12252,7 @@ static int __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometr
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(((__pyx_v_value) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_value, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 32, __pyx_L1_error)
+  if (!(likely(((__pyx_v_value) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_value, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 34, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -12345,7 +12302,7 @@ static int __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometr
   return __pyx_r;
 }
 
-/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":33
+/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":35
  *     cdef public list nodes
  *     cdef public numpy.ndarray A
  *     cdef public int time             # <<<<<<<<<<<<<<
@@ -12372,7 +12329,7 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->time); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 33, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->time); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -12407,7 +12364,7 @@ static int __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometr
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("__set__", 0);
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 33, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 35, __pyx_L1_error)
   __pyx_v_self->time = __pyx_t_1;
 
   /* function exit code */
@@ -12421,7 +12378,7 @@ static int __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometr
   return __pyx_r;
 }
 
-/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":34
+/* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":36
  *     cdef public numpy.ndarray A
  *     cdef public int time
  *     cdef public dict triangles             # <<<<<<<<<<<<<<
@@ -12476,7 +12433,7 @@ static int __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometr
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyDict_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 34, __pyx_L1_error)
+  if (!(likely(PyDict_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 36, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -12533,19 +12490,19 @@ static int __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometr
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_40__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_40__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_41__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_41__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_39__reduce_cython__(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self));
+  __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_40__reduce_cython__(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_39__reduce_cython__(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self) {
+static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_40__reduce_cython__(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self) {
   PyObject *__pyx_v_state = 0;
   PyObject *__pyx_v__dict = 0;
   int __pyx_v_use_setstate;
@@ -12833,19 +12790,19 @@ static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23G
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_42__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
-static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_42__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_43__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static PyObject *__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_43__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_41__setstate_cython__(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
+  __pyx_r = __pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_42__setstate_cython__(((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_41__setstate_cython__(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_42__setstate_cython__(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -13869,7 +13826,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
  * 
  * cdef inline int import_umath() except -1:
  */
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__11, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(2, 884, __pyx_L5_except_error)
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__13, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(2, 884, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -13998,7 +13955,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
  * 
  * cdef inline int import_ufunc() except -1:
  */
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__12, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(2, 890, __pyx_L5_except_error)
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__14, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(2, 890, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -14127,7 +14084,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
  * 
  * cdef extern from *:
  */
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__12, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(2, 896, __pyx_L5_except_error)
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__14, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(2, 896, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -14363,23 +14320,24 @@ static PyMethodDef __pyx_methods_22Neuronal_Cascades_base_23Geometric_Brain_Netw
   {"get_neurons", (PyCFunction)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_3get_neurons, METH_O, 0},
   {"make_geometric", (PyCFunction)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_5make_geometric, METH_O, 0},
   {"add_noise_to_geometric", (PyCFunction)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_7add_noise_to_geometric, METH_NOARGS, 0},
-  {"k_cliques", (PyCFunction)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_9k_cliques, METH_NOARGS, 0},
-  {"return_triangles", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_12return_triangles, METH_VARARGS|METH_KEYWORDS, 0},
-  {"neighbors", (PyCFunction)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_14neighbors, METH_O, 0},
-  {"neighbor_input", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_16neighbor_input, METH_VARARGS|METH_KEYWORDS, 0},
-  {"sigmoid", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_18sigmoid, METH_VARARGS|METH_KEYWORDS, 0},
-  {"update_history", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_20update_history, METH_VARARGS|METH_KEYWORDS, 0},
-  {"update_states", (PyCFunction)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_22update_states, METH_NOARGS, 0},
-  {"initial_spread", (PyCFunction)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_24initial_spread, METH_O, 0},
-  {"refresh", (PyCFunction)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_26refresh, METH_NOARGS, 0},
-  {"run_dynamic", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_28run_dynamic, METH_VARARGS|METH_KEYWORDS, 0},
-  {"stack_histories", (PyCFunction)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_30stack_histories, METH_O, 0},
-  {"average_over_trials", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_32average_over_trials, METH_VARARGS|METH_KEYWORDS, 0},
-  {"make_distance_matrix", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_34make_distance_matrix, METH_VARARGS|METH_KEYWORDS, 0},
-  {"compute_persistence", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_36compute_persistence, METH_VARARGS|METH_KEYWORDS, 0},
-  {"display_comm_sizes", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_38display_comm_sizes, METH_VARARGS|METH_KEYWORDS, 0},
-  {"__reduce_cython__", (PyCFunction)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_40__reduce_cython__, METH_NOARGS, 0},
-  {"__setstate_cython__", (PyCFunction)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_42__setstate_cython__, METH_O, 0},
+  {"get_nonunique_triangle_list", (PyCFunction)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_9get_nonunique_triangle_list, METH_O, 0},
+  {"get_nodes_unique_triangles", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_11get_nodes_unique_triangles, METH_VARARGS|METH_KEYWORDS, 0},
+  {"return_triangles", (PyCFunction)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_13return_triangles, METH_NOARGS, 0},
+  {"neighbors", (PyCFunction)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_15neighbors, METH_O, 0},
+  {"neighbor_input", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_17neighbor_input, METH_VARARGS|METH_KEYWORDS, 0},
+  {"sigmoid", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_19sigmoid, METH_VARARGS|METH_KEYWORDS, 0},
+  {"update_history", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_21update_history, METH_VARARGS|METH_KEYWORDS, 0},
+  {"update_states", (PyCFunction)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_23update_states, METH_NOARGS, 0},
+  {"initial_spread", (PyCFunction)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_25initial_spread, METH_O, 0},
+  {"refresh", (PyCFunction)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_27refresh, METH_NOARGS, 0},
+  {"run_dynamic", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_29run_dynamic, METH_VARARGS|METH_KEYWORDS, 0},
+  {"stack_histories", (PyCFunction)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_31stack_histories, METH_O, 0},
+  {"average_over_trials", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_33average_over_trials, METH_VARARGS|METH_KEYWORDS, 0},
+  {"make_distance_matrix", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_35make_distance_matrix, METH_VARARGS|METH_KEYWORDS, 0},
+  {"compute_persistence", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_37compute_persistence, METH_VARARGS|METH_KEYWORDS, 0},
+  {"display_comm_sizes", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_39display_comm_sizes, METH_VARARGS|METH_KEYWORDS, 0},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_41__reduce_cython__, METH_NOARGS, 0},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_22Neuronal_Cascades_base_23Geometric_Brain_Network_23Geometric_Brain_Network_43__setstate_cython__, METH_O, 0},
   {0, 0, 0, 0}
 };
 
@@ -14465,140 +14423,6 @@ static PyTypeObject __pyx_type_22Neuronal_Cascades_base_23Geometric_Brain_Networ
   #endif
 };
 
-static struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques *__pyx_freelist_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques[8];
-static int __pyx_freecount_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques = 0;
-
-static PyObject *__pyx_tp_new_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
-  PyObject *o;
-  if (CYTHON_COMPILING_IN_CPYTHON && likely((__pyx_freecount_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques > 0) & (t->tp_basicsize == sizeof(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques)))) {
-    o = (PyObject*)__pyx_freelist_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques[--__pyx_freecount_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques];
-    memset(o, 0, sizeof(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques));
-    (void) PyObject_INIT(o, t);
-    PyObject_GC_Track(o);
-  } else {
-    o = (*t->tp_alloc)(t, 0);
-    if (unlikely(!o)) return 0;
-  }
-  return o;
-}
-
-static void __pyx_tp_dealloc_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques(PyObject *o) {
-  struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques *p = (struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques *)o;
-  PyObject_GC_UnTrack(o);
-  Py_CLEAR(p->__pyx_v_cliques);
-  Py_CLEAR(p->__pyx_v_cliques_1);
-  Py_CLEAR(p->__pyx_7genexpr__pyx_v_f);
-  Py_CLEAR(p->__pyx_v_f);
-  Py_CLEAR(p->__pyx_v_self);
-  Py_CLEAR(p->__pyx_v_u);
-  Py_CLEAR(p->__pyx_v_v);
-  Py_CLEAR(p->__pyx_v_w);
-  if (CYTHON_COMPILING_IN_CPYTHON && ((__pyx_freecount_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques < 8) & (Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques)))) {
-    __pyx_freelist_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques[__pyx_freecount_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques++] = ((struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques *)o);
-  } else {
-    (*Py_TYPE(o)->tp_free)(o);
-  }
-}
-
-static int __pyx_tp_traverse_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques(PyObject *o, visitproc v, void *a) {
-  int e;
-  struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques *p = (struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques *)o;
-  if (p->__pyx_v_cliques) {
-    e = (*v)(p->__pyx_v_cliques, a); if (e) return e;
-  }
-  if (p->__pyx_v_cliques_1) {
-    e = (*v)(p->__pyx_v_cliques_1, a); if (e) return e;
-  }
-  if (p->__pyx_7genexpr__pyx_v_f) {
-    e = (*v)(((PyObject *)p->__pyx_7genexpr__pyx_v_f), a); if (e) return e;
-  }
-  if (p->__pyx_v_f) {
-    e = (*v)(((PyObject *)p->__pyx_v_f), a); if (e) return e;
-  }
-  if (p->__pyx_v_self) {
-    e = (*v)(((PyObject *)p->__pyx_v_self), a); if (e) return e;
-  }
-  if (p->__pyx_v_u) {
-    e = (*v)(p->__pyx_v_u, a); if (e) return e;
-  }
-  if (p->__pyx_v_v) {
-    e = (*v)(p->__pyx_v_v, a); if (e) return e;
-  }
-  if (p->__pyx_v_w) {
-    e = (*v)(p->__pyx_v_w, a); if (e) return e;
-  }
-  return 0;
-}
-
-static PyTypeObject __pyx_type_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques = {
-  PyVarObject_HEAD_INIT(0, 0)
-  "Neuronal_Cascades_base.Geometric_Brain_Network.__pyx_scope_struct__k_cliques", /*tp_name*/
-  sizeof(struct __pyx_obj_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques), /*tp_basicsize*/
-  0, /*tp_itemsize*/
-  __pyx_tp_dealloc_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques, /*tp_dealloc*/
-  #if PY_VERSION_HEX < 0x030800b4
-  0, /*tp_print*/
-  #endif
-  #if PY_VERSION_HEX >= 0x030800b4
-  0, /*tp_vectorcall_offset*/
-  #endif
-  0, /*tp_getattr*/
-  0, /*tp_setattr*/
-  #if PY_MAJOR_VERSION < 3
-  0, /*tp_compare*/
-  #endif
-  #if PY_MAJOR_VERSION >= 3
-  0, /*tp_as_async*/
-  #endif
-  0, /*tp_repr*/
-  0, /*tp_as_number*/
-  0, /*tp_as_sequence*/
-  0, /*tp_as_mapping*/
-  0, /*tp_hash*/
-  0, /*tp_call*/
-  0, /*tp_str*/
-  0, /*tp_getattro*/
-  0, /*tp_setattro*/
-  0, /*tp_as_buffer*/
-  Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
-  0, /*tp_doc*/
-  __pyx_tp_traverse_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques, /*tp_traverse*/
-  0, /*tp_clear*/
-  0, /*tp_richcompare*/
-  0, /*tp_weaklistoffset*/
-  0, /*tp_iter*/
-  0, /*tp_iternext*/
-  0, /*tp_methods*/
-  0, /*tp_members*/
-  0, /*tp_getset*/
-  0, /*tp_base*/
-  0, /*tp_dict*/
-  0, /*tp_descr_get*/
-  0, /*tp_descr_set*/
-  0, /*tp_dictoffset*/
-  0, /*tp_init*/
-  0, /*tp_alloc*/
-  __pyx_tp_new_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques, /*tp_new*/
-  0, /*tp_free*/
-  0, /*tp_is_gc*/
-  0, /*tp_bases*/
-  0, /*tp_mro*/
-  0, /*tp_cache*/
-  0, /*tp_subclasses*/
-  0, /*tp_weaklist*/
-  0, /*tp_del*/
-  0, /*tp_version_tag*/
-  #if PY_VERSION_HEX >= 0x030400a1
-  0, /*tp_finalize*/
-  #endif
-  #if PY_VERSION_HEX >= 0x030800b1
-  0, /*tp_vectorcall*/
-  #endif
-  #if PY_VERSION_HEX >= 0x030800b4 && PY_VERSION_HEX < 0x03090000
-  0, /*tp_print*/
-  #endif
-};
-
 static PyMethodDef __pyx_methods[] = {
   {0, 0, 0, 0}
 };
@@ -14651,7 +14475,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_u_C_2, __pyx_k_C_2, sizeof(__pyx_k_C_2), 0, 1, 0, 0},
   {&__pyx_n_s_DTYPE, __pyx_k_DTYPE, sizeof(__pyx_k_DTYPE), 0, 0, 1, 1},
   {&__pyx_n_s_Geometric_Brain_Network, __pyx_k_Geometric_Brain_Network, sizeof(__pyx_k_Geometric_Brain_Network), 0, 0, 1, 1},
-  {&__pyx_n_s_Geometric_Brain_Network_k_clique, __pyx_k_Geometric_Brain_Network_k_clique, sizeof(__pyx_k_Geometric_Brain_Network_k_clique), 0, 0, 1, 1},
   {&__pyx_n_s_ImportError, __pyx_k_ImportError, sizeof(__pyx_k_ImportError), 0, 0, 1, 1},
   {&__pyx_kp_s_Incompatible_checksums_s_vs_0x21, __pyx_k_Incompatible_checksums_s_vs_0x21, sizeof(__pyx_k_Incompatible_checksums_s_vs_0x21), 0, 0, 1, 0},
   {&__pyx_n_s_K, __pyx_k_K, sizeof(__pyx_k_K), 0, 0, 1, 1},
@@ -14674,7 +14497,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_u_Threshold_2f, __pyx_k_Threshold_2f, sizeof(__pyx_k_Threshold_2f), 0, 1, 0, 0},
   {&__pyx_n_u_Time, __pyx_k_Time, sizeof(__pyx_k_Time), 0, 1, 0, 1},
   {&__pyx_n_s_ValueError, __pyx_k_ValueError, sizeof(__pyx_k_ValueError), 0, 0, 1, 1},
-  {&__pyx_n_s__13, __pyx_k__13, sizeof(__pyx_k__13), 0, 0, 1, 1},
+  {&__pyx_n_s__15, __pyx_k__15, sizeof(__pyx_k__15), 0, 0, 1, 1},
   {&__pyx_n_s_add_noise_to_geometric, __pyx_k_add_noise_to_geometric, sizeof(__pyx_k_add_noise_to_geometric), 0, 0, 1, 1},
   {&__pyx_n_s_alpha, __pyx_k_alpha, sizeof(__pyx_k_alpha), 0, 0, 1, 1},
   {&__pyx_kp_u_and_nGD_d, __pyx_k_and_nGD_d, sizeof(__pyx_k_and_nGD_d), 0, 1, 0, 0},
@@ -14682,7 +14505,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_append, __pyx_k_append, sizeof(__pyx_k_append), 0, 0, 1, 1},
   {&__pyx_n_s_arange, __pyx_k_arange, sizeof(__pyx_k_arange), 0, 0, 1, 1},
   {&__pyx_n_s_argmax, __pyx_k_argmax, sizeof(__pyx_k_argmax), 0, 0, 1, 1},
-  {&__pyx_n_s_args, __pyx_k_args, sizeof(__pyx_k_args), 0, 0, 1, 1},
   {&__pyx_n_s_array, __pyx_k_array, sizeof(__pyx_k_array), 0, 0, 1, 1},
   {&__pyx_n_s_asarray, __pyx_k_asarray, sizeof(__pyx_k_asarray), 0, 0, 1, 1},
   {&__pyx_n_s_average_over_trials, __pyx_k_average_over_trials, sizeof(__pyx_k_average_over_trials), 0, 0, 1, 1},
@@ -14691,7 +14513,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_u_blue, __pyx_k_blue, sizeof(__pyx_k_blue), 0, 1, 0, 1},
   {&__pyx_n_u_brown, __pyx_k_brown, sizeof(__pyx_k_brown), 0, 1, 0, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
-  {&__pyx_n_s_close, __pyx_k_close, sizeof(__pyx_k_close), 0, 0, 1, 1},
   {&__pyx_n_s_color, __pyx_k_color, sizeof(__pyx_k_color), 0, 0, 1, 1},
   {&__pyx_n_s_combinations, __pyx_k_combinations, sizeof(__pyx_k_combinations), 0, 0, 1, 1},
   {&__pyx_n_s_create_simplex_tree, __pyx_k_create_simplex_tree, sizeof(__pyx_k_create_simplex_tree), 0, 0, 1, 1},
@@ -14705,6 +14526,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_distance, __pyx_k_distance, sizeof(__pyx_k_distance), 0, 0, 1, 1},
   {&__pyx_n_s_distance_matrix, __pyx_k_distance_matrix, sizeof(__pyx_k_distance_matrix), 0, 0, 1, 1},
   {&__pyx_n_s_distances, __pyx_k_distances, sizeof(__pyx_k_distances), 0, 0, 1, 1},
+  {&__pyx_n_s_dot, __pyx_k_dot, sizeof(__pyx_k_dot), 0, 0, 1, 1},
   {&__pyx_n_s_dtype, __pyx_k_dtype, sizeof(__pyx_k_dtype), 0, 0, 1, 1},
   {&__pyx_n_s_enumerate, __pyx_k_enumerate, sizeof(__pyx_k_enumerate), 0, 0, 1, 1},
   {&__pyx_n_s_euclidean_distances, __pyx_k_euclidean_distances, sizeof(__pyx_k_euclidean_distances), 0, 0, 1, 1},
@@ -14713,15 +14535,17 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_fill_between, __pyx_k_fill_between, sizeof(__pyx_k_fill_between), 0, 0, 1, 1},
   {&__pyx_n_s_fontsize, __pyx_k_fontsize, sizeof(__pyx_k_fontsize), 0, 0, 1, 1},
   {&__pyx_n_s_geometric_degree, __pyx_k_geometric_degree, sizeof(__pyx_k_geometric_degree), 0, 0, 1, 1},
+  {&__pyx_n_s_get_nodes_unique_triangles, __pyx_k_get_nodes_unique_triangles, sizeof(__pyx_k_get_nodes_unique_triangles), 0, 0, 1, 1},
+  {&__pyx_n_s_get_nonunique_triangle_list, __pyx_k_get_nonunique_triangle_list, sizeof(__pyx_k_get_nonunique_triangle_list), 0, 0, 1, 1},
   {&__pyx_n_s_getstate, __pyx_k_getstate, sizeof(__pyx_k_getstate), 0, 0, 1, 1},
   {&__pyx_n_u_green, __pyx_k_green, sizeof(__pyx_k_green), 0, 1, 0, 1},
   {&__pyx_n_s_gudhi, __pyx_k_gudhi, sizeof(__pyx_k_gudhi), 0, 0, 1, 1},
   {&__pyx_n_s_history, __pyx_k_history, sizeof(__pyx_k_history), 0, 0, 1, 1},
+  {&__pyx_n_s_i, __pyx_k_i, sizeof(__pyx_k_i), 0, 0, 1, 1},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
   {&__pyx_n_s_initial_spread, __pyx_k_initial_spread, sizeof(__pyx_k_initial_spread), 0, 0, 1, 1},
   {&__pyx_n_s_int64, __pyx_k_int64, sizeof(__pyx_k_int64), 0, 0, 1, 1},
   {&__pyx_n_s_itertools, __pyx_k_itertools, sizeof(__pyx_k_itertools), 0, 0, 1, 1},
-  {&__pyx_n_s_k_cliques, __pyx_k_k_cliques, sizeof(__pyx_k_k_cliques), 0, 0, 1, 1},
   {&__pyx_n_s_label, __pyx_k_label, sizeof(__pyx_k_label), 0, 0, 1, 1},
   {&__pyx_n_s_labels, __pyx_k_labels, sizeof(__pyx_k_labels), 0, 0, 1, 1},
   {&__pyx_n_s_legend, __pyx_k_legend, sizeof(__pyx_k_legend), 0, 0, 1, 1},
@@ -14733,7 +14557,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_make_geometric, __pyx_k_make_geometric, sizeof(__pyx_k_make_geometric), 0, 0, 1, 1},
   {&__pyx_n_s_manifold, __pyx_k_manifold, sizeof(__pyx_k_manifold), 0, 0, 1, 1},
-  {&__pyx_n_s_map, __pyx_k_map, sizeof(__pyx_k_map), 0, 0, 1, 1},
   {&__pyx_n_s_marker, __pyx_k_marker, sizeof(__pyx_k_marker), 0, 0, 1, 1},
   {&__pyx_n_s_math, __pyx_k_math, sizeof(__pyx_k_math), 0, 0, 1, 1},
   {&__pyx_n_s_matplotlib_pyplot, __pyx_k_matplotlib_pyplot, sizeof(__pyx_k_matplotlib_pyplot), 0, 0, 1, 1},
@@ -14754,6 +14577,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_node_id, __pyx_k_node_id, sizeof(__pyx_k_node_id), 0, 0, 1, 1},
   {&__pyx_kp_u_nodes, __pyx_k_nodes, sizeof(__pyx_k_nodes), 0, 1, 0, 0},
   {&__pyx_n_s_nongeometric_degree, __pyx_k_nongeometric_degree, sizeof(__pyx_k_nongeometric_degree), 0, 0, 1, 1},
+  {&__pyx_n_s_nonunique_triangle_list, __pyx_k_nonunique_triangle_list, sizeof(__pyx_k_nonunique_triangle_list), 0, 0, 1, 1},
   {&__pyx_n_s_nonzero, __pyx_k_nonzero, sizeof(__pyx_k_nonzero), 0, 0, 1, 1},
   {&__pyx_n_s_np, __pyx_k_np, sizeof(__pyx_k_np), 0, 0, 1, 1},
   {&__pyx_n_s_numpy, __pyx_k_numpy, sizeof(__pyx_k_numpy), 0, 0, 1, 1},
@@ -14787,7 +14611,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_run_dynamic, __pyx_k_run_dynamic, sizeof(__pyx_k_run_dynamic), 0, 0, 1, 1},
   {&__pyx_n_s_scipy_spatial, __pyx_k_scipy_spatial, sizeof(__pyx_k_scipy_spatial), 0, 0, 1, 1},
   {&__pyx_n_s_seed, __pyx_k_seed, sizeof(__pyx_k_seed), 0, 0, 1, 1},
-  {&__pyx_n_s_send, __pyx_k_send, sizeof(__pyx_k_send), 0, 0, 1, 1},
   {&__pyx_n_s_set_title, __pyx_k_set_title, sizeof(__pyx_k_set_title), 0, 0, 1, 1},
   {&__pyx_n_s_set_xlabel, __pyx_k_set_xlabel, sizeof(__pyx_k_set_xlabel), 0, 0, 1, 1},
   {&__pyx_n_s_set_ylabel, __pyx_k_set_ylabel, sizeof(__pyx_k_set_ylabel), 0, 0, 1, 1},
@@ -14795,7 +14618,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_setstate_cython, __pyx_k_setstate_cython, sizeof(__pyx_k_setstate_cython), 0, 0, 1, 1},
   {&__pyx_n_s_sigmoid, __pyx_k_sigmoid, sizeof(__pyx_k_sigmoid), 0, 0, 1, 1},
   {&__pyx_n_s_size, __pyx_k_size, sizeof(__pyx_k_size), 0, 0, 1, 1},
-  {&__pyx_n_s_size_k, __pyx_k_size_k, sizeof(__pyx_k_size_k), 0, 0, 1, 1},
   {&__pyx_n_s_sklearn_metrics_pairwise, __pyx_k_sklearn_metrics_pairwise, sizeof(__pyx_k_sklearn_metrics_pairwise), 0, 0, 1, 1},
   {&__pyx_n_s_sort, __pyx_k_sort, sizeof(__pyx_k_sort), 0, 0, 1, 1},
   {&__pyx_n_s_spy, __pyx_k_spy, sizeof(__pyx_k_spy), 0, 0, 1, 1},
@@ -14803,9 +14625,9 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_state, __pyx_k_state, sizeof(__pyx_k_state), 0, 0, 1, 1},
   {&__pyx_kp_s_stringsource, __pyx_k_stringsource, sizeof(__pyx_k_stringsource), 0, 0, 1, 0},
   {&__pyx_n_s_subplots, __pyx_k_subplots, sizeof(__pyx_k_subplots), 0, 0, 1, 1},
+  {&__pyx_n_s_sum, __pyx_k_sum, sizeof(__pyx_k_sum), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {&__pyx_n_s_threshold, __pyx_k_threshold, sizeof(__pyx_k_threshold), 0, 0, 1, 1},
-  {&__pyx_n_s_throw, __pyx_k_throw, sizeof(__pyx_k_throw), 0, 0, 1, 1},
   {&__pyx_n_s_trials, __pyx_k_trials, sizeof(__pyx_k_trials), 0, 0, 1, 1},
   {&__pyx_kp_u_trials_2, __pyx_k_trials_2, sizeof(__pyx_k_trials_2), 0, 1, 0, 0},
   {&__pyx_n_u_turquoise, __pyx_k_turquoise, sizeof(__pyx_k_turquoise), 0, 1, 0, 1},
@@ -14817,15 +14639,15 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_u_violet, __pyx_k_violet, sizeof(__pyx_k_violet), 0, 1, 0, 1},
   {&__pyx_n_s_vstack, __pyx_k_vstack, sizeof(__pyx_k_vstack), 0, 0, 1, 1},
   {&__pyx_kp_u_w_GD_d, __pyx_k_w_GD_d, sizeof(__pyx_k_w_GD_d), 0, 1, 0, 0},
+  {&__pyx_n_s_where, __pyx_k_where, sizeof(__pyx_k_where), 0, 0, 1, 1},
   {&__pyx_n_u_yellow, __pyx_k_yellow, sizeof(__pyx_k_yellow), 0, 1, 0, 1},
   {&__pyx_n_s_zeros, __pyx_k_zeros, sizeof(__pyx_k_zeros), 0, 0, 1, 1},
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 54, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 73, __pyx_L1_error)
-  __pyx_builtin_map = __Pyx_GetBuiltinName(__pyx_n_s_map); if (!__pyx_builtin_map) __PYX_ERR(0, 172, __pyx_L1_error)
-  __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(0, 188, __pyx_L1_error)
+  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 75, __pyx_L1_error)
+  __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(0, 217, __pyx_L1_error)
   __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(2, 884, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
@@ -14836,99 +14658,121 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":54
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":56
  * 
  *         if len(neurons) != self.N:
  *             raise ValueError('Size of the network and the number of neurons should match')             # <<<<<<<<<<<<<<
  * 
  *         self.nodes = neurons
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_u_Size_of_the_network_and_the_numb); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_u_Size_of_the_network_and_the_numb); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":248
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":170
+ *             j = j_list[t]
+ *             num_local_triangles = AAA[i,j]
+ *             local_triangles_list = np.where((A[i,:]+A[j,:])==2 )[0] # list of common neighbors, {k}             # <<<<<<<<<<<<<<
+ *             #local_triangles_list = local_triangles_list[(local_triangles_list>i)* (local_triangles_list>j)]
+ *             for k in local_triangles_list:
+ */
+  __pyx_slice__2 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__2)) __PYX_ERR(0, 170, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_slice__2);
+  __Pyx_GIVEREF(__pyx_slice__2);
+
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":181
+ *         cdef numpy.ndarray tri_flag
+ * 
+ *         tri_flag = nonunique_triangle_list[:,0]==i # make a flag for triangles using node i             # <<<<<<<<<<<<<<
+ *         tri_flag = tri_flag * (nonunique_triangle_list[:,1]<nonunique_triangle_list[:,2])# keep only indices in ascending order
+ * 
+ */
+  __pyx_tuple__3 = PyTuple_Pack(2, __pyx_slice__2, __pyx_int_0); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 181, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__3);
+  __Pyx_GIVEREF(__pyx_tuple__3);
+
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":182
+ * 
+ *         tri_flag = nonunique_triangle_list[:,0]==i # make a flag for triangles using node i
+ *         tri_flag = tri_flag * (nonunique_triangle_list[:,1]<nonunique_triangle_list[:,2])# keep only indices in ascending order             # <<<<<<<<<<<<<<
+ * 
+ *         return nonunique_triangle_list[tri_flag,1:], tri_flag
+ */
+  __pyx_tuple__4 = PyTuple_Pack(2, __pyx_slice__2, __pyx_int_1); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 182, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__4);
+  __Pyx_GIVEREF(__pyx_tuple__4);
+  __pyx_tuple__5 = PyTuple_Pack(2, __pyx_slice__2, __pyx_int_2); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 182, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__5);
+  __Pyx_GIVEREF(__pyx_tuple__5);
+
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":184
+ *         tri_flag = tri_flag * (nonunique_triangle_list[:,1]<nonunique_triangle_list[:,2])# keep only indices in ascending order
+ * 
+ *         return nonunique_triangle_list[tri_flag,1:], tri_flag             # <<<<<<<<<<<<<<
+ * 
+ *     def return_triangles(self):
+ */
+  __pyx_slice__6 = PySlice_New(__pyx_int_1, Py_None, Py_None); if (unlikely(!__pyx_slice__6)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_slice__6);
+  __Pyx_GIVEREF(__pyx_slice__6);
+
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":253
  *         cdef Py_ssize_t i,j
  * 
  *         rand = random.uniform(0,1)             # <<<<<<<<<<<<<<
  * 
  *         if rand <= self.sigmoid(node_id, C, K, L, model_type):
  */
-  __pyx_tuple__2 = PyTuple_Pack(2, __pyx_int_0, __pyx_int_1); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 248, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__2);
-  __Pyx_GIVEREF(__pyx_tuple__2);
+  __pyx_tuple__7 = PyTuple_Pack(2, __pyx_int_0, __pyx_int_1); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 253, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__7);
+  __Pyx_GIVEREF(__pyx_tuple__7);
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":382
- *             first_exct, contagion_size = self.run_dynamic(seed, TIME, C, K, L, model_type)
- * 
- *             first_excitation_times[:,i] = first_exct             # <<<<<<<<<<<<<<
- *             size_of_contagion[:,i] = contagion_size
- * 
- */
-  __pyx_slice__3 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__3)) __PYX_ERR(0, 382, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_slice__3);
-  __Pyx_GIVEREF(__pyx_slice__3);
-
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":419
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":424
  *             gudhi.plot_persistence_diagram(persistence)
  * 
  *         oned_holes = [(0,0)]             # <<<<<<<<<<<<<<
  *         for i in range(len(persistence)):
  *             if persistence[i][0] == int(dimension-1):
  */
-  __pyx_tuple__4 = PyTuple_Pack(2, __pyx_int_0, __pyx_int_0); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 419, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__4);
-  __Pyx_GIVEREF(__pyx_tuple__4);
+  __pyx_tuple__8 = PyTuple_Pack(2, __pyx_int_0, __pyx_int_0); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 424, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__8);
+  __Pyx_GIVEREF(__pyx_tuple__8);
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":424
- *                 oned_holes.append(persistence[i][1])
- *         one_d_holes = np.array(oned_holes)
- *         persistence_life_times = one_d_holes[:,1]-one_d_holes[:,0]             # <<<<<<<<<<<<<<
- *         Delta_min = np.sort(persistence_life_times)[-1]-np.sort(persistence_life_times)[-2]
- *         Delta_max = np.sort(persistence_life_times)[-1]-np.sort(persistence_life_times)[1]
- */
-  __pyx_tuple__5 = PyTuple_Pack(2, __pyx_slice__3, __pyx_int_1); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 424, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__5);
-  __Pyx_GIVEREF(__pyx_tuple__5);
-  __pyx_tuple__6 = PyTuple_Pack(2, __pyx_slice__3, __pyx_int_0); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 424, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__6);
-  __Pyx_GIVEREF(__pyx_tuple__6);
-
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":446
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":451
  *         X = np.linspace(0, int(np.min([TIME-2,np.max(argmaxs)])+1), int(np.min([TIME-2,np.max(argmaxs)])+2))
  * 
  *         fig,ax = plt.subplots(1,1, figsize = (12,8))             # <<<<<<<<<<<<<<
  * 
  *         for i in range(len(Q)):
  */
-  __pyx_tuple__7 = PyTuple_Pack(2, __pyx_int_1, __pyx_int_1); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 446, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__7);
-  __Pyx_GIVEREF(__pyx_tuple__7);
-  __pyx_tuple__8 = PyTuple_Pack(2, __pyx_int_12, __pyx_int_8); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 446, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__8);
-  __Pyx_GIVEREF(__pyx_tuple__8);
+  __pyx_tuple__9 = PyTuple_Pack(2, __pyx_int_1, __pyx_int_1); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(0, 451, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__9);
+  __Pyx_GIVEREF(__pyx_tuple__9);
+  __pyx_tuple__10 = PyTuple_Pack(2, __pyx_int_12, __pyx_int_8); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(0, 451, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__10);
+  __Pyx_GIVEREF(__pyx_tuple__10);
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":468
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":473
  * 
  *         ax.set_title('%s, T = %d, C = %d, trials = %d,  K = %.1f, L = %.1f, Threshold = %.2f'%(self.text, TIME, C, trials, K, L, threshold), fontsize = 25)
  *         ax.set_xlabel('Time', fontsize = 20)             # <<<<<<<<<<<<<<
  *         ax.set_ylabel('Number of Active Nodes', fontsize = 20)
  *         ax.legend()
  */
-  __pyx_tuple__9 = PyTuple_Pack(1, __pyx_n_u_Time); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(0, 468, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__9);
-  __Pyx_GIVEREF(__pyx_tuple__9);
+  __pyx_tuple__11 = PyTuple_Pack(1, __pyx_n_u_Time); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(0, 473, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__11);
+  __Pyx_GIVEREF(__pyx_tuple__11);
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":469
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":474
  *         ax.set_title('%s, T = %d, C = %d, trials = %d,  K = %.1f, L = %.1f, Threshold = %.2f'%(self.text, TIME, C, trials, K, L, threshold), fontsize = 25)
  *         ax.set_xlabel('Time', fontsize = 20)
  *         ax.set_ylabel('Number of Active Nodes', fontsize = 20)             # <<<<<<<<<<<<<<
  *         ax.legend()
  *         return(fig,ax)
  */
-  __pyx_tuple__10 = PyTuple_Pack(1, __pyx_kp_u_Number_of_Active_Nodes); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(0, 469, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__10);
-  __Pyx_GIVEREF(__pyx_tuple__10);
+  __pyx_tuple__12 = PyTuple_Pack(1, __pyx_kp_u_Number_of_Active_Nodes); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 474, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__12);
+  __Pyx_GIVEREF(__pyx_tuple__12);
 
   /* "../../../../opt/anaconda3/lib/python3.7/site-packages/numpy/__init__.pxd":884
  *         __pyx_import_array()
@@ -14937,9 +14781,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  * cdef inline int import_umath() except -1:
  */
-  __pyx_tuple__11 = PyTuple_Pack(1, __pyx_kp_u_numpy_core_multiarray_failed_to); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(2, 884, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__11);
-  __Pyx_GIVEREF(__pyx_tuple__11);
+  __pyx_tuple__13 = PyTuple_Pack(1, __pyx_kp_u_numpy_core_multiarray_failed_to); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(2, 884, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__13);
+  __Pyx_GIVEREF(__pyx_tuple__13);
 
   /* "../../../../opt/anaconda3/lib/python3.7/site-packages/numpy/__init__.pxd":890
  *         _import_umath()
@@ -14948,19 +14792,19 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  * cdef inline int import_ufunc() except -1:
  */
-  __pyx_tuple__12 = PyTuple_Pack(1, __pyx_kp_u_numpy_core_umath_failed_to_impor); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(2, 890, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__12);
-  __Pyx_GIVEREF(__pyx_tuple__12);
+  __pyx_tuple__14 = PyTuple_Pack(1, __pyx_kp_u_numpy_core_umath_failed_to_impor); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(2, 890, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__14);
+  __Pyx_GIVEREF(__pyx_tuple__14);
 
   /* "(tree fragment)":1
  * def __pyx_unpickle_Geometric_Brain_Network(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
  */
-  __pyx_tuple__14 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(1, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__14);
-  __Pyx_GIVEREF(__pyx_tuple__14);
-  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__14, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_Geometric_Brain_N, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_tuple__16 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__16);
+  __Pyx_GIVEREF(__pyx_tuple__16);
+  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__16, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_Geometric_Brain_N, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -14976,6 +14820,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitGlobals(void) {
   __pyx_int_0 = PyInt_FromLong(0); if (unlikely(!__pyx_int_0)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_1 = PyInt_FromLong(1); if (unlikely(!__pyx_int_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_2 = PyInt_FromLong(2); if (unlikely(!__pyx_int_2)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_int_3 = PyInt_FromLong(3); if (unlikely(!__pyx_int_3)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_8 = PyInt_FromLong(8); if (unlikely(!__pyx_int_8)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_12 = PyInt_FromLong(12); if (unlikely(!__pyx_int_12)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_20 = PyInt_FromLong(20); if (unlikely(!__pyx_int_20)) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -15024,24 +14869,16 @@ static int __Pyx_modinit_type_init_code(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
-  if (PyType_Ready(&__pyx_type_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network) < 0) __PYX_ERR(0, 27, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network) < 0) __PYX_ERR(0, 29, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network.tp_print = 0;
   #endif
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network.tp_dictoffset && __pyx_type_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Geometric_Brain_Network, (PyObject *)&__pyx_type_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network) < 0) __PYX_ERR(0, 27, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network) < 0) __PYX_ERR(0, 27, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Geometric_Brain_Network, (PyObject *)&__pyx_type_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network) < 0) __PYX_ERR(0, 29, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network) < 0) __PYX_ERR(0, 29, __pyx_L1_error)
   __pyx_ptype_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network = &__pyx_type_22Neuronal_Cascades_base_23Geometric_Brain_Network_Geometric_Brain_Network;
-  if (PyType_Ready(&__pyx_type_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques) < 0) __PYX_ERR(0, 150, __pyx_L1_error)
-  #if PY_VERSION_HEX < 0x030800B1
-  __pyx_type_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques.tp_print = 0;
-  #endif
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques.tp_dictoffset && __pyx_type_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques.tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_type_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
-  }
-  __pyx_ptype_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques = &__pyx_type_22Neuronal_Cascades_base_23Geometric_Brain_Network___pyx_scope_struct__k_cliques;
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -15300,157 +15137,157 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":3
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":5
  * cimport numpy
  * cimport cython
  * import numpy as np             # <<<<<<<<<<<<<<
  * import random
  * import matplotlib.pyplot as plt
  */
-  __pyx_t_1 = __Pyx_Import(__pyx_n_s_numpy, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 3, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_Import(__pyx_n_s_numpy, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_1) < 0) __PYX_ERR(0, 3, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_1) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":4
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":6
  * cimport cython
  * import numpy as np
  * import random             # <<<<<<<<<<<<<<
  * import matplotlib.pyplot as plt
  * from sklearn.metrics.pairwise import euclidean_distances
  */
-  __pyx_t_1 = __Pyx_Import(__pyx_n_s_random, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_Import(__pyx_n_s_random, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_random, __pyx_t_1) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_random, __pyx_t_1) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":5
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":7
  * import numpy as np
  * import random
  * import matplotlib.pyplot as plt             # <<<<<<<<<<<<<<
  * from sklearn.metrics.pairwise import euclidean_distances
  * from itertools import combinations
  */
-  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_INCREF(__pyx_n_s__13);
-  __Pyx_GIVEREF(__pyx_n_s__13);
-  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s__13);
-  __pyx_t_2 = __Pyx_Import(__pyx_n_s_matplotlib_pyplot, __pyx_t_1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_INCREF(__pyx_n_s__15);
+  __Pyx_GIVEREF(__pyx_n_s__15);
+  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s__15);
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s_matplotlib_pyplot, __pyx_t_1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_plt, __pyx_t_2) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_plt, __pyx_t_2) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":6
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":8
  * import random
  * import matplotlib.pyplot as plt
  * from sklearn.metrics.pairwise import euclidean_distances             # <<<<<<<<<<<<<<
  * from itertools import combinations
  * from scipy.spatial import distance
  */
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_s_euclidean_distances);
   __Pyx_GIVEREF(__pyx_n_s_euclidean_distances);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_euclidean_distances);
-  __pyx_t_1 = __Pyx_Import(__pyx_n_s_sklearn_metrics_pairwise, __pyx_t_2, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_Import(__pyx_n_s_sklearn_metrics_pairwise, __pyx_t_2, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_1, __pyx_n_s_euclidean_distances); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_1, __pyx_n_s_euclidean_distances); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_euclidean_distances, __pyx_t_2) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_euclidean_distances, __pyx_t_2) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":7
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":9
  * import matplotlib.pyplot as plt
  * from sklearn.metrics.pairwise import euclidean_distances
  * from itertools import combinations             # <<<<<<<<<<<<<<
  * from scipy.spatial import distance
  * from math import sqrt
  */
-  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_n_s_combinations);
   __Pyx_GIVEREF(__pyx_n_s_combinations);
   PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_combinations);
-  __pyx_t_2 = __Pyx_Import(__pyx_n_s_itertools, __pyx_t_1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s_itertools, __pyx_t_1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_combinations); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_combinations); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_combinations, __pyx_t_1) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_combinations, __pyx_t_1) < 0) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":8
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":10
  * from sklearn.metrics.pairwise import euclidean_distances
  * from itertools import combinations
  * from scipy.spatial import distance             # <<<<<<<<<<<<<<
  * from math import sqrt
  * import gudhi
  */
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_s_distance);
   __Pyx_GIVEREF(__pyx_n_s_distance);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_distance);
-  __pyx_t_1 = __Pyx_Import(__pyx_n_s_scipy_spatial, __pyx_t_2, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_Import(__pyx_n_s_scipy_spatial, __pyx_t_2, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_1, __pyx_n_s_distance); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_1, __pyx_n_s_distance); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_distance, __pyx_t_2) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_distance, __pyx_t_2) < 0) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":9
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":11
  * from itertools import combinations
  * from scipy.spatial import distance
  * from math import sqrt             # <<<<<<<<<<<<<<
  * import gudhi
  * 
  */
-  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 11, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_n_s_sqrt);
   __Pyx_GIVEREF(__pyx_n_s_sqrt);
   PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_sqrt);
-  __pyx_t_2 = __Pyx_Import(__pyx_n_s_math, __pyx_t_1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s_math, __pyx_t_1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 11, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_sqrt); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_sqrt); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 11, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_sqrt, __pyx_t_1) < 0) __PYX_ERR(0, 9, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_sqrt, __pyx_t_1) < 0) __PYX_ERR(0, 11, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":10
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":12
  * from scipy.spatial import distance
  * from math import sqrt
  * import gudhi             # <<<<<<<<<<<<<<
  * 
  * DTYPE = np.int64
  */
-  __pyx_t_2 = __Pyx_Import(__pyx_n_s_gudhi, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_Import(__pyx_n_s_gudhi, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_gudhi, __pyx_t_2) < 0) __PYX_ERR(0, 10, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_gudhi, __pyx_t_2) < 0) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":12
+  /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":14
  * import gudhi
  * 
  * DTYPE = np.int64             # <<<<<<<<<<<<<<
  * 
  * ctypedef fused A:
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_int64); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_int64); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_DTYPE, __pyx_t_1) < 0) __PYX_ERR(0, 12, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_DTYPE, __pyx_t_1) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "(tree fragment)":1
@@ -15464,9 +15301,9 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "Neuronal_Cascades_base/Geometric_Brain_Network.pyx":1
- * cimport numpy             # <<<<<<<<<<<<<<
- * cimport cython
- * import numpy as np
+ * # distutils: define_macros=NPY_NO_DEPRECATED_API=NPY_1_7_API_VERSION             # <<<<<<<<<<<<<<
+ * 
+ * cimport numpy
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -17695,130 +17532,53 @@ static PyObject *__Pyx_PyObject_GetItem(PyObject *obj, PyObject* key) {
     return 0;
 }
 
-/* pyfrozenset_new */
-  static CYTHON_INLINE PyObject* __Pyx_PyFrozenSet_New(PyObject* it) {
-    if (it) {
-        PyObject* result;
-#if CYTHON_COMPILING_IN_PYPY
-        PyObject* args;
-        args = PyTuple_Pack(1, it);
-        if (unlikely(!args))
-            return NULL;
-        result = PyObject_Call((PyObject*)&PyFrozenSet_Type, args, NULL);
-        Py_DECREF(args);
-        return result;
-#else
-        if (PyFrozenSet_CheckExact(it)) {
-            Py_INCREF(it);
-            return it;
+/* SetItemInt */
+  static int __Pyx_SetItemInt_Generic(PyObject *o, PyObject *j, PyObject *v) {
+    int r;
+    if (!j) return -1;
+    r = PyObject_SetItem(o, j, v);
+    Py_DECREF(j);
+    return r;
+}
+static CYTHON_INLINE int __Pyx_SetItemInt_Fast(PyObject *o, Py_ssize_t i, PyObject *v, int is_list,
+                                               CYTHON_NCP_UNUSED int wraparound, CYTHON_NCP_UNUSED int boundscheck) {
+#if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS && CYTHON_USE_TYPE_SLOTS
+    if (is_list || PyList_CheckExact(o)) {
+        Py_ssize_t n = (!wraparound) ? i : ((likely(i >= 0)) ? i : i + PyList_GET_SIZE(o));
+        if ((!boundscheck) || likely(__Pyx_is_valid_index(n, PyList_GET_SIZE(o)))) {
+            PyObject* old = PyList_GET_ITEM(o, n);
+            Py_INCREF(v);
+            PyList_SET_ITEM(o, n, v);
+            Py_DECREF(old);
+            return 1;
         }
-        result = PyFrozenSet_New(it);
-        if (unlikely(!result))
-            return NULL;
-        if (likely(PySet_GET_SIZE(result)))
-            return result;
-        Py_DECREF(result);
-#endif
-    }
-#if CYTHON_USE_TYPE_SLOTS
-    return PyFrozenSet_Type.tp_new(&PyFrozenSet_Type, __pyx_empty_tuple, NULL);
-#else
-    return PyObject_Call((PyObject*)&PyFrozenSet_Type, __pyx_empty_tuple, NULL);
-#endif
-}
-
-/* PySetContains */
-  static int __Pyx_PySet_ContainsUnhashable(PyObject *set, PyObject *key) {
-    int result = -1;
-    if (PySet_Check(key) && PyErr_ExceptionMatches(PyExc_TypeError)) {
-        PyObject *tmpkey;
-        PyErr_Clear();
-        tmpkey = __Pyx_PyFrozenSet_New(key);
-        if (tmpkey != NULL) {
-            result = PySet_Contains(set, tmpkey);
-            Py_DECREF(tmpkey);
-        }
-    }
-    return result;
-}
-static CYTHON_INLINE int __Pyx_PySet_ContainsTF(PyObject* key, PyObject* set, int eq) {
-    int result = PySet_Contains(set, key);
-    if (unlikely(result < 0)) {
-        result = __Pyx_PySet_ContainsUnhashable(set, key);
-    }
-    return unlikely(result < 0) ? result : (result == (eq == Py_EQ));
-}
-
-/* UnpackUnboundCMethod */
-  static int __Pyx_TryUnpackUnboundCMethod(__Pyx_CachedCFunction* target) {
-    PyObject *method;
-    method = __Pyx_PyObject_GetAttrStr(target->type, *target->method_name);
-    if (unlikely(!method))
-        return -1;
-    target->method = method;
-#if CYTHON_COMPILING_IN_CPYTHON
-    #if PY_MAJOR_VERSION >= 3
-    if (likely(__Pyx_TypeCheck(method, &PyMethodDescr_Type)))
-    #endif
-    {
-        PyMethodDescrObject *descr = (PyMethodDescrObject*) method;
-        target->func = descr->d_method->ml_meth;
-        target->flag = descr->d_method->ml_flags & ~(METH_CLASS | METH_STATIC | METH_COEXIST | METH_STACKLESS);
-    }
-#endif
-    return 0;
-}
-
-/* CallUnboundCMethod1 */
-  #if CYTHON_COMPILING_IN_CPYTHON
-static CYTHON_INLINE PyObject* __Pyx_CallUnboundCMethod1(__Pyx_CachedCFunction* cfunc, PyObject* self, PyObject* arg) {
-    if (likely(cfunc->func)) {
-        int flag = cfunc->flag;
-        if (flag == METH_O) {
-            return (*(cfunc->func))(self, arg);
-        } else if (PY_VERSION_HEX >= 0x030600B1 && flag == METH_FASTCALL) {
-            if (PY_VERSION_HEX >= 0x030700A0) {
-                return (*(__Pyx_PyCFunctionFast)(void*)(PyCFunction)cfunc->func)(self, &arg, 1);
-            } else {
-                return (*(__Pyx_PyCFunctionFastWithKeywords)(void*)(PyCFunction)cfunc->func)(self, &arg, 1, NULL);
-            }
-        } else if (PY_VERSION_HEX >= 0x030700A0 && flag == (METH_FASTCALL | METH_KEYWORDS)) {
-            return (*(__Pyx_PyCFunctionFastWithKeywords)(void*)(PyCFunction)cfunc->func)(self, &arg, 1, NULL);
-        }
-    }
-    return __Pyx__CallUnboundCMethod1(cfunc, self, arg);
-}
-#endif
-static PyObject* __Pyx__CallUnboundCMethod1(__Pyx_CachedCFunction* cfunc, PyObject* self, PyObject* arg){
-    PyObject *args, *result = NULL;
-    if (unlikely(!cfunc->func && !cfunc->method) && unlikely(__Pyx_TryUnpackUnboundCMethod(cfunc) < 0)) return NULL;
-#if CYTHON_COMPILING_IN_CPYTHON
-    if (cfunc->func && (cfunc->flag & METH_VARARGS)) {
-        args = PyTuple_New(1);
-        if (unlikely(!args)) goto bad;
-        Py_INCREF(arg);
-        PyTuple_SET_ITEM(args, 0, arg);
-        if (cfunc->flag & METH_KEYWORDS)
-            result = (*(PyCFunctionWithKeywords)(void*)(PyCFunction)cfunc->func)(self, args, NULL);
-        else
-            result = (*cfunc->func)(self, args);
     } else {
-        args = PyTuple_New(2);
-        if (unlikely(!args)) goto bad;
-        Py_INCREF(self);
-        PyTuple_SET_ITEM(args, 0, self);
-        Py_INCREF(arg);
-        PyTuple_SET_ITEM(args, 1, arg);
-        result = __Pyx_PyObject_Call(cfunc->method, args, NULL);
+        PySequenceMethods *m = Py_TYPE(o)->tp_as_sequence;
+        if (likely(m && m->sq_ass_item)) {
+            if (wraparound && unlikely(i < 0) && likely(m->sq_length)) {
+                Py_ssize_t l = m->sq_length(o);
+                if (likely(l >= 0)) {
+                    i += l;
+                } else {
+                    if (!PyErr_ExceptionMatches(PyExc_OverflowError))
+                        return -1;
+                    PyErr_Clear();
+                }
+            }
+            return m->sq_ass_item(o, i, v);
+        }
     }
 #else
-    args = PyTuple_Pack(2, self, arg);
-    if (unlikely(!args)) goto bad;
-    result = __Pyx_PyObject_Call(cfunc->method, args, NULL);
+#if CYTHON_COMPILING_IN_PYPY
+    if (is_list || (PySequence_Check(o) && !PyDict_Check(o)))
+#else
+    if (is_list || PySequence_Check(o))
 #endif
-bad:
-    Py_XDECREF(args);
-    return result;
+    {
+        return PySequence_SetItem(o, i, v);
+    }
+#endif
+    return __Pyx_SetItemInt_Generic(o, PyInt_FromSsize_t(i), v);
 }
 
 /* DictGetItem */
@@ -18110,6 +17870,78 @@ static CYTHON_INLINE int __Pyx_PyObject_SetAttrStr(PyObject* obj, PyObject* attr
 }
 #endif
 
+/* UnpackUnboundCMethod */
+  static int __Pyx_TryUnpackUnboundCMethod(__Pyx_CachedCFunction* target) {
+    PyObject *method;
+    method = __Pyx_PyObject_GetAttrStr(target->type, *target->method_name);
+    if (unlikely(!method))
+        return -1;
+    target->method = method;
+#if CYTHON_COMPILING_IN_CPYTHON
+    #if PY_MAJOR_VERSION >= 3
+    if (likely(__Pyx_TypeCheck(method, &PyMethodDescr_Type)))
+    #endif
+    {
+        PyMethodDescrObject *descr = (PyMethodDescrObject*) method;
+        target->func = descr->d_method->ml_meth;
+        target->flag = descr->d_method->ml_flags & ~(METH_CLASS | METH_STATIC | METH_COEXIST | METH_STACKLESS);
+    }
+#endif
+    return 0;
+}
+
+/* CallUnboundCMethod1 */
+  #if CYTHON_COMPILING_IN_CPYTHON
+static CYTHON_INLINE PyObject* __Pyx_CallUnboundCMethod1(__Pyx_CachedCFunction* cfunc, PyObject* self, PyObject* arg) {
+    if (likely(cfunc->func)) {
+        int flag = cfunc->flag;
+        if (flag == METH_O) {
+            return (*(cfunc->func))(self, arg);
+        } else if (PY_VERSION_HEX >= 0x030600B1 && flag == METH_FASTCALL) {
+            if (PY_VERSION_HEX >= 0x030700A0) {
+                return (*(__Pyx_PyCFunctionFast)(void*)(PyCFunction)cfunc->func)(self, &arg, 1);
+            } else {
+                return (*(__Pyx_PyCFunctionFastWithKeywords)(void*)(PyCFunction)cfunc->func)(self, &arg, 1, NULL);
+            }
+        } else if (PY_VERSION_HEX >= 0x030700A0 && flag == (METH_FASTCALL | METH_KEYWORDS)) {
+            return (*(__Pyx_PyCFunctionFastWithKeywords)(void*)(PyCFunction)cfunc->func)(self, &arg, 1, NULL);
+        }
+    }
+    return __Pyx__CallUnboundCMethod1(cfunc, self, arg);
+}
+#endif
+static PyObject* __Pyx__CallUnboundCMethod1(__Pyx_CachedCFunction* cfunc, PyObject* self, PyObject* arg){
+    PyObject *args, *result = NULL;
+    if (unlikely(!cfunc->func && !cfunc->method) && unlikely(__Pyx_TryUnpackUnboundCMethod(cfunc) < 0)) return NULL;
+#if CYTHON_COMPILING_IN_CPYTHON
+    if (cfunc->func && (cfunc->flag & METH_VARARGS)) {
+        args = PyTuple_New(1);
+        if (unlikely(!args)) goto bad;
+        Py_INCREF(arg);
+        PyTuple_SET_ITEM(args, 0, arg);
+        if (cfunc->flag & METH_KEYWORDS)
+            result = (*(PyCFunctionWithKeywords)(void*)(PyCFunction)cfunc->func)(self, args, NULL);
+        else
+            result = (*cfunc->func)(self, args);
+    } else {
+        args = PyTuple_New(2);
+        if (unlikely(!args)) goto bad;
+        Py_INCREF(self);
+        PyTuple_SET_ITEM(args, 0, self);
+        Py_INCREF(arg);
+        PyTuple_SET_ITEM(args, 1, arg);
+        result = __Pyx_PyObject_Call(cfunc->method, args, NULL);
+    }
+#else
+    args = PyTuple_Pack(2, self, arg);
+    if (unlikely(!args)) goto bad;
+    result = __Pyx_PyObject_Call(cfunc->method, args, NULL);
+#endif
+bad:
+    Py_XDECREF(args);
+    return result;
+}
+
 /* SliceObject */
   static CYTHON_INLINE PyObject* __Pyx_PyObject_GetSlice(PyObject* obj,
         Py_ssize_t cstart, Py_ssize_t cstop,
@@ -18205,55 +18037,6 @@ static CYTHON_INLINE int __Pyx_PyObject_SetAttrStr(PyObject* obj, PyObject* attr
         "'%.200s' object is unsliceable", Py_TYPE(obj)->tp_name);
 bad:
     return NULL;
-}
-
-/* SetItemInt */
-  static int __Pyx_SetItemInt_Generic(PyObject *o, PyObject *j, PyObject *v) {
-    int r;
-    if (!j) return -1;
-    r = PyObject_SetItem(o, j, v);
-    Py_DECREF(j);
-    return r;
-}
-static CYTHON_INLINE int __Pyx_SetItemInt_Fast(PyObject *o, Py_ssize_t i, PyObject *v, int is_list,
-                                               CYTHON_NCP_UNUSED int wraparound, CYTHON_NCP_UNUSED int boundscheck) {
-#if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS && CYTHON_USE_TYPE_SLOTS
-    if (is_list || PyList_CheckExact(o)) {
-        Py_ssize_t n = (!wraparound) ? i : ((likely(i >= 0)) ? i : i + PyList_GET_SIZE(o));
-        if ((!boundscheck) || likely(__Pyx_is_valid_index(n, PyList_GET_SIZE(o)))) {
-            PyObject* old = PyList_GET_ITEM(o, n);
-            Py_INCREF(v);
-            PyList_SET_ITEM(o, n, v);
-            Py_DECREF(old);
-            return 1;
-        }
-    } else {
-        PySequenceMethods *m = Py_TYPE(o)->tp_as_sequence;
-        if (likely(m && m->sq_ass_item)) {
-            if (wraparound && unlikely(i < 0) && likely(m->sq_length)) {
-                Py_ssize_t l = m->sq_length(o);
-                if (likely(l >= 0)) {
-                    i += l;
-                } else {
-                    if (!PyErr_ExceptionMatches(PyExc_OverflowError))
-                        return -1;
-                    PyErr_Clear();
-                }
-            }
-            return m->sq_ass_item(o, i, v);
-        }
-    }
-#else
-#if CYTHON_COMPILING_IN_PYPY
-    if (is_list || (PySequence_Check(o) && !PyDict_Check(o)))
-#else
-    if (is_list || PySequence_Check(o))
-#endif
-    {
-        return PySequence_SetItem(o, i, v);
-    }
-#endif
-    return __Pyx_SetItemInt_Generic(o, PyInt_FromSsize_t(i), v);
 }
 
 /* None */
@@ -19862,1012 +19645,6 @@ static CYTHON_INLINE int __Pyx_PyErr_GivenExceptionMatches2(PyObject *err, PyObj
     return (PyErr_GivenExceptionMatches(err, exc_type1) || PyErr_GivenExceptionMatches(err, exc_type2));
 }
 #endif
-
-/* FetchCommonType */
-  static PyTypeObject* __Pyx_FetchCommonType(PyTypeObject* type) {
-    PyObject* fake_module;
-    PyTypeObject* cached_type = NULL;
-    fake_module = PyImport_AddModule((char*) "_cython_" CYTHON_ABI);
-    if (!fake_module) return NULL;
-    Py_INCREF(fake_module);
-    cached_type = (PyTypeObject*) PyObject_GetAttrString(fake_module, type->tp_name);
-    if (cached_type) {
-        if (!PyType_Check((PyObject*)cached_type)) {
-            PyErr_Format(PyExc_TypeError,
-                "Shared Cython type %.200s is not a type object",
-                type->tp_name);
-            goto bad;
-        }
-        if (cached_type->tp_basicsize != type->tp_basicsize) {
-            PyErr_Format(PyExc_TypeError,
-                "Shared Cython type %.200s has the wrong size, try recompiling",
-                type->tp_name);
-            goto bad;
-        }
-    } else {
-        if (!PyErr_ExceptionMatches(PyExc_AttributeError)) goto bad;
-        PyErr_Clear();
-        if (PyType_Ready(type) < 0) goto bad;
-        if (PyObject_SetAttrString(fake_module, type->tp_name, (PyObject*) type) < 0)
-            goto bad;
-        Py_INCREF(type);
-        cached_type = type;
-    }
-done:
-    Py_DECREF(fake_module);
-    return cached_type;
-bad:
-    Py_XDECREF(cached_type);
-    cached_type = NULL;
-    goto done;
-}
-
-/* SwapException */
-  #if CYTHON_FAST_THREAD_STATE
-static CYTHON_INLINE void __Pyx__ExceptionSwap(PyThreadState *tstate, PyObject **type, PyObject **value, PyObject **tb) {
-    PyObject *tmp_type, *tmp_value, *tmp_tb;
-    #if CYTHON_USE_EXC_INFO_STACK
-    _PyErr_StackItem *exc_info = tstate->exc_info;
-    tmp_type = exc_info->exc_type;
-    tmp_value = exc_info->exc_value;
-    tmp_tb = exc_info->exc_traceback;
-    exc_info->exc_type = *type;
-    exc_info->exc_value = *value;
-    exc_info->exc_traceback = *tb;
-    #else
-    tmp_type = tstate->exc_type;
-    tmp_value = tstate->exc_value;
-    tmp_tb = tstate->exc_traceback;
-    tstate->exc_type = *type;
-    tstate->exc_value = *value;
-    tstate->exc_traceback = *tb;
-    #endif
-    *type = tmp_type;
-    *value = tmp_value;
-    *tb = tmp_tb;
-}
-#else
-static CYTHON_INLINE void __Pyx_ExceptionSwap(PyObject **type, PyObject **value, PyObject **tb) {
-    PyObject *tmp_type, *tmp_value, *tmp_tb;
-    PyErr_GetExcInfo(&tmp_type, &tmp_value, &tmp_tb);
-    PyErr_SetExcInfo(*type, *value, *tb);
-    *type = tmp_type;
-    *value = tmp_value;
-    *tb = tmp_tb;
-}
-#endif
-
-/* CoroutineBase */
-  #include <structmember.h>
-#include <frameobject.h>
-#define __Pyx_Coroutine_Undelegate(gen) Py_CLEAR((gen)->yieldfrom)
-static int __Pyx_PyGen__FetchStopIterationValue(CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject **pvalue) {
-    PyObject *et, *ev, *tb;
-    PyObject *value = NULL;
-    __Pyx_ErrFetch(&et, &ev, &tb);
-    if (!et) {
-        Py_XDECREF(tb);
-        Py_XDECREF(ev);
-        Py_INCREF(Py_None);
-        *pvalue = Py_None;
-        return 0;
-    }
-    if (likely(et == PyExc_StopIteration)) {
-        if (!ev) {
-            Py_INCREF(Py_None);
-            value = Py_None;
-        }
-#if PY_VERSION_HEX >= 0x030300A0
-        else if (Py_TYPE(ev) == (PyTypeObject*)PyExc_StopIteration) {
-            value = ((PyStopIterationObject *)ev)->value;
-            Py_INCREF(value);
-            Py_DECREF(ev);
-        }
-#endif
-        else if (unlikely(PyTuple_Check(ev))) {
-            if (PyTuple_GET_SIZE(ev) >= 1) {
-#if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                value = PyTuple_GET_ITEM(ev, 0);
-                Py_INCREF(value);
-#else
-                value = PySequence_ITEM(ev, 0);
-#endif
-            } else {
-                Py_INCREF(Py_None);
-                value = Py_None;
-            }
-            Py_DECREF(ev);
-        }
-        else if (!__Pyx_TypeCheck(ev, (PyTypeObject*)PyExc_StopIteration)) {
-            value = ev;
-        }
-        if (likely(value)) {
-            Py_XDECREF(tb);
-            Py_DECREF(et);
-            *pvalue = value;
-            return 0;
-        }
-    } else if (!__Pyx_PyErr_GivenExceptionMatches(et, PyExc_StopIteration)) {
-        __Pyx_ErrRestore(et, ev, tb);
-        return -1;
-    }
-    PyErr_NormalizeException(&et, &ev, &tb);
-    if (unlikely(!PyObject_TypeCheck(ev, (PyTypeObject*)PyExc_StopIteration))) {
-        __Pyx_ErrRestore(et, ev, tb);
-        return -1;
-    }
-    Py_XDECREF(tb);
-    Py_DECREF(et);
-#if PY_VERSION_HEX >= 0x030300A0
-    value = ((PyStopIterationObject *)ev)->value;
-    Py_INCREF(value);
-    Py_DECREF(ev);
-#else
-    {
-        PyObject* args = __Pyx_PyObject_GetAttrStr(ev, __pyx_n_s_args);
-        Py_DECREF(ev);
-        if (likely(args)) {
-            value = PySequence_GetItem(args, 0);
-            Py_DECREF(args);
-        }
-        if (unlikely(!value)) {
-            __Pyx_ErrRestore(NULL, NULL, NULL);
-            Py_INCREF(Py_None);
-            value = Py_None;
-        }
-    }
-#endif
-    *pvalue = value;
-    return 0;
-}
-static CYTHON_INLINE
-void __Pyx_Coroutine_ExceptionClear(__Pyx_ExcInfoStruct *exc_state) {
-    PyObject *t, *v, *tb;
-    t = exc_state->exc_type;
-    v = exc_state->exc_value;
-    tb = exc_state->exc_traceback;
-    exc_state->exc_type = NULL;
-    exc_state->exc_value = NULL;
-    exc_state->exc_traceback = NULL;
-    Py_XDECREF(t);
-    Py_XDECREF(v);
-    Py_XDECREF(tb);
-}
-#define __Pyx_Coroutine_AlreadyRunningError(gen)  (__Pyx__Coroutine_AlreadyRunningError(gen), (PyObject*)NULL)
-static void __Pyx__Coroutine_AlreadyRunningError(CYTHON_UNUSED __pyx_CoroutineObject *gen) {
-    const char *msg;
-    if ((0)) {
-    #ifdef __Pyx_Coroutine_USED
-    } else if (__Pyx_Coroutine_Check((PyObject*)gen)) {
-        msg = "coroutine already executing";
-    #endif
-    #ifdef __Pyx_AsyncGen_USED
-    } else if (__Pyx_AsyncGen_CheckExact((PyObject*)gen)) {
-        msg = "async generator already executing";
-    #endif
-    } else {
-        msg = "generator already executing";
-    }
-    PyErr_SetString(PyExc_ValueError, msg);
-}
-#define __Pyx_Coroutine_NotStartedError(gen)  (__Pyx__Coroutine_NotStartedError(gen), (PyObject*)NULL)
-static void __Pyx__Coroutine_NotStartedError(CYTHON_UNUSED PyObject *gen) {
-    const char *msg;
-    if ((0)) {
-    #ifdef __Pyx_Coroutine_USED
-    } else if (__Pyx_Coroutine_Check(gen)) {
-        msg = "can't send non-None value to a just-started coroutine";
-    #endif
-    #ifdef __Pyx_AsyncGen_USED
-    } else if (__Pyx_AsyncGen_CheckExact(gen)) {
-        msg = "can't send non-None value to a just-started async generator";
-    #endif
-    } else {
-        msg = "can't send non-None value to a just-started generator";
-    }
-    PyErr_SetString(PyExc_TypeError, msg);
-}
-#define __Pyx_Coroutine_AlreadyTerminatedError(gen, value, closing)  (__Pyx__Coroutine_AlreadyTerminatedError(gen, value, closing), (PyObject*)NULL)
-static void __Pyx__Coroutine_AlreadyTerminatedError(CYTHON_UNUSED PyObject *gen, PyObject *value, CYTHON_UNUSED int closing) {
-    #ifdef __Pyx_Coroutine_USED
-    if (!closing && __Pyx_Coroutine_Check(gen)) {
-        PyErr_SetString(PyExc_RuntimeError, "cannot reuse already awaited coroutine");
-    } else
-    #endif
-    if (value) {
-        #ifdef __Pyx_AsyncGen_USED
-        if (__Pyx_AsyncGen_CheckExact(gen))
-            PyErr_SetNone(__Pyx_PyExc_StopAsyncIteration);
-        else
-        #endif
-        PyErr_SetNone(PyExc_StopIteration);
-    }
-}
-static
-PyObject *__Pyx_Coroutine_SendEx(__pyx_CoroutineObject *self, PyObject *value, int closing) {
-    __Pyx_PyThreadState_declare
-    PyThreadState *tstate;
-    __Pyx_ExcInfoStruct *exc_state;
-    PyObject *retval;
-    assert(!self->is_running);
-    if (unlikely(self->resume_label == 0)) {
-        if (unlikely(value && value != Py_None)) {
-            return __Pyx_Coroutine_NotStartedError((PyObject*)self);
-        }
-    }
-    if (unlikely(self->resume_label == -1)) {
-        return __Pyx_Coroutine_AlreadyTerminatedError((PyObject*)self, value, closing);
-    }
-#if CYTHON_FAST_THREAD_STATE
-    __Pyx_PyThreadState_assign
-    tstate = __pyx_tstate;
-#else
-    tstate = __Pyx_PyThreadState_Current;
-#endif
-    exc_state = &self->gi_exc_state;
-    if (exc_state->exc_type) {
-        #if CYTHON_COMPILING_IN_PYPY || CYTHON_COMPILING_IN_PYSTON
-        #else
-        if (exc_state->exc_traceback) {
-            PyTracebackObject *tb = (PyTracebackObject *) exc_state->exc_traceback;
-            PyFrameObject *f = tb->tb_frame;
-            Py_XINCREF(tstate->frame);
-            assert(f->f_back == NULL);
-            f->f_back = tstate->frame;
-        }
-        #endif
-    }
-#if CYTHON_USE_EXC_INFO_STACK
-    exc_state->previous_item = tstate->exc_info;
-    tstate->exc_info = exc_state;
-#else
-    if (exc_state->exc_type) {
-        __Pyx_ExceptionSwap(&exc_state->exc_type, &exc_state->exc_value, &exc_state->exc_traceback);
-    } else {
-        __Pyx_Coroutine_ExceptionClear(exc_state);
-        __Pyx_ExceptionSave(&exc_state->exc_type, &exc_state->exc_value, &exc_state->exc_traceback);
-    }
-#endif
-    self->is_running = 1;
-    retval = self->body((PyObject *) self, tstate, value);
-    self->is_running = 0;
-#if CYTHON_USE_EXC_INFO_STACK
-    exc_state = &self->gi_exc_state;
-    tstate->exc_info = exc_state->previous_item;
-    exc_state->previous_item = NULL;
-    __Pyx_Coroutine_ResetFrameBackpointer(exc_state);
-#endif
-    return retval;
-}
-static CYTHON_INLINE void __Pyx_Coroutine_ResetFrameBackpointer(__Pyx_ExcInfoStruct *exc_state) {
-    PyObject *exc_tb = exc_state->exc_traceback;
-    if (likely(exc_tb)) {
-#if CYTHON_COMPILING_IN_PYPY || CYTHON_COMPILING_IN_PYSTON
-#else
-        PyTracebackObject *tb = (PyTracebackObject *) exc_tb;
-        PyFrameObject *f = tb->tb_frame;
-        Py_CLEAR(f->f_back);
-#endif
-    }
-}
-static CYTHON_INLINE
-PyObject *__Pyx_Coroutine_MethodReturn(CYTHON_UNUSED PyObject* gen, PyObject *retval) {
-    if (unlikely(!retval)) {
-        __Pyx_PyThreadState_declare
-        __Pyx_PyThreadState_assign
-        if (!__Pyx_PyErr_Occurred()) {
-            PyObject *exc = PyExc_StopIteration;
-            #ifdef __Pyx_AsyncGen_USED
-            if (__Pyx_AsyncGen_CheckExact(gen))
-                exc = __Pyx_PyExc_StopAsyncIteration;
-            #endif
-            __Pyx_PyErr_SetNone(exc);
-        }
-    }
-    return retval;
-}
-static CYTHON_INLINE
-PyObject *__Pyx_Coroutine_FinishDelegation(__pyx_CoroutineObject *gen) {
-    PyObject *ret;
-    PyObject *val = NULL;
-    __Pyx_Coroutine_Undelegate(gen);
-    __Pyx_PyGen__FetchStopIterationValue(__Pyx_PyThreadState_Current, &val);
-    ret = __Pyx_Coroutine_SendEx(gen, val, 0);
-    Py_XDECREF(val);
-    return ret;
-}
-static PyObject *__Pyx_Coroutine_Send(PyObject *self, PyObject *value) {
-    PyObject *retval;
-    __pyx_CoroutineObject *gen = (__pyx_CoroutineObject*) self;
-    PyObject *yf = gen->yieldfrom;
-    if (unlikely(gen->is_running))
-        return __Pyx_Coroutine_AlreadyRunningError(gen);
-    if (yf) {
-        PyObject *ret;
-        gen->is_running = 1;
-        #ifdef __Pyx_Generator_USED
-        if (__Pyx_Generator_CheckExact(yf)) {
-            ret = __Pyx_Coroutine_Send(yf, value);
-        } else
-        #endif
-        #ifdef __Pyx_Coroutine_USED
-        if (__Pyx_Coroutine_Check(yf)) {
-            ret = __Pyx_Coroutine_Send(yf, value);
-        } else
-        #endif
-        #ifdef __Pyx_AsyncGen_USED
-        if (__pyx_PyAsyncGenASend_CheckExact(yf)) {
-            ret = __Pyx_async_gen_asend_send(yf, value);
-        } else
-        #endif
-        #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x03030000 && (defined(__linux__) || PY_VERSION_HEX >= 0x030600B3)
-        if (PyGen_CheckExact(yf)) {
-            ret = _PyGen_Send((PyGenObject*)yf, value == Py_None ? NULL : value);
-        } else
-        #endif
-        #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x03050000 && defined(PyCoro_CheckExact) && (defined(__linux__) || PY_VERSION_HEX >= 0x030600B3)
-        if (PyCoro_CheckExact(yf)) {
-            ret = _PyGen_Send((PyGenObject*)yf, value == Py_None ? NULL : value);
-        } else
-        #endif
-        {
-            if (value == Py_None)
-                ret = Py_TYPE(yf)->tp_iternext(yf);
-            else
-                ret = __Pyx_PyObject_CallMethod1(yf, __pyx_n_s_send, value);
-        }
-        gen->is_running = 0;
-        if (likely(ret)) {
-            return ret;
-        }
-        retval = __Pyx_Coroutine_FinishDelegation(gen);
-    } else {
-        retval = __Pyx_Coroutine_SendEx(gen, value, 0);
-    }
-    return __Pyx_Coroutine_MethodReturn(self, retval);
-}
-static int __Pyx_Coroutine_CloseIter(__pyx_CoroutineObject *gen, PyObject *yf) {
-    PyObject *retval = NULL;
-    int err = 0;
-    #ifdef __Pyx_Generator_USED
-    if (__Pyx_Generator_CheckExact(yf)) {
-        retval = __Pyx_Coroutine_Close(yf);
-        if (!retval)
-            return -1;
-    } else
-    #endif
-    #ifdef __Pyx_Coroutine_USED
-    if (__Pyx_Coroutine_Check(yf)) {
-        retval = __Pyx_Coroutine_Close(yf);
-        if (!retval)
-            return -1;
-    } else
-    if (__Pyx_CoroutineAwait_CheckExact(yf)) {
-        retval = __Pyx_CoroutineAwait_Close((__pyx_CoroutineAwaitObject*)yf, NULL);
-        if (!retval)
-            return -1;
-    } else
-    #endif
-    #ifdef __Pyx_AsyncGen_USED
-    if (__pyx_PyAsyncGenASend_CheckExact(yf)) {
-        retval = __Pyx_async_gen_asend_close(yf, NULL);
-    } else
-    if (__pyx_PyAsyncGenAThrow_CheckExact(yf)) {
-        retval = __Pyx_async_gen_athrow_close(yf, NULL);
-    } else
-    #endif
-    {
-        PyObject *meth;
-        gen->is_running = 1;
-        meth = __Pyx_PyObject_GetAttrStr(yf, __pyx_n_s_close);
-        if (unlikely(!meth)) {
-            if (!PyErr_ExceptionMatches(PyExc_AttributeError)) {
-                PyErr_WriteUnraisable(yf);
-            }
-            PyErr_Clear();
-        } else {
-            retval = PyObject_CallFunction(meth, NULL);
-            Py_DECREF(meth);
-            if (!retval)
-                err = -1;
-        }
-        gen->is_running = 0;
-    }
-    Py_XDECREF(retval);
-    return err;
-}
-static PyObject *__Pyx_Generator_Next(PyObject *self) {
-    __pyx_CoroutineObject *gen = (__pyx_CoroutineObject*) self;
-    PyObject *yf = gen->yieldfrom;
-    if (unlikely(gen->is_running))
-        return __Pyx_Coroutine_AlreadyRunningError(gen);
-    if (yf) {
-        PyObject *ret;
-        gen->is_running = 1;
-        #ifdef __Pyx_Generator_USED
-        if (__Pyx_Generator_CheckExact(yf)) {
-            ret = __Pyx_Generator_Next(yf);
-        } else
-        #endif
-        #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x03030000 && (defined(__linux__) || PY_VERSION_HEX >= 0x030600B3)
-        if (PyGen_CheckExact(yf)) {
-            ret = _PyGen_Send((PyGenObject*)yf, NULL);
-        } else
-        #endif
-        #ifdef __Pyx_Coroutine_USED
-        if (__Pyx_Coroutine_Check(yf)) {
-            ret = __Pyx_Coroutine_Send(yf, Py_None);
-        } else
-        #endif
-            ret = Py_TYPE(yf)->tp_iternext(yf);
-        gen->is_running = 0;
-        if (likely(ret)) {
-            return ret;
-        }
-        return __Pyx_Coroutine_FinishDelegation(gen);
-    }
-    return __Pyx_Coroutine_SendEx(gen, Py_None, 0);
-}
-static PyObject *__Pyx_Coroutine_Close_Method(PyObject *self, CYTHON_UNUSED PyObject *arg) {
-    return __Pyx_Coroutine_Close(self);
-}
-static PyObject *__Pyx_Coroutine_Close(PyObject *self) {
-    __pyx_CoroutineObject *gen = (__pyx_CoroutineObject *) self;
-    PyObject *retval, *raised_exception;
-    PyObject *yf = gen->yieldfrom;
-    int err = 0;
-    if (unlikely(gen->is_running))
-        return __Pyx_Coroutine_AlreadyRunningError(gen);
-    if (yf) {
-        Py_INCREF(yf);
-        err = __Pyx_Coroutine_CloseIter(gen, yf);
-        __Pyx_Coroutine_Undelegate(gen);
-        Py_DECREF(yf);
-    }
-    if (err == 0)
-        PyErr_SetNone(PyExc_GeneratorExit);
-    retval = __Pyx_Coroutine_SendEx(gen, NULL, 1);
-    if (unlikely(retval)) {
-        const char *msg;
-        Py_DECREF(retval);
-        if ((0)) {
-        #ifdef __Pyx_Coroutine_USED
-        } else if (__Pyx_Coroutine_Check(self)) {
-            msg = "coroutine ignored GeneratorExit";
-        #endif
-        #ifdef __Pyx_AsyncGen_USED
-        } else if (__Pyx_AsyncGen_CheckExact(self)) {
-#if PY_VERSION_HEX < 0x03060000
-            msg = "async generator ignored GeneratorExit - might require Python 3.6+ finalisation (PEP 525)";
-#else
-            msg = "async generator ignored GeneratorExit";
-#endif
-        #endif
-        } else {
-            msg = "generator ignored GeneratorExit";
-        }
-        PyErr_SetString(PyExc_RuntimeError, msg);
-        return NULL;
-    }
-    raised_exception = PyErr_Occurred();
-    if (likely(!raised_exception || __Pyx_PyErr_GivenExceptionMatches2(raised_exception, PyExc_GeneratorExit, PyExc_StopIteration))) {
-        if (raised_exception) PyErr_Clear();
-        Py_INCREF(Py_None);
-        return Py_None;
-    }
-    return NULL;
-}
-static PyObject *__Pyx__Coroutine_Throw(PyObject *self, PyObject *typ, PyObject *val, PyObject *tb,
-                                        PyObject *args, int close_on_genexit) {
-    __pyx_CoroutineObject *gen = (__pyx_CoroutineObject *) self;
-    PyObject *yf = gen->yieldfrom;
-    if (unlikely(gen->is_running))
-        return __Pyx_Coroutine_AlreadyRunningError(gen);
-    if (yf) {
-        PyObject *ret;
-        Py_INCREF(yf);
-        if (__Pyx_PyErr_GivenExceptionMatches(typ, PyExc_GeneratorExit) && close_on_genexit) {
-            int err = __Pyx_Coroutine_CloseIter(gen, yf);
-            Py_DECREF(yf);
-            __Pyx_Coroutine_Undelegate(gen);
-            if (err < 0)
-                return __Pyx_Coroutine_MethodReturn(self, __Pyx_Coroutine_SendEx(gen, NULL, 0));
-            goto throw_here;
-        }
-        gen->is_running = 1;
-        if (0
-        #ifdef __Pyx_Generator_USED
-            || __Pyx_Generator_CheckExact(yf)
-        #endif
-        #ifdef __Pyx_Coroutine_USED
-            || __Pyx_Coroutine_Check(yf)
-        #endif
-            ) {
-            ret = __Pyx__Coroutine_Throw(yf, typ, val, tb, args, close_on_genexit);
-        #ifdef __Pyx_Coroutine_USED
-        } else if (__Pyx_CoroutineAwait_CheckExact(yf)) {
-            ret = __Pyx__Coroutine_Throw(((__pyx_CoroutineAwaitObject*)yf)->coroutine, typ, val, tb, args, close_on_genexit);
-        #endif
-        } else {
-            PyObject *meth = __Pyx_PyObject_GetAttrStr(yf, __pyx_n_s_throw);
-            if (unlikely(!meth)) {
-                Py_DECREF(yf);
-                if (!PyErr_ExceptionMatches(PyExc_AttributeError)) {
-                    gen->is_running = 0;
-                    return NULL;
-                }
-                PyErr_Clear();
-                __Pyx_Coroutine_Undelegate(gen);
-                gen->is_running = 0;
-                goto throw_here;
-            }
-            if (likely(args)) {
-                ret = PyObject_CallObject(meth, args);
-            } else {
-                ret = PyObject_CallFunctionObjArgs(meth, typ, val, tb, NULL);
-            }
-            Py_DECREF(meth);
-        }
-        gen->is_running = 0;
-        Py_DECREF(yf);
-        if (!ret) {
-            ret = __Pyx_Coroutine_FinishDelegation(gen);
-        }
-        return __Pyx_Coroutine_MethodReturn(self, ret);
-    }
-throw_here:
-    __Pyx_Raise(typ, val, tb, NULL);
-    return __Pyx_Coroutine_MethodReturn(self, __Pyx_Coroutine_SendEx(gen, NULL, 0));
-}
-static PyObject *__Pyx_Coroutine_Throw(PyObject *self, PyObject *args) {
-    PyObject *typ;
-    PyObject *val = NULL;
-    PyObject *tb = NULL;
-    if (!PyArg_UnpackTuple(args, (char *)"throw", 1, 3, &typ, &val, &tb))
-        return NULL;
-    return __Pyx__Coroutine_Throw(self, typ, val, tb, args, 1);
-}
-static CYTHON_INLINE int __Pyx_Coroutine_traverse_excstate(__Pyx_ExcInfoStruct *exc_state, visitproc visit, void *arg) {
-    Py_VISIT(exc_state->exc_type);
-    Py_VISIT(exc_state->exc_value);
-    Py_VISIT(exc_state->exc_traceback);
-    return 0;
-}
-static int __Pyx_Coroutine_traverse(__pyx_CoroutineObject *gen, visitproc visit, void *arg) {
-    Py_VISIT(gen->closure);
-    Py_VISIT(gen->classobj);
-    Py_VISIT(gen->yieldfrom);
-    return __Pyx_Coroutine_traverse_excstate(&gen->gi_exc_state, visit, arg);
-}
-static int __Pyx_Coroutine_clear(PyObject *self) {
-    __pyx_CoroutineObject *gen = (__pyx_CoroutineObject *) self;
-    Py_CLEAR(gen->closure);
-    Py_CLEAR(gen->classobj);
-    Py_CLEAR(gen->yieldfrom);
-    __Pyx_Coroutine_ExceptionClear(&gen->gi_exc_state);
-#ifdef __Pyx_AsyncGen_USED
-    if (__Pyx_AsyncGen_CheckExact(self)) {
-        Py_CLEAR(((__pyx_PyAsyncGenObject*)gen)->ag_finalizer);
-    }
-#endif
-    Py_CLEAR(gen->gi_code);
-    Py_CLEAR(gen->gi_name);
-    Py_CLEAR(gen->gi_qualname);
-    Py_CLEAR(gen->gi_modulename);
-    return 0;
-}
-static void __Pyx_Coroutine_dealloc(PyObject *self) {
-    __pyx_CoroutineObject *gen = (__pyx_CoroutineObject *) self;
-    PyObject_GC_UnTrack(gen);
-    if (gen->gi_weakreflist != NULL)
-        PyObject_ClearWeakRefs(self);
-    if (gen->resume_label >= 0) {
-        PyObject_GC_Track(self);
-#if PY_VERSION_HEX >= 0x030400a1 && CYTHON_USE_TP_FINALIZE
-        if (PyObject_CallFinalizerFromDealloc(self))
-#else
-        Py_TYPE(gen)->tp_del(self);
-        if (self->ob_refcnt > 0)
-#endif
-        {
-            return;
-        }
-        PyObject_GC_UnTrack(self);
-    }
-#ifdef __Pyx_AsyncGen_USED
-    if (__Pyx_AsyncGen_CheckExact(self)) {
-        /* We have to handle this case for asynchronous generators
-           right here, because this code has to be between UNTRACK
-           and GC_Del. */
-        Py_CLEAR(((__pyx_PyAsyncGenObject*)self)->ag_finalizer);
-    }
-#endif
-    __Pyx_Coroutine_clear(self);
-    PyObject_GC_Del(gen);
-}
-static void __Pyx_Coroutine_del(PyObject *self) {
-    PyObject *error_type, *error_value, *error_traceback;
-    __pyx_CoroutineObject *gen = (__pyx_CoroutineObject *) self;
-    __Pyx_PyThreadState_declare
-    if (gen->resume_label < 0) {
-        return;
-    }
-#if !CYTHON_USE_TP_FINALIZE
-    assert(self->ob_refcnt == 0);
-    self->ob_refcnt = 1;
-#endif
-    __Pyx_PyThreadState_assign
-    __Pyx_ErrFetch(&error_type, &error_value, &error_traceback);
-#ifdef __Pyx_AsyncGen_USED
-    if (__Pyx_AsyncGen_CheckExact(self)) {
-        __pyx_PyAsyncGenObject *agen = (__pyx_PyAsyncGenObject*)self;
-        PyObject *finalizer = agen->ag_finalizer;
-        if (finalizer && !agen->ag_closed) {
-            PyObject *res = __Pyx_PyObject_CallOneArg(finalizer, self);
-            if (unlikely(!res)) {
-                PyErr_WriteUnraisable(self);
-            } else {
-                Py_DECREF(res);
-            }
-            __Pyx_ErrRestore(error_type, error_value, error_traceback);
-            return;
-        }
-    }
-#endif
-    if (unlikely(gen->resume_label == 0 && !error_value)) {
-#ifdef __Pyx_Coroutine_USED
-#ifdef __Pyx_Generator_USED
-    if (!__Pyx_Generator_CheckExact(self))
-#endif
-        {
-        PyObject_GC_UnTrack(self);
-#if PY_MAJOR_VERSION >= 3  || defined(PyErr_WarnFormat)
-        if (unlikely(PyErr_WarnFormat(PyExc_RuntimeWarning, 1, "coroutine '%.50S' was never awaited", gen->gi_qualname) < 0))
-            PyErr_WriteUnraisable(self);
-#else
-        {PyObject *msg;
-        char *cmsg;
-        #if CYTHON_COMPILING_IN_PYPY
-        msg = NULL;
-        cmsg = (char*) "coroutine was never awaited";
-        #else
-        char *cname;
-        PyObject *qualname;
-        qualname = gen->gi_qualname;
-        cname = PyString_AS_STRING(qualname);
-        msg = PyString_FromFormat("coroutine '%.50s' was never awaited", cname);
-        if (unlikely(!msg)) {
-            PyErr_Clear();
-            cmsg = (char*) "coroutine was never awaited";
-        } else {
-            cmsg = PyString_AS_STRING(msg);
-        }
-        #endif
-        if (unlikely(PyErr_WarnEx(PyExc_RuntimeWarning, cmsg, 1) < 0))
-            PyErr_WriteUnraisable(self);
-        Py_XDECREF(msg);}
-#endif
-        PyObject_GC_Track(self);
-        }
-#endif
-    } else {
-        PyObject *res = __Pyx_Coroutine_Close(self);
-        if (unlikely(!res)) {
-            if (PyErr_Occurred())
-                PyErr_WriteUnraisable(self);
-        } else {
-            Py_DECREF(res);
-        }
-    }
-    __Pyx_ErrRestore(error_type, error_value, error_traceback);
-#if !CYTHON_USE_TP_FINALIZE
-    assert(self->ob_refcnt > 0);
-    if (--self->ob_refcnt == 0) {
-        return;
-    }
-    {
-        Py_ssize_t refcnt = self->ob_refcnt;
-        _Py_NewReference(self);
-        self->ob_refcnt = refcnt;
-    }
-#if CYTHON_COMPILING_IN_CPYTHON
-    assert(PyType_IS_GC(self->ob_type) &&
-           _Py_AS_GC(self)->gc.gc_refs != _PyGC_REFS_UNTRACKED);
-    _Py_DEC_REFTOTAL;
-#endif
-#ifdef COUNT_ALLOCS
-    --Py_TYPE(self)->tp_frees;
-    --Py_TYPE(self)->tp_allocs;
-#endif
-#endif
-}
-static PyObject *
-__Pyx_Coroutine_get_name(__pyx_CoroutineObject *self, CYTHON_UNUSED void *context)
-{
-    PyObject *name = self->gi_name;
-    if (unlikely(!name)) name = Py_None;
-    Py_INCREF(name);
-    return name;
-}
-static int
-__Pyx_Coroutine_set_name(__pyx_CoroutineObject *self, PyObject *value, CYTHON_UNUSED void *context)
-{
-    PyObject *tmp;
-#if PY_MAJOR_VERSION >= 3
-    if (unlikely(value == NULL || !PyUnicode_Check(value)))
-#else
-    if (unlikely(value == NULL || !PyString_Check(value)))
-#endif
-    {
-        PyErr_SetString(PyExc_TypeError,
-                        "__name__ must be set to a string object");
-        return -1;
-    }
-    tmp = self->gi_name;
-    Py_INCREF(value);
-    self->gi_name = value;
-    Py_XDECREF(tmp);
-    return 0;
-}
-static PyObject *
-__Pyx_Coroutine_get_qualname(__pyx_CoroutineObject *self, CYTHON_UNUSED void *context)
-{
-    PyObject *name = self->gi_qualname;
-    if (unlikely(!name)) name = Py_None;
-    Py_INCREF(name);
-    return name;
-}
-static int
-__Pyx_Coroutine_set_qualname(__pyx_CoroutineObject *self, PyObject *value, CYTHON_UNUSED void *context)
-{
-    PyObject *tmp;
-#if PY_MAJOR_VERSION >= 3
-    if (unlikely(value == NULL || !PyUnicode_Check(value)))
-#else
-    if (unlikely(value == NULL || !PyString_Check(value)))
-#endif
-    {
-        PyErr_SetString(PyExc_TypeError,
-                        "__qualname__ must be set to a string object");
-        return -1;
-    }
-    tmp = self->gi_qualname;
-    Py_INCREF(value);
-    self->gi_qualname = value;
-    Py_XDECREF(tmp);
-    return 0;
-}
-static __pyx_CoroutineObject *__Pyx__Coroutine_New(
-            PyTypeObject* type, __pyx_coroutine_body_t body, PyObject *code, PyObject *closure,
-            PyObject *name, PyObject *qualname, PyObject *module_name) {
-    __pyx_CoroutineObject *gen = PyObject_GC_New(__pyx_CoroutineObject, type);
-    if (unlikely(!gen))
-        return NULL;
-    return __Pyx__Coroutine_NewInit(gen, body, code, closure, name, qualname, module_name);
-}
-static __pyx_CoroutineObject *__Pyx__Coroutine_NewInit(
-            __pyx_CoroutineObject *gen, __pyx_coroutine_body_t body, PyObject *code, PyObject *closure,
-            PyObject *name, PyObject *qualname, PyObject *module_name) {
-    gen->body = body;
-    gen->closure = closure;
-    Py_XINCREF(closure);
-    gen->is_running = 0;
-    gen->resume_label = 0;
-    gen->classobj = NULL;
-    gen->yieldfrom = NULL;
-    gen->gi_exc_state.exc_type = NULL;
-    gen->gi_exc_state.exc_value = NULL;
-    gen->gi_exc_state.exc_traceback = NULL;
-#if CYTHON_USE_EXC_INFO_STACK
-    gen->gi_exc_state.previous_item = NULL;
-#endif
-    gen->gi_weakreflist = NULL;
-    Py_XINCREF(qualname);
-    gen->gi_qualname = qualname;
-    Py_XINCREF(name);
-    gen->gi_name = name;
-    Py_XINCREF(module_name);
-    gen->gi_modulename = module_name;
-    Py_XINCREF(code);
-    gen->gi_code = code;
-    PyObject_GC_Track(gen);
-    return gen;
-}
-
-/* PatchModuleWithCoroutine */
-  static PyObject* __Pyx_Coroutine_patch_module(PyObject* module, const char* py_code) {
-#if defined(__Pyx_Generator_USED) || defined(__Pyx_Coroutine_USED)
-    int result;
-    PyObject *globals, *result_obj;
-    globals = PyDict_New();  if (unlikely(!globals)) goto ignore;
-    result = PyDict_SetItemString(globals, "_cython_coroutine_type",
-    #ifdef __Pyx_Coroutine_USED
-        (PyObject*)__pyx_CoroutineType);
-    #else
-        Py_None);
-    #endif
-    if (unlikely(result < 0)) goto ignore;
-    result = PyDict_SetItemString(globals, "_cython_generator_type",
-    #ifdef __Pyx_Generator_USED
-        (PyObject*)__pyx_GeneratorType);
-    #else
-        Py_None);
-    #endif
-    if (unlikely(result < 0)) goto ignore;
-    if (unlikely(PyDict_SetItemString(globals, "_module", module) < 0)) goto ignore;
-    if (unlikely(PyDict_SetItemString(globals, "__builtins__", __pyx_b) < 0)) goto ignore;
-    result_obj = PyRun_String(py_code, Py_file_input, globals, globals);
-    if (unlikely(!result_obj)) goto ignore;
-    Py_DECREF(result_obj);
-    Py_DECREF(globals);
-    return module;
-ignore:
-    Py_XDECREF(globals);
-    PyErr_WriteUnraisable(module);
-    if (unlikely(PyErr_WarnEx(PyExc_RuntimeWarning, "Cython module failed to patch module with custom type", 1) < 0)) {
-        Py_DECREF(module);
-        module = NULL;
-    }
-#else
-    py_code++;
-#endif
-    return module;
-}
-
-/* PatchGeneratorABC */
-  #ifndef CYTHON_REGISTER_ABCS
-#define CYTHON_REGISTER_ABCS 1
-#endif
-#if defined(__Pyx_Generator_USED) || defined(__Pyx_Coroutine_USED)
-static PyObject* __Pyx_patch_abc_module(PyObject *module);
-static PyObject* __Pyx_patch_abc_module(PyObject *module) {
-    module = __Pyx_Coroutine_patch_module(
-        module, ""
-"if _cython_generator_type is not None:\n"
-"    try: Generator = _module.Generator\n"
-"    except AttributeError: pass\n"
-"    else: Generator.register(_cython_generator_type)\n"
-"if _cython_coroutine_type is not None:\n"
-"    try: Coroutine = _module.Coroutine\n"
-"    except AttributeError: pass\n"
-"    else: Coroutine.register(_cython_coroutine_type)\n"
-    );
-    return module;
-}
-#endif
-static int __Pyx_patch_abc(void) {
-#if defined(__Pyx_Generator_USED) || defined(__Pyx_Coroutine_USED)
-    static int abc_patched = 0;
-    if (CYTHON_REGISTER_ABCS && !abc_patched) {
-        PyObject *module;
-        module = PyImport_ImportModule((PY_MAJOR_VERSION >= 3) ? "collections.abc" : "collections");
-        if (!module) {
-            PyErr_WriteUnraisable(NULL);
-            if (unlikely(PyErr_WarnEx(PyExc_RuntimeWarning,
-                    ((PY_MAJOR_VERSION >= 3) ?
-                        "Cython module failed to register with collections.abc module" :
-                        "Cython module failed to register with collections module"), 1) < 0)) {
-                return -1;
-            }
-        } else {
-            module = __Pyx_patch_abc_module(module);
-            abc_patched = 1;
-            if (unlikely(!module))
-                return -1;
-            Py_DECREF(module);
-        }
-        module = PyImport_ImportModule("backports_abc");
-        if (module) {
-            module = __Pyx_patch_abc_module(module);
-            Py_XDECREF(module);
-        }
-        if (!module) {
-            PyErr_Clear();
-        }
-    }
-#else
-    if ((0)) __Pyx_Coroutine_patch_module(NULL, NULL);
-#endif
-    return 0;
-}
-
-/* Generator */
-  static PyMethodDef __pyx_Generator_methods[] = {
-    {"send", (PyCFunction) __Pyx_Coroutine_Send, METH_O,
-     (char*) PyDoc_STR("send(arg) -> send 'arg' into generator,\nreturn next yielded value or raise StopIteration.")},
-    {"throw", (PyCFunction) __Pyx_Coroutine_Throw, METH_VARARGS,
-     (char*) PyDoc_STR("throw(typ[,val[,tb]]) -> raise exception in generator,\nreturn next yielded value or raise StopIteration.")},
-    {"close", (PyCFunction) __Pyx_Coroutine_Close_Method, METH_NOARGS,
-     (char*) PyDoc_STR("close() -> raise GeneratorExit inside generator.")},
-    {0, 0, 0, 0}
-};
-static PyMemberDef __pyx_Generator_memberlist[] = {
-    {(char *) "gi_running", T_BOOL, offsetof(__pyx_CoroutineObject, is_running), READONLY, NULL},
-    {(char*) "gi_yieldfrom", T_OBJECT, offsetof(__pyx_CoroutineObject, yieldfrom), READONLY,
-     (char*) PyDoc_STR("object being iterated by 'yield from', or None")},
-    {(char*) "gi_code", T_OBJECT, offsetof(__pyx_CoroutineObject, gi_code), READONLY, NULL},
-    {0, 0, 0, 0, 0}
-};
-static PyGetSetDef __pyx_Generator_getsets[] = {
-    {(char *) "__name__", (getter)__Pyx_Coroutine_get_name, (setter)__Pyx_Coroutine_set_name,
-     (char*) PyDoc_STR("name of the generator"), 0},
-    {(char *) "__qualname__", (getter)__Pyx_Coroutine_get_qualname, (setter)__Pyx_Coroutine_set_qualname,
-     (char*) PyDoc_STR("qualified name of the generator"), 0},
-    {0, 0, 0, 0, 0}
-};
-static PyTypeObject __pyx_GeneratorType_type = {
-    PyVarObject_HEAD_INIT(0, 0)
-    "generator",
-    sizeof(__pyx_CoroutineObject),
-    0,
-    (destructor) __Pyx_Coroutine_dealloc,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HAVE_GC | Py_TPFLAGS_HAVE_FINALIZE,
-    0,
-    (traverseproc) __Pyx_Coroutine_traverse,
-    0,
-    0,
-    offsetof(__pyx_CoroutineObject, gi_weakreflist),
-    0,
-    (iternextfunc) __Pyx_Generator_Next,
-    __pyx_Generator_methods,
-    __pyx_Generator_memberlist,
-    __pyx_Generator_getsets,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-#if CYTHON_USE_TP_FINALIZE
-    0,
-#else
-    __Pyx_Coroutine_del,
-#endif
-    0,
-#if CYTHON_USE_TP_FINALIZE
-    __Pyx_Coroutine_del,
-#elif PY_VERSION_HEX >= 0x030400a1
-    0,
-#endif
-#if PY_VERSION_HEX >= 0x030800b1
-    0,
-#endif
-#if PY_VERSION_HEX >= 0x030800b4 && PY_VERSION_HEX < 0x03090000
-    0,
-#endif
-};
-static int __pyx_Generator_init(void) {
-    __pyx_GeneratorType_type.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
-    __pyx_GeneratorType_type.tp_iter = PyObject_SelfIter;
-    __pyx_GeneratorType = __Pyx_FetchCommonType(&__pyx_GeneratorType_type);
-    if (unlikely(!__pyx_GeneratorType)) {
-        return -1;
-    }
-    return 0;
-}
 
 /* CheckBinaryVersion */
   static int __Pyx_check_binary_version(void) {
