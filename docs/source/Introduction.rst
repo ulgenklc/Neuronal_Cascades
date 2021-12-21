@@ -26,7 +26,7 @@ We study the spatio-temporal patterns of STM cascades over noisy geometric compl
    :scale: 300 %
    :align: center
    
-   A noisy ring complex involves vertices that lie along a 1D manifold that is embedded in a 2D ambient space. (Vertices are placed slightly alongside the manifold to allow easy visualization of 2-simplices.)  Each vertex has :math: `d^{(G)} = 4` geometric edges to nearby vertices and :math: `d^{(NG)} = 1` nongeometric edge to a distant vertex. Higher-dimensional simplices arise in the associated clique complex and are similarly classified.  An STM cascade exhibits WFP when it progresses along the ring manifold, and ANC events when it jumps across a long-range edge or higher-dimensional simplex.
+   A noisy ring complex involves vertices that lie along a 1D manifold that is embedded in a 2D ambient space. (Vertices are placed slightly alongside the manifold to allow easy visualization of 2-simplices.)  Each vertex has :math:`d^{(G)} = 4` geometric edges to nearby vertices and :math:`d^{(NG)} = 1` nongeometric edge to a distant vertex. Higher-dimensional simplices arise in the associated clique complex and are similarly classified.  An STM cascade exhibits WFP when it progresses along the ring manifold, and ANC events when it jumps across a long-range edge or higher-dimensional simplex.
 
 
 Neuronal Subtypes
@@ -60,4 +60,4 @@ The main class we use ``Geometric_Brain_Network`` comes with several methods tha
    :scale: 300 %
    :align: center
    
-   Each k-simplex has a binary state :math: `x^{k}_{i}(t)\in \{0,1\}` indicating whether it is inactive or active, respectively, at time t.  Active k-simplices influence inactive boundary vertices, possibly causing them to become active at the next time step. The dimension of an STM cascade refers to the highest-dimension k-simplex that is active, and we focus herein on 2D STM cascades.
+   Each k-simplex has a binary state :math:`x^{k}_{i}(t)\in \{0,1\}` indicating whether it is inactive or active, respectively, at time t.  Active k-simplices influence inactive boundary vertices, possibly causing them to become active at the next time step. The dimension of an STM cascade refers to the highest-dimension k-simplex that is active, and we focus herein on 2D STM cascades.

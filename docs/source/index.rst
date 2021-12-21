@@ -6,7 +6,7 @@
 Welcome to Neuronal Cascades's documentation!
 =============================================
 
-``Neuronal Cascades`` is a python package for running *simplicial threhsold model* (STM) for cascades in which a vertex :math: `v_{i}` becomes active only when the activity across its simplicial neighbors —of which their are different types— surpasses a threshold :math: `T_{i}` over *noisy geometric simplicial complexes*. See the paper for details.
+``Neuronal Cascades`` is a python package for running *simplicial threhsold model* (STM) for cascades in which a vertex :math:`v_{i}` becomes active only when the activity across its simplicial neighbors —of which their are different types— surpasses a threshold :math:`T_{i}` over *noisy geometric simplicial complexes*. See the paper for details.
 
 
 
