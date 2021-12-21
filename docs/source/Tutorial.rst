@@ -4,7 +4,7 @@ Tutorial
 
 Initiate a ``Geometric_Brain_Network`` object
 *********************************************
-Create a geometric brain network on a ring. Topology is only available on a ring for now. GD, geometric degree, is the local neighbors of a neurons whereas nGD, nongeometric degree, is the distant neighbors of a neuron.
+Create a simplicial ring complex on a ring. Topology is only available for a ring now. GD, geometric degree, is the local neighbors of a neurons whereas nGD, nongeometric degree, is the distant neighbors of a neuron.
 
 .. code-block:: python
 
@@ -87,9 +87,9 @@ One may want to work with a different set of experiment or neuronal variables wi
     
     We increased the global node thresholds to 0.3 which slowed down the signal, wavefront.
     
-Running simplicial contagions
+Running simplicial cascades
 ****************************************************************
-Simplicial contagions can be ran by simply varying the parameter :math:`K` between 0 and 1.
+Simplicial cascades can be ran by simply varying the parameter :math:`K` between 0 and 1.
 
 .. code-block:: python
 
@@ -164,7 +164,7 @@ Stochasticity of the neuronal responses can be adjusted using the experiment var
     As the refractory period is nonzero, complexity of the system increases exponentially.
 
     
-Looking at the contagion size
+Looking at the cascade size
 *************************************
 We can plot the size of the active nodes as a function of time.
 
