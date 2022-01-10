@@ -32,7 +32,7 @@ cdef class Geometric_Brain_Network:
     cdef public int N, GD, nGD
     cdef public str manifold, text, noise
     cdef public list nodes
-    cdef public numpy.ndarray A
+    cdef public numpy.ndarray A, positions
     cdef public int time
     cdef public dict triangles
     
@@ -48,12 +48,12 @@ cdef class Geometric_Brain_Network:
             self.A = matrix
             self.text = 'Custom network on %d nodes'%(self.N)
         else:
-            self.make_geometric()
+            self.A, self.positions = self.make_geometric()
             self.text = '%s network on %d nodes'%(self.manifold, self.N)
         
-        if self.nGD > 0: 
-            self.add_noise_to_geometric()
-            self.text = self.text + ' with %s noise'%(self.noise)
+            if self.nGD > 0: 
+                self.add_noise_to_geometric()
+                self.text = self.text + ' with %s noise'%(self.noise)
             
         self.triangles = self.return_triangles()
         
@@ -69,12 +69,12 @@ cdef class Geometric_Brain_Network:
     
     def make_geometric(self):
         
-        cdef numpy.ndarray ring_positions, random_ring_positions, distance_matrix, random_distance_matrix,
+        cdef numpy.ndarray ring_positions, random_ring_positions, distance_matrix, random_distance_matrix, A
         cdef int s
         cdef float e1,e2
         cdef Py_ssize_t i,j
         
-        self.A = np.zeros((self.N,self.N), dtype = np.int64)
+        A = np.zeros((self.N,self.N), dtype = np.int64)
         
         ring_positions = np.zeros((2,self.N))
         random_ring_positions = np.zeros((2,self.N))
@@ -96,14 +96,16 @@ cdef class Geometric_Brain_Network:
             for i in range(self.N):
                 for j in range(self.N):
                     if distance_matrix[i,j]<=e1 and i!=j:
-                        self.A[i,j] = 1
+                        A[i,j] = 1
+            return(A, ring_positions)
             
         elif self.manifold == 'random_Ring':
             
             for i in range(self.N):
                 for j in range(self.N):
                     if random_distance_matrix[i,j]<=e2 and i!=j:
-                        self.A[i,j] = 1
+                        A[i,j] = 1
+            return(A, random_ring_positions)
     
     def add_noise_to_geometric(self):#, numpy.ndarray[DTYPE_t, ndim=2] A):
 
