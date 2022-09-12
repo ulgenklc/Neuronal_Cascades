@@ -487,17 +487,17 @@ cdef class Geometric_Brain_Network:
         all_history = all_history.astype(float)
         return(all_history)
     
-    def make_distance_matrix(self, int TIME, int C, int trials, float K, float L = -100, str model_type = 'line_segment'):
+    def make_distance_matrix(self, int TIME, int C, float K, float L = -100, str model_type = 'line_segment'):
         cdef numpy.ndarray S, Q, H
         cdef Py_ssize_t seed
 
         S = np.zeros((self.N, TIME), dtype = np.int64)#contagion size
         Q = np.zeros((self.N, TIME), dtype = np.int64)#number of clusterrs
-        H = np.zeros((self.N, TIME), dtype = np.int64)#histories
+        H = np.zeros((self.N, self.N, TIME), dtype = np.int64)#histories
         
         for seed in range(self.N):
             S[seed,:], Q[seed,:] = self.run_dynamic(seed, TIME, C, K, L, model_type)
-            H[seed,:] = self.stack_histories(TIME)
+            H[seed,:,:] = self.stack_histories(TIME)
         
         return(S, Q, H)
     
