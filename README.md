@@ -2,7 +2,7 @@
 
 ``Neuronal Cascades`` is the python module that runs simplicial contagion maps on custom build geometric networks with heterogeneous node properties. In a nutshell, we want to investigate the dynamics of a simplicial contagion starting from a seed cluster and spreading across the underlying network according to a stochastic threshold model. The model and hence the package is as general as possible in a way that one can play with the parameters to obtain different network topologies and contagion models.
 
-Kilic, B.Ü., Taylor, D. Simplicial cascades are orchestrated by the multidimensional geometry of neuronal complexes. Commun Phys 5, 278 (2022). https://doi.org/10.1038/s42005-022-01062-3
+Kilic, B.Ü., Taylor, D. Simplicial cascades are orchestrated by the multidimensional geometry of neuronal complexes. Communications Physics, 5, 278 (2022). https://doi.org/10.1038/s42005-022-01062-3
 
 ## Installation/Usage
 
