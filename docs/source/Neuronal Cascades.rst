@@ -5,8 +5,3 @@ Semantics of Neuronal Cascades
     :members:
     :undoc-members:
     :show-inheritance:
-    
-.. automodule:: neuron
-    :members:
-    :undoc-members:
-    :show-inheritance:
