@@ -29,33 +29,38 @@ ctypedef numpy.int_t DTYPE_t
 
 cdef class Geometric_Brain_Network:
     
-    cdef public int N, GD, nGD
+    cdef public int N, GD, nGD, perturb
     cdef public str manifold, text, noise
     cdef public list nodes
-    cdef public numpy.ndarray A, positions
+    cdef public numpy.ndarray A, A_geo, A_non_geo, positions
     cdef public int time
-    cdef public dict triangles
+    #cdef public dict triangles
     
-    def __init__(self, int size, int geometric_degree = 1, int nongeometric_degree = 0, str manifold = 'Ring', str noise_type = 'k-regular', numpy.ndarray[DTYPE_t, ndim=2] matrix = None):
+    def __init__(self, int size, int geometric_degree = 1, int nongeometric_degree = 0, str manifold = 'Ring', str noise_type = 'k-regular', numpy.ndarray[DTYPE_t, ndim=2] matrix = None, int perturb = 0):
         
         self.N = size  
         self.GD = geometric_degree
         self.nGD = nongeometric_degree
         self.manifold = manifold
         self.noise = noise_type
+        self.perturb = perturb
         
         if self.manifold == 'lattice':
             self.A = matrix
             self.text = 'Custom network on %d nodes'%(self.N)
+            #self.triangles = {'%d'%i:[] for i in range(self.N)}
         else:
-            self.A, self.positions = self.make_geometric()
+            self.A_geo, self.positions = self.make_geometric()
             self.text = '%s network on %d nodes'%(self.manifold, self.N)
         
             if self.nGD > 0: 
-                self.add_noise_to_geometric()
+                self.A_non_geo = self.add_noise_to_geometric()
                 self.text = self.text + ' with %s noise'%(self.noise)
+                self.A = self.A_geo + self.A_non_geo
+            else:
+                self.A = self.A_geo
             
-        self.triangles = self.return_triangles()
+            #self.triangles = self.return_triangles(self.A)
         
     def get_neurons(self, list neurons):
         cdef Py_ssize_t i
@@ -79,11 +84,11 @@ cdef class Geometric_Brain_Network:
         ring_positions = np.zeros((2,self.N))
         random_ring_positions = np.zeros((2,self.N))
 
-        s = int(self.N/10)
+        s = int(25)
 
         for i in range(self.N):
             ring_positions[:,i] = (np.cos(np.pi*2*(i/self.N)),np.sin(np.pi*2*(i/self.N)))
-            random_ring_positions[:,i] = (np.cos(np.pi*2*((i+np.random.normal(0,(s*2*np.pi/self.N)**2))/self.N)),np.sin(np.pi*2*((i+np.random.normal(0,(s*2*np.pi/self.N)**2))/self.N)))
+            random_ring_positions[:,i] = (np.cos(np.pi*2*(i/self.N) + np.random.normal(0,(s*2*np.pi/self.N)**2)),np.sin(np.pi*2*(i/self.N) + np.random.normal(0,(s*2*np.pi/self.N)**2)))
 
         distance_matrix = distance.cdist(ring_positions.T, ring_positions.T, 'euclidean')
         random_distance_matrix = distance.cdist(random_ring_positions.T, random_ring_positions.T, 'euclidean')
@@ -97,6 +102,8 @@ cdef class Geometric_Brain_Network:
                 for j in range(self.N):
                     if distance_matrix[i,j]<=e1 and i!=j:
                         A[i,j] = 1
+            if self.perturb > 0:
+                A = self.ablate_geo_triangles(A)
             return(A, ring_positions)
             
         elif self.manifold == 'random_Ring':
@@ -105,15 +112,16 @@ cdef class Geometric_Brain_Network:
                 for j in range(self.N):
                     if random_distance_matrix[i,j]<=e2 and i!=j:
                         A[i,j] = 1
+            if self.perturb > 0:
+                A = self.ablate_geo_triangles(A)
             return(A, random_ring_positions)
-    
+        
     def add_noise_to_geometric(self):#, numpy.ndarray[DTYPE_t, ndim=2] A):
 
         cdef Py_ssize_t i, m, n, k
-        cdef int M, flag_2, flag_1, node_A, node_B, count, rand1, rand2, edges_build
-        cdef numpy.ndarray nongeo, index
-        cdef numpy.ndarray link_list
-        cdef numpy.ndarray stubs 
+        cdef int M, flag_1, flag_2, node_A, node_B, count, rand1, rand2, rand3, edges_build
+        cdef numpy.ndarray nongeo, index, link_list, stubs, A_prime
+        cdef list triangles, triangle, edge_list
         
         M = int(self.N * self.nGD)  
         
@@ -148,10 +156,10 @@ cdef class Geometric_Brain_Network:
                                 flag_1 = True
                             if link_list[n,0] == node_B and link_list[n,1] == node_A:
                                 flag_1 = True
-                            if self.A[node_A][node_B] == 1 or self.A[node_B][node_A] == 1:
+                            if self.A_geo[node_A][node_B] == 1 or self.A_geo[node_B][node_A] == 1:
                                 flag_1 = True
                             
-                        count = count +1
+                        count = count + 1
                     
                         if count > M: flag_2 = True ; break
                         
@@ -163,26 +171,103 @@ cdef class Geometric_Brain_Network:
                     stubs = np.delete(stubs,[rand1,rand2])
         
             #build network
+            A_prime = np.zeros((self.N,self.N), dtype = np.int64)
             for k in range(int(M/2)):
-                self.A[link_list[k,0],link_list[k,1]] = True
-                self.A[link_list[k,1],link_list[k,0]] = True
-
+                A_prime[link_list[k,0],link_list[k,1]] = True
+                A_prime[link_list[k,1],link_list[k,0]] = True
+                
+            return(A_prime)
             
         elif self.noise == 'ER-like': ## nongeometric edges are distributed so that number of expected non-geometric edges is nGD
             
             edges_build = 0
+            A_prime = np.zeros((self.N,self.N), dtype = np.int64)
             while edges_build < int(M/2):
                 rand1 = random.randint(0, self.N - 1)
                 rand2 = random.randint(0, self.N - 1)
                 if rand1 == rand2:
                     edges_build = edges_build
-                elif self.A[rand1, rand2] == True or self.A[rand1, rand2] == True:
+                elif self.A_geo[rand1, rand2] == True or self.A_geo[rand2, rand1] == True:
                     edges_build = edges_build
                 else:
-                    self.A[rand1, rand2] = True
-                    self.A[rand2, rand1] = True
+                    A_prime[rand1, rand2] = True
+                    A_prime[rand2, rand1] = True
                     edges_build = edges_build + 1
+            return(A_prime)
         
+        elif self.noise == '2D_k-regular': ## adding non-geo triangles uniformly at random
+            
+            triangles = []
+            edge_list = []
+            for i in range(self.nGD):
+                flag1 = True
+                stubs = np.arange(self.N, dtype = DTYPE)
+                count = 0
+                while flag1:
+                    flag2 = True
+                    while flag2:
+                        flag2 = False
+                        rand1, rand2, rand3 = random.choices(stubs, k = 3)
+                        if rand1 == rand2 or rand1 == rand3 or rand2 == rand3:
+                            flag2 = True
+                        if (rand1, rand2) in edge_list or (rand1, rand3) in edge_list or (rand2, rand3) in edge_list:
+                            flag2 = True
+                        if self.A_geo[rand1, rand2] == 1 or self.A_geo[rand2, rand1] == 1:
+                            flag2 = True
+                        if self.A_geo[rand1, rand3] == 1 or self.A_geo[rand3, rand1] == 1:
+                            flag2 = True
+                        if self.A_geo[rand2, rand3] == 1 or self.A_geo[rand3, rand2] == 1:
+                            flag2 = True
+                    edge_list.append((rand1, rand2))
+                    edge_list.append((rand2, rand1))
+                    edge_list.append((rand1, rand3))
+                    edge_list.append((rand3, rand1))
+                    edge_list.append((rand2, rand3))
+                    edge_list.append((rand3, rand2))
+                    triangles.append([rand1, rand2, rand3])
+                    count = count + 1
+                    stubs = np.delete(stubs, [np.where(stubs == rand1)])
+                    stubs = np.delete(stubs, [np.where(stubs == rand2)])
+                    stubs = np.delete(stubs, [np.where(stubs == rand3)])
+                    if count == int(self.N/3):
+                        flag1 = False
+                #build network
+                A_prime = np.zeros((self.N, self.N),  dtype = np.int64)
+                for triangle in triangles:
+                    A_prime[triangle[0], triangle[1]] = True
+                    A_prime[triangle[1], triangle[0]] = True
+                    A_prime[triangle[0], triangle[2]] = True
+                    A_prime[triangle[2], triangle[0]] = True
+                    A_prime[triangle[1], triangle[2]] = True
+                    A_prime[triangle[2], triangle[1]] = True
+
+            return(A_prime)
+        
+    def ablate_geo_triangles(self, numpy.ndarray[DTYPE_t, ndim=2] A):
+        cdef list links_to_be_removed, random_tri, e
+        cdef Py_ssize_t n, i
+        cdef int flag1, m
+        cdef dict tris
+        
+        tris = self.return_triangles(A)
+        links_to_be_removed = []
+        for n in range(self.N):
+            flag1 = True
+            while flag1:
+                flag1 = False
+                random_tri = random.choices(tris['%d'%n], k = self.perturb)
+                for i, e in enumerate(random_tri):
+                    m = random.choice(e)
+                    if [n,m] in links_to_be_removed or [m,n] in links_to_be_removed:
+                        flag1 = True
+                    else:
+                        links_to_be_removed.append([n, m])
+
+        for i, e in enumerate(links_to_be_removed):
+            A[e[0], e[1]] = 0
+            A[e[1], e[0]] = 0
+        return(A)
+            
     def get_nonunique_triangle_list(self, numpy.ndarray[DTYPE_t, ndim=2] A):
         
         cdef numpy.ndarray AAA, i_list, j_list, triangles_list, local_triangles_list
@@ -217,84 +302,81 @@ cdef class Geometric_Brain_Network:
 
         return nonunique_triangle_list[tri_flag,1:], tri_flag
 
-    def return_triangles(self):
+    def return_triangles(self, numpy.ndarray[DTYPE_t, ndim=2] Adjacency):
         cdef numpy.ndarray nonunique_triangle_list, p
         cdef dict triangles
         cdef Py_ssize_t i
         
-        nonunique_triangle_list = self.get_nonunique_triangle_list(self.A)
+        nonunique_triangle_list = self.get_nonunique_triangle_list(Adjacency)
         triangles = {}
         for i in range(self.N):
             triangles[str(i)] = [list(p) for p in self.get_nodes_unique_triangles(nonunique_triangle_list,i)[0]]
         return triangles 
     
     def neighbor_input(self, int node_id, float K, float L = -100, str model_type = 'line_segment'):
-        cdef list nbhood
-        cdef Py_ssize_t i,j
+        cdef list nbhood, f, active_hood#, active_triangles
+        #cdef Py_ssize_t i,j
         cdef int e
-        cdef list f, #active_hood, active_triangles
-        cdef float F, one_simplicies, two_simplicies#, economy
+        cdef float F, one_simplicies#, two_simplicies
 
         nbhood = self.nodes[node_id].neighborhood
-        active_hood = []
-        active_triangles = []
+        #active_triangles = []
         
         ## find the active hood
-        for i,e in enumerate(nbhood):
-            if self.nodes[e].state == 1:
-                active_hood.append(e)
+        #for i,e in enumerate(nbhood):
+        #    if self.nodes[e].state == 1:
+        #        active_hood.append(e)
         
-        ## find the active triangles
-        for j,f in enumerate(self.triangles['%d'%node_id]):
-            if self.nodes[f[0]].state == 1 and self.nodes[f[1]].state == 1:
-                active_triangles.append(f)
+        active_hood = [e for e in nbhood if self.nodes[e].state == 1]
+        
+        ## find the active triangles if K positive
+        #if K > 0:
+         #   for j,f in enumerate(self.triangles['%d'%node_id]):
+          #      if self.nodes[f[0]].state == 1 and self.nodes[f[1]].state == 1:
+           #         active_triangles.append(f)
                 
         if model_type == 'line_segment':
-            if len(nbhood) == 0 and len(self.triangles['%d'%node_id]) != 0:
-                one_simplicies = 0
-                two_simplicies = K*(len(active_triangles)/len(self.triangles['%d'%node_id]))
+            #if len(nbhood) == 0 and len(self.triangles['%d'%node_id]) != 0:
+            #    one_simplicies = 0
+            #    two_simplicies = K*(len(active_triangles)/len(self.triangles['%d'%node_id]))
                 
-            elif len(self.triangles['%d'%node_id]) == 0 and len(nbhood) != 0:
-                one_simplicies = (1-K)*(len(active_hood)/len(nbhood))
-                two_simplicies = 0
+            #if len(self.triangles['%d'%node_id]) == 0 and len(nbhood) != 0:
+            #    one_simplicies = (1-K)*(len(active_hood)/len(nbhood))
+            #    two_simplicies = 0
                 
-            elif len(nbhood) == 0 and len(self.triangles['%d'%node_id]) == 0:
+            if len(nbhood) == 0:  #and len(self.triangles['%d'%node_id]) == 0:
                 one_simplicies = 0
-                two_simplicies = 0
+                #two_simplicies = 0
                 
             else:
-                one_simplicies = (1-K)*(len(active_hood)/len(nbhood))
-                two_simplicies = K*(len(active_triangles)/len(self.triangles['%d'%node_id]))
+                one_simplicies = (len(active_hood)/len(nbhood))*(1-K)
+                #two_simplicies = K*(len(active_triangles)/len(self.triangles['%d'%node_id]))
                         
-        elif model_type == 'linear_combination':
-            one_simplicies = K*(len(active_hood)/len(nbhood))
-            two_simplicies = L*(len(active_triangles)/len(self.triangles['%d'%node_id]))
+        #elif model_type == 'linear_combination':
+        #    one_simplicies = K*(len(active_hood)/len(nbhood))
+        #    two_simplicies = L*(len(active_triangles)/len(self.triangles['%d'%node_id]))
             
-        F = one_simplicies + two_simplicies - self.nodes[node_id].threshold
+        F = one_simplicies - self.nodes[node_id].threshold # + two_simplicies 
         
-        #economy = two_simplicies - one_simplicies
-        return(F)#, economy, active_hood, active_triangles)
+        return(F)
     
     def sigmoid(self, int node_id, int C, float K, float L = -100, str model_type = 'line_segment'):
         
-        cdef float F, Z#,economy
-        #cdef list active_hood, active_triangles
+        cdef float F, Z
         
-        #F, economy, active_hood, active_triangles = self.neighbor_input(node_id, K, L, model_type)
         F = self.neighbor_input(node_id, K, L, model_type)
-        if F == 0: F = -0.1
+        if F == 0: 
+            F = -0.1
         Z = 1/(1+np.exp(-C*F))
         
-        return(Z)#, economy, active_hood, active_triangles)
+        return(Z)
     
     def update_history(self, int node_id, int C, float K, float L = -100, str model_type = 'line_segment'):
         
-        cdef list active_hood, active_triangles
-        cdef float rand, Z, economy
-        cdef Py_ssize_t i#,j
+        cdef float rand, Z
+        cdef Py_ssize_t i,j
         
         rand = random.uniform(0,1)
-        #Z, economy, active_hood, active_triangles = self.sigmoid(node_id, C, K, L, model_type)
         Z  = self.sigmoid(node_id, C, K, L, model_type)
 
         if rand <= Z:
@@ -302,37 +384,25 @@ cdef class Geometric_Brain_Network:
             for i in range(self.nodes[node_id].memory + 1):
                 self.nodes[node_id].history.append(1)
             
-            #self.nodes[node_id].economy.append((economy, active_hood, active_triangles))
-            #for j in range(self.nodes[node_id].rest):
-                #self.nodes[node_id].history.append(-1)
+            for j in range(self.nodes[node_id].rest):
+                self.nodes[node_id].history.append(-1)
                 
-            #self.nodes[node_id].history.append(0)
+            self.nodes[node_id].history.append(0)
             
         else:
             self.nodes[node_id].history.append(0)
     
     def update_states(self):
-        cdef list excited, ready_to_fire #, rest
-        
+        cdef list excited, ready_to_fire , rest
         cdef object node
         
-        excited = []
-        ready_to_fire = []
-        #rest = []
-        
-        for node in self.nodes:
+        excited = [node.name for node in self.nodes if int(node.history[self.time]) == 1]
             
-            node.state = int(node.history[self.time])
-                
-            if node.state == 1:
-                excited.append(node.name)
-            else: 
-                ready_to_fire.append(node.name)
-            #elif node.state == 0:
-                #ready_to_fire.append(node.name)
-            #else: rest.append(node.name)
-                
-        return(excited, ready_to_fire)
+        ready_to_fire = [node.name for node in self.nodes if int(node.history[self.time]) == 0]
+            
+        rest = [node.name for node in self.nodes if int(node.history[self.time]) == -1]
+        
+        return(excited, ready_to_fire, rest)
                 
     def initial_spread(self, int seed):
         cdef Py_ssize_t i, j, k
@@ -347,10 +417,11 @@ cdef class Geometric_Brain_Network:
         for node1 in excited_nodes_list:
             for i in range(self.nodes[node1].memory + 1):
                 self.nodes[node1].history.append(1)
-            #for j in range(self.nodes[node1].rest):
-                #self.nodes[node1].history.append(-1)
                 
-            #self.nodes[node1].history.append(0)
+            for j in range(self.nodes[node1].rest):
+                self.nodes[node1].history.append(-1)
+                
+            self.nodes[node1].history.append(0)
             
         for node2 in list(all_nodes.difference(excited_nodes_set)):
             self.nodes[node2].history.append(0)
@@ -370,7 +441,7 @@ cdef class Geometric_Brain_Network:
     def run_dynamic(self, int seed, int TIME, int C, float K, float L = -100, str model_type = 'line_segment'):
         
         cdef numpy.ndarray activation_times, number_of_clusters
-        cdef list size_of_contagion, excited_nodes, ready_to_fire_nodes#, resting_nodes
+        cdef list size_of_contagion, excited_nodes, ready_to_fire_nodes, resting_nodes
         cdef int node, flag_1, tolerance
         cdef Py_ssize_t i, t
 
@@ -379,7 +450,7 @@ cdef class Geometric_Brain_Network:
         number_of_clusters = np.ones((1, TIME))
         size_of_contagion = [int(0)]
         self.initial_spread(seed)
-        excited_nodes, ready_to_fire_nodes = self.update_states()
+        excited_nodes, ready_to_fire_nodes, resting_nodes = self.update_states()
         
         self.time = 1
         
@@ -393,7 +464,7 @@ cdef class Geometric_Brain_Network:
                 self.update_history(node, C, K, L, model_type)
                 
             flag_1 = len(excited_nodes)
-            excited_nodes, ready_to_fire_nodes = self.update_states()
+            excited_nodes, ready_to_fire_nodes, resting_nodes = self.update_states()
             
             if flag_1 == len(excited_nodes):
                 tolerance = tolerance + 1

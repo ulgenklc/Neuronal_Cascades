@@ -9,8 +9,6 @@ from Cython.Build import cythonize
 import numpy
 
 extensions = [
-    Extension("Neuronal_Cascades_base.neuron", ["Neuronal_Cascades_base/neuron.pyx"]
-        ),
     Extension("Neuronal_Cascades_base.Geometric_Brain_Network", ["Neuronal_Cascades_base/Geometric_Brain_Network.pyx"]
 )
 ]
