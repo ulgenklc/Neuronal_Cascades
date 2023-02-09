@@ -2,6 +2,6 @@ numpy
 scipy
 networkx
 gudhi
-sklearn
+scikit-learn
 sphinx_glpi_theme
 
