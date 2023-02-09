@@ -10,7 +10,7 @@ import numpy
 
 extensions = [
     Extension("Neuronal_Cascades_base.Geometric_Brain_Network", ["Neuronal_Cascades_base/Geometric_Brain_Network.pyx"]
-)
+),
 ]
 
 for e in extensions:
