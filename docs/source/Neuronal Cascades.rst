@@ -1,7 +1,7 @@
 Semantics of Neuronal Cascades
 ***************************************
 
-.. automodule:: Geometric_Brain_Network
+.. automodule:: Geometric_Brain_Network.Geometric_Brain_Network
     :members:
     :undoc-members:
     :show-inheritance:
