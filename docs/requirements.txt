@@ -5,4 +5,3 @@ gudhi
 scikit-learn
 sphinx_glpi_theme == 1.1.1
 sphinx==5.3.0
-
