@@ -45,7 +45,7 @@ Define neuronal properties and then use ``get_neurons`` to inherit individual ne
     neurons_1 = [neuron(i, memory = memory, rest = rest, threshold = threshold) for i in range(size)]
     BN.get_neurons(neurons_1)## this is for runnning experiments with new set of neurons without changing the network
     
-Run a single example contagion
+Run a single example cascade
 ****************************************
 Core function ``run_dynamic`` runs an experiment with given variables.
 
