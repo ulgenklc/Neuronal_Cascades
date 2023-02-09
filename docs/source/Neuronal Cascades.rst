@@ -5,3 +5,8 @@ Semantics of Neuronal Cascades
     :members:
     :undoc-members:
     :show-inheritance:
+
+.. autoclass:: Geometric_Brain_Network.neuron
+    :members:
+    :undoc-members:
+    :show-inheritance:
