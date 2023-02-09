@@ -33,10 +33,10 @@ cdef class Geometric_Brain_Network:
     cdef public str manifold, text, noise
     cdef public list nodes
     cdef public numpy.ndarray A, A_geo, A_non_geo, positions
-    cdef public int time
-    #cdef public dict triangles
+    cdef public int time, higher_order
+    cdef public dict triangles
     
-    def __init__(self, int size, int geometric_degree = 1, int nongeometric_degree = 0, str manifold = 'Ring', str noise_type = 'k-regular', numpy.ndarray[DTYPE_t, ndim=2] matrix = None, int perturb = 0):
+    def __init__(self, int size, int geometric_degree = 1, int nongeometric_degree = 0, str manifold = 'Ring', str noise_type = 'k-regular', numpy.ndarray[DTYPE_t, ndim=2] matrix = None, int perturb = 0, int higher_order = False):
         
         self.N = size  
         self.GD = geometric_degree
@@ -44,11 +44,11 @@ cdef class Geometric_Brain_Network:
         self.manifold = manifold
         self.noise = noise_type
         self.perturb = perturb
+        self.higher_order = higher_order
         
         if self.manifold == 'lattice':
             self.A = matrix
             self.text = 'Custom network on %d nodes'%(self.N)
-            #self.triangles = {'%d'%i:[] for i in range(self.N)}
         else:
             self.A_geo, self.positions = self.make_geometric()
             self.text = '%s network on %d nodes'%(self.manifold, self.N)
@@ -59,8 +59,8 @@ cdef class Geometric_Brain_Network:
                 self.A = self.A_geo + self.A_non_geo
             else:
                 self.A = self.A_geo
-            
-            #self.triangles = self.return_triangles(self.A)
+        if self.higher_order:
+            self.triangles = self.return_triangles(self.A)
         
     def get_neurons(self, list neurons):
         cdef Py_ssize_t i
@@ -313,71 +313,65 @@ cdef class Geometric_Brain_Network:
             triangles[str(i)] = [list(p) for p in self.get_nodes_unique_triangles(nonunique_triangle_list,i)[0]]
         return triangles 
     
-    def neighbor_input(self, int node_id, float K, float L = -100, str model_type = 'line_segment'):
-        cdef list nbhood, f, active_hood#, active_triangles
-        #cdef Py_ssize_t i,j
+    def neighbor_input(self, int node_id, float K):
+        cdef list nbhood, f, active_hood, active_triangles
         cdef int e
-        cdef float F, one_simplicies#, two_simplicies
+        cdef float F, one_simplicies, two_simplicies
 
         nbhood = self.nodes[node_id].neighborhood
-        #active_triangles = []
-        
-        ## find the active hood
-        #for i,e in enumerate(nbhood):
-        #    if self.nodes[e].state == 1:
-        #        active_hood.append(e)
         
         active_hood = [e for e in nbhood if self.nodes[e].state == 1]
         
-        ## find the active triangles if K positive
-        #if K > 0:
-         #   for j,f in enumerate(self.triangles['%d'%node_id]):
-          #      if self.nodes[f[0]].state == 1 and self.nodes[f[1]].state == 1:
-           #         active_triangles.append(f)
-                
-        if model_type == 'line_segment':
-            #if len(nbhood) == 0 and len(self.triangles['%d'%node_id]) != 0:
-            #    one_simplicies = 0
-            #    two_simplicies = K*(len(active_triangles)/len(self.triangles['%d'%node_id]))
-                
-            #if len(self.triangles['%d'%node_id]) == 0 and len(nbhood) != 0:
-            #    one_simplicies = (1-K)*(len(active_hood)/len(nbhood))
-            #    two_simplicies = 0
-                
-            if len(nbhood) == 0:  #and len(self.triangles['%d'%node_id]) == 0:
+        if self.higher_order:
+            active_triangles = [f for f in self.triangles['%d'%node_id] if self.nodes[f[0]].state == 1 and self.nodes[f[1]].state == 1] 
+
+            if len(nbhood) == 0 and len(self.triangles['%d'%node_id]) != 0:
                 one_simplicies = 0
-                #two_simplicies = 0
+                two_simplicies = K*(len(active_triangles)/len(self.triangles['%d'%node_id]))
+                
+            elif len(self.triangles['%d'%node_id]) == 0 and len(nbhood) != 0:
+                one_simplicies = (1-K)*(len(active_hood)/len(nbhood))
+                two_simplicies = 0
+                
+            elif len(nbhood) == 0 and len(self.triangles['%d'%node_id]) == 0:
+                one_simplicies = 0
+                two_simplicies = 0
                 
             else:
                 one_simplicies = (len(active_hood)/len(nbhood))*(1-K)
-                #two_simplicies = K*(len(active_triangles)/len(self.triangles['%d'%node_id]))
-                        
-        #elif model_type == 'linear_combination':
-        #    one_simplicies = K*(len(active_hood)/len(nbhood))
-        #    two_simplicies = L*(len(active_triangles)/len(self.triangles['%d'%node_id]))
+                two_simplicies = K*(len(active_triangles)/len(self.triangles['%d'%node_id]))
             
-        F = one_simplicies - self.nodes[node_id].threshold # + two_simplicies 
-        
+            F = one_simplicies + two_simplicies - self.nodes[node_id].threshold 
+                        
+        else:
+            if len(nbhood) == 0:
+                one_simplicies = 0
+                
+            else:
+                one_simplicies = (len(active_hood)/len(nbhood))
+                
+            F = one_simplicies - self.nodes[node_id].threshold 
+
         return(F)
     
-    def sigmoid(self, int node_id, int C, float K, float L = -100, str model_type = 'line_segment'):
+    def sigmoid(self, int node_id, int C, float K):
         
         cdef float F, Z
         
-        F = self.neighbor_input(node_id, K, L, model_type)
+        F = self.neighbor_input(node_id, K)
         if F == 0: 
             F = -0.1
         Z = 1/(1+np.exp(-C*F))
         
         return(Z)
     
-    def update_history(self, int node_id, int C, float K, float L = -100, str model_type = 'line_segment'):
+    def update_history(self, int node_id, int C, float K):
         
         cdef float rand, Z
         cdef Py_ssize_t i,j
         
         rand = random.uniform(0,1)
-        Z  = self.sigmoid(node_id, C, K, L, model_type)
+        Z  = self.sigmoid(node_id, C, K)
 
         if rand <= Z:
                     
@@ -396,11 +390,14 @@ cdef class Geometric_Brain_Network:
         cdef list excited, ready_to_fire , rest
         cdef object node
         
-        excited = [node.name for node in self.nodes if int(node.history[self.time]) == 1]
+        for node in self.nodes:
+            node.state = int(node.history[self.time])
+        
+        excited = [node.name for node in self.nodes if node.state == 1]
             
-        ready_to_fire = [node.name for node in self.nodes if int(node.history[self.time]) == 0]
+        ready_to_fire = [node.name for node in self.nodes if node.state == 0]
             
-        rest = [node.name for node in self.nodes if int(node.history[self.time]) == -1]
+        rest = [node.name for node in self.nodes if node.state == -1]
         
         return(excited, ready_to_fire, rest)
                 
@@ -438,10 +435,10 @@ cdef class Geometric_Brain_Network:
             
         return(tolerance)
     
-    def run_dynamic(self, int seed, int TIME, int C, float K, float L = -100, str model_type = 'line_segment'):
+    def run_dynamic(self, int seed, int TIME, int C, float K):
         
         cdef numpy.ndarray activation_times, number_of_clusters
-        cdef list size_of_contagion, excited_nodes, ready_to_fire_nodes, resting_nodes
+        cdef list excited_nodes, ready_to_fire_nodes, resting_nodes, size_of_contagion
         cdef int node, flag_1, tolerance
         cdef Py_ssize_t i, t
 
@@ -457,11 +454,10 @@ cdef class Geometric_Brain_Network:
         while self.time < TIME and 0 < len(excited_nodes) and np.any(activation_times==TIME) and tolerance < 10:
             size_of_contagion.append(len(excited_nodes))
             
-            activation_times[excited_nodes] = np.minimum(activation_times[excited_nodes], 
-                                                         np.array([self.time]*len(excited_nodes)))
+            activation_times[excited_nodes] = np.minimum(activation_times[excited_nodes], np.array([self.time]*len(excited_nodes)))
             
             for node in ready_to_fire_nodes: 
-                self.update_history(node, C, K, L, model_type)
+                self.update_history(node, C, K)
                 
             flag_1 = len(excited_nodes)
             excited_nodes, ready_to_fire_nodes, resting_nodes = self.update_states()
@@ -494,30 +490,7 @@ cdef class Geometric_Brain_Network:
         all_history = np.vstack(states)
         return(all_history)
     
-    def average_over_trials(self, int seed, int TIME, int C, int trials, float K, float L = -100, str model_type = 'line_segment'):
-        
-        cdef numpy.ndarray first_excitation_times, size_of_contagion, first_exct, contagion_size, anc_clusters, number_of_clusters
-        cdef numpy.ndarray average_excitation_times, average_contagion_size, average_anc_clusters
-        cdef Py_ssize_t i
-
-        first_excitation_times = np.zeros((self.N, trials), dtype = np.int64)
-        size_of_contagion = np.zeros((TIME, trials), dtype = np.int64)
-        anc_clusters = np.zeros((TIME, trials), dtype = np.int64)
-        
-        for i in range(trials):
-            first_exct, contagion_size, number_of_clusters = self.run_dynamic(seed, TIME, C, K, L, model_type)
-                                                            
-            first_excitation_times[:,i] = first_exct
-            size_of_contagion[:,i] = contagion_size
-            anc_clusters[:,i] = number_of_clusters
-        
-        average_excitation_times = np.mean(first_excitation_times, axis = 1)
-        average_contagion_size = np.mean(size_of_contagion, axis = 1)
-        average_anc_clusters = np.mean(anc_clusters, axis = 1)
-        
-        return(average_excitation_times, average_contagion_size, average_anc_clusters)
-    
-    def make_distance_matrix(self, int TIME, int C, int trials, float K, float L = -100, str model_type = 'line_segment'):
+    def make_distance_matrix(self, int TIME, int C, float K):
         cdef numpy.ndarray D, Q, A, distance_matrix
         cdef Py_ssize_t seed
 
@@ -526,7 +499,7 @@ cdef class Geometric_Brain_Network:
         A = np.zeros((self.N, TIME), dtype = np.int64)
         
         for seed in range(self.N):
-            D[seed], Q[seed,:], A[seed,:] = self.average_over_trials(seed, TIME, C, trials, K, L, model_type)
+            D[seed], Q[seed,:], A[seed,:] = self.run_dynamic(seed, TIME, C, K)
         
         distance_matrix = euclidean_distances(D.T)
         
@@ -557,7 +530,7 @@ cdef class Geometric_Brain_Network:
         Delta_max = np.sort(persistence_life_times)[-1]-np.sort(persistence_life_times)[1]
         return(Delta_min, Delta_max)
     
-    def display_comm_sizes(self, list Q, list labels, int TIME, int C, int trials, int memory, int rest, float threshold, int K = -100, L = -100):
+    def display_comm_sizes(self, list Q, list labels, int TIME, int C, int memory, int rest, float threshold, int K = -100):
         
         cdef list argmaxs, colors
         cdef numpy.ndarray Q_mean, X
@@ -595,7 +568,7 @@ cdef class Geometric_Brain_Network:
                             np.min(Q[i], axis = 0)[:int(np.min([TIME-2,np.max(argmaxs)])+2)], 
                             alpha = 0.2, color = colors[i%11])
             
-        ax.set_title('%s, T = %d, C = %d, trials = %d,  K = %.1f, L = %.1f, Threshold = %.2f'%(self.text, TIME, C, trials, K, L, threshold), fontsize = 25)
+        ax.set_title('%s, T = %d, C = %d,  K = %.1f,Threshold = %.2f'%(self.text, TIME, C, K, threshold), fontsize = 25)
         ax.set_xlabel('Time', fontsize = 20)
         ax.set_ylabel('Number of Active Nodes', fontsize = 20)
         ax.legend()
@@ -615,7 +588,6 @@ cdef class neuron(Geometric_Brain_Network):
         self.rest = rest
         self.threshold = threshold
         self.neighborhood = []
-        #self.economy = []
         
         self.refresh_history()
         
