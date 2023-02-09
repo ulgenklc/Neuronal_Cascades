@@ -24,7 +24,7 @@
 #ctypedef numpy.int_t DTYPE_t
 
 
-class Geometric_Brain_Network:
+class Geometric_Brain_Network():
     """
     Geometric Brain Network object to run simplicial cascades on.
         
