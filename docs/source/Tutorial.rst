@@ -9,19 +9,13 @@ Create a simplicial ring complex on a ring. Topology is only available for a rin
 .. code-block:: python
 
     #### NETWORK VARIABLES
-    size = 400 ## number of neurons
-    GD = 10 # geometric degree
-    nGD = 4 # non-geometric degree
-    topology = 'Ring' ## only ring available so far
-    BN = Geometric_Brain_Network(size, geometric_degree = GD, nongeometric_degree = nGD, manifold = topology)
+    size = 400
+    GD = 10 
+    nGD = 4
+    topology = 'Ring' 
+    noise = 'k-Regular'
+    network = Geometric_Brain_Network.Geometric_Brain_Network(size, geometric_degree = GD, nongeometric_degree = nGD, manifold = topology, noise_type = noise)
 
-.. figure:: network.jpg
-   :width: 200px
-   :height: 200px
-   :scale: 200 %
-   :align: center
-   
-   A view of the network before and after long range edges are added. For simplicity, we kept size = 20, GD = 3, nGD = 1.
  
 Inheriting ``neuron`` objects
 **************************************
@@ -34,7 +28,6 @@ Define neuronal properties and then use ``get_neurons`` to inherit individual ne
     seed = int(size/2) ## seed node
     C = 10000 ## constant for tuning stochasticity(high C yields deterministic experiments)
     K = 0 ## constant weighing the edges vs triangles K=0 pure edge contagions, K=1 pure triangle contagion
-    trials = 1 # number of trials per set of variables
 
     #NEURON VARIABLES
     threshold = 0.2 # node threshold
@@ -42,8 +35,8 @@ Define neuronal properties and then use ``get_neurons`` to inherit individual ne
     rest = 0# neurons don't rest
 
     ##INITIATE NEURONS and Inherit them
-    neurons_1 = [neuron(i, memory = memory, rest = rest, threshold = threshold) for i in range(size)]
-    BN.get_neurons(neurons_1)## this is for runnning experiments with new set of neurons without changing the network
+    neurons = [Geometric_Brain_Network.neuron(i, memory = memory, rest = rest, threshold = threshold) for i in range(size)]
+    BN.get_neurons(neurons)## this is for runnning experiments with new set of neurons without changing the network
     
 Run a single example cascade
 ****************************************
@@ -187,7 +180,7 @@ In order to asses global features, we run experiments for every seed node i and 
 
 .. code-block:: python
 
-    FAT, CS = BN.make_distance_matrix(TIME, C, trials, K)
+    FAT, CS = BN.make_distance_matrix(TIME, C, K)
     
 .. figure:: distanceMatrix.jpg
     :width: 200px
