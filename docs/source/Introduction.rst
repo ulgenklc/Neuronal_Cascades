@@ -31,7 +31,7 @@ A noisy ring complex involves vertices that lie along a 1D manifold that is embe
 
 .. figure:: RINGS.pdf
    :width: 300px
-   :height: 300px
+   :height: 500px
    :scale: 500 %
    :align: center
    
@@ -73,7 +73,7 @@ In the package, ``Geometric_Brain_Network`` object has a subclass called ``neuro
     rest = 500 # number of discrete time-steps that neuron stays in the refrectaroy period. In this state, neuorons are not allowed to get active.
 
 .. figure:: neuron_types.pdf
-   :width: 200px
-   :height: 300px
+   :width: 300px
+   :height: 500px
    :scale: 500 %
    :align: center
