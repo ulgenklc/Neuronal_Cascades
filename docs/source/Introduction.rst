@@ -30,9 +30,9 @@ A noisy ring complex involves vertices that lie along a 1D manifold that is embe
     noise_type = 'k-regular' or 'ER-like' or '2D_k-regular'
 
 .. figure:: RINGS.pdf
-   :width: 200px
-   :height: 200px
-   :scale: 300 %
+   :width: 300px
+   :height: 300px
+   :scale: 500 %
    :align: center
    
 
@@ -74,6 +74,6 @@ In the package, ``Geometric_Brain_Network`` object has a subclass called ``neuro
 
 .. figure:: neuron_types.pdf
    :width: 200px
-   :height: 200px
-   :scale: 300 %
+   :height: 300px
+   :scale: 500 %
    :align: center
