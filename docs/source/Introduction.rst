@@ -2,7 +2,7 @@ Introduction
 ==============
 Here, we develop computational framework for interplay between the dynamics (spreading process) and network topology manifesting through higher-order connections embedded in a manifold structure for neuronal activity. One can study spatio-temporal patterns of STM cascades over noisy geometric complexes, which contain both short- and long-range simplices and are a generalization of noisy geometric networks.
 
-In this module, one can investigate the dynamics of a Simplicial Threshold model (STM) starting from a seed cluster and spreading across the underlying simplicial complex. The model and hence the package is as general as possible in a way that one can play with the parameters to obtain different network topologies and cascade models. There are 3 main parameter groups summarized under *Network paramaters*, *Dynaimcs parameters* and *Neuron parameters*.
+In this module, one can investigate the dynamics of a Simplicial Threshold model (STM) starting from a seed cluster and spreading across the underlying simplicial complex. The model and hence the package is as general as possible in a way that one can play with the parameters to obtain different network topologies and cascade models. There are 3 main parameter groups summarized under *Network paramaters*, *Dynamics parameters* and *Neuron parameters*.
 
 .. figure:: active_triangles_copy.pdf
    :width: 200px
