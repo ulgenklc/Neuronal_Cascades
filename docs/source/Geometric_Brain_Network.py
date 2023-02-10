@@ -72,7 +72,7 @@ class Geometric_Brain_Network:
         
     """
     
-     def __init__(self, size, geometric_degree = 1, nongeometric_degree = 0, manifold = 'Ring', noise_type = 'k-regular', matrix = None, perturb = 0, higher_order = False):
+    def __init__(self, size, geometric_degree = 1, nongeometric_degree = 0, manifold = 'Ring', noise_type = 'k-regular', matrix = None, perturb = 0, higher_order = False):
         
         self.N = size  
         self.GD = geometric_degree
@@ -97,7 +97,7 @@ class Geometric_Brain_Network:
                 self.A = self.A_geo
         if self.higher_order:
             self.triangles = self.return_triangles(self.A)
-        
+    
     def get_neurons(self, neurons):
         
         """
