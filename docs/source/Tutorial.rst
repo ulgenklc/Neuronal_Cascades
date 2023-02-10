@@ -36,7 +36,7 @@ Define neuronal properties and then use ``get_neurons`` to inherit individual ne
 
     ##INITIATE NEURONS and Inherit them
     neurons = [Geometric_Brain_Network.neuron(i, memory = memory, rest = rest, threshold = threshold) for i in range(size)]
-    BN.get_neurons(neurons)## this is for runnning experiments with new set of neurons without changing the network
+    network.get_neurons(neurons)## this is for runnning experiments with new set of neurons without changing the network
     
 Run a single example cascade
 ****************************************
