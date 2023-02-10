@@ -606,7 +606,7 @@ class Geometric_Brain_Network:
         
         self.time = 1
         
-        while self.time < TIME and 0 < len(excited_nodes) and np.any(activation_times==TIME) and tolerance < 10:
+        while self.time < TIME and tolerance < 10:#0 < len(excited_nodes) and np.any(activation_times==TIME) and 
             size_of_contagion.append(len(excited_nodes))
             
             activation_times[excited_nodes] = np.minimum(activation_times[excited_nodes], np.array([self.time]*len(excited_nodes)))
